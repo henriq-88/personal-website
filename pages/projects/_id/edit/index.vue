@@ -14,26 +14,7 @@ export default {
   data: () => ({
     loading: false,
     project: null
-  }),
-  mounted () {
-    this.reloadProject()
-  },
-  methods: {
-    async reloadProject () {
-      this.loading = true
-      try {
-        this.project = await this.getProject()
-      } catch (err) {
-
-      }
-      this.loading = false
-    },
-    async getProject () {
-      const ref = firebase.firestore().doc(`projects/${this.$route.params.id}`)
-      const snapshot = await ref.get()
-      return snapshot.data()
-    }
-  }
+  })
 }
 </script>
 

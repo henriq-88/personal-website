@@ -3,7 +3,7 @@
     <v-card>
       <v-card-title>
         <span
-          v-if="!project"
+          v-if="!$route.params.id"
           class="headline">
           Create New Project
         </span>
@@ -20,7 +20,6 @@
           <v-text-field
             v-model="name"
             label="Name"
-            :disabled="!!project"
             :rules="[$globals.rules.required]"
             required/>
           <v-select
@@ -61,6 +60,12 @@
               <v-btn flat color="primary" @click="$refs.dateMenu.save(date)">OK</v-btn>
             </v-date-picker>
           </v-menu>
+          <v-text-field
+            v-model="body"
+            label="Body"
+            textarea
+            :rules="[$globals.rules.required]"
+            required/>
           <v-container grid-list-md>
             <v-layout row wrap>
               <ProjectImagePicker
@@ -71,12 +76,16 @@
                 @imageUploaded="addImage"/>
             </v-layout>
           </v-container>
+          <v-text-field
+            v-model="video"
+            label="Video link"
+            :rules="[$globals.rules.link]"/>
         </v-form>
       </v-card-text>
       <v-card-actions>
         <v-spacer/>
         <v-btn
-          v-if="!project"
+          v-if="!$route.params.id"
           :disabled="!valid"
           :loading="loading"
           flat
@@ -108,7 +117,6 @@ export default {
   components: {
     ProjectImagePicker
   },
-  props: ['project'],
   data: () => ({
     loading: false,
     valid: false,
@@ -121,13 +129,38 @@ export default {
     tagsLoading: false,
     date: null,
     dateMenu: false,
-    images: null
+    body: null,
+    images: null,
+    video: null
   }),
   mounted () {
     this.reloadCategories()
     this.reloadTags()
+    if (this.$route.params.id) this.reloadProject()
   },
   methods: {
+    async reloadProject () {
+      this.loading = true
+      try {
+        const { name, category, tags, date, body, images, video } = await this.getProject()
+        
+        this.name = name
+        this.categorySelect = category
+        this.tagSelect = tags
+        this.date = `${('0000' + date.getFullYear()).slice(-4)}-${('00' + (date.getMonth() + 1)).slice(-2)}-${('00' + date.getDate()).slice(-2)}`
+        this.body = body
+        this.images = images
+        this.video = video
+      } catch (err) {
+
+      }
+      this.loading = false
+    },
+    async getProject () {
+      const ref = firebase.firestore().doc(`projects/${this.$route.params.id}`)
+      const snapshot = await ref.get()
+      return snapshot.data()
+    },
     async createUpdateProject () {
       this.loading = true
       try {
@@ -139,12 +172,14 @@ export default {
       this.loading = false
     },
     setProject () {
-      return firebase.firestore().collection('projects').doc(this.projectId).set({
+      return firebase.firestore().doc(`projects/${this.$route.params.id}`).set({
         name: this.name,
         category: this.categorySelect,
         tags: this.tagSelect,
         date: new Date(this.date),
-        images: this.images
+        body: this.body,
+        images: this.images,
+        video: this.video
       })
     },
     async reloadCategories () {
@@ -197,15 +232,6 @@ export default {
     projectId () {
       if (!this.name) return
       return this.$options.filters.linkText(this.name)
-    }
-  },
-  watch: {
-    project ({ name, category, tags, date, images }) {
-      this.name = name
-      this.categorySelect = category
-      this.tagSelect = tags
-      this.date = `${('0000' + date.getFullYear()).slice(-4)}-${('00' + (date.getMonth() + 1)).slice(-2)}-${('00' + date.getDate()).slice(-2)}`
-      this.images = images
     }
   }
 }

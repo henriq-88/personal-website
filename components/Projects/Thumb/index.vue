@@ -4,12 +4,13 @@
       <nuxt-link
         :to="projectLink">
         <v-card-media
-          class="grey white--text"
+          class="white--text"
+          :class="!projectImage ? $globals.category[project.category].color : ''"
           height="200px"
           :src="projectImage">
-          <v-container fill-height fluid>
-            <v-layout fill-height>
-              <v-flex xs12 align-end flexbox>
+          <v-container fill-height>
+            <v-layout>
+              <v-flex xs12>
                 <span class="project-title text-shadow headline">{{ projectName }}</span>
               </v-flex>
             </v-layout>

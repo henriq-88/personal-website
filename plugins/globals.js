@@ -49,11 +49,14 @@ const globals = Object.freeze({
 
   rules: {
     email: (value) => {
-      return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Invalid e-mail.'
+      return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || 'Invalid e-mail.'
     },
     required: (value) => {
       const valid = !Array.isArray(value) ? !!value : value.length > 0
       return valid || 'Required.'
+    },
+    link: (value) => {
+      return /^https?:\/\/[^\s/$.?#].[^\s]*$/.test(value) || 'Invalid link.'
     }
   }
 })

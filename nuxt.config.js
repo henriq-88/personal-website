@@ -6,8 +6,10 @@ module.exports = {
   dev: (process.env.NODE_ENV !== 'production'),
   mode: 'spa',
 
-  env: { ...process.env, DESCRIPTION: pkg.description },
-
+  env: {
+      ...process.env,
+      DESCRIPTION: pkg.description
+    },
   /*
   ** Headers of the page
   */
