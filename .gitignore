@@ -12,3 +12,4 @@ npm-debug.log
 
 # Environment files
 .env
+firebase-debug.log
