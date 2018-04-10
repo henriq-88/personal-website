@@ -2,8 +2,18 @@
   <v-app>
     <Toolbar/>
     <v-content>
-      <v-container fluid :style="'max-width: 840px'">
-        <nuxt/>
+      <v-container
+        fluid
+        class="px-0 ma-0">
+        <v-layout row>
+          <v-flex
+            xs12
+            sm10 offset-sm1
+            md8 offset-md2
+            lg6 offset-lg3>
+            <nuxt/>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
     <Footer/>
