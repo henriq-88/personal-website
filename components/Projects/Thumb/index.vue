@@ -20,8 +20,10 @@
       <v-card-text v-if="project">
         <v-layout row>
           <v-chip
+            class="clickable"
             :color="$globals.category[project.category].color"
-            text-color="white">
+            text-color="white"
+            @click="selectCategory">
             {{ $globals.category[project.category].name }}
           </v-chip>
           <v-spacer/>
@@ -49,6 +51,12 @@
 <script>
 export default {
   props: ['project'],
+  methods: {
+    selectCategory () {
+      const payload = { field: 'category', value: this.project.category }
+      this.$store.dispatch('addFilter', payload)
+    }
+  },
   computed: {
     projectLink () {
       if (!this.project) return '/projects/new'
@@ -78,5 +86,11 @@ export default {
 <style lang="scss" scoped>
 a .project-title {
   text-decoration: none !important;
+}
+</style>
+
+<style lang="scss">
+.clickable > .chip__content {
+  cursor: pointer !important;
 }
 </style>

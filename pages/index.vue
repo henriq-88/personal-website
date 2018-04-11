@@ -18,19 +18,9 @@
           :project="item"/>
       </v-flex>
     </v-layout>
-    <v-btn
-      class="filter-button"
-      color="accent"
-      fab
-      fixed
-      top
-      right
-      @click="filterDialog = true">
-      <v-icon v-if="!filterCount">filter_list</v-icon>
-      <span v-else>{{ filterCount }}</span>
-    </v-btn>
+    <ProjectFilterButton
+      @click.native="filterDialog = true"/>
     <ProjectFilterDialog
-      :filters.sync="filters"
       :dialog.sync="filterDialog"/>
   </v-container>
 </template>
@@ -43,18 +33,19 @@ import Head from '@/components/Mixins/Head'
 import ProjectThumb from '@/components/Projects/Thumb'
 import ProjectThumbNew from '@/components/Projects/Thumb/New'
 import ProjectFilterDialog from '@/components/Projects/FilterDialog'
+import ProjectFilterButton from '@/components/Projects/FilterButton'
 
 export default {
   mixins: [Head],
   components: {
     ProjectThumb,
     ProjectThumbNew,
-    ProjectFilterDialog
+    ProjectFilterDialog,
+    ProjectFilterButton
   },
   data: () => ({
     loading: false,
     items: [],
-    filters: [],
     filterDialog: false
   }),
   mounted () {
@@ -66,9 +57,13 @@ export default {
         .collection('projects')
         .orderBy('date', 'desc')
       
-      this.filters.forEach(filter => {
-        ref = ref.where(filter.field, '==', filter.value)
-      })
+      if (this.filter) {
+        Object.keys(this.filter).forEach(field => {
+          const value = this.filter[field]
+          if (!value) return
+          ref = ref.where(field, '==', value)
+        })
+      }
 
       this.loading = true
       try {
@@ -95,13 +90,16 @@ export default {
     isSignedIn () {
       return this.$store.getters.isSignedIn
     },
-    filterCount () {
-      return 0
+    filter () {
+      return this.$store.getters.filter
     }
   },
   watch: {
-    filters () {
-      this.getDataFromApi()
+    filter: {
+      handler () {
+        this.getDataFromApi()
+      },
+      deep: true
     }
   }
 }

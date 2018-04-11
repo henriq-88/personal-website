@@ -17,6 +17,7 @@
         </v-btn>
         <v-btn
           color="accent" flat
+          :disabled="!filterChanged"
           @click="saveFilter">
           Save
         </v-btn>
@@ -29,21 +30,21 @@
 import * as firebase from 'firebase'
 
 export default {
-  props: ['dialog', 'filters'],
+  props: ['dialog'],
   data: () => ({
     filterDialog: false,
     loading: false,
     category: null,
     categories: [],
-    projectFilters: []
   }),
   mounted () {
     this.reloadCategories()
   },
   methods: {
     saveFilter () {
-      this.$emit('update:filters', this.projectFilters)
       this.filterDialog = false
+      const filter = { category: this.category }
+      this.$store.dispatch('updateFilter', filter)
     },
     async reloadCategories () {
       this.loading = true
@@ -65,21 +66,38 @@ export default {
       })
       return categories
     },
+    initFilter () {
+      Object.keys(this.filter).forEach(field => {
+        const value = this.filter[field]
+        switch (field) {
+          case 'category':
+            this.category = value
+            break
+        }
+      })
+    }
+  },
+  computed: {
+    filter () {
+      return this.$store.getters.filter
+    },
+    filterChanged () {
+      return this.filter.category !== this.category
+    }
   },
   watch: {
     dialog (dialog) {
+      if (dialog) this.initFilter()
       this.filterDialog = dialog
     },
     filterDialog (filterDialog) {
       this.$emit('update:dialog', filterDialog)
-      this.projectFilters = this.filters
     },
-    category (category) {
-      if (!category) {
-        this.projectFilters = []
-        return  
-      }
-      this.projectFilters = [{ field: 'category', value: category }]
+    filter: {
+      handler (filter) {
+        this.category = filter.category
+      },
+      deep: true
     }
   }
 }

@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss">
   .clickable {
-    cursor: pointer;
+    cursor: pointer !important;
   }
 
   .text-shadow {
