@@ -1,9 +1,6 @@
 <template>
   <v-container>
     <v-card>
-      <v-card-title>
-        <span class="headline">{{ name }}</span>
-      </v-card-title>
       <v-card-text>
         <div
           v-if="videoId"
@@ -14,6 +11,26 @@
             allow="encrypted-media"
             allowfullscreen/>
         </div>
+        <v-container
+          v-if="images"
+          grid-list-md>
+          <v-layout
+            row wrap>
+            <v-flex
+              v-for="(image, i) in images" :key="i"
+              xs12 sm2>
+              <v-card>
+                <v-card-media
+                  class="grey"
+                  height="116px"
+                  :src="image.url">
+                </v-card-media>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+        <span class="headline">{{ name }}</span>
+        <div v-html="body"/>
       </v-card-text>
       <v-card-actions>
         <v-spacer/>
@@ -46,6 +63,7 @@ export default {
     name: null,
     category: null,
     date: null,
+    body: null,
     images: null,
     tags: null,
     videoId: null
@@ -61,6 +79,7 @@ export default {
         this.name = name
         this.category = category
         this.date = date
+        this.body = body
         this.images = images
         this.tags = tags
         this.videoId = getIdFromURL(video)
@@ -75,6 +94,7 @@ export default {
       return snapshot.data()
     },
     async removeProject () {
+      if (!confirm(`Are you sure you want to delete the project\n"${this.name}"?`)) return
       this.loading = true
       try {
         await this.deleteProject()

@@ -44,7 +44,6 @@
             transition="scale-transition"
             offset-y
             full-width
-            :nudge-right="40"
             min-width="290px"
             :return-value.sync="date">
             <v-text-field
@@ -78,12 +77,18 @@
           </v-container>
           <v-text-field
             v-model="video"
-            label="Video link"
-            :rules="[$globals.rules.link]"/>
+            label="Video link"/>
         </v-form>
       </v-card-text>
       <v-card-actions>
         <v-spacer/>
+        <v-btn
+          v-if="!$route.params.id"
+          :loading="loading"
+          flat
+          @click="resetForm">
+          Reset
+        </v-btn>
         <v-btn
           v-if="!$route.params.id"
           :disabled="!valid"
@@ -172,7 +177,9 @@ export default {
       this.loading = false
     },
     setProject () {
-      return firebase.firestore().doc(`projects/${this.$route.params.id}`).set({
+      const projectId = this.$route.params.id || this.$options.filters.linkText(this.name)
+      console.log(projectId)
+      return firebase.firestore().doc(`projects/${projectId}`).set({
         name: this.name,
         category: this.categorySelect,
         tags: this.tagSelect,
@@ -226,6 +233,9 @@ export default {
       if (!this.images) this.images = []
       this.images[index] = image
       this.images = this.images.filter(image => !!image)
+    },
+    resetForm () {
+      this.$refs.form.reset()
     }
   },
   computed: {
