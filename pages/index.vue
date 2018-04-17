@@ -23,11 +23,6 @@
           :key="`transition-${i}`"
           :project="item"/>
       </v-flex>
-      <v-flex
-        v-if="loading"
-        md4 sm6 xs12>
-        <ProjectThumbLoading/>
-      </v-flex>
     </v-layout>
     <ProjectFilterButton
       @click.native="filterDialog = true"/>
@@ -88,8 +83,8 @@ export default {
           return true
         })
         this.items.sort((a, b) => {
-          if (a.date > b.date) return 1
-          else if (a.date < b.date) return -1
+          if (a.date < b.date) return 1
+          else if (a.date > b.date) return -1
           return 0
         })
       }
@@ -110,12 +105,10 @@ export default {
           if (index !== -1) continue
           this.items.push(item)
           this.items.sort((a, b) => {
-            console.log(a, b)
-            if (a.date > b.date) return 1
-            else if (a.date < b.date) return -1
+            if (a.date < b.date) return 1
+            else if (a.date > b.date) return -1
             return 0
           })
-          console.log('sorting finished', this.items[0].id)
           await new Promise(resolve => setTimeout(resolve, 100))
         }
       } catch (err) {

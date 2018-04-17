@@ -8,7 +8,8 @@ module.exports = {
 
   env: {
     ...process.env,
-    DESCRIPTION: pkg.description
+    DESCRIPTION: pkg.description,
+    AUTHOR: pkg.author
   },
   /*
   ** Headers of the page

@@ -11,7 +11,7 @@
           <v-container fill-height>
             <v-layout>
               <v-flex xs12>
-                <span class="project-title text-shadow headline">{{ projectName }}</span>
+                <span class="project-title text-shadow headline">{{ projectName }} ({{ projectDate }})</span>
               </v-flex>
             </v-layout>
           </v-container>
@@ -78,6 +78,9 @@ export default {
         else if (a < b) return -1
         return 0
       })
+    },
+    projectDate () {
+      return this.project.date.getFullYear()
     }
   }
 }
