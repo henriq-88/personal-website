@@ -26,11 +26,17 @@
       <v-btn
         v-if="edit"
         color="accent" flat
-        @click="saveAbout">
+        @click="cancelEdit">
+        Cancel
+      </v-btn>
+      <v-btn
+        v-if="edit"
+        color="accent" flat
+        @click="saveEdit">
         Save
       </v-btn>
       <v-btn
-        v-else
+        v-if="!edit"
         color="accent" flat
         @click="edit = true">
         Edit
@@ -73,10 +79,20 @@ export default {
     postDataToApi () {
       return firebase.firestore().doc('about/1').set({ text: this.text })
     },
-    async saveAbout () {
+    async saveEdit () {
       this.loading = true
       try {
         await Promise.all([this.postDataToApi(), this.getAbout()])
+        this.edit = false
+      } catch (err) {
+        console.error(err)
+      }
+      this.loading = false
+    },
+    async cancelEdit () {
+      this.loading = true
+      try {
+        await this.getAbout()
         this.edit = false
       } catch (err) {
         console.error(err)
