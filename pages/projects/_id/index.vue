@@ -4,7 +4,7 @@
       <v-card-text>
         <div
           v-if="videoId"
-          class="video-container">
+          class="video-container mb-3">
           <iframe
             :src="`https://www.youtube.com/embed/${videoId}`"
             frameborder="0"
@@ -13,13 +13,16 @@
         </div>
         <v-container
           v-if="images"
+          class="mb-3"
           grid-list-md>
           <v-layout
             row wrap>
             <v-flex
               v-for="(image, i) in images" :key="i"
               xs12 sm2>
-              <v-card>
+              <v-card
+                class="clickable"
+                @click.native="openDialog(i)">
                 <v-card-media
                   class="grey"
                   height="116px"
@@ -29,13 +32,22 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <span class="headline">{{ name }}</span>
-        <div v-html="body"/>
+        <div class="headline">{{ name }}</div>
+        <div v-if="website">
+          <a :href="website" target="_blank">
+            {{ website }}
+            <v-icon small>open_in_new</v-icon>
+          </a>
+        </div>
+        <div
+          class="mt-3"
+          v-html="body"/>
       </v-card-text>
       <v-card-actions>
         <v-spacer/>
         <v-btn
           v-if="isSignedIn"
+          color="accent"
           flat
           :loading="loading"
           @click="removeProject">
@@ -43,13 +55,19 @@
         </v-btn>
         <v-btn
           v-if="isSignedIn"
+          color="accent"
           flat
+          :loading="loading"
           to="edit"
           append>
           Edit
         </v-btn>
       </v-card-actions>
     </v-card>
+    <ImageGallaryDialog
+      :images="images"
+      :index.sync="gallaryImageIndex"
+      :dialog.sync="gallaryDialog"/>
   </v-container>
 </template>
 
@@ -57,34 +75,48 @@
 import * as firebase from 'firebase'
 import { getIdFromURL } from 'vue-youtube-embed'
 
+import ImageGallaryDialog from '@/components/Projects/ImageGallaryDialog'
+
 export default {
+  components: {
+    ImageGallaryDialog
+  },
   data: () => ({
     loading: false,
+    gallaryDialog: false,
+    gallaryImageIndex: null,
     name: null,
     category: null,
     date: null,
     body: null,
     images: null,
     tags: null,
-    videoId: null
+    videoId: null,
+    website: null
   }),
   mounted () {
     this.reloadProject()
   },
   methods: {
+    openDialog (index) {
+      this.gallaryImageIndex = index
+      this.gallaryDialog = true
+    },
     async reloadProject () {
       this.loading = true
       try {
-        const { name, category, tags, date, body, images, video } = await this.getProject()
+        const { name, category, tags, date, body, images, video, website } = await this.getProject()
+
         this.name = name
         this.category = category
         this.date = date
         this.body = body
         this.images = images
         this.tags = tags
-        this.videoId = getIdFromURL(video)
+        if (video) this.videoId = getIdFromURL(video)
+        this.website = website
       } catch (err) {
-
+        console.error(err)
       }
       this.loading = false
     },

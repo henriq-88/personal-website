@@ -78,6 +78,9 @@
           <v-text-field
             v-model="video"
             label="Video link"/>
+          <v-text-field
+            v-model="website"
+            label="Website"/>
         </v-form>
       </v-card-text>
       <v-card-actions>
@@ -136,7 +139,8 @@ export default {
     dateMenu: false,
     body: null,
     images: null,
-    video: null
+    video: null,
+    website: null
   }),
   mounted () {
     this.reloadCategories()
@@ -147,7 +151,7 @@ export default {
     async reloadProject () {
       this.loading = true
       try {
-        const { name, category, tags, date, body, images, video } = await this.getProject()
+        const { name, category, tags, date, body, images, video, website } = await this.getProject()
         
         this.name = name
         this.categorySelect = category
@@ -156,6 +160,7 @@ export default {
         this.body = body
         this.images = images
         this.video = video
+        this.website = website
       } catch (err) {
 
       }
@@ -186,7 +191,8 @@ export default {
         date: new Date(this.date),
         body: this.body,
         images: this.images,
-        video: this.video
+        video: this.video,
+        website: this.website
       })
     },
     async reloadCategories () {
