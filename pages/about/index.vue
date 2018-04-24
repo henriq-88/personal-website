@@ -111,7 +111,7 @@ export default {
 <style lang="scss" scoped>
   .signature {
     font-family: 'Great Vibes', cursive;
-    font-size: 48pt;
+    font-size: 28pt;
   }
 </style>
 
