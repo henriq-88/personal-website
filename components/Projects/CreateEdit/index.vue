@@ -177,23 +177,23 @@ export default {
         await this.setProject()
         this.$router.go(-1)
       } catch (err) {
-
+        console.error(err)
       }
       this.loading = false
     },
     setProject () {
       const projectId = this.$route.params.id || this.$options.filters.linkText(this.name)
-      console.log(projectId)
-      return firebase.firestore().doc(`projects/${projectId}`).set({
-        name: this.name,
-        category: this.categorySelect,
-        tags: this.tagSelect,
-        date: new Date(this.date),
-        body: this.body,
-        images: this.images,
-        video: this.video,
-        website: this.website
-      })
+
+      const payload = {}
+      if (this.name) payload.name = this.name
+      if (this.categorySelect) payload.category = this.categorySelect
+      if (this.tagSelect) payload.tags = this.tagSelect
+      if (this.date) payload.date = new Date(this.date)
+      if (this.body) payload.body = this.body
+      if (this.images) payload.images = this.images
+      if (this.video) payload.video = this.video
+      if (this.website) payload.website = this.website
+      return firebase.firestore().doc(`projects/${projectId}`).set(payload)
     },
     async reloadCategories () {
       this.categoriesLoading = true
