@@ -1,7 +1,7 @@
 <template>
   <v-btn
     class="filter-button"
-    color="accent"
+    :color="filterColor"
     fab
     fixed
     top
@@ -25,6 +25,10 @@ export default {
         count++
       })
       return count
+    },
+    filterColor () {
+      if (!this.filterCount) return 'grey lighten-2'
+      return 'accent'
     }
   }
 }
