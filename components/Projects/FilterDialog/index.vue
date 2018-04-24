@@ -1,6 +1,9 @@
 <template>
   <v-dialog v-model="filterDialog" max-width="500px">
     <v-card>
+      <v-card-title>
+        <div class="title">Project Filter</div>
+      </v-card-title>
       <v-card-text>
         <v-select
           v-model="category"
