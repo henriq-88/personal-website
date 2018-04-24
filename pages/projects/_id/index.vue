@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pa-0">
     <v-card>
       <v-card-text>
         <div
@@ -19,7 +19,7 @@
             row wrap>
             <v-flex
               v-for="(image, i) in images" :key="i"
-              xs12 sm2>
+              xs6 sm2>
               <v-card
                 class="clickable"
                 @click.native="openDialog(i)">
@@ -40,7 +40,7 @@
           </a>
         </div>
         <div
-          class="mt-3"
+          class="mt-3 project-body"
           v-html="body"/>
       </v-card-text>
       <v-card-actions>
@@ -161,3 +161,10 @@ export default {
     height: 100%;
   }
 </style>
+
+<style lang="scss">
+  .project-body a {
+    font-weight: bold;
+  }
+</style>
+
