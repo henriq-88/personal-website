@@ -17,6 +17,10 @@ const globals = Object.freeze({
     game: {
       name: 'Game',
       color: 'green'
+    },
+    package: {
+      name: 'Package',
+      color: 'grey'
     }
   },
 
@@ -40,6 +44,10 @@ const globals = Object.freeze({
     video: {
       name: 'Video',
       icon: 'videocam'
+    },
+    npm: {
+      name: 'Node Package Manager',
+      icon: 'mdi-npm'
     }
   },
   

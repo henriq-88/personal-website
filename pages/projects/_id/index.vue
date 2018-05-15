@@ -1,7 +1,14 @@
 <template>
   <v-container class="pa-0">
     <v-card>
-      <v-card-text>
+      <v-card-text v-if="loading">
+        <v-layout>
+          <v-spacer/>
+          <v-progress-circular indeterminate color="primary"/>
+          <v-spacer/>
+        </v-layout>
+      </v-card-text>
+      <v-card-text v-else>
         <div
           v-if="videoId"
           class="video-container mb-3">
@@ -32,7 +39,7 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <div class="headline">{{ name }}</div>
+        <div class="headline">{{ name }} ({{ year }})</div>
         <div v-if="website">
           <a :href="website" target="_blank">
             {{ website }}
@@ -144,6 +151,10 @@ export default {
   computed: {
     isSignedIn () {
       return this.$store.getters.isSignedIn
+    },
+    year () {
+      if (!this.date) return
+      return this.date.getFullYear()
     }
   }
 }

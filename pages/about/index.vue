@@ -18,7 +18,6 @@
       <div
         v-else
         v-html="text"/>
-      <p>Your's sincerely,</p>
       <p class="signature">{{ author }}</p>
     </v-card-text>
     <v-card-actions v-if="isSignedIn && !loading">
