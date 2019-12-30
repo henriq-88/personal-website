@@ -1,60 +1,54 @@
 <template>
-  <v-app>
-    <Toolbar/>
+  <v-app dark>
+    <AppBar />
     <v-content>
-      <v-container
-        fluid
-        class="px-0 ma-0">
-        <v-layout row>
-          <v-flex
-            xs12
-            sm10 offset-sm1
-            md8 offset-md2
-            lg6 offset-lg3>
-            <nuxt/>
-          </v-flex>
-        </v-layout>
+      <v-container class="fill-height">
+        <nuxt />
       </v-container>
     </v-content>
-    <Footer/>
+    <Footer />
   </v-app>
 </template>
 
 <script>
-import Toolbar from '@/components/Core/Toolbar'
-import Footer from '@/components/Core/Footer'
-
+import AppBar from '@/components/Core/AppBar.vue'
+import Footer from '@/components/Core/Footer.vue'
 export default {
   components: {
-    Toolbar,
+    AppBar,
     Footer
   },
   data: () => ({
-    clipped: false,
-    drawer: true,
-    fixed: false,
+    drawer: false,
     items: [
-      { icon: 'apps', title: 'Welcome', to: '/' },
-      { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-    ],
-    miniVariant: false,
-    right: true,
-    rightDrawer: false,
-    title: 'Vuetify.js'
+      {
+        icon: 'mdi-apps',
+        title: 'Welcome',
+        to: '/'
+      },
+      {
+        icon: 'mdi-chart-bubble',
+        title: 'Inspire',
+        to: '/inspire'
+      }
+    ]
   })
 }
 </script>
 
-<style lang="scss">
-  .clickable {
-    cursor: pointer !important;
+<style>
+.theme--dark.v-application {
+  background-color: black;
+}
+.clickable {
+  cursor: pointer;
+}
+.transition {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+@media (min-width: 960px) and (max-width: 1264px) {
+  .container {
+    max-width: inherit;
   }
-
-  .text-shadow {
-    text-shadow: 0 2px 2px #333;
-  }
-
-  a:-webkit-any-link {
-    text-decoration: none;
-  }
+}
 </style>

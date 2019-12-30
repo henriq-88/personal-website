@@ -1,70 +1,101 @@
-require('dotenv').config()
-const pkg = require('./package')
-const nodeExternals = require('webpack-node-externals')
+import colors from 'vuetify/es5/util/colors'
+// import messages from '@/locales'
 
-module.exports = {
-  dev: (process.env.NODE_ENV !== 'production'),
-  mode: 'spa',
-
-  env: {
-    ...process.env,
-    DESCRIPTION: pkg.description,
-    AUTHOR: pkg.author
-  },
+export default {
+  mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    title: pkg.description,
+    titleTemplate: '%s - ' + process.env.npm_package_name,
+    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Great+Vibes' }
-    ] 
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ]
   },
-
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
-
+  loading: { color: '#fff' },
   /*
   ** Global CSS
   */
   css: [
-    'vuetify/src/stylus/main.styl'
   ],
-
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify',
-    '@/plugins/filters',
-    '@/plugins/firebase',
-    '@/plugins/globals'
+    { src: '@/plugins/firebase', mode: 'client' }
   ],
-
+  /*
+  ** Nuxt.js dev-modules
+  */
+  buildModules: [
+    '@nuxt/typescript-build',
+    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
+  ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa',
+    // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv',
+    ['nuxt-i18n',
+      {
+        locales: ['en', 'es'],
+        defaultLocale: 'en',
+        vueI18n: {
+          fallbackLocale: 'en',
+          messages: {
+            en: {
+              greeting: 'Hello world!'
+            },
+            es: {
+              greeting: '¡Hola mundo!'
+            }
+          }
+        }
+      }
+    ]
   ],
-
   /*
   ** Axios module configuration
+  ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    // See https://github.com/nuxt-community/axios-module#options
   },
-
+  /*
+  ** vuetify module configuration
+  ** https://github.com/nuxt-community/vuetify-module
+  */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true,
+      themes: {
+        dark: {
+          primary: colors.shades.white,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
+  },
   /*
   ** Build configuration
   */
@@ -73,13 +104,6 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-      if (ctx.isServer) {
-        config.externals = [
-          nodeExternals({
-            whitelist: [/^vuetify/]
-          })
-        ]
-      }
     }
   }
 }
