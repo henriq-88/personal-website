@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <v-row class="display-4 grey--text text--darken-3" no-gutters justify="center">
+    <v-row
+      class="display-4 grey--text text--darken-3"
+      no-gutters
+      justify="center"
+    >
       About
     </v-row>
     <div>

@@ -17,13 +17,24 @@
       <v-avatar color="grey-darken-3">
         <v-img :src="require(`@/assets/me.jpg`)" />
       </v-avatar>
-      <v-row class="flex-column ml-3" justify="center" no-gutters>
+      <v-row
+        class="flex-column ml-3"
+        justify="center"
+        no-gutters
+      >
         <span class="body-1">Henrik Wassdahl</span>
         <span class="body-1 grey--text">UX Developer</span>
       </v-row>
     </v-row>
+    {{ $t('greeting') }}
     <v-spacer />
-    <v-tabs v-model="linkIndex" background-color="transparent" class="shrink" style="width: inherit;" color="white">
+    <v-tabs
+      v-model="linkIndex"
+      background-color="transparent"
+      class="shrink"
+      style="width: inherit;"
+      color="white"
+    >
       <v-tab
         v-for="link in links"
         :key="link.selector"
@@ -38,22 +49,22 @@
 </template>
 
 <script lang="ts">
-// import Vue, { VueConstructor } from 'vue'
 import mixins from 'vue-typed-mixins'
+import { GoToOptions } from 'vuetify/types/services/goto'
 
 export default mixins().extend({
   data: () => ({
     linkIndex: 0,
     linkIndicatorUpdateDisabled: false,
-    headerPositions: []
+    headerPositions: [] as any[]
   }),
 
   computed: {
     links (): any[] {
       return [
-        { text: 'Portfolio', selector: '#portfolio' },
-        { text: 'About', selector: '#about' },
-        { text: 'Contact', selector: '#contact' }
+        { text: `Portfolio`, selector: `#portfolio` },
+        { text: `About`, selector: `#about` },
+        { text: `Contact`, selector: `#contact` }
       ]
     }
   },
@@ -61,13 +72,13 @@ export default mixins().extend({
   methods: {
     async goTo (selector: string | number) {
       const duration = 300
-      const options = {
+      const options: GoToOptions = {
         duration,
         offset: 0,
-        easing: 'easeInOutCubic'
+        easing: `easeInOutCubic`
       }
       this.linkIndicatorUpdateDisabled = true
-      if (typeof selector === 'number') { this.linkIndex = 0 }
+      if (typeof selector === `number`) { this.linkIndex = 0 }
       this.$vuetify.goTo(selector, options)
       await new Promise(resolve => setTimeout(resolve, duration * 1.1))
       this.linkIndicatorUpdateDisabled = false

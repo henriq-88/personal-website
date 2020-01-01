@@ -1,4 +1,24 @@
+import Vue from 'vue'
+import VueI18n from 'vue-i18n'
+import { Framework } from 'vuetify'
+import { Store } from 'vuex'
+import { Global } from '@/types'
+
 declare module "*.vue" {
-  import Vue from 'vue'
   export default Vue
+}
+
+declare module 'vue/types/vue' {
+  // instance properties and methods e.g. "this.$route"
+  interface Vue {
+    $isEqual(o1: any, o2: any): boolean
+    $copy<T>(object: T): T
+    $sleep(ms: number): Promise<void>
+    $global: Global
+    $vuetify: Framework
+  }
+
+  interface VueConstructor {
+    i18n: VueI18n
+  }
 }
