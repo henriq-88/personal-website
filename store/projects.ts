@@ -7,20 +7,19 @@ import { firestore } from '@/plugins/firebase'
   namespaced: true
 })
 class Projects extends VuexModule {
-  projects_ = []
+  projects_: any[] = []
 
   get projects (): any[] {
     return this.projects_
   }
 
   @Mutation
-  setProjects (projects: any[]) {
+  set (projects: any[]) {
     this.projects_ = projects
   }
 
-  @Action
-  loadProjects () {
-    console.log('store - loadProjects')
+  @Action({ rawError: true })
+  load () {
     firestore.collection('projects').onSnapshot((projectsSnapshot) => {
       const projects = projectsSnapshot.docs.map((doc) => {
         const id = doc.id
@@ -35,7 +34,7 @@ class Projects extends VuexModule {
           tags
         }
       }).sort((a, b) => b.date.getTime() - a.date.getTime())
-      // this.setProjects(projects)
+      this.set(projects)
     })
   }
 }

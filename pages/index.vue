@@ -25,10 +25,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { getModule } from 'vuex-module-decorators'
 import AboutText from '@/components/About/Text.vue'
 import ContactForm from '@/components/Contact/Form.vue'
 import ProjectCard from '@/components/Project/Card.vue'
-import { projectsStore } from '~/store'
+import projectsStore from '@/store/projects'
 
 export default Vue.extend({
   components: {
@@ -38,11 +39,19 @@ export default Vue.extend({
   },
   computed: {
     projects (): any[] {
-      return projectsStore.projects
+      const projects = getModule(projectsStore, this.$store)
+      return projects.projects
     }
   },
   mounted () {
-    projectsStore.loadProjects()
+    const projects = getModule(projectsStore, this.$store)
+    projects.load()
   }
 })
 </script>
+
+<style scoped>
+.container {
+  max-width: 1185px;
+}
+</style>
