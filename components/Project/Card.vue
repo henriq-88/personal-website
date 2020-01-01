@@ -15,7 +15,7 @@
               {{ project.name }} ({{ project.date.getFullYear() }})
             </v-card-title>
           </v-row>
-        <!-- eslint-disable-next-line no-irregular-whitespace -->
+          <!-- eslint-disable-next-line no-irregular-whitespace -->
         </v-slide-y-transition​>
         <!-- eslint-disable-next-line no-irregular-whitespace -->
         <v-slide-y-reverse-transition​>
@@ -33,7 +33,7 @@
               </v-chip>
             </v-card-actions>
           </v-row>
-        <!-- eslint-disable-next-line no-irregular-whitespace -->
+          <!-- eslint-disable-next-line no-irregular-whitespace -->
         </v-slide-y-reverse-transition​>
       </v-img>
     </v-card>
@@ -49,9 +49,6 @@ export default Vue.extend({
       type: Object,
       required: true
     }
-  },
-  mounted () {
-    console.log(this.project.date)
   }
 })
 </script>

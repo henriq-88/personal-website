@@ -24,14 +24,14 @@
     </v-row>
     <v-spacer />
     <v-tabs v-model="linkIndex" background-color="transparent" class="shrink" style="width: inherit;" color="white">
-      <v-tab class="white--text" style="opacity: inherit;" @click.prevent="goTo(`#portfolio`)">
-        Portfolio
-      </v-tab>
-      <v-tab class="white--text" style="opacity: inherit;" @click="goTo(`#about`)">
-        About
-      </v-tab>
-      <v-tab class="white--text" style="opacity: inherit;" @click="goTo(`#contact`)">
-        Contact
+      <v-tab
+        v-for="link in links"
+        :key="link.selector"
+        class="white--text"
+        style="opacity: inherit;"
+        @click="goTo(link.selector)"
+      >
+        {{ link.text }}
       </v-tab>
     </v-tabs>
   </v-app-bar>
@@ -44,8 +44,20 @@ import mixins from 'vue-typed-mixins'
 export default mixins().extend({
   data: () => ({
     linkIndex: 0,
-    linkIndicatorUpdateDisabled: false
+    linkIndicatorUpdateDisabled: false,
+    headerPositions: []
   }),
+
+  computed: {
+    links (): any[] {
+      return [
+        { text: 'Portfolio', selector: '#portfolio' },
+        { text: 'About', selector: '#about' },
+        { text: 'Contact', selector: '#contact' }
+      ]
+    }
+  },
+
   methods: {
     async goTo (selector: string | number) {
       const duration = 300
@@ -60,13 +72,22 @@ export default mixins().extend({
       await new Promise(resolve => setTimeout(resolve, duration * 1.1))
       this.linkIndicatorUpdateDisabled = false
     },
+    getHeaderPositions () {
+      this.headerPositions = this.links.map(link => document.querySelector(link.selector)?.offsetTop)
+    },
     updateLinkIndicator (event: Event) {
       if (this.linkIndicatorUpdateDisabled) { return }
+      this.getHeaderPositions()
       const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop
       this.linkIndex = this.getLinkIndex(scrollPosition)
     },
     getLinkIndex (scrollPosition: number): number {
-      if (scrollPosition <= 170) { return 0 } else if (scrollPosition <= 800) { return 1 } else { return 2 }
+      const scrolledToBottom = document.body.scrollHeight === scrollPosition + window.innerHeight
+      if (scrolledToBottom) { return this.headerPositions.length - 1 }
+      for (let i = this.headerPositions.length - 1; i > 0; i--) {
+        if (scrollPosition >= (this.headerPositions[i] - window.innerHeight / 2)) { return i }
+      }
+      return 0
     }
   }
 })
