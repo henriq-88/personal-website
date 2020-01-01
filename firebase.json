@@ -9,6 +9,12 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "nuxtssr"
+      }
     ]
   },
   "storage": {
@@ -19,10 +25,10 @@
       "port": 5001
     },
     "firestore": {
-      "port": "5002"
+      "port": 5002
     },
     "hosting": {
-      "port": "8080"
+      "port": 8080
     }
   }
 }
