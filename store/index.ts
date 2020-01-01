@@ -1,10 +1,12 @@
 import Vuex from 'vuex'
-import Projects from '@/store/projects'
+import snackbar from '@/store/snackbar'
+
+export const store = new Vuex.Store({
+  modules: {
+    snackbar
+  }
+})
 
 export function createStore () {
-  return new Vuex.Store({
-    modules: {
-      Projects
-    }
-  })
+  return store
 }

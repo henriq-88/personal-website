@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { Plugin } from '@nuxt/types'
 import { TranslatedVuetifyRule } from '@/types'
 import { TranslateResult } from 'vue-i18n'
@@ -13,5 +14,7 @@ const plugin: Plugin = (context, inject) => {
 
   inject(`global`, globals)
 }
+
+Vue.prototype.$sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export default plugin

@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
     v-scroll="updateLinkIndicator"
-    color="transparent"
+    color="#00000080"
     app
     fixed
     :height="96"
@@ -26,7 +26,6 @@
         <span class="body-1 grey--text">UX Developer</span>
       </v-row>
     </v-row>
-    {{ $t('greeting') }}
     <v-spacer />
     <v-tabs
       v-model="linkIndex"
@@ -84,7 +83,7 @@ export default mixins().extend({
       this.linkIndicatorUpdateDisabled = false
     },
     getHeaderPositions () {
-      this.headerPositions = this.links.map(link => document.querySelector(link.selector)?.offsetTop)
+      this.headerPositions = this.links.map(link => document.querySelector<HTMLElement>(link.selector)?.offsetTop)
     },
     updateLinkIndicator (event: Event) {
       if (this.linkIndicatorUpdateDisabled) { return }

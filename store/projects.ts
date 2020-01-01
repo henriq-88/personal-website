@@ -1,12 +1,15 @@
-import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation, Action, getModule } from 'vuex-module-decorators'
 import { firestore } from '@/plugins/firebase'
+import { store } from '@/store'
 
 @Module({
   name: `projects`,
   stateFactory: true,
-  namespaced: true
+  namespaced: true,
+  dynamic: true,
+  store
 })
-class Projects extends VuexModule {
+class ProjectsModule extends VuexModule {
   projects_: any[] = []
 
   get projects (): any[] {
@@ -20,8 +23,8 @@ class Projects extends VuexModule {
 
   @Action({ rawError: true })
   load () {
-    firestore.collection(`projects`).onSnapshot((projectsSnapshot) => {
-      const projects = projectsSnapshot.docs.map((doc) => {
+    firestore.collection(`projects`).onSnapshot((snapshot) => {
+      const projects = snapshot.docs.map((doc) => {
         const id = doc.id
         const { body, category, date, images, name, tags } = doc.data()
         return {
@@ -39,4 +42,4 @@ class Projects extends VuexModule {
   }
 }
 
-export default Projects
+export default getModule(ProjectsModule)

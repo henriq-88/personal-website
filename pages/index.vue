@@ -6,7 +6,7 @@
       no-gutters
     >
       <div class="display-4 grey--text text--darken-3">
-        Portfolio
+        {{ $t(`common.portfolio`) }}
       </div>
     </v-row>
     <v-row>
@@ -47,11 +47,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getModule } from 'vuex-module-decorators'
 import AboutText from '@/components/About/Text.vue'
 import ContactForm from '@/components/Contact/Form.vue'
 import ProjectCard from '@/components/Project/Card.vue'
-import projectsStore from '@/store/projects'
+import { projects } from '@/store/store'
 
 export default Vue.extend({
   components: {
@@ -61,12 +60,10 @@ export default Vue.extend({
   },
   computed: {
     projects (): any[] {
-      const projects = getModule(projectsStore, this.$store)
       return projects.projects
     }
   },
   mounted () {
-    const projects = getModule(projectsStore, this.$store)
     projects.load()
   }
 })

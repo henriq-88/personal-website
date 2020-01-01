@@ -11,8 +11,6 @@ declare module "*.vue" {
 declare module 'vue/types/vue' {
   // instance properties and methods e.g. "this.$route"
   interface Vue {
-    $isEqual(o1: any, o2: any): boolean
-    $copy<T>(object: T): T
     $sleep(ms: number): Promise<void>
     $global: Global
     $vuetify: Framework

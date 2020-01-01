@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <Snackbar />
     <AppBar />
     <v-content>
       <v-container class="fill-height">
@@ -13,10 +14,13 @@
 <script>
 import AppBar from '@/components/Core/AppBar.vue'
 import Footer from '@/components/Core/Footer.vue'
+import Snackbar from '@/components/Core/Snackbar.vue'
+
 export default {
   components: {
     AppBar,
-    Footer
+    Footer,
+    Snackbar
   },
   data: () => ({
     drawer: false,

@@ -82,10 +82,10 @@ export default {
           primary: colors.shades.white,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          info: colors.blue.accent4,
+          warning: colors.orange.accent4,
+          error: colors.red.accent4,
+          success: colors.green.accent4
         }
       }
     }
