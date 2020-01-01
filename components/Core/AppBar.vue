@@ -15,9 +15,7 @@
       @click="goTo(0)"
     >
       <v-avatar color="grey-darken-3">
-        <v-icon large>
-          mdi-account
-        </v-icon>
+        <v-img :src="require(`@/assets/me.jpg`)" />
       </v-avatar>
       <v-row class="flex-column ml-3" justify="center" no-gutters>
         <span class="body-1">Henrik Wassdahl</span>
