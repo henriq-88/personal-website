@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+const colors = require(`vuetify/es5/util/colors`).default
 // import messages from '@/locales'
 
 export default {
@@ -31,6 +31,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: `@/plugins/filters` },
     { src: `@/plugins/firebase`, mode: `client` },
     { src: `@/plugins/globals` }
   ],
@@ -114,5 +115,6 @@ export default {
     }
   },
   srcDir: `src`,
-  buildDir: `functions/.nuxt`
+  buildDir: `functions/.nuxt`,
+  extractCSS: true
 }

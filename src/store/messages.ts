@@ -11,7 +11,7 @@ import { store } from '@/store'
   store
 })
 class MessagesModule extends VuexModule {
-  messages_: any[] = []
+  private messages_: any[] = []
 
   get messages (): any[] {
     return this.messages_

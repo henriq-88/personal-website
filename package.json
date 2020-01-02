@@ -18,7 +18,8 @@
     "firebase": "7.6.1",
     "nuxt": "2.11.0",
     "nuxt-i18n": "6.4.1",
-    "vue-typed-mixins": "0.2.0"
+    "vue-typed-mixins": "0.2.0",
+    "vuex-cache": "3.1.0"
   },
   "devDependencies": {
     "@babel/runtime-corejs3": "^7.7.7",

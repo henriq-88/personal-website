@@ -36,3 +36,20 @@ export interface SiteError extends Error {
   snackMessage?: string
   code?: string | number
 }
+
+interface Project {
+  id: string
+  body: string
+  category: string
+  images: string[]
+  name: string
+  tags: string[]
+}
+
+interface ClientProject extends Project {
+  date: Date
+}
+
+interface ServerProject extends Project {
+  date: firebase.firestore.Timestamp
+}

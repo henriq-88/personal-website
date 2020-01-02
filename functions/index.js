@@ -1,12 +1,11 @@
-import functions from 'firebase-functions'
-import { Nuxt } from 'nuxt'
-import express from 'express'
+const functions = require(`firebase-functions`)
+const { Nuxt } = require(`nuxt`)
+const express = require(`express`)
 
 const app = express()
 
-const config = {
-  dev: false
-}
+const config = require(`../nuxt.config.dev`)
+config.dev = false
 
 const nuxt = new Nuxt(config)
 

@@ -9,7 +9,7 @@
         {{ $t(`common.portfolio`) }}
       </div>
     </v-row>
-    <v-row>
+    <v-row v-if="projects.length">
       <v-col
         v-for="p in projects"
         :key="p.id"
@@ -18,6 +18,21 @@
         md="4"
       >
         <ProjectCard :project="p" />
+      </v-col>
+    </v-row>
+    <v-row v-else>
+      <v-col
+        v-for="n in 9"
+        :key="`project-placeholder-${n}`"
+        cols="12"
+        sm="6"
+        md="4"
+      >
+        <v-skeleton-loader
+          type="image"
+          tile
+          height="256"
+        />
       </v-col>
     </v-row>
     <v-row
@@ -72,5 +87,8 @@ export default Vue.extend({
 <style scoped>
 .container {
   max-width: 1185px;
+}
+::v-deep .v-skeleton-loader__image {
+  height: inherit;
 }
 </style>

@@ -5,14 +5,13 @@
       dark
       :height="256"
       tile
-      to="/"
+      :to="`/${project.id}`"
     >
       <v-img
-        v-if="project.images && project.images.length"
-        :src="project.images[0].url"
+        :src="project.images[0] ? project.images[0].url : ``"
         height="100%"
         :class="{ grayscale: !hover }"
-        class="transition"
+        class="transition grey darken-4"
       >
         <!-- eslint-disable-next-line no-irregular-whitespace -->
         <v-slide-y-transition​>
@@ -23,12 +22,31 @@
             align="start"
             justify="start"
           >
-            <v-card-title
-              class="top"
+            <v-row
+              class="top pa-3 shrink"
               style="width: 100%;"
+              no-gutters
+              align="center"
             >
-              {{ project.name }} ({{ project.date.getFullYear() }})
-            </v-card-title>
+              <v-col class="shrink">
+                <v-avatar
+                  tile
+                  color="grey darken-2"
+                >
+                  <v-img
+                    v-if="project.logo"
+                    :src="project.logo"
+                    eager
+                  />
+                  <v-icon v-else>
+                    mdi-cube-outline
+                  </v-icon>
+                </v-avatar>
+              </v-col>
+              <v-col class="ml-3 title text-truncate">
+                {{ project.name }}
+              </v-col>
+            </v-row>
           </v-row>
           <!-- eslint-disable-next-line no-irregular-whitespace -->
         </v-slide-y-transition​>

@@ -3,7 +3,10 @@
     <Snackbar />
     <AppBar />
     <v-content>
-      <v-container class="fill-height">
+      <v-container
+        fluid
+        class="pa-0"
+      >
         <nuxt />
       </v-container>
     </v-content>
@@ -21,22 +24,7 @@ export default {
     AppBar,
     Footer,
     Snackbar
-  },
-  data: () => ({
-    drawer: false,
-    items: [
-      {
-        icon: `mdi-apps`,
-        title: `Welcome`,
-        to: `/`
-      },
-      {
-        icon: `mdi-chart-bubble`,
-        title: `Inspire`,
-        to: `/inspire`
-      }
-    ]
-  })
+  }
 }
 </script>
 
