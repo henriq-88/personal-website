@@ -11,6 +11,7 @@ module.exports = {
   ],
   rules: {
     'no-console': `off`,
+    'vue/no-v-html': `off`,
     'no-debugger': process.env.NODE_ENV === `production` ? `error` : `off`,
     'no-unused-vars': `off`,
     quotes: `off`, // disable eslint rule and enable @typescript-eslint rule

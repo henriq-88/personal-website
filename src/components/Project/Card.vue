@@ -32,6 +32,7 @@
                 <v-avatar
                   tile
                   color="grey darken-2"
+                  class="elevation-4"
                 >
                   <v-img
                     v-if="project.logo"

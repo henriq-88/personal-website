@@ -83,12 +83,3 @@ export default Vue.extend({
   }
 })
 </script>
-
-<style scoped>
-.container {
-  max-width: 1185px;
-}
-::v-deep .v-skeleton-loader__image {
-  height: inherit;
-}
-</style>

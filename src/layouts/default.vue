@@ -38,9 +38,28 @@ export default {
 .transition {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
+.no-transition {
+  transition: none;
+}
+.fill-width {
+  width: 100%;
+}
 @media (min-width: 960px) and (max-width: 1264px) {
   .container {
     max-width: inherit;
   }
+}
+</style>
+
+<style scoped>
+::v-deep .v-skeleton-loader__image {
+  height: inherit;
+  width: inherit;
+}
+::v-deep .container {
+  max-width: 1185px;
+}
+::v-deep .container--fluid {
+  max-width: 100% !important;
 }
 </style>
