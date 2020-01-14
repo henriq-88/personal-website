@@ -62,4 +62,7 @@ export default {
 ::v-deep .container--fluid {
   max-width: 100% !important;
 }
+::v-deep .v-tooltip__content {
+  background: rgba(0, 0, 0, 1.0);
+}
 </style>

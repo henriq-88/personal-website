@@ -9,25 +9,25 @@
     <v-row>
       <v-btn
         v-for="link in links"
-        :key="link.url"
+        :key="link.icon"
         icon
         :color="link.color"
         class="mx-2"
         target="_blank"
-        :href="link.url"
+        :href="link"
       >
         <v-icon>{{ link.icon }}</v-icon>
       </v-btn>
     </v-row>
     <v-row>
       <v-spacer />
-      <span class="grey--text">&copy; 2019 Henrik Wassdahl</span>
+      <span class="grey--text">&copy; {{ year }} Henrik Wassdahl</span>
       <v-spacer />
     </v-row>
   </v-footer>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -39,6 +39,12 @@ export default Vue.extend({
       { url: `https://www.linkedin.com/in/henrikwassdahl`, icon: `mdi-linkedin` },
       { url: `https://stackoverflow.com/users/2375978/henrik-wassdahl`, icon: `mdi-stack-overflow` }
     ]
-  })
+  }),
+
+  computed: {
+    year (): number {
+      return new Date().getFullYear()
+    }
+  }
 })
 </script>

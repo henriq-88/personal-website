@@ -31,15 +31,18 @@ class ProjectModule extends VuexModule {
   async forceLoad (projectId: string): Promise<ClientProject> {
     const snapshot = await firestore.collection(`projects`).doc(projectId).get()
     const id = snapshot.id
-    const { body, category, date, images, name, tags } = snapshot.data() as ServerProject
+    const { banner, body, category, date, logo, medias, name, tags, website } = snapshot.data() as ServerProject
     const project: ClientProject = {
       id,
+      banner,
       body,
       category,
       date: new Date(date.seconds * 1000),
-      images,
+      logo,
+      medias,
       name,
-      tags
+      tags: tags.sort((a, b) => a.localeCompare(b)),
+      website
     }
     this.set(project)
     return project

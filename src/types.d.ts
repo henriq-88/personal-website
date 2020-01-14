@@ -1,5 +1,9 @@
 import { TranslateResult } from 'vue-i18n'
 
+export type Obj<T> = { [k: string]: T }
+
+export type MediaType = `video` | `image`
+
 export type TranslatedVuetifyRule = (errorMessage?: TranslateResult) => (v: any) => boolean | TranslateResult
 
 export interface Global {
@@ -7,6 +11,7 @@ export interface Global {
     email: TranslatedVuetifyRule
     required: TranslatedVuetifyRule
   }
+  tagIcons: Obj<string>
 }
 
 export interface ContactMessage {
@@ -39,15 +44,23 @@ export interface SiteError extends Error {
 
 interface Project {
   id: string
+  banner?: string
   body: string
   category: string
-  images: string[]
+  logo?: string
+  medias: Media[]
   name: string
   tags: string[]
+  website?: string
+}
+
+interface Media {
+  url: string
+  type: MediaType
 }
 
 interface ClientProject extends Project {
-  date: Date
+  date: Date | null
 }
 
 interface ServerProject extends Project {

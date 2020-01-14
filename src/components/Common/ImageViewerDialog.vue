@@ -1,42 +1,77 @@
 <template>
   <v-overlay
     :value="value_"
-    opacity="0.75"
+    @click.native="value_ = false"
   >
+    <!-- escape -->
     <KeyPress
       :key-code="27"
       event="keyup"
       @pressed="value_ = false"
-    /><!-- escape -->
+    />
+    <!-- left -->
     <KeyPress
       :key-code="37"
       event="keyup"
       @pressed="prev"
-    /><!-- left -->
+    />
+    <!-- right -->
     <KeyPress
       :key-code="39"
       event="keyup"
       @pressed="next"
-    /><!-- right -->
+    />
+    <v-row
+      v-if="medias.length"
+      class="fill-height"
+      justify="center"
+      align="center"
+    >
+      <v-responsive
+        v-if="currentMedia.type === `video`"
+        :aspect-ratio="930/523"
+        style="position: fixed;"
+        :width="isMobile ? `100%` : `90%`"
+      >
+        <iframe
+          :src="`https://www.youtube.com/embed/${getVideoIdFromUrl(currentMedia.url)}`"
+          frameborder="0"
+          allow="encrypted-media"
+          allowfullscreen
+          width="100%"
+          height="100%"
+        />
+      </v-responsive>
+      <v-img
+        v-else-if="currentMedia.type === `image`"
+        :src="currentMedia.url"
+        :max-height="isMobile ? `100%` : `90%`"
+        :max-width="isMobile ? `100%` : `90%`"
+        contain
+        style="position: fixed;"
+        @click.stop
+      />
+    </v-row>
     <v-row
       v-if="medias.length > 1"
       class="fill-width fill-height"
       no-gutters
-      style="position: fixed; top: 0; left: 0; right: 0; bottom: 0;"
+      style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"
+      align="center"
     >
       <v-col>
         <v-row
           justify="start"
           align="center"
           no-gutters
-          class="fill-height clickable"
-          @click="prev"
-          @keyup.left="next"
         >
           <v-btn
             icon
             x-large
-            class="ma-4"
+            class="black ma-4"
+            style="opacity: 0.25; pointer-events: initial;"
+            @click.stop="prev"
+            @keyup.left="next"
           >
             <v-icon size="64">
               mdi-chevron-left
@@ -49,14 +84,14 @@
           justify="end"
           align="center"
           no-gutters
-          class="fill-height clickable"
-          @click="next"
-          @keyup.right="next"
         >
           <v-btn
             icon
             x-large
-            class="ma-4"
+            class="black ma-4"
+            style="opacity: 0.25; pointer-events: initial;"
+            @click.stop="next"
+            @keyup.right="next"
           >
             <v-icon size="64">
               mdi-chevron-right
@@ -64,35 +99,6 @@
           </v-btn>
         </v-row>
       </v-col>
-    </v-row>
-    <v-row
-      class="fill-height"
-      justify="center"
-      align="center"
-    >
-      <v-responsive
-        v-if="medias.length && medias[index].type === `video`"
-        :aspect-ratio="930/523"
-        style="position: fixed;"
-        width="90%"
-      >
-        <iframe
-          :src="`https://www.youtube.com/embed/${getVideoIdFromUrl(medias[index].url)}`"
-          frameborder="0"
-          allow="encrypted-media"
-          allowfullscreen
-          width="100%"
-          height="100%"
-        />
-      </v-responsive>
-      <v-img
-        v-else-if="medias.length"
-        :src="medias[index].url"
-        max-height="90%"
-        max-width="90%"
-        contain
-        style="position: fixed;"
-      />
     </v-row>
     <v-btn
       fixed
@@ -109,8 +115,10 @@
 <script lang="ts">
 import mixins from 'vue-typed-mixins'
 import { vModel } from '@/mixins'
+import { Media } from '@/types'
 import KeyPress from 'vue-keypress'
 import { getIdFromURL } from 'vue-youtube-embed'
+import { PropValidator } from 'vue/types/options'
 
 export default mixins(vModel).extend({
   components: {
@@ -121,7 +129,7 @@ export default mixins(vModel).extend({
     medias: {
       type: Array,
       default: () => []
-    },
+    } as PropValidator<Media[]>,
     selectedIndex: {
       type: Number,
       default: 0
@@ -131,6 +139,15 @@ export default mixins(vModel).extend({
   data: () => ({
     index: 0
   }),
+
+  computed: {
+    currentMedia (): Media | null {
+      return this.medias[this.index] || null
+    },
+    isMobile (): boolean {
+      return this.$vuetify.breakpoint.xs
+    }
+  },
 
   watch: {
     value: {
@@ -165,5 +182,8 @@ export default mixins(vModel).extend({
 }
 ::v-deep .v-responsive__sizer {
   transition: none;
+}
+.v-overlay--active {
+  backdrop-filter: blur(6px);
 }
 </style>

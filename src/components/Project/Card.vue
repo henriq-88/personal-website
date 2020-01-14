@@ -8,7 +8,7 @@
       :to="`/${project.id}`"
     >
       <v-img
-        :src="project.images[0] ? project.images[0].url : ``"
+        :src="project.banner"
         height="100%"
         :class="{ grayscale: !hover }"
         class="transition grey darken-4"
@@ -30,18 +30,22 @@
             >
               <v-col class="shrink">
                 <v-avatar
+                  v-if="project.logo"
+                  tile
+                >
+                  <v-img
+                    :src="project.logo"
+                    eager
+                    contain
+                  />
+                </v-avatar>
+                <v-avatar
+                  v-else
                   tile
                   color="grey darken-2"
                   class="elevation-4"
                 >
-                  <v-img
-                    v-if="project.logo"
-                    :src="project.logo"
-                    eager
-                  />
-                  <v-icon v-else>
-                    mdi-cube-outline
-                  </v-icon>
+                  <v-icon>mdi-cube-outline</v-icon>
                 </v-avatar>
               </v-col>
               <v-col class="ml-3 title text-truncate">
@@ -63,10 +67,26 @@
               class="bottom"
               style="width: 100%;"
             >
-              {{ project.tags }}
+              <template v-for="tag in project.tags">
+                <v-icon
+                  v-if="$global.tagIcons[tag]"
+                  :key="tag"
+                  class="mr-1"
+                  dense
+                >
+                  {{ $global.tagIcons[tag] }}
+                </v-icon>
+                <span
+                  v-else
+                  :key="tag"
+                  class="mr-1"
+                >
+                  #{{ tag }}
+                </span>
+              </template>
               <v-spacer />
-              <v-chip x-small>
-                {{ project.category }}
+              <v-chip small>
+                {{ $t(`projectCategories.${project.category}`) }}
               </v-chip>
             </v-card-actions>
           </v-row>

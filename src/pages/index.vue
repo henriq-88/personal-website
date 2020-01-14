@@ -40,8 +40,10 @@
       class="mt-12"
     >
       <v-col
-        cols="8"
-        offset="2"
+        cols="12"
+        sm="8"
+        offset="0"
+        offset-sm="2"
       >
         <AboutText />
       </v-col>
@@ -51,8 +53,10 @@
       class="mt-12"
     >
       <v-col
-        cols="8"
-        offset="2"
+        cols="12"
+        sm="8"
+        offset="0"
+        offset-sm="2"
       >
         <ContactForm />
       </v-col>

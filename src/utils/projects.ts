@@ -2,10 +2,13 @@ import { ClientProject } from '@/types'
 
 export const getBlankProject = (): ClientProject => ({
   id: ``,
+  banner: ``,
   body: ``,
   category: ``,
-  date: new Date(),
-  images: [],
+  date: null,
+  logo: ``,
+  medias: [],
   name: ``,
-  tags: []
+  tags: [],
+  website: ``
 })

@@ -28,18 +28,26 @@ class ProjectsModule extends VuexModule {
     const snapshot = await firestore.collection(`projects`).get()
     const projects = snapshot.docs.map((doc) => {
       const id = doc.id
-      const { body, category, date, images, name, tags } = doc.data() as ServerProject
+      const { banner, body, category, date, logo, medias, name, tags, website } = doc.data() as ServerProject
       const project: ClientProject = {
         id,
+        banner,
         body,
         category,
         date: new Date(date.seconds * 1000),
-        images,
+        logo,
+        medias,
         name,
-        tags
+        tags: tags.sort((a, b) => a.localeCompare(b)),
+        website
       }
       return project
-    }).sort((a, b) => b.date.getTime() - a.date.getTime())
+    }).sort((a, b) => {
+      if (a.date === b.date) return 0
+      if (!a.date) return -1
+      if (!b.date) return 1
+      return b.date.getTime() - a.date.getTime()
+    })
     this.set(projects)
   }
 }

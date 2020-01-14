@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-parallax
-      v-if="project.images.length && project.images[0]"
-      :src="project.images[0].url"
+      v-if="project.banner"
+      :src="project.banner"
       height="400"
     >
       <v-row
@@ -12,7 +12,7 @@
     </v-parallax>
     <div
       v-else
-      class="grey"
+      class="grey darken-4"
       style="height: 400px;"
     />
     <v-container
@@ -28,12 +28,17 @@
           <v-avatar
             tile
             :size="logoSize"
-            class="elevation-4 grey darken-2"
+            :class="{
+              'elevation-4': !project.logo,
+              grey: !project.logo,
+              'darken-2': !project.logo
+            }"
           >
             <v-img
               v-if="project.logo"
               :src="project.logo"
               eager
+              contain
             />
             <v-icon
               v-else
@@ -52,17 +57,17 @@
           </div>
           <v-skeleton-loader
             v-else
+            tile
             type="heading"
             height="60"
             width="400"
-            class="grey darken-4"
           />
         </v-col>
       </v-row>
       <v-card class="grey darken-4">
         <v-card-text>
           <v-row no-gutters>
-            <v-col cols="6">
+            <v-col cols="7">
               <v-row
                 align="center"
                 dense
@@ -71,9 +76,19 @@
                   Date
                 </v-col>
                 <v-spacer />
-                <v-col class="shrink">
+                <v-col
+                  v-if="project.date"
+                  class="shrink"
+                >
                   {{ project.date.getFullYear() }}
                 </v-col>
+                <v-skeleton-loader
+                  v-else
+                  tile
+                  type="text"
+                  width="40"
+                  height="22"
+                />
               </v-row>
               <v-row
                 align="center"
@@ -84,9 +99,18 @@
                 </v-col>
                 <v-spacer />
                 <v-col class="shrink">
-                  <v-chip>
-                    {{ project.category }}
+                  <v-chip
+                    v-if="project.category"
+                    small
+                  >
+                    {{ $t(`projectCategories.${project.category}`) }}
                   </v-chip>
+                  <v-skeleton-loader
+                    v-else
+                    type="chip"
+                    height="24"
+                    width="64"
+                  />
                 </v-col>
               </v-row>
               <v-row
@@ -99,17 +123,80 @@
                 <v-spacer />
                 <v-col class="shrink">
                   <v-row
+                    v-if="project.tags.length"
                     no-gutters
                     class="flex-nowrap"
                   >
-                    <v-icon
-                      v-for="tag in project.tags"
-                      :key="tag"
-                      class="ml-1"
-                    >
-                      {{ `mdi-${tag}` }}
-                    </v-icon>
+                    <template v-for="tag in project.tags">
+                      <v-tooltip
+                        v-if="$global.tagIcons[tag]"
+                        :key="tag"
+                        bottom
+                      >
+                        <template #activator="{ on }">
+                          <v-icon
+                            class="ml-1"
+                            dense
+                            v-on="on"
+                          >
+                            {{ $global.tagIcons[tag] }}
+                          </v-icon>
+                        </template>
+                        <span>#{{ tag }}</span>
+                      </v-tooltip>
+                      <span
+                        v-else
+                        :key="tag"
+                        class="mr-1"
+                      >
+                        #{{ tag }}
+                      </span>
+                    </template>
                   </v-row>
+                  <v-row
+                    v-else
+                    no-gutters
+                    class="flex-nowrap"
+                  >
+                    <v-skeleton-loader
+                      v-for="n in 3"
+                      :key="`placeholder-icon-${n}`"
+                      type="avatar"
+                      height="20"
+                      width="20"
+                      class="ml-1"
+                    />
+                  </v-row>
+                </v-col>
+              </v-row>
+              <v-row
+                align="center"
+                dense
+              >
+                <v-col class="shrink">
+                  Website
+                </v-col>
+                <v-spacer />
+                <v-skeleton-loader
+                  v-if="project.website === ``"
+                  tile
+                  type="text"
+                  height="22"
+                  width="128"
+                />
+                <v-col
+                  v-else
+                  class="shrink"
+                >
+                  <a
+                    v-if="project.website"
+                    :href="project.website"
+                    target="_blank"
+                    class="text-no-wrap"
+                  >
+                    {{ project.website }}
+                  </a>
+                  <span v-else>-</span>
                 </v-col>
               </v-row>
             </v-col>
@@ -121,11 +208,11 @@
             class="pa-0"
           >
             <v-row
-              v-if="project.images.length"
+              v-if="project.medias.length"
               dense
             >
               <v-col
-                v-for="(media, i) in project.images"
+                v-for="(media, i) in project.medias"
                 :key="media.url"
                 class="shrink"
               >
@@ -149,7 +236,7 @@
                   </v-row>
                 </v-img>
                 <v-img
-                  v-else
+                  v-else-if="media.type === `image`"
                   v-ripple
                   :src="media.url"
                   aspect-ratio="1"
@@ -193,7 +280,7 @@
     </v-container>
     <ImageViewerDialog
       v-model="mediaViewerDialog"
-      :medias="project.images"
+      :medias="project.medias"
       :selected-index="selectedMediaIndex"
     />
   </div>
@@ -237,7 +324,7 @@ export default Vue.extend({
       const { id } = this.$route.params
       project.load(id)
     },
-    getVideoIdFromUrl (url: string) {
+    getVideoIdFromUrl (url: string): string {
       return getIdFromURL(url)
     }
   }
@@ -247,5 +334,12 @@ export default Vue.extend({
 <style scoped>
 ::v-deep .v-parallax__content {
   padding: 0;
+}
+::v-deep .v-parallax__image-container {
+  filter: blur(2px);
+}
+::v-deep .v-skeleton-loader__bone {
+  height: inherit;
+  width: inherit;
 }
 </style>

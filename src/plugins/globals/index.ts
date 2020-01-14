@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Plugin } from '@nuxt/types'
-import { TranslatedVuetifyRule } from '@/types'
+import { TranslatedVuetifyRule, Obj } from '@/types'
 import { TranslateResult } from 'vue-i18n'
 
 const plugin: Plugin = (context, inject) => {
@@ -9,7 +9,16 @@ const plugin: Plugin = (context, inject) => {
     rules: {
       email: ((errorMessage?: TranslateResult) => (v: any) => (/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(v)) || errorMessage || i18n?.t(`rules.error.email`)) as TranslatedVuetifyRule,
       required: ((errorMessage?: TranslateResult) => (v: any) => (v !== null && v !== undefined && String(v).trim() !== ``) || errorMessage || i18n?.t(`rules.error.required`)) as TranslatedVuetifyRule
-    }
+    },
+    tagIcons: {
+      firebase: `mdi-firebase`,
+      android: `mdi-android`,
+      java: `mdi-language-java`,
+      npm: `mdi-npm`,
+      typescript: `mdi-language-typescript`,
+      vue: `mdi-vuejs`,
+      video: `mdi-video`
+    } as Obj<string>
   })
 
   inject(`global`, globals)

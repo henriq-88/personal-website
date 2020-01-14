@@ -16,5 +16,13 @@ export default {
     success: {
       send: `Successfully sent!`
     }
+  },
+  projectCategories: {
+    app: `App`,
+    concept: `Concept`,
+    game: `Game`,
+    model: `Model`,
+    package: `Package`,
+    web: `Web`
   }
 }
