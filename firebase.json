@@ -10,12 +10,7 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "function": "nuxtssr"
-      }
-    ]
+    "predeploy": "npm run generate"
   },
   "storage": {
     "rules": "firebase/storage.rules"

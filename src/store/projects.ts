@@ -44,9 +44,9 @@ class ProjectsModule extends VuexModule {
       return project
     }).sort((a, b) => {
       if (a.date === b.date) return 0
-      if (!a.date) return -1
-      if (!b.date) return 1
-      return b.date.getTime() - a.date.getTime()
+      if (!b.date) return -1
+      if (!a.date) return 1
+      return a.date.getTime() - b.date.getTime()
     })
     this.set(projects)
   }

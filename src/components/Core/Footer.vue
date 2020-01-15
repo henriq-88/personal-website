@@ -14,7 +14,7 @@
         :color="link.color"
         class="mx-2"
         target="_blank"
-        :href="link"
+        :href="link.url"
       >
         <v-icon>{{ link.icon }}</v-icon>
       </v-btn>

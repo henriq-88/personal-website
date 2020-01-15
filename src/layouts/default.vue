@@ -1,7 +1,8 @@
 <template>
   <v-app dark>
     <Snackbar />
-    <AppBar />
+    <NavigationDrawer v-model="drawer" />
+    <AppBar v-model="drawer" />
     <v-content>
       <v-container
         fluid
@@ -18,13 +19,19 @@
 import AppBar from '@/components/Core/AppBar.vue'
 import Footer from '@/components/Core/Footer.vue'
 import Snackbar from '@/components/Core/Snackbar.vue'
+import NavigationDrawer from '@/components/Core/NavigationDrawer.vue'
 
 export default {
   components: {
     AppBar,
     Footer,
-    Snackbar
-  }
+    Snackbar,
+    NavigationDrawer
+  },
+
+  data: () => ({
+    drawer: false
+  })
 }
 </script>
 
@@ -64,5 +71,8 @@ export default {
 }
 ::v-deep .v-tooltip__content {
   background: rgba(0, 0, 0, 1.0);
+}
+::v-deep .v-overlay--active {
+  backdrop-filter: blur(6px);
 }
 </style>

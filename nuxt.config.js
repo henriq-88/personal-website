@@ -49,10 +49,9 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    `@nuxtjs/axios`,
     `@nuxtjs/pwa`,
     // Doc: https://github.com/nuxt-community/dotenv-module
-    `@nuxtjs/dotenv`,
+    [ `@nuxtjs/dotenv`, { filename: process.env.NODE_ENV === `development` ? `.env.local` : `.env` } ],
     [ `nuxt-i18n`,
       {
         locales: [
@@ -64,12 +63,6 @@ export default {
       }
     ]
   ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
-  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module

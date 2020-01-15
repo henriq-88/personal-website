@@ -35,7 +35,12 @@
       </v-row>
     </v-row>
     <v-spacer />
+    <v-app-bar-nav-icon
+      v-if="$vuetify.breakpoint.xs"
+      @click="value_ = !value_"
+    />
     <v-tabs
+      v-else
       v-model="linkIndex"
       background-color="transparent"
       class="shrink"
@@ -60,9 +65,9 @@
 import mixins from 'vue-typed-mixins'
 import { GoToOptions } from 'vuetify/types/services/goto'
 import { ClientProject } from '@/types'
-// import { project } from '@/store/store'
+import { vModel } from '@/mixins'
 
-export default mixins().extend({
+export default mixins(vModel).extend({
   data: () => ({
     linkIndex: 0 as number | null,
     linkIndicatorUpdateDisabled: false,
@@ -80,9 +85,6 @@ export default mixins().extend({
     isIndexPage (): boolean {
       return this.$route.name?.startsWith(`index`) || false
     }
-    // project (): ClientProject {
-    //   return project.project
-    // }
   },
 
   watch: {
@@ -156,5 +158,8 @@ export default mixins().extend({
 <style scoped>
 .v-toolbar.v-app-bar {
   backdrop-filter: blur(6px);
+}
+.v-application--is-ltr .v-toolbar__content > .v-btn.v-btn--icon:last-child {
+  margin-right: 8px;
 }
 </style>

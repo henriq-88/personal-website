@@ -183,7 +183,4 @@ export default mixins(vModel).extend({
 ::v-deep .v-responsive__sizer {
   transition: none;
 }
-.v-overlay--active {
-  backdrop-filter: blur(6px);
-}
 </style>

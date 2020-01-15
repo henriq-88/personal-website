@@ -51,7 +51,7 @@
         <v-col class="mb-3">
           <div
             v-if="project.name"
-            class="display-3"
+            :class="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? `display-1` : `display-3`"
           >
             {{ project.name }}
           </div>
@@ -59,8 +59,8 @@
             v-else
             tile
             type="heading"
-            height="60"
-            width="400"
+            :height="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? 40 : 60"
+            :width="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? 200 : 400"
           />
         </v-col>
       </v-row>
@@ -72,33 +72,45 @@
                 align="center"
                 dense
               >
-                <v-col class="shrink">
+                <v-col
+                  class="shrink"
+                  cols="12"
+                >
                   Date
                 </v-col>
                 <v-spacer />
                 <v-col
-                  v-if="project.date"
                   class="shrink"
+                  cols="12"
                 >
-                  {{ project.date.getFullYear() }}
+                  <span
+                    v-if="project.date"
+                    class="white--text"
+                  >{{ project.date.getFullYear() }}</span>
+                  <v-skeleton-loader
+                    v-else
+                    tile
+                    type="text"
+                    width="40"
+                    height="22"
+                  />
                 </v-col>
-                <v-skeleton-loader
-                  v-else
-                  tile
-                  type="text"
-                  width="40"
-                  height="22"
-                />
               </v-row>
               <v-row
                 align="center"
                 dense
               >
-                <v-col class="shrink">
+                <v-col
+                  class="shrink"
+                  cols="12"
+                >
                   Category
                 </v-col>
                 <v-spacer />
-                <v-col class="shrink">
+                <v-col
+                  class="shrink"
+                  cols="12"
+                >
                   <v-chip
                     v-if="project.category"
                     small
@@ -117,11 +129,17 @@
                 align="center"
                 dense
               >
-                <v-col class="shrink">
+                <v-col
+                  class="shrink"
+                  cols="12"
+                >
                   Tags
                 </v-col>
                 <v-spacer />
-                <v-col class="shrink">
+                <v-col
+                  class="shrink"
+                  cols="12"
+                >
                   <v-row
                     v-if="project.tags.length"
                     no-gutters
@@ -147,7 +165,7 @@
                       <span
                         v-else
                         :key="tag"
-                        class="mr-1"
+                        class="white--text mr-1"
                       >
                         #{{ tag }}
                       </span>
@@ -173,7 +191,10 @@
                 align="center"
                 dense
               >
-                <v-col class="shrink">
+                <v-col
+                  class="shrink"
+                  cols="12"
+                >
                   Website
                 </v-col>
                 <v-spacer />
@@ -187,6 +208,7 @@
                 <v-col
                   v-else
                   class="shrink"
+                  cols="12"
                 >
                   <a
                     v-if="project.website"
