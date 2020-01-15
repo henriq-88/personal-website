@@ -4,7 +4,11 @@ export default {
     contact: `Contact`,
     portfolio: `Portfolio`,
     send: `Send`,
-    close: `Close`
+    close: `Close`,
+    date: `Date`,
+    category: `Category`,
+    tags: `Tags`,
+    website: `Website`
   },
   rules: {
     error: {

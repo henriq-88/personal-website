@@ -76,7 +76,7 @@
                   class="shrink"
                   cols="12"
                 >
-                  Date
+                  {{ $t(`common.date`) }}
                 </v-col>
                 <v-spacer />
                 <v-col
@@ -104,7 +104,7 @@
                   class="shrink"
                   cols="12"
                 >
-                  Category
+                  {{ $t(`common.category`) }}
                 </v-col>
                 <v-spacer />
                 <v-col
@@ -133,7 +133,7 @@
                   class="shrink"
                   cols="12"
                 >
-                  Tags
+                  {{ $t(`common.tags`) }}
                 </v-col>
                 <v-spacer />
                 <v-col
@@ -195,7 +195,7 @@
                   class="shrink"
                   cols="12"
                 >
-                  Website
+                  {{ $t(`common.website`) }}
                 </v-col>
                 <v-spacer />
                 <v-skeleton-loader
