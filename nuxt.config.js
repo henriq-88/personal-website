@@ -1,8 +1,7 @@
 const colors = require(`vuetify/es5/util/colors`).default
-// import messages from '@/locales'
 
 export default {
-  mode: `universal`,
+  mode: `spa`,
   /*
   ** Headers of the page
   */
@@ -108,6 +107,5 @@ export default {
     }
   },
   srcDir: `src`,
-  buildDir: `functions/.nuxt`,
   extractCSS: true
 }
