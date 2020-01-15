@@ -10,7 +10,11 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "predeploy": "npm run generate"
+    "predeploy": "npm run generate",
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ]
   },
   "storage": {
     "rules": "firebase/storage.rules"
