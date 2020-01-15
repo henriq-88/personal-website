@@ -1,7 +1,7 @@
 {
   "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+    "rules": "firebase/firestore.rules",
+    "indexes": "firebase/firestore.indexes.json"
   },
   "hosting": {
     "public": "dist",
@@ -10,14 +10,24 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "predeploy": "npm run generate",
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ]
   },
   "storage": {
-    "rules": "storage.rules"
+    "rules": "firebase/storage.rules"
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 5002
+    },
+    "hosting": {
+      "port": 8080
+    }
   }
 }
