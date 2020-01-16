@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     v-model="value_"
-    color="black"
+    color="#000000E0"
     right
     fixed
     dark
