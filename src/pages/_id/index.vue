@@ -8,7 +8,58 @@
       <v-row
         class="fill-height"
         style="background-color: #00000080;"
-      />
+        justify="center"
+        no-gutters
+      >
+        <v-row
+          class="fill-height px-3"
+          align="end"
+          :justify="$vuetify.breakpoint.xs ? `end` : `start`"
+          style="max-width: 840px;"
+          :class="{ 'flex-column': $vuetify.breakpoint.xs }"
+        >
+          <v-col class="shrink">
+            <v-avatar
+              tile
+              :size="logoSize"
+              :class="{
+                'elevation-4': !project.logo,
+                grey: !project.logo,
+                'darken-2': !project.logo
+              }"
+            >
+              <v-img
+                v-if="project.logo"
+                :src="project.logo"
+                eager
+                contain
+              />
+              <v-icon
+                v-else
+                :size="logoSize / 1.5"
+              >
+                mdi-cube-outline
+              </v-icon>
+            </v-avatar>
+          </v-col>
+          <v-col :class="{ shrink: $vuetify.breakpoint.xs }">
+            <div
+              v-if="project.name"
+              class="pr-3"
+              :class="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? `display-1` : `display-3`"
+            >
+              {{ project.name }}
+            </div>
+            <v-skeleton-loader
+              v-else
+              tile
+              type="heading"
+              :height="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? 40 : 60"
+              :width="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? 200 : 400"
+            />
+          </v-col>
+        </v-row>
+      </v-row>
     </v-parallax>
     <div
       v-else
@@ -19,51 +70,6 @@
       style="position: relative; max-width: 840px;"
       class="pt-8"
     >
-      <v-row
-        style="position: absolute; width: 100%;"
-        :style="`top: -${logoSize}px;`"
-        align="end"
-      >
-        <v-col class="shrink">
-          <v-avatar
-            tile
-            :size="logoSize"
-            :class="{
-              'elevation-4': !project.logo,
-              grey: !project.logo,
-              'darken-2': !project.logo
-            }"
-          >
-            <v-img
-              v-if="project.logo"
-              :src="project.logo"
-              eager
-              contain
-            />
-            <v-icon
-              v-else
-              :size="logoSize / 1.5"
-            >
-              mdi-cube-outline
-            </v-icon>
-          </v-avatar>
-        </v-col>
-        <v-col class="mb-3">
-          <div
-            v-if="project.name"
-            :class="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? `display-1` : `display-3`"
-          >
-            {{ project.name }}
-          </div>
-          <v-skeleton-loader
-            v-else
-            tile
-            type="heading"
-            :height="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? 40 : 60"
-            :width="($vuetify.breakpoint.xs || $vuetify.breakpoint.sm) ? 200 : 400"
-          />
-        </v-col>
-      </v-row>
       <v-card class="grey darken-4">
         <v-card-text>
           <v-row no-gutters>

@@ -23,6 +23,10 @@
     />
     <v-row
       v-if="medias.length"
+      v-touch="{
+        left: () => prev(),
+        right: () => next(),
+      }"
       class="fill-height"
       justify="center"
       align="center"

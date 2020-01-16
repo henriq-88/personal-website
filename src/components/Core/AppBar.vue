@@ -4,19 +4,18 @@
     color="#00000080"
     app
     fixed
-    :height="96"
+    :height="72"
   >
     <v-row
-      class="shrink py-3 px-6"
+      class="shrink"
       no-gutters
       align="center"
-      style="height: inherit; margin: -4px 0 -4px -16px;"
     >
       <v-expand-x-transition origin="right">
         <v-btn
           v-if="!isIndexPage"
           icon
-          class="mr-3"
+          class="mr-2"
           @click="$router.go(-1)"
         >
           <v-icon>mdi-arrow-left</v-icon>
@@ -160,6 +159,10 @@ export default mixins(vModel).extend({
   backdrop-filter: blur(6px);
 }
 .v-application--is-ltr .v-toolbar__content > .v-btn.v-btn--icon:last-child {
-  margin-right: 8px;
+  margin-right: 0;
+}
+::v-deep .v-toolbar__content {
+  padding-right: 8px;
+  padding-left: 8px;
 }
 </style>
