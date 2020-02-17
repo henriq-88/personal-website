@@ -43,7 +43,7 @@
       v-model="linkIndex"
       background-color="transparent"
       class="shrink"
-      style="width: inherit;"
+      style="width: inherit; margin-right: -8px;"
       color="white"
       optional
     >
