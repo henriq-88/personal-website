@@ -6,12 +6,16 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: `%s - ` + process.env.npm_package_name,
+    titleTemplate: `%s`,
     title: process.env.npm_package_description || ``,
     meta: [
       { charset: `utf-8` },
       { name: `viewport`, content: `width=device-width, initial-scale=1` },
-      { hid: `description`, name: `description`, content: process.env.npm_package_description || `` }
+      { hid: `description`, name: `description`, content: process.env.npm_package_description || `` },
+      { property: `og:url`, content: `https://wassdahl.dev` },
+      { property: `og:title`, content: process.env.npm_package_description || `` },
+      { property: `og:description`, content: `My portfolio and history as a UX developer` },
+      { property: `og:image`, content: `/me.jpg` }
     ],
     link: [
       { rel: `icon`, type: `image/x-icon`, href: `/favicon.ico` }

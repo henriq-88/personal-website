@@ -22,7 +22,7 @@
         </v-btn>
       </v-expand-x-transition>
       <v-avatar color="grey-darken-3">
-        <v-img :src="require(`@/assets/me.jpg`)" />
+        <v-img :src="`/me.jpg`" />
       </v-avatar>
       <v-row
         class="flex-column ml-3"

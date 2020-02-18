@@ -31,18 +31,7 @@ export default {
 
   data: () => ({
     drawer: false
-  }),
-
-  head () {
-    return {
-      meta: [
-        { hid: `og:url`, property: `og:url`, content: `https://wassdahl.dev` },
-        { hid: `og:title`, property: `og:title`, content: process.env.npm_package_description || `` },
-        { hid: `og:description`, property: `og:description`, content: `My portfolio and history as a UX developer` },
-        { hid: `og:image`, property: `og:image`, content: require(`@/assets/me.jpg`) }
-      ]
-    }
-  }
+  })
 }
 </script>
 
