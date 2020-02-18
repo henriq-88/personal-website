@@ -1,6 +1,7 @@
 <template>
   <v-hover #default="{ hover }">
     <v-card
+      v-scroll="updateMobileAndIntersectsCenter"
       color="white"
       dark
       :height="256"
@@ -10,13 +11,13 @@
       <v-img
         :src="project.banner"
         height="100%"
-        :class="{ grayscale: !hover }"
+        :class="{ grayscale: !(hover || isMobileAndIntersectsCenter) }"
         class="transition grey darken-4"
       >
         <!-- eslint-disable-next-line no-irregular-whitespace -->
         <v-slide-y-transition​>
           <v-row
-            v-if="hover"
+            v-if="hover || isMobileAndIntersectsCenter"
             class="transition-fast-in-fast-out darken-2 v-card--reveal flex-column"
             no-gutters
             align="start"
@@ -58,7 +59,7 @@
         <!-- eslint-disable-next-line no-irregular-whitespace -->
         <v-slide-y-reverse-transition​>
           <v-row
-            v-if="hover"
+            v-if="hover || isMobileAndIntersectsCenter"
             class="transition-fast-in-fast-out darken-2 v-card--reveal flex-column"
             no-gutters
             justify="end"
@@ -105,6 +106,22 @@ export default Vue.extend({
     project: {
       type: Object,
       required: true
+    }
+  },
+  data: () => ({
+    isMobileAndIntersectsCenter: false
+  }),
+  mounted () {
+    this.updateMobileAndIntersectsCenter()
+  },
+  methods: {
+    updateMobileAndIntersectsCenter () {
+      this.isMobileAndIntersectsCenter = false
+      if (!this.$el) return
+      const rect = this.$el.getBoundingClientRect()
+      const screenCenterX = document.documentElement.clientHeight / 2
+      const isIntersectsCenter = screenCenterX >= rect.top && screenCenterX <= rect.bottom
+      this.isMobileAndIntersectsCenter = this.$device.isMobileOrTablet && isIntersectsCenter
     }
   }
 })
