@@ -4,6 +4,8 @@ export type Obj<T> = { [k: string]: T }
 
 export type MediaType = `video` | `image`
 
+export type Sorting = `asc` | `desc`
+
 export type TranslatedVuetifyRule = (errorMessage?: TranslateResult) => (v: any) => boolean | TranslateResult
 
 export interface Global {
@@ -65,4 +67,10 @@ interface ClientProject extends Project {
 
 interface ServerProject extends Project {
   date: firebase.firestore.Timestamp
+}
+
+interface TextValue {
+  text: string
+  value: string
+  icon?: string
 }

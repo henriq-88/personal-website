@@ -61,6 +61,7 @@
         <ContactForm />
       </v-col>
     </v-row>
+    <FilterButton />
   </v-container>
 </template>
 
@@ -68,6 +69,7 @@
 import Vue from 'vue'
 import AboutText from '@/components/About/Text.vue'
 import ContactForm from '@/components/Contact/Form.vue'
+import FilterButton from '@/components/Filter/Button.vue'
 import ProjectCard from '@/components/Project/Card.vue'
 import { projects } from '@/store/store'
 
@@ -75,8 +77,12 @@ export default Vue.extend({
   components: {
     AboutText,
     ContactForm,
+    FilterButton,
     ProjectCard
   },
+  data: () => ({
+    filterDialog: false
+  }),
   computed: {
     projects (): any[] {
       return projects.projects
