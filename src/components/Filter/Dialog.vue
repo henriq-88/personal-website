@@ -79,7 +79,7 @@ import { Location } from 'vue-router/types/router'
 
 export default mixins(vModel).extend({
   data: () => ({
-    selectedSorting: `asc` as Sorting,
+    selectedSorting: `desc` as Sorting,
     selectedTags: [] as string[],
     selectedCategory: ``
   }),
@@ -109,7 +109,7 @@ export default mixins(vModel).extend({
     const { sortby, category } = this.$route.query
     let { tags } = this.$route.query
     if (tags && !Array.isArray(tags)) tags = [ tags ]
-    this.selectedSorting = sortby as Sorting
+    if (sortby) this.selectedSorting = sortby as Sorting
     if (category) this.selectedCategory = category as string
     if (tags && tags.length) this.selectedTags = tags as string[]
     this.save()
