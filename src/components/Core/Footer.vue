@@ -34,7 +34,7 @@ export default Vue.extend({
   data: () => ({
     links: [
       { url: `https://www.facebook.com/henrik.wassdahl`, icon: `mdi-facebook` },
-      { url: `https://github.com/henriq-88`, icon: `mdi-github-circle` },
+      { url: `https://github.com/henriq-88`, icon: `mdi-github` },
       { url: `https://bitbucket.org/Seline88`, icon: `mdi-bitbucket` },
       { url: `https://www.linkedin.com/in/henrikwassdahl`, icon: `mdi-linkedin` },
       { url: `https://stackoverflow.com/users/2375978/henrik-wassdahl`, icon: `mdi-stack-overflow` }
