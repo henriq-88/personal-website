@@ -1,0 +1,47 @@
+{
+  "name": "personal-website",
+  "version": "2.0.0",
+  "description": "Henrik Wassdahl - UX Developer",
+  "author": "Henrik Wassdahl",
+  "private": true,
+  "scripts": {
+    "serve": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@nuxtjs/device": "1.2.7",
+    "@nuxtjs/dotenv": "1.4.1",
+    "@nuxtjs/pwa": "3.0.2",
+    "firebase": "7.19.1",
+    "nuxt": "2.14.5",
+    "nuxt-i18n": "6.15.0",
+    "vue-keypress": "2.1.1",
+    "vue-typed-mixins": "0.2.0",
+    "vue-youtube-embed": "2.2.2",
+    "vuex-cache": "3.3.0"
+  },
+  "devDependencies": {
+    "@babel/runtime-corejs3": "7.11.2",
+    "@nuxt/types": "^2.14.5",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/eslint-config": "3.1.0",
+    "@nuxtjs/eslint-module": "2.0.0",
+    "@nuxtjs/vuetify": "1.11.2",
+    "@typescript-eslint/eslint-plugin": "4.1.0",
+    "@typescript-eslint/parser": "4.1.0",
+    "@vue/eslint-config-standard": "5.1.2",
+    "@vue/eslint-config-typescript": "5.1.0",
+    "babel-eslint": "10.1.0",
+    "core-js": "3.6.5",
+    "eslint": "7.8.1",
+    "eslint-plugin-nuxt": "1.0.0",
+    "eslint-plugin-standard": "4.0.1",
+    "eslint-plugin-vue": "6.2.2",
+    "eslint-plugin-vuetify": "1.0.0-beta.7",
+    "vuex-module-decorators": "0.17.0"
+  }
+}
