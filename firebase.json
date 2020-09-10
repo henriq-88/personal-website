@@ -12,7 +12,11 @@
         "**/.*",
         "**/node_modules/**"
       ],
-      "predeploy": "npm run generate",
+      "predeploy": [
+        "cd hosting && npm i",
+        "cd hosting && npm run lint",
+        "cd hosting && npm run generate"
+      ],
       "rewrites": [
         {
           "source": "**",
