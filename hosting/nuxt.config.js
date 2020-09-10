@@ -9,22 +9,40 @@ export default {
     titleTemplate: `%s`,
     title: process.env.npm_package_description || ``,
     meta: [
-      { charset: `utf-8` },
-      { name: `viewport`, content: `width=device-width, initial-scale=1` },
-      { hid: `description`, name: `description`, content: process.env.npm_package_description || `` },
-      { property: `og:url`, content: `https://wassdahl.dev` },
-      { property: `og:title`, content: process.env.npm_package_description || `` },
-      { property: `og:description`, content: `My portfolio and history as a UX developer` },
-      { property: `og:image`, content: `/me.jpg` }
+      {
+        charset: `utf-8`,
+      },
+      {
+        name: `viewport`, content: `width=device-width, initial-scale=1`,
+      },
+      {
+        hid: `description`, name: `description`, content: process.env.npm_package_description || ``,
+      },
+      {
+        property: `og:url`, content: `https://wassdahl.dev`,
+      },
+      {
+        property: `og:title`, content: process.env.npm_package_description || ``,
+      },
+      {
+        property: `og:description`, content: `My portfolio and history as a UX developer`,
+      },
+      {
+        property: `og:image`, content: `/me.jpg`,
+      },
     ],
     link: [
-      { rel: `icon`, type: `image/x-icon`, href: `/favicon.ico` }
-    ]
+      {
+        rel: `icon`, type: `image/x-icon`, href: `/favicon.ico`,
+      },
+    ],
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: `#fff` },
+  loading: {
+    color: `#fff`,
+  },
   /*
   ** Global CSS
   */
@@ -34,9 +52,15 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: `@/plugins/filters` },
-    { src: `@/plugins/firebase`, mode: `client` },
-    { src: `@/plugins/globals` }
+    {
+      src: `@/plugins/filters`,
+    },
+    {
+      src: `@/plugins/firebase`, mode: `client`,
+    },
+    {
+      src: `@/plugins/globals`,
+    },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -46,7 +70,7 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     `@nuxtjs/device`,
     `@nuxtjs/eslint-module`,
-    `@nuxtjs/vuetify`
+    `@nuxtjs/vuetify`,
   ],
   /*
   ** Nuxt.js modules
@@ -55,24 +79,34 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     `@nuxtjs/pwa`,
     // Doc: https://github.com/nuxt-community/dotenv-module
-    [ `@nuxtjs/dotenv`, { filename: process.env.NODE_ENV === `development` ? `.env.local` : `.env` } ],
-    [ `nuxt-i18n`,
+    [
+      `@nuxtjs/dotenv`,
+      {
+        filename: process.env.NODE_ENV === `development` ? `.env.local` : `.env`,
+      },
+    ],
+    [
+      `nuxt-i18n`,
       {
         locales: [
-          { code: `en`, file: `en.ts` }
+          {
+            code: `en`, file: `en.ts`,
+          },
         ],
         defaultLocale: `en`,
         lazy: true,
-        langDir: `locales/`
-      }
-    ]
+        langDir: `locales/`,
+      },
+    ],
   ],
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
-    customVariables: [ `~/assets/variables.scss` ],
+    customVariables: [
+      `~/assets/variables.scss`,
+    ],
     theme: {
       dark: true,
       themes: {
@@ -83,10 +117,10 @@ export default {
           info: colors.blue.accent4,
           warning: colors.orange.accent4,
           error: colors.red.accent4,
-          success: colors.green.accent4
-        }
-      }
-    }
+          success: colors.green.accent4,
+        },
+      },
+    },
   },
   /*
   ** Build configuration
@@ -98,19 +132,23 @@ export default {
     extend (config, ctx) {
     },
     babel: {
-      presets ({ isServer }) {
+      presets ({
+        isServer,
+      }) {
         return [
           [
             require.resolve(`@nuxt/babel-preset-app`),
             {
               buildTarget: isServer ? `server` : `client`,
-              corejs: { version: 3 }
-            }
-          ]
+              corejs: {
+                version: 3,
+              },
+            },
+          ],
         ]
-      }
-    }
+      },
+    },
   },
   srcDir: `src`,
-  extractCSS: true
+  extractCSS: true,
 }
