@@ -3,19 +3,24 @@
     "rules": "firebase/firestore.rules",
     "indexes": "firebase/firestore.indexes.json"
   },
-  "hosting": {
-    "public": "dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "predeploy": "npm run generate",
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-    } ]
-  },
+  "hosting": [
+    {
+      "site": "personal-website-8af4a",
+      "public": "hosting/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "predeploy": "npm run generate",
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ],
   "storage": {
     "rules": "firebase/storage.rules"
   },
