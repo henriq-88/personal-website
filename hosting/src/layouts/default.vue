@@ -3,14 +3,14 @@
     <Snackbar />
     <NavigationDrawer v-model="drawer" />
     <AppBar v-model="drawer" />
-    <v-content>
+    <v-main>
       <v-container
         fluid
         class="pa-0"
       >
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
     <Footer />
   </v-app>
 </template>
