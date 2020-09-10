@@ -1,4 +1,6 @@
-import { TranslateResult } from 'vue-i18n'
+import {
+  TranslateResult,
+} from 'vue-i18n'
 
 export type Obj<T> = { [k: string]: T }
 
@@ -44,6 +46,11 @@ export interface SiteError extends Error {
   code?: string | number
 }
 
+interface Media {
+  url: string
+  type: MediaType
+}
+
 interface Project {
   id: string
   banner?: string
@@ -54,11 +61,6 @@ interface Project {
   name: string
   tags: string[]
   website?: string
-}
-
-interface Media {
-  url: string
-  type: MediaType
 }
 
 interface ClientProject extends Project {

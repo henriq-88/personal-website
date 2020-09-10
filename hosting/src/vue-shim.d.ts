@@ -1,17 +1,27 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import { Framework } from 'vuetify'
-import { Store } from 'vuex'
-import { Global } from '@/types'
-import { Device } from '@nuxtjs/device/lib/types'
+import {
+  Framework,
+} from 'vuetify'
+import {
+  Store,
+} from 'vuex'
+import {
+  Global,
+} from '@/types'
+import {
+  Device,
+} from '@nuxtjs/device/lib/types'
 import {
   Route,
 } from 'vue-router'
 
-declare module "*.vue" {
+// eslint-disable-next-line
+declare module '*.vue' {
   export default Vue
 }
 
+// eslint-disable-next-line
 declare module 'vue/types/vue' {
   // instance properties and methods e.g. "this.$route"
   interface Vue {

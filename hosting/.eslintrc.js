@@ -2,12 +2,12 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: [
     `plugin:vue/recommended`,
     `@vue/standard`,
-    `@vue/typescript`
+    `@vue/typescript`,
   ],
   rules: {
     'array-bracket-newline': [
