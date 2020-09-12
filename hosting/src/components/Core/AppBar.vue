@@ -84,10 +84,10 @@ export default mixins(vModel)
           text: `Portfolio`,
           selector: `#portfolio`,
         },
-        {
-          text: `About`,
-          selector: `#about`,
-        },
+        // {
+        //   text: `About`,
+        //   selector: `#about`,
+        // },
         {
           text: `Contact`,
           selector: `#contact`,

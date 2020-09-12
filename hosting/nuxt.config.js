@@ -61,6 +61,14 @@ export default {
       src: `@/plugins/globals`,
     },
   ],
+  treeShake: true,
+  webfontloader: {
+    google: {
+      families: [
+        `Work Sans:400,700`,
+      ], // Loads Work Sans font with weights 400 and 700
+    },
+  },
   /*
   ** Nuxt.js dev-modules
   */
@@ -75,7 +83,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
+    `nuxt-webfontloader`,
     `@nuxtjs/pwa`,
     // Doc: https://github.com/nuxt-community/dotenv-module
     [
@@ -106,8 +114,10 @@ export default {
     customVariables: [
       `~/assets/variables.scss`,
     ],
-    font: {
-      family: `Work Sans`,
+    defaultAssets: {
+      font: {
+        family: `Work Sans`,
+      },
     },
     theme: {
       dark: true,
