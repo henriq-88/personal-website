@@ -1,34 +1,56 @@
 <template>
   <v-container>
-    <v-row class="flex-nowrap">
-      <v-col class="flex-grow-0 ">
-        <v-img
-          src="/me.jpg"
-          width="400"
-        >
-          <v-row
-            class="fill-height profile-image-container"
-            no-gutters
-          />
-        </v-img>
+    <v-row justify="center">
+      <v-col
+        :class="{
+          'flex-grow-0': mdAndUp,
+        }"
+        cols="12"
+        md="4"
+      >
+        <v-row justify="center">
+          <v-img
+            src="/me.jpg"
+            width="400"
+            class="flex-grow-0"
+          >
+            <v-row
+              class="fill-height profile-image-container flex-grow-0"
+              no-gutters
+            />
+          </v-img>
+        </v-row>
       </v-col>
-      <v-col>
+      <v-col
+        cols="12"
+        md="8"
+      >
         <v-row
           no-gutters
           justify="center"
           class="flex-column fill-height"
         >
           <v-row
-            class="display-3 text-uppercase flex-grow-0"
+            :class="{
+              'display-3': mdAndUp,
+              'display-1': !mdAndUp,
+              'flex-grow-0': mdAndUp,
+            }"
+            :justify="mdAndUp ? `end` : `center`"
+            class="text-uppercase"
             no-gutters
-            justify="end"
           >
             Henrik Wassdahl
           </v-row>
           <v-row
-            class="display-4 text-uppercase flex-grow-0"
+            :class="{
+              'display-4': mdAndUp,
+              'display-2': !mdAndUp,
+              'flex-grow-0': mdAndUp,
+            }"
+            :justify="mdAndUp ? `end` : `center`"
+            class="text-uppercase flex-nowrap"
             no-gutters
-            justify="end"
           >
             <v-col class="font-weight-bold flex-grow-0">
               UX&nbsp;
@@ -52,11 +74,10 @@ export default Vue.extend({
     aboutText (): string {
       return about.text
     },
+    mdAndUp (): boolean {
+      return this.$vuetify.breakpoint.mdAndUp
+    },
   },
-
-  // created () {
-  //   about.load()
-  // },
 })
 </script>
 
