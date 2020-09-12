@@ -6,17 +6,18 @@
   "hosting": [
     {
       "site": "personal-website-8af4a",
-      "public": "hosting/dist",
       "ignore": [
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
       ],
-      "predeploy": "cd hosting && npm i && npm run lint && npm run generate && cd ..",
       "rewrites": [
         {
           "source": "**",
-          "destination": "/index.html"
+          "run": {
+            "serviceId": "nuxt-server",
+            "region": "asia-northeast1"
+          }
         }
       ]
     }
