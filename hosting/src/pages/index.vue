@@ -1,5 +1,20 @@
 <template>
-  <v-container>
+  <v-container class="pa-0">
+    <v-row
+      style="height: calc(100vh - 72px);"
+      no-gutters
+    >
+      <v-col cols="12">
+        <v-row
+          class="flex-column fill-height"
+          justify="center"
+          align="center"
+          no-gutters
+        >
+          <AboutText />
+        </v-row>
+      </v-col>
+    </v-row>
     <v-row
       id="portfolio"
       justify="center"
@@ -36,19 +51,6 @@
       </v-col>
     </v-row>
     <v-row
-      id="about"
-      class="mt-12"
-    >
-      <v-col
-        cols="12"
-        sm="8"
-        offset="0"
-        offset-sm="2"
-      >
-        <AboutText />
-      </v-col>
-    </v-row>
-    <v-row
       id="contact"
       class="mt-12"
     >
@@ -74,9 +76,6 @@ import ProjectCard from '@/components/Project/Card.vue'
 import {
   projects,
 } from '@/store/store'
-import {
-  Context,
-} from '@nuxt/types'
 
 export default Vue.extend({
   components: {
@@ -85,9 +84,6 @@ export default Vue.extend({
     FilterButton,
     ProjectCard,
   },
-  async asyncData (context: Context) {
-    await projects.load()
-  },
   data: () => ({
     filterDialog: false,
   }),
@@ -95,6 +91,9 @@ export default Vue.extend({
     projects (): any[] {
       return projects.projects
     },
+  },
+  mounted () {
+    projects.load()
   },
 })
 </script>
