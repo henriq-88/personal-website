@@ -1,7 +1,6 @@
 const colors = require(`vuetify/es5/util/colors`).default
 
 export default {
-  mode: `spa`,
   /*
   ** Headers of the page
   */
@@ -56,7 +55,7 @@ export default {
       src: `@/plugins/filters`,
     },
     {
-      src: `@/plugins/firebase`, mode: `client`,
+      src: `@/plugins/firebase`,
     },
     {
       src: `@/plugins/globals`,

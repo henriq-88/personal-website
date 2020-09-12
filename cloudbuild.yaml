@@ -1,0 +1,23 @@
+steps:
+  # Decrypt
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - kms
+      - decrypt
+      - --cyphertext-file=.env.enc
+      - --plaintext-file=.env.enc
+      - --location-global
+      - --keyring=personal-website
+      - --key=cloudbuild-env
+
+  # Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/personal-website-8af4a/nuxt-server', './hosting' ]
+
+  # Deploy image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/personal-website-8af4a/nuxt-server']
+
+  # # Deploy to Firebase
+  # - name: 'gcr.io/cloud-builders/firebase'
+  #   args: ['deploy']
