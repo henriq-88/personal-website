@@ -9,8 +9,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "deploy": "firebase deploy --debug --token=\"$FIREBASE_TOKEN\""
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "@nuxtjs/device": "1.2.7",
