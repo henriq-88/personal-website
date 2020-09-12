@@ -39,3 +39,9 @@ declare module 'vue/types/vue' {
     i18n: VueI18n
   }
 }
+
+declare global {
+  interface Window {
+    onNuxtReady(obj: object): void
+  }
+}

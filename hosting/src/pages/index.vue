@@ -74,6 +74,9 @@ import ProjectCard from '@/components/Project/Card.vue'
 import {
   projects,
 } from '@/store/store'
+import {
+  Context,
+} from '@nuxt/types'
 
 export default Vue.extend({
   components: {
@@ -82,6 +85,9 @@ export default Vue.extend({
     FilterButton,
     ProjectCard,
   },
+  async asyncData (context: Context) {
+    await projects.load()
+  },
   data: () => ({
     filterDialog: false,
   }),
@@ -89,9 +95,6 @@ export default Vue.extend({
     projects (): any[] {
       return projects.projects
     },
-  },
-  mounted () {
-    projects.load()
   },
 })
 </script>
