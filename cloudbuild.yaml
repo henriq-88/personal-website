@@ -19,5 +19,5 @@ steps:
     args: ['push', 'gcr.io/personal-website-8af4a/nuxt-server']
 
   # Deploy to Firebase
-  - name: 'gcr.io/cloud-builders/firebase'
-    args: ['deploy']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'deploy', '--prefix', '/hosting']
