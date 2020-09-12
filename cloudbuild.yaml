@@ -12,11 +12,15 @@ steps:
 
   # Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'gcr.io/personal-website-8af4a/nuxt-server', './hosting' ]
+    args: ['build', '-t', 'gcr.io/personal-website-8af4a/nuxt-server', './hosting' ]
 
   # Deploy image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/personal-website-8af4a/nuxt-server']
+
+  # Install Firebase
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install', 'firebase-tools']
 
   # Deploy to Firebase
   - name: 'gcr.io/cloud-builders/npm'
