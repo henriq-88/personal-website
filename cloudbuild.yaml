@@ -4,8 +4,8 @@ steps:
     args:
       - kms
       - decrypt
-      - --ciphertext-file=.env.enc
-      - --plaintext-file=.env.enc
+      - --ciphertext-file=hosting/.env.enc
+      - --plaintext-file=hosting/.env.enc
       - --location=global
       - --keyring=personal-website
       - --key=cloudbuild-env
