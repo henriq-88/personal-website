@@ -106,6 +106,9 @@ export default {
     customVariables: [
       `~/assets/variables.scss`,
     ],
+    font: {
+      family: `Work Sans`,
+    },
     theme: {
       dark: true,
       themes: {
