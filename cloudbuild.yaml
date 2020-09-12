@@ -20,7 +20,7 @@ steps:
 
   # Install Firebase
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['install', 'firebase-tools']
+    args: ['install', 'firebase-tools', '--prefix', 'hosting']
 
   # Deploy to Firebase
   - name: 'gcr.io/cloud-builders/npm'
