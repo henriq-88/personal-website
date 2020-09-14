@@ -4,22 +4,35 @@
     max-width="768"
   >
     <v-card>
-      <v-card-title>Filter</v-card-title>
+      <v-card-title>
+        Filter
+        <v-btn
+          absolute
+          top
+          right
+          icon
+          @click="value_ = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-card-title>
       <v-card-text>
         <v-row>
           <v-col>
             <v-select
               v-model="selectedCategory"
-              label="Category"
               :items="categories"
+              label="Category"
               clearable
+              outlined
             />
           </v-col>
           <v-col>
             <v-select
               v-model="selectedSorting"
-              label="Sort by"
               :items="sortings"
+              label="Sort by"
+              outlined
             />
           </v-col>
         </v-row>
@@ -34,6 +47,7 @@
           chips
           multiple
           clearable
+          outlined
         >
           <template #selection="{ item }">
             <v-chip
@@ -44,14 +58,20 @@
             </v-chip>
           </template>
         </v-combobox>
+        <v-row
+          no-gutters
+          justify="center"
+        >
+          <v-btn
+            text
+            outlined
+            @click="clear"
+          >
+            Clear
+          </v-btn>
+        </v-row>
       </v-card-text>
       <v-card-actions>
-        <v-btn
-          text
-          @click="clear"
-        >
-          Clear
-        </v-btn>
         <v-spacer />
         <v-btn
           text
@@ -175,3 +195,9 @@ export default mixins(vModel)
     },
   })
 </script>
+
+<style lang="scss" scoped>
+::v-deep .v-select.v-select--chips:not(.v-text-field--single-line).v-text-field--enclosed .v-select__selections {
+  min-height: initial;
+}
+</style>

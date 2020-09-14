@@ -11,7 +11,6 @@
         v-for="link in links"
         :key="link.icon"
         icon
-        :color="link.color"
         class="mx-2"
         target="_blank"
         :href="link.url"

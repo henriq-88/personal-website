@@ -73,7 +73,7 @@ export default mixins(form)
       loadingSend: false,
     }),
     computed: {
-      rules (): object {
+      rules () {
         return this.$global.rules
       },
     },
