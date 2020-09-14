@@ -61,7 +61,7 @@ export default {
       src: `@/plugins/globals`,
     },
   ],
-  treeShake: true,
+  extractCSS: true,
   webfontloader: {
     google: {
       families: [
@@ -77,7 +77,12 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     `@nuxtjs/device`,
     `@nuxtjs/eslint-module`,
-    `@nuxtjs/vuetify`,
+    [
+      `@nuxtjs/vuetify`,
+      {
+        treeShake: true,
+      },
+    ],
   ],
   /*
   ** Nuxt.js modules
@@ -85,9 +90,8 @@ export default {
   modules: [
     `nuxt-webfontloader`,
     `@nuxtjs/pwa`,
-    // Doc: https://github.com/nuxt-community/dotenv-module
     [
-      `@nuxtjs/dotenv`,
+      `@nuxtjs/dotenv`, // Doc: https://github.com/nuxt-community/dotenv-module
       {
         filename: process.env.NODE_ENV === `development` ? `.env.local` : `.env`,
       },
