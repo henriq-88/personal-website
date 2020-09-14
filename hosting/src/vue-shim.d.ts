@@ -12,7 +12,7 @@ import {
 import {
   Device,
 } from '@nuxtjs/device/lib/types'
-import {
+import VueRouter, {
   Route,
 } from 'vue-router'
 
@@ -33,6 +33,7 @@ declare module 'vue/types/vue' {
     $device: Device
     $store: Store<any>
     $route: Route
+    $router: VueRouter
   }
 
   interface VueConstructor {

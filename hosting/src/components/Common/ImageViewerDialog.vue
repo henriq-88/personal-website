@@ -32,7 +32,7 @@
       align="center"
     >
       <v-responsive
-        v-if="currentMedia.type === `video`"
+        v-if="currentMedia && currentMedia.type === `video`"
         :aspect-ratio="930/523"
         style="position: fixed;"
         :width="isMobile ? `100%` : `90%`"
@@ -47,7 +47,7 @@
         />
       </v-responsive>
       <v-img
-        v-else-if="currentMedia.type === `image`"
+        v-else-if="currentMedia && currentMedia.type === `image`"
         :src="currentMedia.url"
         :max-height="isMobile ? `100%` : `90%`"
         :max-width="isMobile ? `100%` : `90%`"

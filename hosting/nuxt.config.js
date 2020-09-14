@@ -166,5 +166,4 @@ export default {
     },
   },
   srcDir: `src`,
-  extractCSS: true,
 }
