@@ -65,6 +65,10 @@ export default {
     manifest: {
       display: `browser`,
     },
+    config: {
+      debug: process.env.NODE_ENV === `production`,
+    },
+    offlineStrategy: `StaleWhileRevalidate`,
   },
   extractCSS: true,
   webfontloader: {
