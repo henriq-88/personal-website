@@ -61,6 +61,11 @@ export default {
       src: `@/plugins/globals`,
     },
   ],
+  pwa: {
+    manifest: {
+      display: `browser`,
+    },
+  },
   extractCSS: true,
   webfontloader: {
     google: {
