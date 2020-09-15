@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row
-      class="display-4 grey--text text--darken-3"
+      class="display-4 grey--text text--darken-1"
       justify="center"
       no-gutters
     >
