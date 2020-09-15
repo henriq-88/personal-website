@@ -37,6 +37,7 @@
     <v-spacer />
     <v-app-bar-nav-icon
       v-if="$vuetify.breakpoint.xs"
+      :aria-label="`Menu`"
       @click="value_ = !value_"
     />
     <v-tabs

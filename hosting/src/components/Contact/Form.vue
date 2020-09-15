@@ -82,13 +82,19 @@ export default mixins(form)
       async send () {
         if (!this.validateForm()) return
         const {
-          name, email, organization, message,
+          name,
+          email,
+          organization,
+          message,
         } = this
         const snackbar = getModule(SnackbarModule, this.$store)
         this.loadingSend = true
         try {
           await messages.send({
-            name, email, organization, message,
+            name,
+            email,
+            organization,
+            message,
           })
           this.resetForm()
           snackbar.addSiteMessage({
