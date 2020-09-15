@@ -2,11 +2,12 @@
   <v-hover #default="{ hover }">
     <v-card
       v-scroll="updateMobileAndIntersectsCenter"
+      :height="256"
+      :to="`/${project.id}`"
+      :aria-label="project.name"
       color="white"
       dark
-      :height="256"
       tile
-      :to="`/${project.id}`"
     >
       <v-img
         :src="project.banner"
@@ -99,14 +100,20 @@
 </template>
 
 <script lang="ts">
+import {
+  Project,
+} from '@/types'
 import Vue from 'vue'
+import {
+  PropValidator,
+} from 'vue/types/options'
 
 export default Vue.extend({
   props: {
     project: {
       type: Object,
       required: true,
-    },
+    } as PropValidator<Project>,
   },
   data: () => ({
     isMobileAndIntersectsCenter: false,
