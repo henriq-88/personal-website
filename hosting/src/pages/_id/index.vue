@@ -220,6 +220,7 @@
                     v-if="project.website"
                     :href="project.website"
                     target="_blank"
+                    rel="noreferrer"
                     class="text-no-wrap"
                   >
                     {{ project.website }}

@@ -10,10 +10,11 @@
       <v-btn
         v-for="link in links"
         :key="link.icon"
+        :href="link.url"
         icon
         class="mx-2"
         target="_blank"
-        :href="link.url"
+        rel="noreferrer"
       >
         <v-icon>{{ link.icon }}</v-icon>
       </v-btn>
