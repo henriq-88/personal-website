@@ -70,6 +70,7 @@
           no-gutters
         >
           <v-btn
+            :aria-label="`Previous image`"
             icon
             x-large
             class="black ma-4"
@@ -90,6 +91,7 @@
           no-gutters
         >
           <v-btn
+            :aria-label="`Next image`"
             icon
             x-large
             class="black ma-4"
@@ -105,6 +107,7 @@
       </v-col>
     </v-row>
     <v-btn
+      :aria-label="`Close`"
       fixed
       top
       right

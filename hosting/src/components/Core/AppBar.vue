@@ -14,6 +14,7 @@
       <v-expand-x-transition origin="right">
         <v-btn
           v-if="!isIndexPage"
+          :aria-label="`Back`"
           icon
           class="mr-2"
           @click="$router.go(-1)"

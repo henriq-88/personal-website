@@ -4,6 +4,7 @@
     fab
     light
     style="bottom: 12px; right: 12px;"
+    :aria-label="`Open filter`"
     @click="filterDialog = true"
   >
     <v-icon>mdi-filter</v-icon>

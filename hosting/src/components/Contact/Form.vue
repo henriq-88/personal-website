@@ -37,12 +37,13 @@
       />
     </v-form>
     <v-btn
+      :disabled="!valid_"
+      :loading="loadingSend"
+      :aria-label="`Send`"
       block
       large
       color="primary black--text"
       dark
-      :disabled="!valid_"
-      :loading="loadingSend"
       @click="send"
     >
       {{ $t(`common.send`) }}
