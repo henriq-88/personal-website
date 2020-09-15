@@ -12,6 +12,7 @@
       </div>
       <v-spacer />
       <v-btn
+        :aria-label="`Close`"
         text
         @click="snackbar = false"
       >

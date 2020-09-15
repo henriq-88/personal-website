@@ -7,6 +7,7 @@
       <v-card-title>
         Filter
         <v-btn
+          :aria-label="`Close`"
           absolute
           top
           right
@@ -63,6 +64,7 @@
           justify="center"
         >
           <v-btn
+            :aria-label="`Clear filter`"
             text
             outlined
             @click="clear"
@@ -74,12 +76,14 @@
       <v-card-actions>
         <v-spacer />
         <v-btn
+          :aria-label="`Cancel`"
           text
           @click="value_ = false"
         >
           Cancel
         </v-btn>
         <v-btn
+          :aria-label="`Save`"
           text
           @click="save"
         >

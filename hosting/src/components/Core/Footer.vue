@@ -11,6 +11,7 @@
         v-for="link in links"
         :key="link.icon"
         :href="link.url"
+        :aria-label="`${link.name} profile`"
         icon
         class="mx-2"
         target="_blank"
@@ -36,22 +37,27 @@ export default Vue.extend({
       {
         url: `https://www.facebook.com/henrik.wassdahl`,
         icon: `mdi-facebook`,
+        name: `Facebook`,
       },
       {
         url: `https://github.com/henriq-88`,
         icon: `mdi-github`,
+        name: `Github`,
       },
       {
         url: `https://bitbucket.org/Seline88`,
         icon: `mdi-bitbucket`,
+        name: `Bitbucket`,
       },
       {
         url: `https://www.linkedin.com/in/henrikwassdahl`,
         icon: `mdi-linkedin`,
+        name: `LinkedIn`,
       },
       {
         url: `https://stackoverflow.com/users/2375978/henrik-wassdahl`,
         icon: `mdi-stack-overflow`,
+        name: `StackOverflow`,
       },
     ],
   }),
