@@ -20,7 +20,7 @@
       justify="center"
       no-gutters
     >
-      <div class="display-4 grey--text text--darken-3">
+      <div class="display-4 grey--text text--darken-1">
         {{ $t(`common.portfolio`) }}
       </div>
     </v-row>
