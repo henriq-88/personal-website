@@ -1,5 +1,14 @@
-import { createTheme, PaletteOptions } from '@mui/material';
+import { createTheme, PaletteOptions, ThemeOptions } from '@mui/material';
 import { orange, purple } from '@mui/material/colors';
+
+const baseThemeOptions: ThemeOptions = ({
+  typography: {
+    fontFamily: [
+      'Inter',
+      'sans-serif',
+    ].join(','),
+  }
+});
 
 const darkThemePalette: PaletteOptions = ({
   mode: 'dark',
@@ -22,9 +31,11 @@ const lightThemePalette: PaletteOptions = ({
 });
 
 export const buildDarkTheme = () => createTheme({
+  ...baseThemeOptions,
   palette: darkThemePalette,
 });
 
 export const buildLightTheme = () => createTheme({
+  ...baseThemeOptions,
   palette: lightThemePalette,
 });
