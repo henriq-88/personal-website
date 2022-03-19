@@ -30,12 +30,14 @@ const lightThemePalette: PaletteOptions = ({
   },
 });
 
-export const buildDarkTheme = () => createTheme({
+export const buildDarkTheme = (options?: ThemeOptions) => createTheme({
   ...baseThemeOptions,
+  ...options,
   palette: darkThemePalette,
 });
 
-export const buildLightTheme = () => createTheme({
+export const buildLightTheme = (options?: ThemeOptions) => createTheme({
   ...baseThemeOptions,
+  ...options,
   palette: lightThemePalette,
 });
