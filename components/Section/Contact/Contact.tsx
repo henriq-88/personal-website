@@ -9,13 +9,6 @@ interface ContactSectionProps {
 const ContactSection: React.VFC<ContactSectionProps> = (props) => {
   const { ref, width = 0, height = 0 } = useResizeDetector();
 
-  const styles = {
-    textInput: {
-      borderTopLeftRadius: 12,
-      borderTopRightRadius: 12,
-    }
-  } as const;
-
   return (
     <FullPageSection
       id="contact"
@@ -53,18 +46,12 @@ const ContactSection: React.VFC<ContactSectionProps> = (props) => {
                 type="text"
                 label="Name"
                 variant="filled"
-                InputProps={{
-                  sx: styles.textInput
-                }}
                 />
               <TextField
                 fullWidth
                 type="email"
                 label="Email"
                 variant="filled"
-                InputProps={{
-                  sx: styles.textInput
-                }}
                 />
               <TextField
                 fullWidth
@@ -73,18 +60,12 @@ const ContactSection: React.VFC<ContactSectionProps> = (props) => {
                 type="text"
                 label="Message"
                 variant="filled"
-                InputProps={{
-                  sx: styles.textInput
-                }}
               />
               <Button
                 disabled
                 variant="contained"
                 disableElevation
                 size="large"
-                sx={{
-                  borderRadius: 3
-                }}
               >
                 <SendIcon sx={{
                   mr: 1,

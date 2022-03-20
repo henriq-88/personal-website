@@ -31,7 +31,6 @@ const AppBar: React.VFC<AppBarProps> = (props) => {
           sx={{
             minWidth: 0,
             p: 1,
-            borderRadius: `25%`,
           }}
           onClick={() => setSettingsDrawerOpen((open) => !open)}
         >
