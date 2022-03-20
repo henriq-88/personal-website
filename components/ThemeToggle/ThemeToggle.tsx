@@ -29,7 +29,6 @@ const ThemeToggle: React.VFC<ThemeToggleProps> = (props) => {
       <Typography
         variant="caption"
         sx={{
-          // mt: 1,
           textTransform: 'uppercase',
         }}
       >
@@ -37,6 +36,7 @@ const ThemeToggle: React.VFC<ThemeToggleProps> = (props) => {
       </Typography>
       <ToggleButtonGroup
         value={mode}
+        color="secondary"
         exclusive
         onChange={(event, newMode: typeof mode) => handleModeChange(newMode)}
         aria-label="theme mode"

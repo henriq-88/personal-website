@@ -1,6 +1,6 @@
-import { Menu as MenuIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import { Settings as SettingsIcon } from '@mui/icons-material';
 import {
-  Box, AppBar as MUIAppBar, Toolbar, IconButton, Typography, Button,
+  Box, AppBar as MUIAppBar, Toolbar, Button,
 } from '@mui/material';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
@@ -12,35 +12,33 @@ interface AppBarProps {
 const AppBar: React.VFC<AppBarProps> = (props) => {
   const setSettingsDrawerOpen = useSetRecoilState(settingsDrawerOpenState);
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <MUIAppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="settings"
-            sx={{ mr: 2 }}
-            onClick={() => setSettingsDrawerOpen((open) => !open)}
-          >
-            <SettingsIcon />
-          </IconButton>
-        </Toolbar>
-      </MUIAppBar>
-    </Box>
+    <MUIAppBar
+      position="absolute"
+      elevation={0}
+      color="transparent"
+      sx={{
+        padding: `0 12px`
+      }}
+    >
+      <Toolbar style={{
+        padding: 0,
+      }}>
+        <Box sx={{flexGrow: 1}} />
+        <Button
+          variant="outlined"
+          aria-label="settings"
+          color="inherit"
+          sx={{
+            minWidth: 0,
+            p: 1,
+            borderRadius: `25%`,
+          }}
+          onClick={() => setSettingsDrawerOpen((open) => !open)}
+        >
+          <SettingsIcon />
+        </Button>
+      </Toolbar>
+    </MUIAppBar>
   );
 };
 

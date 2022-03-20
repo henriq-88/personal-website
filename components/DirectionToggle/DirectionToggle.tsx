@@ -18,7 +18,6 @@ const DirectionToggle: React.VFC<DirectionToggleProps> = (props) => {
       <Typography
         variant="caption"
         sx={{
-          // mt: 2,
           textTransform: 'uppercase',
         }}
       >
@@ -27,6 +26,7 @@ const DirectionToggle: React.VFC<DirectionToggleProps> = (props) => {
       <ToggleButtonGroup
         value={direction}
         exclusive
+        color="secondary"
         onChange={(event, newDirection: Direction) => handleDirectionChange(newDirection)}
         aria-label="theme mode"
       >
