@@ -1,6 +1,6 @@
 import ContinueButton from "@/components/ContinueButton";
 import FullPageSection from "@/components/Section/FullPage";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { useResizeDetector } from "react-resize-detector";
 
 interface AboutSectionProps {
@@ -34,7 +34,7 @@ const AboutSection: React.VFC<AboutSectionProps> = (props) => {
             >
               <img
                 alt="picture of me"
-                src="https://wassdahl.dev/me.jpg"
+                src="/me.jpg"
                 style={{
                   borderRadius: `25%`,
                   width: `100%`,
