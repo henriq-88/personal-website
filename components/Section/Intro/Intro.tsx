@@ -58,8 +58,6 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
                 sx={{
                   minWidth: 0,
                   p: 1,
-                  borderRadius: `25%`,
-                  borderColor: `rgba(currentColor, 0.2)`
                 }}
               >
                 <GitHubIcon />
@@ -73,7 +71,6 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
                 sx={{
                   minWidth: 0,
                   p: 1,
-                  borderRadius: `25%`,
                 }}
               >
                 <LinkedInIcon />
@@ -87,7 +84,6 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
                 sx={{
                   minWidth: 0,
                   p: 1,
-                  borderRadius: `25%`,
                 }}
               >
                 <StackOverflowIcon />
