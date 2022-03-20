@@ -58,9 +58,8 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
                 src="https://c.tenor.com/ZgbW9V5PKoMAAAAC/banana-dance-dancing-banana.gif"
                 style={{
                   borderRadius: `25%`,
-                  width: `100%`,
-                  aspectRatio: `1/1`,
                   maxWidth: 512,
+                  width: `100%`,
                 }}
               />
             </Box>
