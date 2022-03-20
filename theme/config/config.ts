@@ -11,7 +11,10 @@ const baseThemeOptions: ThemeOptions = ({
     h1: {
       fontWeight: 700,
     }
-  }
+  },
+  shape: {
+    borderRadius: 12,
+  },
 });
 
 const darkThemePalette: PaletteOptions = ({
