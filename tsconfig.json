@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -24,6 +24,7 @@
     }
   },
   "include": [
+    "next.config.mjs",
     "next-env.d.ts",
     ".eslintrc.js",
     "**/*.js",
