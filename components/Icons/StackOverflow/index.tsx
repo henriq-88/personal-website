@@ -1,2 +1,2 @@
-export { default } from "./Stackoverflow"
-export * from "./Stackoverflow"
+export { default } from "./StackOverflow"
+export * from "./StackOverflow"

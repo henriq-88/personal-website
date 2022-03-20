@@ -54,6 +54,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
               alignItems="center"
             >
               <img
+                alt="dancing banana gif"
                 src="https://c.tenor.com/ZgbW9V5PKoMAAAAC/banana-dance-dancing-banana.gif"
                 style={{
                   borderRadius: `25%`,

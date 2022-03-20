@@ -33,6 +33,7 @@ const AboutSection: React.VFC<AboutSectionProps> = (props) => {
               alignItems="center"
             >
               <img
+                alt="picture of me"
                 src="https://wassdahl.dev/me.jpg"
                 style={{
                   borderRadius: `25%`,
