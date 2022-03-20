@@ -1,4 +1,10 @@
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  experiments: {
+    topLevelAwait: true,
+  },
   experimental: {
     emotion: {
       sourceMap: true,
@@ -15,3 +21,5 @@ module.exports = {
     ignoreBuildErrors: true,
   },
 };
+
+export default nextConfig;
