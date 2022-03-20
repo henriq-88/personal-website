@@ -1,9 +1,9 @@
-import { ThemeProvider as MUIThemeProvider, useMediaQuery } from '@mui/material';
+import { CssBaseline, ThemeProvider as MUIThemeProvider, useMediaQuery } from '@mui/material';
 import { useEffect, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { directionState, themeModeState } from '@/state/states';
-import { buildDarkTheme, buildLightTheme } from '../util';
-import RTLProvider from '../RTLProvider';
+import { buildDarkTheme, buildLightTheme } from '@/theme/config';
+import RTLProvider from '@/theme/RTLProvider';
 
 interface ThemeProviderProps {
 }
@@ -29,6 +29,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
 
   return (
     <MUIThemeProvider theme={theme}>
+      <CssBaseline />
       {direction === `rtl`
         ? <RTLProvider>{props.children}</RTLProvider>
         : <>{props.children}</>

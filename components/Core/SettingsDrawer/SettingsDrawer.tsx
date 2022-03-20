@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 import {
-  Box, Divider, Drawer, IconButton, Stack, Typography,
+  Box, Divider, Drawer, IconButton, Stack, Toolbar, Typography,
 } from '@mui/material';
 import { Close as CloseIcon } from '@mui/icons-material';
 import { settingsDrawerOpenState } from '@/state/states';
@@ -16,21 +16,31 @@ const SettingsDrawer: React.VFC<SettingsDrawerProps> = (props) => {
     <Drawer
       anchor="right"
       open={settingsDrawerOpen}
+      PaperProps={{
+        sx: {
+          backgroundImage: `none`,
+        }
+      }}
       onClose={() => setSettingsDrawerOpen(false)}
     >
       <Box
         sx={{ width: 340 }}
         role="presentation"
       >
-        <Stack direction="row" justifyContent="space-between" alignItems="center" p={1.5}>
-          <Typography>
+        <Toolbar sx={{
+          padding: `0 12px !important`,
+        }}>
+          <Typography sx={{
+            flexGrow: 1
+          }}>
             Settings
-
           </Typography>
           <IconButton onClick={() => setSettingsDrawerOpen(false)}>
             <CloseIcon />
           </IconButton>
-        </Stack>
+        </Toolbar>
+        {/* <Stack direction="row" justifyContent="space-between" alignItems="center" p={1.5}>
+        </Stack> */}
         <Divider />
         <Stack p={1.5} justifyContent="stretch" sx={{
           "& > span": {
