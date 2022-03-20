@@ -54,6 +54,7 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
                 color="inherit"
                 href="https://github.com/henriq-88"
                 target="_blank"
+                aria-label="github profile"
                 sx={{
                   minWidth: 0,
                   p: 1,
@@ -68,6 +69,7 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
                 color="inherit"
                 href="https://www.linkedin.com/in/henrikwassdahl/"
                 target="_blank"
+                aria-label="linkedin profile"
                 sx={{
                   minWidth: 0,
                   p: 1,
@@ -81,6 +83,7 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
                 color="inherit"
                 href="https://stackoverflow.com/users/2375978/henrik-wassdahl"
                 target="_blank"
+                aria-label="stackoverflow profile"
                 sx={{
                   minWidth: 0,
                   p: 1,
