@@ -33,7 +33,6 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
             <Stack
               flex={1}
               justifyContent="center"
-              alignItems="center"
             >
               <Typography variant="h1">{`Projects`}</Typography>
               <Typography variant="h2">{`A glimse into my world`}</Typography>
