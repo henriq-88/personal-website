@@ -28,7 +28,7 @@ const DirectionToggle: React.VFC<DirectionToggleProps> = (props) => {
         exclusive
         color="secondary"
         onChange={(event, newDirection: Direction) => handleDirectionChange(newDirection)}
-        aria-label="theme mode"
+        aria-label="direction"
       >
         <ToggleButton
           value="ltr"
