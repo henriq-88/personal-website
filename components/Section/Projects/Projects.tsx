@@ -2,20 +2,18 @@ import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
-import { useResizeDetector } from 'react-resize-detector';
+import { useWindowSize } from "rooks";
 
 interface ProjectsSectionProps {
 }
 
 const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
   const theme = useTheme();
-  const { ref, width = 0, height = 0 } = useResizeDetector();
+  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
 
   return (
     <FullPageSection
-      ref={ref}
       id="projects"
-      position="relative"
       sx={{
         backgroundColor: theme.palette.mode === `dark` ? `#491607` : deepPurple[`A100`]
       }}
@@ -35,6 +33,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
             <Stack
               flex={1}
               justifyContent="center"
+              alignItems="center"
             >
               <Typography variant="h1">{`Projects`}</Typography>
               <Typography variant="h2">{`A glimse into my world`}</Typography>
@@ -71,6 +70,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        p={2}
         sx={{
           width: `100%`,
           height: `100%`,
@@ -86,7 +86,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
         </Typography>
       </Box>
       <Box
-        bottom={24}
+        mt={4}
         display="flex"
         justifyContent="center"
         width="100%"

@@ -16,6 +16,7 @@ const FullPageSection: React.FC<FullPageSectionProps> = React.forwardRef((props,
       justifyContent="center"
       alignItems="center"
       py={4}
+      position="relative"
     >
       {children}
     </Stack>
