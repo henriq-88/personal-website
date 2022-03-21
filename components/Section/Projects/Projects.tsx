@@ -27,7 +27,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
         <Container maxWidth={width < height ? `sm` : `lg`}>
           <Stack
             direction={width < height ? `column` : `row`}
-            spacing={8}
+            spacing={width < height ? 4 : 8}
             flex={1}
           >
             <Stack
