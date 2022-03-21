@@ -1,19 +1,16 @@
 import { Box, Button, Container, Stack, TextField, Typography } from "@mui/material";
 import FullPageSection from "@/components/Section/FullPage";
 import { Send as SendIcon } from "@mui/icons-material";
-import { useResizeDetector } from "react-resize-detector";
+import { useWindowSize } from "rooks";
 
 interface ContactSectionProps {
 }
 
 const ContactSection: React.VFC<ContactSectionProps> = (props) => {
-  const { ref, width = 0, height = 0 } = useResizeDetector();
+  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
 
   return (
-    <FullPageSection
-      id="contact"
-      ref={ref}
-    >
+    <FullPageSection id="contact">
       <Box
         display="flex"
         justifyContent="center"

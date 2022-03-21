@@ -1,6 +1,7 @@
 import { createTheme, ThemeOptions } from '@mui/material';
 import { deepPurple, deepOrange } from '@mui/material/colors';
 import { responsiveFontSizes } from '@mui/material/styles';
+import { merge } from "lodash-es";
 
 const baseThemeOptions: ThemeOptions = ({
   typography: {
@@ -15,6 +16,15 @@ const baseThemeOptions: ThemeOptions = ({
   shape: {
     borderRadius: 12,
   },
+  components: {
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          minHeight: 64,
+        }
+      }
+    }
+  }
 });
 
 const darkThemeOptions: ThemeOptions = ({
@@ -34,7 +44,7 @@ const darkThemeOptions: ThemeOptions = ({
     MuiButton: {
       styleOverrides: {
         outlined: {
-          borderColor: `rgba(255, 255, 255, 0.23)`,
+          borderColor: `rgba(255, 255, 255, 0.12)`,
         },
       },
     },
@@ -58,7 +68,7 @@ const lightThemeOptions: ThemeOptions = ({
     MuiButton: {
       styleOverrides: {
         outlined: {
-          borderColor: `rgba(0, 0, 0, 0.23)`,
+          borderColor: `rgba(0, 0, 0, 0.12)`,
         },
       },
     },
@@ -66,19 +76,11 @@ const lightThemeOptions: ThemeOptions = ({
 });
 
 export const buildDarkTheme = (options?: ThemeOptions) => {
-  const theme = createTheme({
-    ...baseThemeOptions,
-    ...options,
-    ...darkThemeOptions,
-  });
+  const theme = createTheme(merge(baseThemeOptions, darkThemeOptions, options));
   return responsiveFontSizes(theme);
 };
 
 export const buildLightTheme = (options?: ThemeOptions) => {
-  const theme = createTheme({
-    ...baseThemeOptions,
-    ...options,
-    ...lightThemeOptions,
-  });
+  const theme = createTheme(merge(baseThemeOptions, lightThemeOptions, options));
   return responsiveFontSizes(theme);
 };

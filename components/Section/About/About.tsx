@@ -1,19 +1,16 @@
 import ContinueButton from "@/components/ContinueButton";
 import FullPageSection from "@/components/Section/FullPage";
 import { Box, Container, Stack, Typography } from "@mui/material";
-import { useResizeDetector } from "react-resize-detector";
+import { useWindowSize } from "rooks"
 
 interface AboutSectionProps {
 }
 
 const AboutSection: React.VFC<AboutSectionProps> = (props) => {
-  const { ref, width = 0, height = 0 } = useResizeDetector();
+  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
 
   return (
-    <FullPageSection
-      id="about"
-      ref={ref}
-    >
+    <FullPageSection id="about">
       <Box
         display="flex"
         justifyContent="center"
@@ -60,7 +57,6 @@ const AboutSection: React.VFC<AboutSectionProps> = (props) => {
         </Container>
       </Box>
       <Box
-        bottom={24}
         mt={4}
         display="flex"
         justifyContent="center"
