@@ -4,22 +4,18 @@ import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
 import StackOverflowIcon from "@/components/Icons/StackOverflow";
 import { GitHub as GitHubIcon, LinkedIn as LinkedInIcon } from "@mui/icons-material";
-import { useResizeDetector } from "react-resize-detector";
+import { useWindowSize } from "rooks";
 
 interface IntroSectionProps {
 }
 
 const IntroSection: React.VFC<IntroSectionProps> = (props) => {
   const theme = useTheme();
-  const { ref, width = 0, height = 0 } = useResizeDetector();
+  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
+
   return (
     <FullPageSection
-      ref={ref}
       id="intro"
-      height="100vh"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
       sx={{
         backgroundColor: theme.palette.mode === `dark` ? `#24133D` : deepOrange[`A100`]
       }}
@@ -29,6 +25,7 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
         justifyContent="center"
         alignItems="center"
         flex={1}
+        mt={4}
       >
         <Container maxWidth={width < height ? `sm` : `lg`}>
           <Stack flex={1}>
@@ -93,7 +90,6 @@ const IntroSection: React.VFC<IntroSectionProps> = (props) => {
         </Container>
       </Box>
       <Box
-        bottom={24}
         mt={4}
         display="flex"
         justifyContent="center"
