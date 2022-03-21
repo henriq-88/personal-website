@@ -55,13 +55,13 @@ const lightThemeOptions: ThemeOptions = ({
   palette: {
     mode: 'light',
     action: {
-      active: deepOrange[500],
+      active: deepOrange[`A200`],
     },
     primary: {
       main: deepPurple[500],
     },
     secondary: {
-      main: deepOrange[500],
+      main: deepOrange[`A200`],
     },
   },
   components: {
