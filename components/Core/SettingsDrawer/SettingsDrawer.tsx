@@ -24,23 +24,22 @@ const SettingsDrawer: React.VFC<SettingsDrawerProps> = (props) => {
       onClose={() => setSettingsDrawerOpen(false)}
     >
       <Box
-        sx={{ width: 340 }}
+        sx={{ width: 330 }}
         role="presentation"
       >
-        <Toolbar sx={{
-          padding: `0 12px !important`,
-        }}>
+        <Toolbar>
           <Typography sx={{
             flexGrow: 1
           }}>
             Settings
           </Typography>
-          <IconButton onClick={() => setSettingsDrawerOpen(false)}>
+          <IconButton
+            aria-label="close"
+            onClick={() => setSettingsDrawerOpen(false)}
+          >
             <CloseIcon />
           </IconButton>
         </Toolbar>
-        {/* <Stack direction="row" justifyContent="space-between" alignItems="center" p={1.5}>
-        </Stack> */}
         <Divider />
         <Stack p={1.5} justifyContent="stretch" sx={{
           "& > span": {

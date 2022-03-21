@@ -21,10 +21,15 @@ const baseThemeOptions: ThemeOptions = ({
       styleOverrides: {
         root: {
           minHeight: 64,
-        }
-      }
-    }
-  }
+          paddingLeft: 12,
+          paddingRight: 12,
+        },
+      },
+      defaultProps: {
+        disableGutters: true,
+      },
+    },
+  },
 });
 
 const darkThemeOptions: ThemeOptions = ({

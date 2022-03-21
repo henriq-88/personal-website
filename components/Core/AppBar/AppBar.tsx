@@ -16,13 +16,8 @@ const AppBar: React.VFC<AppBarProps> = (props) => {
       position="absolute"
       elevation={0}
       color="transparent"
-      sx={{
-        padding: `0 12px`
-      }}
     >
-      <Toolbar style={{
-        padding: 0,
-      }}>
+      <Toolbar disableGutters>
         <Box sx={{flexGrow: 1}} />
         <Button
           variant="outlined"
