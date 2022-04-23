@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { directionState, themeModeState } from '@/state/states';
 import { buildDarkTheme, buildLightTheme } from '@/theme/config';
 import RTLProvider from '@/theme/RTLProvider';
+import { SnackbarProvider } from 'notistack';
 
 interface ThemeProviderProps {
 }
@@ -29,11 +30,13 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
 
   return (
     <MUIThemeProvider theme={theme}>
-      <CssBaseline />
-      {direction === `rtl`
-        ? <RTLProvider>{props.children}</RTLProvider>
-        : <>{props.children}</>
-    }
+      <SnackbarProvider maxSnack={3}>
+        <CssBaseline />
+        {direction === `rtl`
+          ? <RTLProvider>{props.children}</RTLProvider>
+          : <>{props.children}</>
+        }
+      </SnackbarProvider>
     </MUIThemeProvider>
   );
 };

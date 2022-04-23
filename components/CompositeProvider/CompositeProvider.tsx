@@ -7,7 +7,7 @@ interface CompositeProviderProps {
 const CompositeProvider: React.FC<CompositeProviderProps> = (props) => (
   <StateProvider>
     <ThemeProvider>
-      {props.children}
+        {props.children}
     </ThemeProvider>
   </StateProvider>
 );
