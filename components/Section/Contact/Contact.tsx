@@ -1,13 +1,47 @@
-import { Box, Button, Container, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Container, Stack, TextField, Typography } from "@mui/material";
 import FullPageSection from "@/components/Section/FullPage";
 import { Send as SendIcon } from "@mui/icons-material";
 import { useWindowSize } from "rooks";
+import { useState } from "react";
+import { useSnackbar } from "notistack";
+import { httpsCallable } from "firebase/functions";
+import { functions } from "@/firebase/config";
 
 interface ContactSectionProps {
 }
 
 const ContactSection: React.VFC<ContactSectionProps> = (props) => {
-  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
+  const { outerWidth: width = 0, outerHeight: height = 0 } = useWindowSize();
+  const { enqueueSnackbar } = useSnackbar();
+  const sendMessage = httpsCallable(functions, `sendMessage`);
+
+  const [ name, setName ] = useState(``);
+  const [ email, setEmail ] = useState(``);
+  const [ message, setMessage ] = useState(``);
+  const [ sendLoading, setLoadingSend ] = useState(false);
+
+  const sendEmail = async () => {
+    if (sendLoading) return;
+    setLoadingSend(true);
+    try {
+      await sendMessage({
+        name,
+        email,
+        message,
+      })
+      setName(``);
+      setEmail(``);
+      setMessage(``);
+      enqueueSnackbar(`Message succefully sent`, {
+        variant: `success`,
+      });
+    } catch (err) {
+      enqueueSnackbar(`Doh! Message couldn't be sent for some reason 😥`, {
+        variant: `error`,
+      });
+    }
+    setLoadingSend(false);
+  };
 
   return (
     <FullPageSection id="contact">
@@ -39,35 +73,60 @@ const ContactSection: React.VFC<ContactSectionProps> = (props) => {
               justifyContent="center"
             >
               <TextField
+                value={name}
                 fullWidth
                 type="text"
                 label="Name"
                 variant="filled"
+                onChange={(event) => setName(event.currentTarget.value)}
                 />
               <TextField
+                value={email}
                 fullWidth
                 type="email"
                 label="Email"
                 variant="filled"
+                onChange={(event) => setEmail(event.currentTarget.value)}
                 />
               <TextField
+                value={message}
                 fullWidth
                 multiline
                 minRows={2}
                 type="text"
                 label="Message"
                 variant="filled"
+                onChange={(event) => setMessage(event.currentTarget.value)}
               />
               <Button
-                disabled
+                disabled={sendLoading || (!name || !email || !message)}
                 variant="contained"
                 disableElevation
                 size="large"
+                onClick={sendEmail}
               >
-                <SendIcon sx={{
-                  mr: 1,
-                }} />
-                <span>Hit me up</span>
+                <SendIcon
+                  sx={{
+                    mr: 1,
+                    visibility: sendLoading ? `hidden` : `visible`,
+                  }}
+                />
+                <span
+                  style={{
+                    visibility: sendLoading ? `hidden` : `visible`,
+                  }}
+                >
+                  Hit me up
+                </span>
+                {sendLoading && (
+                  <CircularProgress
+                    size={24}
+                    color="inherit"
+                    sx={{
+                      position: `absolute`
+                    }}
+                  />
+                )}
               </Button>
             </Stack>
           </Stack>

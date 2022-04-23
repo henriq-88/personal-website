@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
 import { getPerformance } from "firebase/performance";
+import { getFunctions } from "firebase/functions";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // const config = process.env.NODE_ENV === `development`
@@ -28,4 +29,4 @@ if (typeof window !== "undefined") {
   const analytics = getAnalytics(app);
 }
 
-
+export const functions = getFunctions(app);
