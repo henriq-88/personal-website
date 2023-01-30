@@ -1,4 +1,3 @@
-import { useRecoilState } from 'recoil';
 import {
   Box, Divider, Drawer, IconButton, Stack, Toolbar, Typography,
 } from '@mui/material';
@@ -6,12 +5,13 @@ import { Close as CloseIcon } from '@mui/icons-material';
 import { settingsDrawerOpenState } from '@/state/states';
 import ThemeToggle from '@/components/ThemeToggle';
 import DirectionToggle from '@/components/DirectionToggle';
+import { useAtom } from 'jotai';
 
 interface SettingsDrawerProps {
 }
 
 const SettingsDrawer: React.VFC<SettingsDrawerProps> = (props) => {
-  const [settingsDrawerOpen, setSettingsDrawerOpen] = useRecoilState(settingsDrawerOpenState);
+  const [settingsDrawerOpen, setSettingsDrawerOpen] = useAtom(settingsDrawerOpenState);
   return (
     <Drawer
       anchor="right"
