@@ -10,9 +10,11 @@ importers:
       '@mui/icons-material': 5.11.0
       '@mui/material': 5.11.6
       '@next/eslint-plugin-next': 13.1.6
+      '@next/font': 13.1.6
       '@types/lodash-es': 4.17.6
       '@types/node': 18.11.18
       '@types/react': 18.0.27
+      '@types/stylis': 4.0.2
       '@typescript-eslint/eslint-plugin': ^5.48.2
       '@typescript-eslint/parser': ^5.48.2
       eslint: ^8.32.0
@@ -37,6 +39,7 @@ importers:
       '@emotion/styled': 11.10.5_jrh5enlbqfbnumycmktdqgd6se
       '@mui/icons-material': 5.11.0_j5wvuqirnhynb4halegp2mqooy
       '@mui/material': 5.11.6_rqh7qj4464ntrqrt6banhaqg4q
+      '@next/font': 13.1.6
       firebase: 9.16.0
       jotai: 1.13.1_react@18.2.0
       lodash-es: 4.17.21
@@ -54,6 +57,7 @@ importers:
       '@types/lodash-es': 4.17.6
       '@types/node': 18.11.18
       '@types/react': 18.0.27
+      '@types/stylis': 4.0.2
       '@typescript-eslint/eslint-plugin': 5.49.0_rsaczafy73x3xqauzesvzbsgzy
       '@typescript-eslint/parser': 5.49.0_zkdaqh7it7uc4cvz2haft7rc6u
       eslint: 8.33.0
@@ -954,6 +958,10 @@ packages:
       glob: 7.1.7
     dev: true
 
+  /@next/font/13.1.6:
+    resolution: {integrity: sha512-AITjmeb1RgX1HKMCiA39ztx2mxeAyxl4ljv2UoSBUGAbFFMg8MO7YAvjHCgFhD39hL7YTbFjol04e/BPBH5RzQ==}
+    dev: false
+
   /@next/swc-android-arm-eabi/13.1.6:
     resolution: {integrity: sha512-F3/6Z8LH/pGlPzR1AcjPFxx35mPqjE5xZcf+IL+KgbW9tMkp7CYi1y7qKrEWU7W4AumxX/8OINnDQWLiwLasLQ==}
     engines: {node: '>= 10'}
@@ -1211,6 +1219,10 @@ packages:
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
+    dev: true
+
+  /@types/stylis/4.0.2:
+    resolution: {integrity: sha512-wtckGuk1eXUlUz0Qb1eXHG37Z7HWT2GfMdqRf8F/ifddTwadSS9Jwsqi4qtXk7cP7MtoyGVIHPElFCLc6HItbg==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.49.0_rsaczafy73x3xqauzesvzbsgzy:

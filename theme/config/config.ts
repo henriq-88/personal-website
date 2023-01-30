@@ -6,7 +6,7 @@ import { merge } from "lodash-es";
 const baseThemeOptions: ThemeOptions = ({
   typography: {
     fontFamily: [
-      'Poppins',
+      'var(--theme-font)',
       'sans-serif',
     ].join(','),
     h1: {
