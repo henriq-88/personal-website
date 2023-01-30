@@ -7,20 +7,15 @@
     "predeploy": [
       "pnpm --prefix \"$RESOURCE_DIR\" lint",
       "pnpm --prefix \"$RESOURCE_DIR\" build"
-    ]
+    ],
+    "source": "functions"
   },
   "hosting": {
-    "public": "out",
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   },
   "storage": {
