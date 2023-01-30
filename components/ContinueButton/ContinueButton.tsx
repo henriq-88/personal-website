@@ -8,7 +8,7 @@ interface ContinueButtonProps {
 
 const ContinueButton: React.VFC<ContinueButtonProps> = (props) => {
   const executeScroll = () => {
-    document.getElementById(props.targetId).scrollIntoView({
+    document.getElementById(props.targetId)?.scrollIntoView({
       behavior: `smooth`,
     })
   };

@@ -1,6 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  extends: ["prettier", "eslint:recommended", "next/core-web-vitals"],
+  extends: ["prettier", "eslint:recommended"],
   overrides: [
     {
       extends: [

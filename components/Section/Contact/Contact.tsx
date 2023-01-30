@@ -45,6 +45,10 @@ const ContactSection: React.VFC<ContactSectionProps> = (props) => {
     setLoadingSend(false);
   };
 
+  const handleSendEmail: React.MouseEventHandler<HTMLButtonElement> = () => {
+    void sendEmail();
+  }
+
   return (
     <FullPageSection id="contact">
       <Box
@@ -105,7 +109,7 @@ const ContactSection: React.VFC<ContactSectionProps> = (props) => {
                 variant="contained"
                 disableElevation
                 size="large"
-                onClick={sendEmail}
+                onClick={handleSendEmail}
               >
                 <SendIcon
                   sx={{

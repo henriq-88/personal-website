@@ -1,9 +1,7 @@
-/* eslint-disable react/display-name */
-import { Box, BoxProps, Stack } from "@mui/material";
+import { BoxProps, Stack } from "@mui/material";
 import React from "react";
 
-interface FullPageSectionProps extends BoxProps {
-}
+type FullPageSectionProps = BoxProps
 
 const FullPageSection: React.FC<FullPageSectionProps> = React.forwardRef((props, ref) => {
   const { children, ...rest } = props;
