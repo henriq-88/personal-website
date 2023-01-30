@@ -60,6 +60,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
                 style={{
                   borderRadius: `25%`,
                   maxWidth: 512,
+                  aspectRatio: `1/1`,
                   width: `100%`,
                 }}
               />
