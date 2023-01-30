@@ -3,13 +3,16 @@ import { deepPurple } from "@mui/material/colors";
 import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
 import { useWindowSize } from "rooks";
+import Image from "next/image";
 
 interface ProjectsSectionProps {
 }
 
 const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
   const theme = useTheme();
-  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
+  const { outerWidth, outerHeight, } = useWindowSize();
+  const width = outerWidth ?? 0
+  const height = outerHeight ?? 0
 
   return (
     <FullPageSection
@@ -51,7 +54,7 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
               justifyContent="center"
               alignItems="center"
             >
-              <img
+              <Image
                 alt="dancing banana gif"
                 src="https://c.tenor.com/ZgbW9V5PKoMAAAAC/banana-dance-dancing-banana.gif"
                 style={{

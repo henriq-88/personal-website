@@ -11,7 +11,9 @@ interface IntroSectionProps {
 
 const IntroSection: React.VFC<IntroSectionProps> = (props) => {
   const theme = useTheme();
-  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
+  const { outerWidth, outerHeight, } = useWindowSize();
+  const width = outerWidth ?? 0
+  const height = outerHeight ?? 0
 
   return (
     <FullPageSection

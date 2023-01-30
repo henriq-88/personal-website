@@ -1,13 +1,16 @@
 import ContinueButton from "@/components/ContinueButton";
 import FullPageSection from "@/components/Section/FullPage";
 import { Box, Container, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import { useWindowSize } from "rooks"
 
 interface AboutSectionProps {
 }
 
 const AboutSection: React.VFC<AboutSectionProps> = (props) => {
-  const { outerWidth: width = 0, outerHeight: height = 0,  } = useWindowSize();
+  const { outerWidth, outerHeight, } = useWindowSize();
+  const width = outerWidth ?? 0
+  const height = outerHeight ?? 0
 
   return (
     <FullPageSection id="about">
@@ -29,7 +32,7 @@ const AboutSection: React.VFC<AboutSectionProps> = (props) => {
               justifyContent="center"
               alignItems="center"
             >
-              <img
+              <Image
                 alt="picture of me"
                 src="/me.jpg"
                 style={{
