@@ -11,7 +11,9 @@ interface ContactSectionProps {
 }
 
 const ContactSection: React.VFC<ContactSectionProps> = (props) => {
-  const { outerWidth: width = 0, outerHeight: height = 0 } = useWindowSize();
+  const { outerWidth, outerHeight, } = useWindowSize();
+  const width = outerWidth ?? 0
+  const height = outerHeight ?? 0
   const { enqueueSnackbar } = useSnackbar();
   const sendMessage = httpsCallable(functions, `sendMessage`);
 
