@@ -4,10 +4,6 @@
     "indexes": "firestore.indexes.json"
   },
   "functions": {
-    "predeploy": [
-      "pnpm --prefix \"$RESOURCE_DIR\" lint",
-      "pnpm --prefix \"$RESOURCE_DIR\" build"
-    ],
     "source": "functions"
   },
   "hosting": {
