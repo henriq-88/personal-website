@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getPerformance } from "firebase/performance";
 import { getFunctions } from "firebase/functions";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+import { env } from '@/env/client.mjs';
 
 // const config = process.env.NODE_ENV === `development`
 //   ? {
@@ -22,7 +23,7 @@ const app = initializeApp(config);
 
 if (typeof window !== "undefined") {
   const appCheck = initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(process.env.NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY),
+    provider: new ReCaptchaV3Provider(env.NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY),
     isTokenAutoRefreshEnabled: true,
   });
   const perf = getPerformance(app);
