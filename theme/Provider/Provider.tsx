@@ -26,7 +26,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   ]);
 
   useEffect(() => {
-    document.querySelector(`body`).dir = direction;
+    const bodyElement = document.querySelector(`body`)
+    if (!bodyElement) {
+      return;
+    }
+    bodyElement.dir = direction;
   }, [direction])
 
   return (
