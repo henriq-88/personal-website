@@ -3,14 +3,14 @@ import {
   Box, AppBar as MUIAppBar, Toolbar, Button,
 } from '@mui/material';
 import React from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetAtom } from 'jotai';
 import { settingsDrawerOpenState } from '@/state/states';
 
 interface AppBarProps {
 }
 
 const AppBar: React.VFC<AppBarProps> = (props) => {
-  const setSettingsDrawerOpen = useSetRecoilState(settingsDrawerOpenState);
+  const setSettingsDrawerOpen = useSetAtom(settingsDrawerOpenState);
   return (
     <MUIAppBar
       position="absolute"

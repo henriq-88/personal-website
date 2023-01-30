@@ -1,13 +1,13 @@
 import { Direction, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { FormatTextdirectionRToL as FormatDirectionRToLIcon, FormatTextdirectionLToR as FormatDirectionLToRIcon } from '@mui/icons-material';
 import { directionState } from "@/state/states";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 
 interface DirectionToggleProps {
 }
 
 const DirectionToggle: React.VFC<DirectionToggleProps> = (props) => {
-  const [direction, setDirection] = useRecoilState(directionState);
+  const [direction, setDirection] = useAtom(directionState);
 
   const handleDirectionChange = (newDirection: Direction) => {
     setDirection(newDirection);

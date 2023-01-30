@@ -1,14 +1,14 @@
 import { SettingsBrightness as SettingsBrightnessIcon, DarkMode as DarkModeIcon, LightMode as LightModeIcon } from '@mui/icons-material';
 import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import { useRecoilState } from 'recoil';
 import { useMemo } from 'react';
 import { themeModeState } from '@/state/states';
+import { useAtom } from 'jotai';
 
 interface ThemeToggleProps {
 }
 
-const ThemeToggle: React.VFC<ThemeToggleProps> = (props) => {
-  const [themeMode, setThemeMode] = useRecoilState(themeModeState);
+const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
+  const [themeMode, setThemeMode] = useAtom(themeModeState);
 
   const mode = useMemo(() => {
     if (!themeMode) return 'system';
