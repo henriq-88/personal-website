@@ -19,7 +19,7 @@ const AppBar: React.FC<AppBarProps> = (props) => {
       <Toolbar disableGutters>
         <Box sx={{flexGrow: 1}} />
         <button
-          className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+          className="rounded-xl border border-solid border-[#0000001f] dark:border-[#ffffff1f] p-2 bg-transparent hover:bg-[#00000014] hover:dark:bg-[#ffffff14] transition-colors"
           aria-label="settings"
           onClick={() => setSettingsDrawerOpen((open) => !open)}
         >

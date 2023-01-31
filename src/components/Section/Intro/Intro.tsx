@@ -56,7 +56,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
             >
 
               <a
-                className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+                className="rounded-xl border border-solid border-[#0000001f] dark:border-[#ffffff1f] p-2 bg-transparent hover:bg-[#00000014] hover:dark:bg-[#ffffff14] transition-colors"
                 type="anchor"
                 href="https://github.com/henriq-88"
                 target="_blank"
@@ -65,7 +65,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
                 <GitHubIcon className="h-6 w-6 text-current" />
               </a>
               <a
-                className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+                className="rounded-xl border border-solid border-[#0000001f] dark:border-[#ffffff1f] p-2 bg-transparent hover:bg-[#00000014] hover:dark:bg-[#ffffff14] transition-colors"
                 type="anchor"
                 href="https://www.linkedin.com/in/henrikwassdahl"
                 target="_blank"
@@ -74,7 +74,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
                 <LinkedInIcon className="h-6 w-6 text-current" />
               </a>
               <a
-                className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+                className="rounded-xl border border-solid border-[#0000001f] dark:border-[#ffffff1f] p-2 bg-transparent hover:bg-[#00000014] hover:dark:bg-[#ffffff14] transition-colors"
                 type="anchor"
                 href="https://stackoverflow.com/users/2375978/henrik-wassdahl"
                 target="_blank"
