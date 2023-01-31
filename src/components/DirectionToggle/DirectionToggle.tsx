@@ -1,7 +1,8 @@
 import { Direction, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
-import { FormatTextdirectionRToL as FormatDirectionRToLIcon, FormatTextdirectionLToR as FormatDirectionLToRIcon } from '@mui/icons-material';
 import { directionState } from "@/state/states";
 import { useAtom } from "jotai";
+import FormatTextDirectionLToRIcon from "../Icons/FormatTextDirectionLToR/FormatTextDirectionLToR";
+import FormatTextDirectionRToLIcon from "../Icons/FormatTextDirectionRToL/FormatTextDirectionRToL";
 
 interface DirectionToggleProps {
 }
@@ -37,11 +38,7 @@ const DirectionToggle: React.FC<DirectionToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <FormatDirectionLToRIcon
-            sx={{
-              mr: 1,
-            }}
-          />
+          <FormatTextDirectionLToRIcon className="h-6 w-6 text-current mr-1" />
           <span>Left to right</span>
         </ToggleButton>
         <ToggleButton
@@ -51,11 +48,7 @@ const DirectionToggle: React.FC<DirectionToggleProps> = (props) => {
             flex: 1,
           }}
           >
-            <FormatDirectionRToLIcon
-              sx={{
-                mr: 1,
-              }}
-            />
+            <FormatTextDirectionRToLIcon className="h-6 w-6 text-current mr-1" />
           <span>Right to left</span>
         </ToggleButton>
       </ToggleButtonGroup>

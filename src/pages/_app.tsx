@@ -5,7 +5,6 @@ import AppBar from '@/components/Core/AppBar';
 import CompositeProvider from '@/components/CompositeProvider';
 import SettingsDrawer from '@/components/Core/SettingsDrawer';
 import { NoSsr } from '@mui/material';
-
 import { Poppins } from "@next/font/google"
 
 const poppins = Poppins({

@@ -3,6 +3,7 @@ import FullPageSection from "@/components/Section/FullPage";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useWindowSize } from "rooks"
+import MeImage from "@/assets/images/me.jpg"
 
 interface AboutSectionProps {
 }
@@ -36,7 +37,7 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
             >
               <Image
                 alt="picture of me"
-                src="/me.jpg"
+                src={MeImage}
                 width={512}
                 height={512}
                 style={{
