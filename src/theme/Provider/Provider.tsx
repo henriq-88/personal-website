@@ -33,6 +33,14 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
     bodyElement.dir = direction;
   }, [direction])
 
+  useEffect(() => {
+    const htmlElement = document.querySelector(`html`)
+    if (!htmlElement) {
+      return;
+    }
+    htmlElement.className = theme.palette.mode;
+  }, [theme])
+
   return (
     <MUIThemeProvider theme={theme}>
       <SnackbarProvider maxSnack={3}>

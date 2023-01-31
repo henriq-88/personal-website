@@ -34,7 +34,7 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
             Settings
           </Typography>
           <button
-            className="rounded-full p-2 bg-transparent hover:bg-primary/20 transition-colors text-primary"
+            className="rounded-full p-2 bg-transparent hover:dark:bg-primary-dark/20 hover:bg-primary-light/20 transition-colors text-primary-light dark:text-primary-dark"
             aria-label="close"
             onClick={() => setSettingsDrawerOpen(false)}
           >

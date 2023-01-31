@@ -9,12 +9,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: `#673ab7`,
+        primary: {
+          dark: `#673ab7`,
+          light: `#ff5722`,
+        }
       },
       fontFamily: {
         sans: ["var(--theme-font)", ...fontFamily.sans],
       },
     },
   },
+  darkMode: 'class',
   plugins: [],
 };
