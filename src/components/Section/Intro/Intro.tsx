@@ -1,6 +1,5 @@
 import { Box, Button, Container, Stack, Typography, useTheme } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
-import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
 import { useWindowSize } from "rooks";
 import StackOverflowIcon from "@/components/Icons/StackOverflow";
@@ -17,8 +16,14 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
   const height = outerHeight ?? 0
 
   return (
-    <FullPageSection
-      id="intro"
+    <Box
+      width="100%"
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      p={4}
       sx={{
         backgroundColor: theme.palette.mode === `dark` ? `#24133D` : deepOrange[`A100`]
       }}
@@ -103,7 +108,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
           label="About"
         />
       </Box>
-    </FullPageSection>
+    </Box>
   );
 };
 

@@ -15,6 +15,7 @@ const ContinueButton: React.FC<ContinueButtonProps> = (props) => {
 
   return (
     <Button
+      className="animate-bounce"
       color="inherit"
       onClick={executeScroll}
     >
