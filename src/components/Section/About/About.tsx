@@ -1,5 +1,4 @@
 import ContinueButton from "@/components/ContinueButton";
-import FullPageSection from "@/components/Section/FullPage";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useWindowSize } from "rooks"
@@ -14,7 +13,15 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
   const height = outerHeight ?? 0
 
   return (
-    <FullPageSection id="about">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection={`column`}
+      width="100%"
+      height="100%"
+      p={4}
+    >
       <Box
         display="flex"
         justifyContent="center"
@@ -75,7 +82,7 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
           label="Projects"
         />
       </Box>
-    </FullPageSection>
+    </Box>
   );
 };
 

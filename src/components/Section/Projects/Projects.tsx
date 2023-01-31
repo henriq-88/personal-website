@@ -1,6 +1,5 @@
 import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
-import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
 import { useWindowSize } from "rooks";
 import Image from "next/image";
@@ -15,8 +14,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
   const height = outerHeight ?? 0
 
   return (
-    <FullPageSection
-      id="projects"
+    <Stack
+      width="100%"
+      height="100%"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      p={4}
       sx={{
         backgroundColor: theme.palette.mode === `dark` ? `#491607` : deepPurple[`A100`]
       }}
@@ -63,7 +67,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
                 style={{
                   borderRadius: `25%`,
                   maxWidth: 512,
-                  aspectRatio: `1/1`,
+                  aspectRatio: `1`,
                   width: `100%`,
                 }}
               />
@@ -102,7 +106,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
           label="Contact"
         />
       </Box>
-    </FullPageSection>
+    </Stack>
   );
 };
 

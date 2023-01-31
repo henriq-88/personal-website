@@ -50,95 +50,93 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
   }
 
   return (
-    <FullPageSection id="contact">
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flex={1}
-      >
-        <Container maxWidth={width < height ? `sm` : `lg`}>
-          <Stack
-            direction={width < height ? `column` : `row`}
-            spacing={width < height ? 4 : 8}
-            flex={1}
-          >
-            <Stack flex={1} justifyContent="center">
-              <Typography variant="h1">{`Contact`}</Typography>
-              <Typography variant="h2">{`Do you need help to solve a problem?`}</Typography>
-              <Typography
-                sx={{mt: 2}}
-                lineHeight={2}
-              >
-                {`Let's talk bizniz and discuss your dream service/app.`}
-              </Typography>
-            </Stack>
-            <Stack
-              flex={1}
-              spacing={4}
-              justifyContent="center"
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flex={1}
+    >
+      <Container maxWidth={width < height ? `sm` : `lg`}>
+        <Stack
+          direction={width < height ? `column` : `row`}
+          spacing={width < height ? 4 : 8}
+          flex={1}
+        >
+          <Stack flex={1} justifyContent="center">
+            <Typography variant="h1">{`Contact`}</Typography>
+            <Typography variant="h2">{`Do you need help to solve a problem?`}</Typography>
+            <Typography
+              sx={{mt: 2}}
+              lineHeight={2}
             >
-              <TextField
-                value={name}
-                fullWidth
-                type="text"
-                label="Name"
-                variant="filled"
-                onChange={(event) => setName(event.currentTarget.value)}
-                />
-              <TextField
-                value={email}
-                fullWidth
-                type="email"
-                label="Email"
-                variant="filled"
-                onChange={(event) => setEmail(event.currentTarget.value)}
-                />
-              <TextField
-                value={message}
-                fullWidth
-                multiline
-                minRows={2}
-                type="text"
-                label="Message"
-                variant="filled"
-                onChange={(event) => setMessage(event.currentTarget.value)}
-              />
-              <Button
-                disabled={sendLoading || (!name || !email || !message)}
-                variant="contained"
-                disableElevation
-                size="large"
-                onClick={handleSendEmail}
-              >
-                <PaperAirplaneIcon
-                  className="h-6 w-6 text-current mr-1"
-                  style={{
-                    visibility: sendLoading ? `hidden` : `visible`,
-                  }}
-                />
-                <span
-                  style={{
-                    visibility: sendLoading ? `hidden` : `visible`,
-                  }}
-                >
-                  Hit me up
-                </span>
-                {sendLoading && (
-                  <CircularProgress
-                    size={24}
-                    color="inherit"
-                    sx={{
-                      position: `absolute`
-                    }}
-                  />
-                )}
-              </Button>
-            </Stack>
+              {`Let's talk bizniz and discuss your dream service/app.`}
+            </Typography>
           </Stack>
-        </Container>
-      </Box>
-    </FullPageSection>
+          <Stack
+            flex={1}
+            spacing={4}
+            justifyContent="center"
+          >
+            <TextField
+              value={name}
+              fullWidth
+              type="text"
+              label="Name"
+              variant="filled"
+              onChange={(event) => setName(event.currentTarget.value)}
+              />
+            <TextField
+              value={email}
+              fullWidth
+              type="email"
+              label="Email"
+              variant="filled"
+              onChange={(event) => setEmail(event.currentTarget.value)}
+              />
+            <TextField
+              value={message}
+              fullWidth
+              multiline
+              minRows={2}
+              type="text"
+              label="Message"
+              variant="filled"
+              onChange={(event) => setMessage(event.currentTarget.value)}
+            />
+            <Button
+              disabled={sendLoading || (!name || !email || !message)}
+              variant="contained"
+              disableElevation
+              size="large"
+              onClick={handleSendEmail}
+            >
+              <PaperAirplaneIcon
+                className="h-6 w-6 text-current mr-1"
+                style={{
+                  visibility: sendLoading ? `hidden` : `visible`,
+                }}
+              />
+              <span
+                style={{
+                  visibility: sendLoading ? `hidden` : `visible`,
+                }}
+              >
+                Hit me up
+              </span>
+              {sendLoading && (
+                <CircularProgress
+                  size={24}
+                  color="inherit"
+                  sx={{
+                    position: `absolute`
+                  }}
+                />
+              )}
+            </Button>
+          </Stack>
+        </Stack>
+      </Container>
+    </Box>
   );
 };
 
