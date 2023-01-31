@@ -1,3 +1,4 @@
+import "@/theme/styles/globals.css";
 import "@/firebase/config";
 import type { AppProps } from 'next/app';
 import AppBar from '@/components/Core/AppBar';

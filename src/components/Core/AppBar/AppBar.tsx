@@ -1,4 +1,5 @@
 import { Settings as SettingsIcon } from '@mui/icons-material';
+import { Cog6ToothIcon } from "@heroicons/react/24/solid"
 import {
   Box, AppBar as MUIAppBar, Toolbar, Button,
 } from '@mui/material';
@@ -9,7 +10,7 @@ import { settingsDrawerOpenState } from '@/state/states';
 interface AppBarProps {
 }
 
-const AppBar: React.VFC<AppBarProps> = (props) => {
+const AppBar: React.FC<AppBarProps> = (props) => {
   const setSettingsDrawerOpen = useSetAtom(settingsDrawerOpenState);
   return (
     <MUIAppBar
@@ -29,7 +30,7 @@ const AppBar: React.VFC<AppBarProps> = (props) => {
           }}
           onClick={() => setSettingsDrawerOpen((open) => !open)}
         >
-          <SettingsIcon />
+          <Cog6ToothIcon className="h-6 w-6 text-current" />
         </Button>
       </Toolbar>
     </MUIAppBar>

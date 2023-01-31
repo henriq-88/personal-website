@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 interface DirectionToggleProps {
 }
 
-const DirectionToggle: React.VFC<DirectionToggleProps> = (props) => {
+const DirectionToggle: React.FC<DirectionToggleProps> = (props) => {
   const [direction, setDirection] = useAtom(directionState);
 
   const handleDirectionChange = (newDirection: Direction) => {

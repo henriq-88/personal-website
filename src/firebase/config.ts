@@ -26,8 +26,10 @@ if (typeof window !== "undefined") {
     provider: new ReCaptchaV3Provider(env.NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY),
     isTokenAutoRefreshEnabled: true,
   });
-  const perf = getPerformance(app);
-  const analytics = getAnalytics(app);
+  if (process.env.NODE_ENV === `production`) {
+    const perf = getPerformance(app);
+    const analytics = getAnalytics(app);
+  }
 }
 
 export const functions = getFunctions(app);
