@@ -7,7 +7,7 @@ import { useWindowSize } from "rooks"
 interface AboutSectionProps {
 }
 
-const AboutSection: React.VFC<AboutSectionProps> = (props) => {
+const AboutSection: React.FC<AboutSectionProps> = (props) => {
   const { outerWidth, outerHeight, } = useWindowSize();
   const width = outerWidth ?? 0
   const height = outerHeight ?? 0
@@ -31,10 +31,14 @@ const AboutSection: React.VFC<AboutSectionProps> = (props) => {
               display="flex"
               justifyContent="center"
               alignItems="center"
+              position={`relative`}
+              
             >
               <Image
                 alt="picture of me"
                 src="/me.jpg"
+                width={512}
+                height={512}
                 style={{
                   borderRadius: `25%`,
                   width: `100%`,

@@ -1,4 +1,4 @@
-import { Box, Button, Container, IconButton, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Button, Container, Stack, Typography, useTheme } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
@@ -9,7 +9,7 @@ import { useWindowSize } from "rooks";
 interface IntroSectionProps {
 }
 
-const IntroSection: React.VFC<IntroSectionProps> = (props) => {
+const IntroSection: React.FC<IntroSectionProps> = (props) => {
   const theme = useTheme();
   const { outerWidth, outerHeight, } = useWindowSize();
   const width = outerWidth ?? 0

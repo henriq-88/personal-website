@@ -6,7 +6,7 @@ interface ContinueButtonProps {
   label?: string;
 }
 
-const ContinueButton: React.VFC<ContinueButtonProps> = (props) => {
+const ContinueButton: React.FC<ContinueButtonProps> = (props) => {
   const executeScroll = () => {
     document.getElementById(props.targetId)?.scrollIntoView({
       behavior: `smooth`,

@@ -8,7 +8,7 @@ import Image from "next/image";
 interface ProjectsSectionProps {
 }
 
-const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
+const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
   const theme = useTheme();
   const { outerWidth, outerHeight, } = useWindowSize();
   const width = outerWidth ?? 0
@@ -53,8 +53,11 @@ const ProjectsSection: React.VFC<ProjectsSectionProps> = (props) => {
               display="flex"
               justifyContent="center"
               alignItems="center"
+              position={`relative`}
             >
               <Image
+                width={512}
+                height={512}
                 alt="dancing banana gif"
                 src="https://c.tenor.com/ZgbW9V5PKoMAAAAC/banana-dance-dancing-banana.gif"
                 style={{

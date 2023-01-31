@@ -10,7 +10,7 @@ import { functions } from "@/firebase/config";
 interface ContactSectionProps {
 }
 
-const ContactSection: React.VFC<ContactSectionProps> = (props) => {
+const ContactSection: React.FC<ContactSectionProps> = (props) => {
   const { outerWidth, outerHeight, } = useWindowSize();
   const width = outerWidth ?? 0
   const height = outerHeight ?? 0

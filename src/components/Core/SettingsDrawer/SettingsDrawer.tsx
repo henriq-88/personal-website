@@ -1,7 +1,7 @@
 import {
   Box, Divider, Drawer, IconButton, Stack, Toolbar, Typography,
 } from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material';
+import { XMarkIcon } from "@heroicons/react/24/solid"
 import { settingsDrawerOpenState } from '@/state/states';
 import ThemeToggle from '@/components/ThemeToggle';
 import DirectionToggle from '@/components/DirectionToggle';
@@ -10,7 +10,7 @@ import { useAtom } from 'jotai';
 interface SettingsDrawerProps {
 }
 
-const SettingsDrawer: React.VFC<SettingsDrawerProps> = (props) => {
+const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useAtom(settingsDrawerOpenState);
   return (
     <Drawer
@@ -37,7 +37,7 @@ const SettingsDrawer: React.VFC<SettingsDrawerProps> = (props) => {
             aria-label="close"
             onClick={() => setSettingsDrawerOpen(false)}
           >
-            <CloseIcon />
+            <XMarkIcon className="h-6 w-6 text-current" />
           </IconButton>
         </Toolbar>
         <Divider />

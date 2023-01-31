@@ -3,7 +3,7 @@ import { SvgIcon, SvgIconProps } from "@mui/material";
 interface StackOverflowIconProps {
 }
 
-const StackOverflowIcon: React.VFC<StackOverflowIconProps> = (props) => {
+const StackOverflowIcon: React.FC<StackOverflowIconProps> = (props) => {
   return (
     <SvgIcon
       width="24px"
