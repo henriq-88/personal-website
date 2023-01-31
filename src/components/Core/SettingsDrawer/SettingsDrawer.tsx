@@ -1,5 +1,5 @@
 import {
-  Box, Divider, Drawer, IconButton, Stack, Toolbar, Typography,
+  Box, Divider, Drawer, Stack, Toolbar, Typography,
 } from '@mui/material';
 import { XMarkIcon } from "@heroicons/react/24/solid"
 import { settingsDrawerOpenState } from '@/state/states';
@@ -33,12 +33,13 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
           }}>
             Settings
           </Typography>
-          <IconButton
+          <button
+            className="rounded-full p-2 bg-transparent hover:bg-primary/20 transition-colors text-primary"
             aria-label="close"
             onClick={() => setSettingsDrawerOpen(false)}
           >
             <XMarkIcon className="h-6 w-6 text-current" />
-          </IconButton>
+          </button>
         </Toolbar>
         <Divider />
         <Stack p={1.5} justifyContent="stretch" sx={{
