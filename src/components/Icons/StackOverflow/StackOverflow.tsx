@@ -1,18 +1,16 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
-
-interface StackOverflowIconProps {
-}
+type StackOverflowIconProps = React.SVGProps<SVGSVGElement>
 
 const StackOverflowIcon: React.FC<StackOverflowIconProps> = (props) => {
   return (
-    <SvgIcon
-      width="24px"
-      height="24px"
-      viewBox="0 0 512 512"
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+      {...props}
     >
-      <path d="M392,440V320h40V480H64V320h40V440Z"/>
-      <path d="M149.1,308.77l198.57,40.87,8.4-39.32L157.5,269.45Zm26.27-93.12L359.22,300,376,263.76,192.18,178.92Zm50.95-89,156,127.78,25.74-30.52-156-127.78ZM328,32,294.61,55.8,415.43,216.17,448,192ZM144,400H348V360H144Z"/>
-    </SvgIcon>
+      <path d="M17.36,20.2V14.82H19.15V22H3V14.82H4.8V20.2H17.36M6.77,14.32L7.14,12.56L15.93,14.41L15.56,16.17L6.77,14.32M7.93,10.11L8.69,8.5L16.83,12.28L16.07,13.9L7.93,10.11M10.19,6.12L11.34,4.74L18.24,10.5L17.09,11.87L10.19,6.12M14.64,1.87L20,9.08L18.56,10.15L13.2,2.94L14.64,1.87M6.59,18.41V16.61H15.57V18.41H6.59Z"/>
+    </svg>
   );
 };
 

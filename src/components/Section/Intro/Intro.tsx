@@ -2,9 +2,10 @@ import { Box, Button, Container, Stack, Typography, useTheme } from "@mui/materi
 import { deepOrange } from "@mui/material/colors";
 import FullPageSection from "@/components/Section/FullPage";
 import ContinueButton from "@/components/ContinueButton";
-import StackOverflowIcon from "@/components/Icons/StackOverflow";
-import { GitHub as GitHubIcon, LinkedIn as LinkedInIcon } from "@mui/icons-material";
 import { useWindowSize } from "rooks";
+import StackOverflowIcon from "@/components/Icons/StackOverflow";
+import GitHubIcon from "@/components/Icons/GitHub";
+import LinkedInIcon from "@/components/Icons/LinkedIn";
 
 interface IntroSectionProps {
 }
@@ -59,7 +60,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
                   p: 1,
                 }}
               >
-                <GitHubIcon />
+                <GitHubIcon className="h-6 w-6 text-current" />
               </Button>
               <Button
                 variant="outlined"
@@ -72,7 +73,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
                   p: 1,
                 }}
               >
-                <LinkedInIcon />
+                <LinkedInIcon className="h-6 w-6 text-current" />
               </Button>
               <Button
                 variant="outlined"
@@ -85,7 +86,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
                   p: 1,
                 }}
               >
-                <StackOverflowIcon />
+                <StackOverflowIcon className="h-6 w-6 text-current" />
               </Button>
             </Stack>
           </Stack>

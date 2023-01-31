@@ -1,4 +1,4 @@
-import { ArrowDownward } from "@mui/icons-material";
+import { ArrowDownIcon } from "@heroicons/react/24/solid"
 import { Button, Stack } from "@mui/material";
 
 interface ContinueButtonProps {
@@ -20,7 +20,7 @@ const ContinueButton: React.FC<ContinueButtonProps> = (props) => {
     >
       <Stack alignItems="center">
         <span>{props.label ?? `Continue`}</span>
-        <ArrowDownward />
+        <ArrowDownIcon className="h-6 w-6 text-current" />
       </Stack>
     </Button>
   );

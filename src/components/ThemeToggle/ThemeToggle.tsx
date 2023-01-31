@@ -1,4 +1,5 @@
-import { SettingsBrightness as SettingsBrightnessIcon, DarkMode as DarkModeIcon, LightMode as LightModeIcon } from '@mui/icons-material';
+import { SunIcon, MoonIcon, } from "@heroicons/react/24/solid"
+import SettingsBrightnessIcon from "@/components/Icons/SettingsBrigthness"
 import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { useMemo } from 'react';
 import { themeModeState } from '@/state/states';
@@ -48,10 +49,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <LightModeIcon sx={{
-            mr: 1,
-          }}
-          />
+          <SunIcon className="h-6 w-6 text-current mr-1" />
           <span>Light</span>
         </ToggleButton>
         <ToggleButton
@@ -61,10 +59,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <SettingsBrightnessIcon sx={{
-            mr: 1,
-          }}
-          />
+          <SettingsBrightnessIcon className="h-6 w-6 text-current mr-1" />
           <span>System</span>
         </ToggleButton>
         <ToggleButton
@@ -74,10 +69,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <DarkModeIcon sx={{
-            mr: 1,
-          }}
-          />
+          <MoonIcon className="h-6 w-6 text-current mr-1" />
           <span>Dark</span>
         </ToggleButton>
       </ToggleButtonGroup>

@@ -1,6 +1,6 @@
 import { Box, Button, CircularProgress, Container, Stack, TextField, Typography } from "@mui/material";
 import FullPageSection from "@/components/Section/FullPage";
-import { Send as SendIcon } from "@mui/icons-material";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid"
 import { useWindowSize } from "rooks";
 import { useState } from "react";
 import { useSnackbar } from "notistack";
@@ -111,9 +111,9 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
                 size="large"
                 onClick={handleSendEmail}
               >
-                <SendIcon
-                  sx={{
-                    mr: 1,
+                <PaperAirplaneIcon
+                  className="h-6 w-6 text-current mr-1"
+                  style={{
                     visibility: sendLoading ? `hidden` : `visible`,
                   }}
                 />
