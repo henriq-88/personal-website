@@ -1,5 +1,4 @@
 import { Box, Button, CircularProgress, Container, Stack, TextField, Typography } from "@mui/material";
-import FullPageSection from "@/components/Section/FullPage";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid"
 import { useWindowSize } from "rooks";
 import { useState } from "react";
