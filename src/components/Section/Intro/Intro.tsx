@@ -1,4 +1,4 @@
-import { Box, Button, Container, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import ContinueButton from "@/components/ContinueButton";
 import { useWindowSize } from "rooks";
@@ -54,45 +54,34 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
                 mt: 2
               }}
             >
-              <Button
-                variant="outlined"
-                color="inherit"
+
+              <a
+                className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+                type="anchor"
                 href="https://github.com/henriq-88"
                 target="_blank"
                 aria-label="github profile"
-                sx={{
-                  minWidth: 0,
-                  p: 1,
-                }}
               >
                 <GitHubIcon className="h-6 w-6 text-current" />
-              </Button>
-              <Button
-                variant="outlined"
-                color="inherit"
-                href="https://www.linkedin.com/in/henrikwassdahl/"
+              </a>
+              <a
+                className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+                type="anchor"
+                href="https://www.linkedin.com/in/henrikwassdahl"
                 target="_blank"
                 aria-label="linkedin profile"
-                sx={{
-                  minWidth: 0,
-                  p: 1,
-                }}
               >
                 <LinkedInIcon className="h-6 w-6 text-current" />
-              </Button>
-              <Button
-                variant="outlined"
-                color="inherit"
+              </a>
+              <a
+                className="rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+                type="anchor"
                 href="https://stackoverflow.com/users/2375978/henrik-wassdahl"
                 target="_blank"
                 aria-label="stackoverflow profile"
-                sx={{
-                  minWidth: 0,
-                  p: 1,
-                }}
               >
                 <StackOverflowIcon className="h-6 w-6 text-current" />
-              </Button>
+              </a>
             </Stack>
           </Stack>
         </Container>
