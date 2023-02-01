@@ -13,7 +13,6 @@ const poppins = Poppins({
   subsets: ['latin'],
 })
 
-
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
