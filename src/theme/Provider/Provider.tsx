@@ -1,10 +1,10 @@
-import { CssBaseline, ThemeProvider as MUIThemeProvider, useMediaQuery } from '@mui/material';
+import { ThemeProvider as MUIThemeProvider } from '@mui/material';
 import { useEffect, useMemo } from 'react';
 import { textDirectionState, themeModeState } from '@/state/states';
 import { buildDarkTheme, buildLightTheme } from '@/theme/config';
-import RTLProvider from '@/theme/RTLProvider';
 import { SnackbarProvider } from 'notistack';
 import { useAtomValue } from 'jotai';
+import { useMediaQuery } from 'usehooks-ts';
 
 interface ThemeProviderProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   const themeMode = useAtomValue(themeModeState);
   const direction = useAtomValue(textDirectionState);
 
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
   const theme = useMemo(() => {
     if (!themeMode) return prefersDarkMode ? buildDarkTheme({ direction }) : buildLightTheme({ direction });
@@ -44,11 +44,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   return (
     <MUIThemeProvider theme={theme}>
       <SnackbarProvider maxSnack={3}>
-        <CssBaseline />
-        {direction === `rtl`
-          ? <RTLProvider>{props.children}</RTLProvider>
-          : <>{props.children}</>
-        }
+        {props.children}
       </SnackbarProvider>
     </MUIThemeProvider>
   );

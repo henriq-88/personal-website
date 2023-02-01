@@ -1,5 +1,4 @@
 import { createTheme, ThemeOptions } from '@mui/material';
-import { deepPurple, deepOrange } from '@mui/material/colors';
 import { responsiveFontSizes } from '@mui/material/styles';
 import { merge } from "lodash-es";
 
