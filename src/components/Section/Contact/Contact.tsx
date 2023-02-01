@@ -55,21 +55,16 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
       alignItems="center"
       flex={1}
     >
-      <Container maxWidth={width < height ? `sm` : `lg`}>
+      <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
         <Stack
           direction={width < height ? `column` : `row`}
           spacing={width < height ? 4 : 8}
           flex={1}
         >
           <Stack flex={1} justifyContent="center">
-            <Typography variant="h1">{`Contact`}</Typography>
-            <Typography variant="h2">{`Do you need help to solve a problem?`}</Typography>
-            <Typography
-              sx={{mt: 2}}
-              lineHeight={2}
-            >
-              {`Let's talk bizniz and discuss your dream service/app.`}
-            </Typography>
+            <h1 className="text-8xl font-bold leading-tight">{`Contact`}</h1>
+            <h2 className="text-6xl font-thin leading-tight">{`Do you need help to solve a problem?`}</h2>
+            <p className="mt-2 leading-loose">{`Let's talk bizniz and discuss your dream service/app.`}</p>
           </Stack>
           <Stack
             flex={1}
@@ -134,7 +129,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             </Button>
           </Stack>
         </Stack>
-      </Container>
+      </div>
     </Box>
   );
 };
