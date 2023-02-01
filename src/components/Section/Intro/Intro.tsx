@@ -23,6 +23,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      flex={1}
       p={4}
       sx={{
         backgroundColor: theme.palette.mode === `dark` ? `#24133D` : deepOrange[`A100`]

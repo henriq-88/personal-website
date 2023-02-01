@@ -20,6 +20,7 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
       flexDirection={`column`}
       width="100%"
       height="100%"
+      flex={1}
       p={4}
     >
       <Box
