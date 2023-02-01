@@ -5,6 +5,7 @@ import CompositeProvider from '@/components/CompositeProvider';
 import SettingsDrawer from '@/components/Core/SettingsDrawer';
 import { NoSsr } from '@mui/material';
 import { Poppins } from "@next/font/google"
+import clsx from "clsx";
 
 import("@/firebase/config");
 
@@ -15,14 +16,7 @@ const poppins = Poppins({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className="bg-white dark:bg-neutral-900">
-      <style jsx global>
-        {`
-          :root {
-            --theme-font: ${poppins.style.fontFamily};
-          }
-        `}
-      </style>
+    <main className={clsx("bg-white dark:bg-neutral-900", poppins.className)}>
       <NoSsr>
         <CompositeProvider>
           <AppBar />

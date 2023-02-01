@@ -42,9 +42,6 @@ module.exports = {
           A700: '#DD2C00',
         },
       },
-      fontFamily: {
-        sans: ["var(--theme-font)", ...fontFamily.sans],
-      },
     },
     screens: {
       xs: '512px',
