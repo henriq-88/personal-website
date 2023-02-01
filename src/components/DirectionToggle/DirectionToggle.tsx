@@ -1,4 +1,4 @@
-import { Direction, directionState } from "@/state/states";
+import { TextDirection, textDirectionState } from "@/state/states";
 import { useAtom } from "jotai";
 import FormatTextDirectionLToRIcon from "../Icons/FormatTextDirectionLToR";
 import FormatTextDirectionRToLIcon from "../Icons/FormatTextDirectionRToL";
@@ -8,9 +8,9 @@ interface DirectionToggleProps {
 }
 
 const DirectionToggle: React.FC<DirectionToggleProps> = (props) => {
-  const [direction, setDirection] = useAtom(directionState);
+  const [direction, setDirection] = useAtom(textDirectionState);
 
-  const handleDirectionChange = (newDirection: Direction) => {
+  const handleDirectionChange = (newDirection: TextDirection) => {
     setDirection(newDirection);
   }
 

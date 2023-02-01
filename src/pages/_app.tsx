@@ -15,7 +15,7 @@ const poppins = Poppins({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <main className="bg-white dark:bg-neutral-900">
       <style jsx global>
         {`
           :root {
@@ -30,6 +30,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </CompositeProvider>
       </NoSsr>
-    </>
+    </main>
   );
 }
