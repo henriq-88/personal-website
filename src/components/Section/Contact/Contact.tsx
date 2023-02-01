@@ -86,12 +86,12 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <div className="relative">
               <input
                 id="name"
+                {...register(`name`)}
                 className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors outline-none outline-1 outline-offset-0", {
                   'border-red-500 focus:outline-red-500': !!errors.name,
                   'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.name,
                 })}
                 placeholder="Name"
-                {...register(`name`)}
               />
               <label
                 htmlFor="name"
@@ -107,12 +107,12 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <div className="relative mt-4">
               <input
                 id="email"
+                {...register(`email`)}
                 className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors outline-none outline-1 outline-offset-0", {
                   'border-red-500 focus:outline-red-500': !!errors.email,
                   'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.email,
                 })}
                 placeholder="Email"
-                {...register(`email`)}
               />
               <label
                 htmlFor="email"
@@ -128,14 +128,13 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <div className="relative mt-4">
               <textarea
                 id="message"
+                {...register(`message`)}
                 className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors outline-none outline-1 outline-offset-0", {
                   'border-red-500 focus:outline-red-500': !!errors.message,
                   'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.message,
                 })}
                 rows={3}
                 placeholder="Message"
-                draggable={false}
-                {...register(`message`)}
               />
               <label
                 htmlFor="message"
