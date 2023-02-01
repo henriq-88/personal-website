@@ -49,7 +49,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <SunIcon className="h-6 w-6 text-current mr-1" />
+          <SunIcon className="h-6 w-6 text-current ltr:mr-1 rtl:ml-1" />
           <span>Light</span>
         </ToggleButton>
         <ToggleButton
@@ -59,7 +59,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <SettingsBrightnessIcon className="h-6 w-6 text-current mr-1" />
+          <SettingsBrightnessIcon className="h-6 w-6 text-current ltr:mr-1 rtl:ml-1" />
           <span>System</span>
         </ToggleButton>
         <ToggleButton
@@ -69,7 +69,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
             flex: 1,
           }}
         >
-          <MoonIcon className="h-6 w-6 text-current mr-1" />
+          <MoonIcon className="h-6 w-6 text-current ltr:mr-1 rtl:ml-1" />
           <span>Dark</span>
         </ToggleButton>
       </ToggleButtonGroup>

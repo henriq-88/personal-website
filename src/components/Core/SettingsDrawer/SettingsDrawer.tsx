@@ -1,6 +1,4 @@
-import {
-  Box, Divider, Drawer, Stack, Toolbar, Typography,
-} from '@mui/material';
+import { Drawer } from '@mui/material';
 import { XMarkIcon } from "@heroicons/react/24/solid"
 import { settingsDrawerOpenState } from '@/state/states';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -23,16 +21,12 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
       }}
       onClose={() => setSettingsDrawerOpen(false)}
     >
-      <Box
-        sx={{ width: 330 }}
+      <div
+        className="w-96"
         role="presentation"
       >
-        <Toolbar>
-          <Typography sx={{
-            flexGrow: 1
-          }}>
-            Settings
-          </Typography>
+        <div className="flex h-16 items-center px-3 relative">
+          <p className="flex-1">Settings</p>
           <button
             className="rounded-full p-2 bg-transparent hover:dark:bg-primary-dark/20 hover:bg-primary-light/20 transition-colors text-primary-light dark:text-primary-dark"
             aria-label="close"
@@ -40,20 +34,14 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
           >
             <XMarkIcon className="h-6 w-6 text-current" />
           </button>
-        </Toolbar>
-        <Divider />
-        <Stack p={1.5} justifyContent="stretch" sx={{
-          "& > span": {
-            mt: 2
-          },
-          "& > span:first-of-type": {
-            mt: 1
-          },
-        }}>
+        </div>
+        <hr className="border-1 border-solid dark:bg-[#ffffff1f] bg-[#0000001f] border-transparent" />
+        <div className="flex p-3 items-stretch flex-col">
           <ThemeToggle />
+          <div className="mt-3" />
           <DirectionToggle />
-        </Stack>
-      </Box>
+        </div>
+      </div>
     </Drawer>
   );
 };
