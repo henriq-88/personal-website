@@ -28,7 +28,7 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
         <div className="flex h-16 items-center px-3 relative">
           <p className="flex-1">Settings</p>
           <button
-            className="rounded-full p-2 bg-transparent hover:dark:bg-primary-dark/20 hover:bg-primary-light/20 transition-colors text-primary-light dark:text-primary-dark"
+            className="rounded-full p-2 bg-transparent hover:dark:bg-primary-500/20 hover:bg-secondary-500/20 transition-colors text-secondary-500 dark:text-primary-500"
             aria-label="close"
             onClick={() => setSettingsDrawerOpen(false)}
           >

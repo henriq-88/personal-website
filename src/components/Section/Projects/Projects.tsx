@@ -1,58 +1,41 @@
-import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
-import { deepPurple } from "@mui/material/colors";
 import ContinueButton from "@/components/ContinueButton";
 import { useWindowSize } from "rooks";
 import Image from "next/image";
+import { themeModeState } from "@/state/states";
+import { useAtomValue } from "jotai";
+import clsx from "clsx";
 
 interface ProjectsSectionProps {
 }
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
-  const theme = useTheme();
+  const theme = useAtomValue(themeModeState);
   const { outerWidth, outerHeight, } = useWindowSize();
   const width = outerWidth ?? 0
   const height = outerHeight ?? 0
 
   return (
-    <Stack
-      width="100%"
-      height="100%"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flex={1}
-      p={4}
-      sx={{
-        backgroundColor: theme.palette.mode === `dark` ? `#491607` : deepPurple[`A100`]
-      }}
+    <div
+      className={clsx("flex flex-1 flex-col justify-center items-center w-full h-full p-8", {
+        "dark:bg-secondary-900": theme !== `light`,
+        "bg-primary-A100 text-neutral-900": theme === `light`,
+      })}
     >
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flex={1}
-      >
+      <div className="flex flex-1 justify-center items-center">
         <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
-          <Stack
-            direction={width < height ? `column` : `row`}
-            spacing={width < height ? 4 : 8}
-            flex={1}
+          <div
+            className={clsx('flex flex-1', {
+              "flex-col": width < height,
+              "gap-8": width < height,
+              "gap-16": width >= height,
+            })}
           >
-            <Stack
-              flex={1}
-              justifyContent="center"
-            >
+            <div className="flex flex-1 flex-col justify-center">
               <h1 className="text-8xl font-bold leading-tight">Projects</h1>
               <h2 className="text-6xl font-thin leading-tight">A glimse into my world</h2>
               <p className="mt-2 leading-loose">Here you can browse my previous experience of apps, services and more.</p>
-            </Stack>
-            <Box
-              flex={1}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              position={`relative`}
-            >
+            </div>
+            <div className="flex flex-1 justify-center items-center">
               <Image
                 width={512}
                 height={512}
@@ -65,42 +48,20 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
                   width: `100%`,
                 }}
               />
-            </Box>
-          </Stack>
+            </div>
+          </div>
         </div>
-      </Box>
-      <Box
-        position="absolute"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        p={2}
-        sx={{
-          width: `100%`,
-          height: `100%`,
-          backgroundColor: `rgba(0, 0, 0, 0.5)`,
-          backdropFilter: `blur(16px)`,
-        }}
-      >
-        <Typography
-          variant="h1"
-          textAlign="center"
-        >
-          ⚠ Coming soon ⚠
-        </Typography>
-      </Box>
-      <Box
-        mt={4}
-        display="flex"
-        justifyContent="center"
-        width="100%"
-      >
+      </div>
+      <div className="flex justify-center items-center absolute p-4 w-full h-full backdrop-blur-lg bg-black/50">
+        <h1 className="text-8xl font-bold leading-tight">⚠ Coming soon ⚠</h1>
+      </div>
+      <div className="flex justify-center mt-8 w-full">
         <ContinueButton
           targetId="contact"
           label="Contact"
         />
-      </Box>
-    </Stack>
+      </div>
+    </div>
   );
 };
 
