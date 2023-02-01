@@ -32,7 +32,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
         alignItems="center"
         flex={1}
       >
-        <Container maxWidth={width < height ? `sm` : `lg`}>
+        <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <Stack
             direction={width < height ? `column` : `row`}
             spacing={width < height ? 4 : 8}
@@ -42,16 +42,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
               flex={1}
               justifyContent="center"
             >
-              <Typography variant="h1">{`Projects`}</Typography>
-              <Typography variant="h2">{`A glimse into my world`}</Typography>
-              <Typography
-                sx={{
-                  mt: 2
-                }}
-                lineHeight={2}
-              >
-                {`Here you can browse my previous experience of apps, services and more.`}
-              </Typography>
+              <h1 className="text-8xl font-bold leading-tight">Projects</h1>
+              <h2 className="text-6xl font-thin leading-tight">A glimse into my world</h2>
+              <p className="mt-2 leading-loose">Here you can browse my previous experience of apps, services and more.</p>
             </Stack>
             <Box
               flex={1}
@@ -74,7 +67,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
               />
             </Box>
           </Stack>
-        </Container>
+        </div>
       </Box>
       <Box
         position="absolute"

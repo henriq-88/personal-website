@@ -13,23 +13,9 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
   const height = outerHeight ?? 0
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection={`column`}
-      width="100%"
-      height="100%"
-      flex={1}
-      p={4}
-    >
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flex={1}
-      >
-        <Container maxWidth={width < height ? `sm` : `lg`}>
+    <div className="flex flex-1 flex-col justify-center items-center w-full h-full p-8">
+      <div className="flex flex-1 justify-center items-center">
+        <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <Stack
             direction={width < height ? `column` : `row`}
             spacing={width < height ? 4 : 8}
@@ -60,18 +46,13 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
               flex={1}
               justifyContent="center"
             >
-              <Typography variant="h1">{`About`}</Typography>
-              <Typography variant="h2">{`Nomad living in Seoul`}</Typography>
-              <Typography
-                sx={{
-                  mt: 2,
-                }}
-                lineHeight={2}
-              >{`I'm Henrik, a Frontend Engineer with a Bachelor's in Computer Science and a Master's in UX. I'm experienced in developing mobile apps as well as web apps. This also includes optimized Backend communication with the apps.`}</Typography>
+              <h1 className="text-8xl font-bold leading-tight">{`About`}</h1>
+              <h2 className="text-6xl font-thin leading-tight">{`Nomad living in Seoul`}</h2>
+              <p className="mt-2 leading-loose">{`I'm Henrik, a Frontend Engineer with a Bachelor's in Computer Science and a Master's in UX. I'm experienced in developing mobile apps as well as web apps. This also includes optimized Backend communication with the apps.`}</p>
             </Stack>
           </Stack>
-        </Container>
-      </Box>
+        </div>
+      </div>
       <Box
         mt={4}
         display="flex"
@@ -83,7 +64,7 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
           label="Projects"
         />
       </Box>
-    </Box>
+    </div>
   );
 };
 

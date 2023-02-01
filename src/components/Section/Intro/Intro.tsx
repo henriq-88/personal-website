@@ -36,18 +36,11 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
         flex={1}
         mt={4}
       >
-        <Container maxWidth={width < height ? `sm` : `lg`}>
+        <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <Stack flex={1}>
-            <Typography variant="h1">Henrik Wassdahl</Typography>
-            <Typography variant="h2">UX Developer</Typography>
-            <Typography
-              sx={{
-                mt: 2
-              }}
-              lineHeight={2}
-            >
-              Making the world a better place - one line of code at the time.
-            </Typography>
+            <h1 className="text-8xl font-bold leading-tight">Henrik Wassdahl</h1>
+            <h2 className="text-6xl font-thin leading-tight">UX Developer</h2>
+            <p className="mt-2 leading-loose">Making the world a better place - one line of code at the time.</p>
             <Stack
               direction="row"
               spacing={2}
@@ -85,7 +78,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
               </a>
             </Stack>
           </Stack>
-        </Container>
+        </div>
       </Box>
       <Box
         mt={4}
