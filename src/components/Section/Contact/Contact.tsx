@@ -86,18 +86,18 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <div className="relative">
               <input
                 id="name"
-                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors duration-300 outline-none", {
-                  'border-red-500': !!errors.name,
-                  'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white': !errors.name,
+                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors duration-300 outline-none outline-1 outline-offset-0", {
+                  'border-red-500 focus:outline-red-500': !!errors.name,
+                  'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.name,
                 })}
                 placeholder="Name"
                 {...register(`name`)}
               />
               <label
                 htmlFor="name"
-                className={clsx(`absolute left-0 -top-2 mx-2 px-1 transition-all text-xs bg-white dark:bg-neutral-900 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2 peer-focus:text-xs `, {
+                className={clsx(`pointer-events-none absolute left-0 -top-2 mx-2 px-1 transition-all text-xs bg-white dark:bg-neutral-900 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2 peer-focus:text-xs `, {
                   'text-red-500': !!errors.name,
-                  'text-neutral-400 dark:text-neutral-500 peer-focus:text-neutral-900 dark:peer-focus:text-white': !errors.name,
+                  'text-neutral-900 dark:text-white peer-focus:text-neutral-900 dark:peer-focus:text-white': !errors.name,
                 })}
               >
                 Name
@@ -107,18 +107,18 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <div className="relative mt-4">
               <input
                 id="email"
-                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl transition-colors duration-300 w-full outline-none", {
-                  'border-red-500': !!errors.email,
-                  'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white': !errors.email,
+                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors duration-300 outline-none outline-1 outline-offset-0", {
+                  'border-red-500 focus:outline-red-500': !!errors.email,
+                  'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.email,
                 })}
                 placeholder="Email"
                 {...register(`email`)}
               />
               <label
                 htmlFor="email"
-                className={clsx(`absolute left-0 -top-2 mx-2 px-1 transition-all text-xs bg-white dark:bg-neutral-900 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2 peer-focus:text-xs `, {
+                className={clsx(`pointer-events-none absolute left-0 -top-2 mx-2 px-1 transition-all text-xs bg-white dark:bg-neutral-900 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2 peer-focus:text-xs `, {
                   'text-red-500': !!errors.email,
-                  'text-neutral-400 dark:text-neutral-500 peer-focus:text-neutral-900 dark:peer-focus:text-white': !errors.email,
+                  'text-neutral-900 dark:text-white peer-focus:text-neutral-900 dark:peer-focus:text-white': !errors.email,
                 })}
               >
                 Email
@@ -128,9 +128,9 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <div className="relative mt-4">
               <textarea
                 id="message"
-                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl transition-colors duration-300 w-full resize-none block outline-none", {
-                  'border-red-500': !!errors.message,
-                  'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white': !errors.message,
+                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors duration-300 outline-none outline-1 outline-offset-0", {
+                  'border-red-500 focus:outline-red-500': !!errors.message,
+                  'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.message,
                 })}
                 rows={3}
                 placeholder="Message"
@@ -139,10 +139,10 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
               />
               <label
                 htmlFor="message"
-                className={clsx(`absolute left-0 -top-2 mx-2 px-1 transition-all text-xs bg-white dark:bg-neutral-900 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2 peer-focus:text-xs `, {
-                'text-red-500': !!errors.message,
-                'text-neutral-400 dark:text-neutral-500 peer-focus:text-neutral-900 dark:peer-focus:text-white': !errors.message,
-              })}
+                className={clsx(`pointer-events-none absolute left-0 -top-2 mx-2 px-1 transition-all text-xs bg-white dark:bg-neutral-900 peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2 peer-focus:text-xs `, {
+                  'text-red-500': !!errors.message,
+                  'text-neutral-900 dark:text-white peer-focus:text-neutral-900 dark:peer-focus:text-white': !errors.message,
+                })}
               >
                 Message
               </label>
