@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app';
 import AppBar from '@/components/Core/AppBar';
 import CompositeProvider from '@/components/CompositeProvider';
 import SettingsDrawer from '@/components/Core/SettingsDrawer';
-import { NoSsr } from '@mui/material';
 import { Poppins } from "@next/font/google"
 import clsx from "clsx";
 
@@ -16,14 +15,12 @@ const poppins = Poppins({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={clsx("bg-white dark:bg-neutral-900", poppins.className)}>
-      <NoSsr>
-        <CompositeProvider>
-          <AppBar />
-          <SettingsDrawer />
-          <Component {...pageProps} />
-        </CompositeProvider>
-      </NoSsr>
+    <main className={clsx("bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white", poppins.className)}>
+      <CompositeProvider>
+        <AppBar />
+        <SettingsDrawer />
+        <Component {...pageProps} />
+      </CompositeProvider>
     </main>
   );
 }
