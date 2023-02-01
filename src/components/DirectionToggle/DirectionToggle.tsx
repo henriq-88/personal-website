@@ -23,7 +23,7 @@ const DirectionToggle: React.FC<DirectionToggleProps> = (props) => {
         <button
           className={clsx("h-12 flex flex-1 items-center justify-center px-4 py-2 text-sm uppercase font-medium text-primary-light dark:text-primary-dark border border-[#0000001f] bg-transparent dark:border-[#ffffff1f] ltr:rounded-l-lg rtl:rounded-r-lg", {
             "bg-primary-light/10 dark:bg-primary-dark/20 hover:bg-primary-light/20 dark:hover:bg-primary-dark/30": direction === "ltr",
-            "dark:hover:bg-[#ffffff14] hover:bg-[#00000014]": direction === "rtl",
+            "dark:hover:bg-[#ffffff14] hover:bg-[#00000014]": direction !== "ltr",
           })}
           aria-label="left to right"
           onClick={() => handleDirectionChange("ltr")}
@@ -32,9 +32,9 @@ const DirectionToggle: React.FC<DirectionToggleProps> = (props) => {
           <span>Left to right</span>
         </button>
         <button
-          className={clsx("h-12 flex flex-1 items-center justify-center px-4 py-2 text-sm uppercase font-medium text-primary-light dark:text-primary-dark bg-transparent border-[#0000001f] dark:border-[#ffffff1f] dark:hover:bg-[#ffffff1f] rtl:rounded-l-lg ltr:rounded-r-lg ltr:border-r rtl:border-l border-t border-b", {
+          className={clsx("h-12 flex flex-1 items-center justify-center px-4 py-2 text-sm uppercase font-medium text-primary-light dark:text-primary-dark border-[#0000001f] bg-transparent dark:border-[#ffffff1f] rtl:rounded-l-lg ltr:rounded-r-lg ltr:border-r rtl:border-l border-t border-b", {
             "bg-primary-light/20 dark:bg-primary-dark/20 hover:bg-primary-light/30 dark:hover:bg-primary-dark/30": direction === "rtl",
-            "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]": direction === "ltr",
+            "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]": direction !== "rtl",
           })}
           aria-label="right to left"
           onClick={() => handleDirectionChange("rtl")}
