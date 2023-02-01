@@ -1,54 +1,35 @@
-import { Box, Container, Stack, Typography, useTheme } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
 import ContinueButton from "@/components/ContinueButton";
 import { useWindowSize } from "rooks";
 import StackOverflowIcon from "@/components/Icons/StackOverflow";
 import GitHubIcon from "@/components/Icons/GitHub";
 import LinkedInIcon from "@/components/Icons/LinkedIn";
+import { useAtomValue } from "jotai";
+import { themeModeState } from "@/state/states";
+import clsx from "clsx";
 
 interface IntroSectionProps {
 }
 
 const IntroSection: React.FC<IntroSectionProps> = (props) => {
-  const theme = useTheme();
+  const theme = useAtomValue(themeModeState)
   const { outerWidth, outerHeight, } = useWindowSize();
   const width = outerWidth ?? 0
   const height = outerHeight ?? 0
 
   return (
-    <Box
-      width="100%"
-      height="100%"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      flex={1}
-      p={4}
-      sx={{
-        backgroundColor: theme.palette.mode === `dark` ? `#24133D` : deepOrange[`A100`]
-      }}
+    <div
+      className={clsx("flex flex-1 flex-col justify-center items-center w-full h-full p-8", {
+        "dark:bg-primary-900": theme !== `light`,
+        "bg-secondary-A100 text-neutral-900": theme === `light`,
+      })}
     >
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flex={1}
-        mt={4}
-      >
+      <div className="flex flex-1 justify-center items-center mt-8">
         <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
-          <Stack flex={1}>
+          <div className="flex flex-1 flex-col">
             <h1 className="text-8xl font-bold leading-tight">Henrik Wassdahl</h1>
             <h2 className="text-6xl font-thin leading-tight">UX Developer</h2>
             <p className="mt-2 leading-loose">Making the world a better place - one line of code at the time.</p>
-            <Stack
-              direction="row"
-              spacing={2}
-              sx={{
-                mt: 2
-              }}
-            >
-
+            <div className="flex gap-4 mt-4">
               <a
                 className="rounded-xl border border-solid border-[#0000001f] dark:border-[#ffffff1f] p-2 bg-transparent hover:bg-[#00000014] hover:dark:bg-[#ffffff14] transition-colors"
                 type="anchor"
@@ -76,22 +57,17 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
               >
                 <StackOverflowIcon className="h-6 w-6 text-current" />
               </a>
-            </Stack>
-          </Stack>
+            </div>
+          </div>
         </div>
-      </Box>
-      <Box
-        mt={4}
-        display="flex"
-        justifyContent="center"
-        width="100%"
-      >
+      </div>
+      <div className="flex justify-center w-full mt-8">
         <ContinueButton
           targetId="about"
           label="About"
         />
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
