@@ -20,6 +20,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
       display="flex"
       justifyContent="center"
       alignItems="center"
+      flex={1}
       p={4}
       sx={{
         backgroundColor: theme.palette.mode === `dark` ? `#491607` : deepPurple[`A100`]

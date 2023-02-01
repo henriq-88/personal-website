@@ -1,24 +1,17 @@
-import { BoxProps, Stack } from "@mui/material";
 import React from "react";
 
-type FullPageSectionProps = BoxProps
+type FullPageSectionProps = React.HTMLAttributes<HTMLDivElement>
 
-const FullPageSection: React.FC<FullPageSectionProps> = React.forwardRef((props, ref) => {
+const FullPageSection: React.FC<FullPageSectionProps> = React.forwardRef<HTMLDivElement, FullPageSectionProps>((props, ref) => {
   const { children, ...rest } = props;
   return (
-    <Stack
+    <div
       ref={ref}
-      minHeight="100vh"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      position="relative"
-      width="100%"
-      height="100vh"
+      className="min-h-screen flex flex-col justify-center items-center relative"
       {...rest}
     >
       {children}
-    </Stack>
+    </div>
   );
 });
 
