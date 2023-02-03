@@ -1,8 +1,16 @@
-import { useWindowSize } from "rooks";
+import { useEffect, useState } from "react";
 
 export const useIsScreenVertical = () => {
-  const { innerWidth, innerHeight, } = useWindowSize();
-  const width = innerWidth ?? 0
-  const height = innerHeight ?? 0
-  return width <= height
+  const [isScreenVertical, setIsScreenVertical] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsScreenVertical(window.innerWidth <= window.innerHeight);
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isScreenVertical;
 }
