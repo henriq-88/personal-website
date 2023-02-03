@@ -11,7 +11,7 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
   const isScreenVertical = useIsScreenVertical()
 
   return (
-    <div className="flex flex-1 flex-col justify-center items-center w-full h-full p-8">
+    <div className="flex flex-1 flex-col justify-center items-center w-full h-full p-4 sm:p-8">
       <div className="flex flex-1 justify-center items-center">
         <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <div
@@ -38,8 +38,8 @@ const AboutSection: React.FC<AboutSectionProps> = (props) => {
               />
             </div>
             <div className="flex flex-1 flex-col justify-center">
-              <h1 className="text-8xl font-bold leading-tight">About</h1>
-              <h2 className="text-6xl font-thin leading-tight">Nomad living in Seoul</h2>
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight">About</h1>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin leading-tight">Nomad living in Seoul</h2>
               <p className="mt-2 leading-loose">I'm Henrik, a Frontend Engineer with a Bachelor's in Computer Science and a Master's in UX. I'm experienced in developing mobile apps as well as web apps. This also includes optimized Backend communication with the apps.</p>
             </div>
           </div>

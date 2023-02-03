@@ -22,7 +22,7 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
       onClose={() => setSettingsDrawerOpen(false)}
     >
       <div
-        className="w-96"
+        className="w-90"
         role="presentation"
       >
         <div className="flex h-16 items-center px-3 relative">

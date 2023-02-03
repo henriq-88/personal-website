@@ -42,6 +42,9 @@ module.exports = {
           A700: '#DD2C00',
         },
       },
+      width: {
+        '90': '22rem',
+      }
     },
     screens: {
       xs: '512px',
