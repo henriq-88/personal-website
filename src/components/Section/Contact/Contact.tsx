@@ -62,7 +62,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
   const isSendButtonDisabled = (isSubmitting || Object.values(errors).length > 0)
 
   return (
-    <div className="flex flex-1 justify-center items-center">
+    <div className="flex flex-1 justify-center items-center p-8">
       <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
         <div
           className={clsx('flex flex-1', {
@@ -127,7 +127,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
               <textarea
                 id="message"
                 {...register(`message`)}
-                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors outline-none outline-1 outline-offset-0", {
+                className={clsx("peer placeholder-transparent text-neutral-900 dark:text-white bg-transparent border border-solid p-3 rounded-xl w-full transition-colors outline-none outline-1 outline-offset-0 resize-none", {
                   'border-red-500 focus:outline-red-500': !!errors.message,
                   'border-[#0000004f] dark:border-[#ffffff4f] focus:border-neutral-900 focus:dark:border-white hover:border-neutral-900 hover:dark:border-white focus:outline-neutral-900 focus:dark:outline-white': !errors.message,
                 })}
