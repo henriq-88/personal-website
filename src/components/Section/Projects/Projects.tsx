@@ -33,25 +33,14 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin leading-tight">A glimse into my world</h2>
               <p className="mt-2 leading-loose">Here you can browse my previous experience of apps, services and more.</p>
             </div>
-            <div className="flex flex-1 justify-center items-center">
-              <Image
-                width={512}
-                height={512}
-                alt="dancing banana gif"
-                src="https://c.tenor.com/ZgbW9V5PKoMAAAAC/banana-dance-dancing-banana.gif"
-                style={{
-                  borderRadius: `25%`,
-                  maxWidth: 512,
-                  aspectRatio: `1`,
-                  width: `100%`,
-                }}
-              />
+            <div className="flex flex-1 justify-center items-center text-neutral-900 bg-white aspect-square rounded-[25%]">
+              <h1 className="text-9xl">⚠</h1>
             </div>
           </div>
         </div>
       </div>
       <div className="flex justify-center items-center absolute p-4 w-full h-full backdrop-blur-lg bg-black/50">
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight text-center">⚠ Coming soon ⚠</h1>
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight text-center">Coming soon</h1>
       </div>
       <div className="flex justify-center mt-8 w-full">
         <ContinueButton
