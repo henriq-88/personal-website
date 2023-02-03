@@ -51,7 +51,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
         </div>
       </div>
       <div className="flex justify-center items-center absolute p-4 w-full h-full backdrop-blur-lg bg-black/50">
-        <h1 className="text-8xl font-bold leading-tight">⚠ Coming soon ⚠</h1>
+        <h1 className="text-8xl font-bold leading-tight text-center">⚠ Coming soon ⚠</h1>
       </div>
       <div className="flex justify-center mt-8 w-full">
         <ContinueButton
