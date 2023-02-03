@@ -1,18 +1,16 @@
 import ContinueButton from "@/components/ContinueButton";
-import { useWindowSize } from "rooks";
 import Image from "next/image";
 import { themeModeState } from "@/state/states";
 import { useAtomValue } from "jotai";
 import clsx from "clsx";
+import { useIsScreenVertical } from "@/utils/screen";
 
 interface ProjectsSectionProps {
 }
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
   const theme = useAtomValue(themeModeState);
-  const { outerWidth, outerHeight, } = useWindowSize();
-  const width = outerWidth ?? 0
-  const height = outerHeight ?? 0
+  const isScreenVertical = useIsScreenVertical()
 
   return (
     <div
@@ -22,12 +20,12 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
       })}
     >
       <div className="flex flex-1 justify-center items-center">
-        <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
+        <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <div
             className={clsx('flex flex-1', {
-              "flex-col": width < height,
-              "gap-8": width < height,
-              "gap-16": width >= height,
+              "flex-col": isScreenVertical,
+              "gap-8": isScreenVertical,
+              "gap-16": !isScreenVertical,
             })}
           >
             <div className="flex flex-1 flex-col justify-center">

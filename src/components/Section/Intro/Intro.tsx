@@ -1,20 +1,18 @@
 import ContinueButton from "@/components/ContinueButton";
-import { useWindowSize } from "rooks";
 import StackOverflowIcon from "@/components/Icons/StackOverflow";
 import GitHubIcon from "@/components/Icons/GitHub";
 import LinkedInIcon from "@/components/Icons/LinkedIn";
 import { useAtomValue } from "jotai";
 import { themeModeState } from "@/state/states";
 import clsx from "clsx";
+import { useIsScreenVertical } from "@/utils/screen";
 
 interface IntroSectionProps {
 }
 
 const IntroSection: React.FC<IntroSectionProps> = (props) => {
   const theme = useAtomValue(themeModeState)
-  const { outerWidth, outerHeight, } = useWindowSize();
-  const width = outerWidth ?? 0
-  const height = outerHeight ?? 0
+  const isScreenVertical = useIsScreenVertical()
 
   return (
     <div
@@ -24,7 +22,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
       })}
     >
       <div className="flex flex-1 justify-center items-center mt-8">
-        <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
+        <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <div className="flex flex-1 flex-col">
             <h1 className="text-8xl font-bold leading-tight">Henrik Wassdahl</h1>
             <h2 className="text-6xl font-thin leading-tight">UX Developer</h2>

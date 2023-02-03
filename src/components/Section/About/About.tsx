@@ -1,26 +1,24 @@
 import ContinueButton from "@/components/ContinueButton";
 import Image from "next/image";
-import { useWindowSize } from "rooks"
 import MeImage from "@/assets/images/me.jpg"
 import clsx from "clsx";
+import { useIsScreenVertical } from "@/utils/screen";
 
 interface AboutSectionProps {
 }
 
 const AboutSection: React.FC<AboutSectionProps> = (props) => {
-  const { outerWidth, outerHeight, } = useWindowSize();
-  const width = outerWidth ?? 0
-  const height = outerHeight ?? 0
+  const isScreenVertical = useIsScreenVertical()
 
   return (
     <div className="flex flex-1 flex-col justify-center items-center w-full h-full p-8">
       <div className="flex flex-1 justify-center items-center">
-        <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
+        <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <div
             className={clsx('flex flex-1', {
-              "flex-col": width < height,
-              "gap-8": width < height,
-              "gap-16": width >= height,
+              "flex-col": isScreenVertical,
+              "gap-8": isScreenVertical,
+              "gap-16": !isScreenVertical,
             })}
           >
             <div
