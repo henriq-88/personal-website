@@ -1,5 +1,4 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid"
-import { useWindowSize } from "rooks";
 import { useSnackbar } from "notistack";
 import { httpsCallable } from "firebase/functions";
 import { functions } from "@/firebase/config";
@@ -8,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from "zod";
 import clsx from "clsx";
 import CircularProgressIndicator from "@/components/Common/CircularProgressIndicator/CircularProgressIndicator";
+import { useIsScreenVertical } from "@/utils/screen";
 
 interface ContactSectionProps {
 }
@@ -23,9 +23,7 @@ const formSchema = z.object({
 type FormSchemaType = z.infer<typeof formSchema>;
 
 const ContactSection: React.FC<ContactSectionProps> = (props) => {
-  const { outerWidth, outerHeight, } = useWindowSize();
-  const width = outerWidth ?? 0
-  const height = outerHeight ?? 0
+  const isScreenVertical = useIsScreenVertical()
   const { enqueueSnackbar } = useSnackbar();
   const sendMessage = httpsCallable(functions, `sendMessage`);
   const { register, formState: { errors, isSubmitting }, handleSubmit, reset, } = useForm<FormSchemaType>({
@@ -65,12 +63,12 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
 
   return (
     <div className="flex flex-1 justify-center items-center">
-      <div className={width < height ? `max-w-screen-xs` : `max-w-screen-lg`}>
+      <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
         <div
           className={clsx('flex flex-1', {
-            "flex-col": width < height,
-            "gap-8": width < height,
-            "gap-16": width >= height,
+            "flex-col": isScreenVertical,
+            "gap-8": isScreenVertical,
+            "gap-16": !isScreenVertical,
           })}
         >
           <div className="flex flex-1 flex-col justify-center">
