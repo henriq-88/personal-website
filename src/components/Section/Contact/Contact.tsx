@@ -62,7 +62,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
   const isSendButtonDisabled = (isSubmitting || Object.values(errors).length > 0)
 
   return (
-    <div className="flex flex-1 justify-center items-center p-8">
+    <div className="flex flex-1 justify-center items-center p-4 sm:p-8">
       <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
         <div
           className={clsx('flex flex-1', {
@@ -72,8 +72,8 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
           })}
         >
           <div className="flex flex-1 flex-col justify-center">
-            <h1 className="text-8xl font-bold leading-tight">Contact</h1>
-            <h2 className="text-6xl font-thin leading-tight">Do you need help to solve a problem?</h2>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight">Contact</h1>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin leading-tight">Do you need help to solve a problem?</h2>
             <p className="mt-2 leading-loose">Let's talk bizniz and discuss your dream service/app.</p>
           </div>
           <form

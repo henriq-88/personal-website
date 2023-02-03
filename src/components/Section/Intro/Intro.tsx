@@ -16,7 +16,7 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
   
   return (
     <div
-      className={clsx("flex flex-1 flex-col justify-center items-center w-full h-full p-8", {
+      className={clsx("flex flex-1 flex-col justify-center items-center w-full h-full p-4 sm:p-8", {
         "dark:bg-primary-900": theme !== `light`,
         "bg-secondary-A100 text-neutral-900": theme === `light`,
       })}
@@ -24,8 +24,8 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
       <div className="flex flex-1 justify-center items-center mt-8">
         <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
           <div className="flex flex-1 flex-col">
-            <h1 className="text-8xl font-bold leading-tight" style={{ wordBreak: `break-word` }}>Henrik Wassdahl</h1>
-            <h2 className="text-6xl font-thin leading-tight">UX Developer</h2>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight">Henrik Wassdahl</h1>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin leading-tight">UX Developer</h2>
             <p className="mt-2 leading-loose">Making the world a better place - one line of code at the time.</p>
             <div className="flex gap-4 mt-4">
               <a
