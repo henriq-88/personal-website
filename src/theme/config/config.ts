@@ -1,9 +1,4 @@
 import { createTheme, ThemeOptions } from '@mui/material';
-import { responsiveFontSizes } from '@mui/material/styles';
-import { merge } from "lodash-es";
-
-const baseThemeOptions: ThemeOptions = ({
-});
 
 const darkThemeOptions: ThemeOptions = ({
   palette: {
@@ -18,11 +13,11 @@ const lightThemeOptions: ThemeOptions = ({
 });
 
 export const buildDarkTheme = (options?: ThemeOptions) => {
-  const theme = createTheme(merge(baseThemeOptions, darkThemeOptions, options));
-  return responsiveFontSizes(theme);
+  const theme = createTheme({...darkThemeOptions, ...options});
+  return theme;
 };
 
 export const buildLightTheme = (options?: ThemeOptions) => {
-  const theme = createTheme(merge(baseThemeOptions, lightThemeOptions, options));
-  return responsiveFontSizes(theme);
+  const theme = createTheme({...lightThemeOptions, ...options});
+  return theme;
 };
