@@ -14,13 +14,14 @@
         "firebase-debug.*.log"
       ],
       "predeploy": [
+        "cd apps",
         "pnpm --prefix \"$RESOURCE_DIR\" run lint",
         "pnpm --prefix \"$RESOURCE_DIR\" run build"
       ]
     }
   ],
   "hosting": {
-    "public": "apps/web/out",
+    "public": "out",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -31,7 +32,8 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "predeploy": "cd apps/web"
   },
   "storage": {
     "rules": "storage.rules"
