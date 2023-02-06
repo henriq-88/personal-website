@@ -19,12 +19,7 @@
     "jsx": "preserve",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
+    "baseUrl": "./"
   },
   "include": [
     ".eslintrc.js",
