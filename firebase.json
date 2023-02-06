@@ -52,7 +52,7 @@
           }
         ]
       }
-    ]
+    ],
     "predeploy": "cd apps/web"
   },
   "storage": {
