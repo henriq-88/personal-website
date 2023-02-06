@@ -41,6 +41,18 @@
         "destination": "/index.html"
       }
     ],
+    "headers": [
+      {
+        "source":
+          "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|eot|otf|ttf|ttc|woff|woff2|css|ico|txt)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, s-maxage=604800"
+          }
+        ]
+      }
+    ]
     "predeploy": "cd apps/web"
   },
   "storage": {
