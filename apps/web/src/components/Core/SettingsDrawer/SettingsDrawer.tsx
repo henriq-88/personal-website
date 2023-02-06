@@ -11,6 +11,7 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
   const [settingsDrawerOpen, setSettingsDrawerOpen] = useAtom(
     settingsDrawerOpenState,
   );
+
   return (
     <div
       onClick={(e) => setSettingsDrawerOpen(false)}
@@ -39,7 +40,7 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
           <div className="relative flex h-16 items-center px-3">
             <p className="flex-1">Settings</p>
             <button
-              className="rounded-full bg-transparent p-2 text-secondary-500 transition-colors hover:bg-secondary-500/20 dark:text-primary-500 hover:dark:bg-primary-500/20"
+              className="rounded-full bg-transparent p-2 text-secondary-800 transition-colors hover:bg-secondary-800/20 dark:text-primary-200 hover:dark:bg-primary-200/20"
               aria-label="close"
               onClick={() => setSettingsDrawerOpen(false)}
             >
