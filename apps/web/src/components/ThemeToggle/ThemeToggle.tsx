@@ -30,9 +30,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
       <div className={"inline-flex rounded-md shadow-sm"} role="group">
         <button
           className={clsx(
-            "flex h-12 flex-1 items-center justify-center border border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-500 transition-colors ltr:rounded-l-lg rtl:rounded-r-lg rtl:border-t rtl:border-b dark:border-[#ffffff1f] dark:text-primary-500",
+            "flex h-12 flex-1 items-center justify-center border border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-800 transition-colors ltr:rounded-l-lg rtl:rounded-r-lg rtl:border-t rtl:border-b dark:border-[#ffffff1f] dark:text-primary-200",
             {
-              "bg-secondary-500/10 hover:bg-secondary-500/20 dark:bg-primary-500/20 dark:hover:bg-primary-500/30":
+              "bg-secondary-800/10 hover:bg-secondary-800/20 dark:bg-primary-200/20 dark:hover:bg-primary-200/30":
                 mode === "light",
               "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]":
                 mode !== "light",
@@ -46,9 +46,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
         </button>
         <button
           className={clsx(
-            "flex h-12 flex-1 items-center justify-center border-t border-b border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-500 transition-colors dark:border-[#ffffff1f] dark:text-primary-500",
+            "flex h-12 flex-1 items-center justify-center border-t border-b border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-800 transition-colors dark:border-[#ffffff1f] dark:text-primary-200",
             {
-              "bg-secondary-500/10 hover:bg-secondary-500/20 dark:bg-primary-500/20 dark:hover:bg-primary-500/30":
+              "bg-secondary-800/10 hover:bg-secondary-800/20 dark:bg-primary-200/20 dark:hover:bg-primary-200/30":
                 mode === "system",
               "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]":
                 mode !== "system",
@@ -62,9 +62,9 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
         </button>
         <button
           className={clsx(
-            "flex h-12 flex-1 items-center justify-center border border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-500 transition-colors ltr:rounded-r-lg rtl:rounded-l-lg rtl:border-t rtl:border-b dark:border-[#ffffff1f] dark:text-primary-500",
+            "flex h-12 flex-1 items-center justify-center border border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-800 transition-colors ltr:rounded-r-lg rtl:rounded-l-lg rtl:border-t rtl:border-b dark:border-[#ffffff1f] dark:text-primary-200",
             {
-              "bg-secondary-500/10 hover:bg-secondary-500/20 dark:bg-primary-500/20 dark:hover:bg-primary-500/30":
+              "bg-secondary-800/10 hover:bg-secondary-800/20 dark:bg-primary-200/20 dark:hover:bg-primary-200/30":
                 mode === "dark",
               "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]": mode !== "dark",
             },

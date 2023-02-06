@@ -199,10 +199,10 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             <button
               disabled={isSendButtonDisabled}
               className={clsx(
-                "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase text-white transition-colors dark:text-neutral-900",
+                "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase text-white transition-colors",
                 {
                   "cursor-not-allowed ": isSubmitting,
-                  "bg-primary-500 hover:bg-primary-500/75 dark:bg-secondary-500 hover:dark:bg-secondary-500/75":
+                  "bg-primary-200 hover:bg-primary-200/75 dark:bg-secondary-800 hover:dark:bg-secondary-800/75":
                     !isSubmitting && !isSendButtonDisabled,
                   "bg-neutral-300 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500":
                     isSendButtonDisabled,
