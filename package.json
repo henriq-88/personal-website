@@ -3,10 +3,6 @@
   "private": true,
   "packageManager": "pnpm@7.26.2",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
-    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/cache": "11.10.5",
