@@ -1,24 +1,23 @@
-import { SunIcon, MoonIcon, } from "@heroicons/react/24/solid"
-import SettingsBrightnessIcon from "../../components/Icons/SettingsBrigthness"
-import { useMemo } from 'react';
-import { themeModeState } from '../../state/states';
-import { useAtom } from 'jotai';
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import SettingsBrightnessIcon from "../../components/Icons/SettingsBrigthness";
+import { useMemo } from "react";
+import { themeModeState } from "../../state/states";
+import { useAtom } from "jotai";
 import clsx from "clsx";
 
-interface ThemeToggleProps {
-}
+interface ThemeToggleProps {}
 
 const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
   const [themeMode, setThemeMode] = useAtom(themeModeState);
 
   const mode = useMemo(() => {
-    if (!themeMode) return 'system';
+    if (!themeMode) return "system";
     return themeMode;
   }, [themeMode]);
 
   const handleModeChange = (newMode: typeof mode) => {
     if (!newMode) return;
-    if (newMode === 'system') {
+    if (newMode === "system") {
       setThemeMode(undefined);
       return;
     }
@@ -27,15 +26,18 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
 
   return (
     <>
-      <span className="uppercase text-xs">
-        Mode
-      </span>
+      <span className="text-xs uppercase">Mode</span>
       <div className={"inline-flex rounded-md shadow-sm"} role="group">
         <button
-          className={clsx("h-12 flex flex-1 items-center justify-center px-4 py-2 text-sm uppercase font-medium text-secondary-500 dark:text-primary-500 border border-[#0000001f] bg-transparent dark:border-[#ffffff1f] ltr:rounded-l-lg rtl:border-t rtl:border-b rtl:rounded-r-lg", {
-            "bg-secondary-500/10 dark:bg-primary-500/20 hover:bg-secondary-500/20 dark:hover:bg-primary-500/30": mode === "light",
-            "dark:hover:bg-[#ffffff14] hover:bg-[#00000014]": mode !== "light",
-          })}
+          className={clsx(
+            "flex h-12 flex-1 items-center justify-center border border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-500 transition-colors ltr:rounded-l-lg rtl:rounded-r-lg rtl:border-t rtl:border-b dark:border-[#ffffff1f] dark:text-primary-500",
+            {
+              "bg-secondary-500/10 hover:bg-secondary-500/20 dark:bg-primary-500/20 dark:hover:bg-primary-500/30":
+                mode === "light",
+              "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]":
+                mode !== "light",
+            },
+          )}
           aria-label="light"
           onClick={() => handleModeChange(`light`)}
         >
@@ -43,10 +45,15 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
           <span>Light</span>
         </button>
         <button
-          className={clsx("h-12 flex flex-1 items-center justify-center px-4 py-2 text-sm uppercase font-medium text-secondary-500 dark:text-primary-500 border-[#0000001f] bg-transparent dark:border-[#ffffff1f] border-t border-b", {
-            "bg-secondary-500/10 dark:bg-primary-500/20 hover:bg-secondary-500/20 dark:hover:bg-primary-500/30": mode === "system",
-            "dark:hover:bg-[#ffffff14] hover:bg-[#00000014]": mode !== "system",
-          })}
+          className={clsx(
+            "flex h-12 flex-1 items-center justify-center border-t border-b border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-500 transition-colors dark:border-[#ffffff1f] dark:text-primary-500",
+            {
+              "bg-secondary-500/10 hover:bg-secondary-500/20 dark:bg-primary-500/20 dark:hover:bg-primary-500/30":
+                mode === "system",
+              "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]":
+                mode !== "system",
+            },
+          )}
           aria-label="system"
           onClick={() => handleModeChange(`system`)}
         >
@@ -54,10 +61,14 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
           <span>System</span>
         </button>
         <button
-          className={clsx("h-12 flex flex-1 items-center justify-center px-4 py-2 text-sm uppercase font-medium text-secondary-500 dark:text-primary-500 border border-[#0000001f] bg-transparent dark:border-[#ffffff1f] ltr:rounded-r-lg rtl:border-t rtl:border-b rtl:rounded-l-lg", {
-            "bg-secondary-500/10 dark:bg-primary-500/20 hover:bg-secondary-500/20 dark:hover:bg-primary-500/30": mode === "dark",
-            "dark:hover:bg-[#ffffff14] hover:bg-[#00000014]": mode !== "dark",
-          })}
+          className={clsx(
+            "flex h-12 flex-1 items-center justify-center border border-[#0000001f] bg-transparent px-4 py-2 text-sm font-medium uppercase text-secondary-500 transition-colors ltr:rounded-r-lg rtl:rounded-l-lg rtl:border-t rtl:border-b dark:border-[#ffffff1f] dark:text-primary-500",
+            {
+              "bg-secondary-500/10 hover:bg-secondary-500/20 dark:bg-primary-500/20 dark:hover:bg-primary-500/30":
+                mode === "dark",
+              "hover:bg-[#00000014] dark:hover:bg-[#ffffff14]": mode !== "dark",
+            },
+          )}
           aria-label="dark"
           onClick={() => handleModeChange("dark")}
         >
