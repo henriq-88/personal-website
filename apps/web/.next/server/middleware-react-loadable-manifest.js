@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST={"_app.tsx -> ../firebase/config":{"id":"_app.tsx -> ../firebase/config","files":["static/chunks/src_firebase_config_ts.js"]}}
