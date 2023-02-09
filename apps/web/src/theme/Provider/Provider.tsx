@@ -1,5 +1,4 @@
-import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { textDirectionState, themeModeState } from "../../state/states";
 import { useAtomValue } from "jotai";
 import { useMediaQuery } from "usehooks-ts";
@@ -19,22 +18,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
     if (!themeMode) return prefersDarkMode ? `dark` : `light`;
     return themeMode;
   }, [themeMode, prefersDarkMode, direction]);
-
-  useEffect(() => {
-    const bodyElement = document.querySelector(`body`);
-    if (!bodyElement) {
-      return;
-    }
-    bodyElement.dir = direction;
-  }, [direction]);
-
-  useEffect(() => {
-    const htmlElement = document.querySelector(`html`);
-    if (!htmlElement) {
-      return;
-    }
-    htmlElement.className = theme;
-  }, [theme]);
 
   return (
     <>

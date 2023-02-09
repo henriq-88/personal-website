@@ -1,5 +1,12 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
+  env: {
+    es2022: true,
+    browser: true,
+  },
+  globals: {
+    window: true,
+  },
   extends: ["prettier", "eslint:recommended"],
   overrides: [
     {
