@@ -11,11 +11,27 @@ const Document: React.FC = (props) => {
           type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
+              function getCookie(cname) {
+                const name = cname + "=";
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const ca = decodedCookie.split(';');
+                for (let i = 0; i <ca.length; i++) {
+                  let c = ca[i];
+                  while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                  }
+                  if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                  }
+                }
+                return '';
+              }
+              
               const systemThemeMode = window.matchMedia("(prefers-color-scheme: dark)").matches
               ? 'dark'
               : 'light';
-              const localStorageThemeMode = localStorage.getItem('themeMode');
-              const themeMode = (localStorageThemeMode === 'light' || localStorageThemeMode === 'dark') ? localStorageThemeMode : undefined ?? systemThemeMode;
+              const cookieThemeMode = getCookie('themeMode');
+              const themeMode = (cookieThemeMode === 'light' || cookieThemeMode === 'dark') ? cookieThemeMode : undefined ?? systemThemeMode;
               document.documentElement.classList.add(themeMode);
             `,
           }}
@@ -29,8 +45,8 @@ const Document: React.FC = (props) => {
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `
-            const localStorageTextDirection = localStorage.getItem('textDirection');
-            const textDirection = (localStorageTextDirection === 'ltr' || localStorageTextDirection === 'rtl') ? localStorageTextDirection : 'ltr';
+            const cookieTextDirection = getCookie('textDirection');
+            const textDirection = (cookieTextDirection === 'ltr' || cookieTextDirection === 'rtl') ? cookieTextDirection : 'ltr';
             document.body.dir = textDirection;
           `,
         }}
