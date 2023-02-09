@@ -12,6 +12,7 @@ import("../firebase/config");
 const poppins = Poppins({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
