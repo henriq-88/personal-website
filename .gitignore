@@ -12,6 +12,9 @@
 **/.next
 **/out
 
+# turbo repo
+.turbo
+
 # production
 /build
 
