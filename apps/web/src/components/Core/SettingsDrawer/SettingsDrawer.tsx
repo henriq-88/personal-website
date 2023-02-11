@@ -21,14 +21,14 @@ const SettingsDrawer: React.FC<SettingsDrawerProps> = (props) => {
     >
       <div
         className={clsx("fixed inset-0 z-50 bg-black transition-all", {
-          "bg-opacity-25 backdrop-blur-sm": settingsDrawerOpen,
-          "bg-opacity-0 backdrop-blur-none": !settingsDrawerOpen,
+          "bg-opacity-40": settingsDrawerOpen,
+          "bg-opacity-0": !settingsDrawerOpen,
         })}
       />
       <div className="inset fixed z-50 flex h-full w-full justify-end shadow-md">
         <div
           className={clsx(
-            "h-full w-90 bg-white shadow-lg transition-all dark:bg-neutral-900",
+            "h-full w-90 bg-white/70 shadow-lg backdrop-blur-md transition-all dark:bg-neutral-900",
             {
               "ltr:-mr-90 rtl:-ml-90": !settingsDrawerOpen,
               "ltr:mr-0 rtl:ml-0": settingsDrawerOpen,

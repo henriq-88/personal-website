@@ -15,7 +15,12 @@ export const setHTMLThemeMode = (themeMode: ThemeMode) => {
   if (typeof window === `undefined`) {
     return;
   }
-  document.documentElement.className = themeMode;
+  const darkClasses = [themeMode, `color-scheme-dark`];
+  const lightClasses = [themeMode, `color-scheme-light`];
+  const className = (themeMode === `dark` ? darkClasses : lightClasses).join(
+    ` `,
+  );
+  document.documentElement.className = className;
 };
 
 export const setHTMLTextDirection = (textDirection: TextDirection) => {

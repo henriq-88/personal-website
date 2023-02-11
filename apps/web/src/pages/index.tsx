@@ -11,10 +11,10 @@ export default function Home() {
       <Head>
         <title>Henrik Wassdahl - UX Developer</title>
       </Head>
-      <FullPageSection id="intro">
+      <FullPageSection>
         <IntroSection />
       </FullPageSection>
-      <FullPageSection id="about">
+      {/* <FullPageSection id="about">
         <AboutSection />
       </FullPageSection>
       <FullPageSection id="projects">
@@ -22,7 +22,7 @@ export default function Home() {
       </FullPageSection>
       <FullPageSection id="contact">
         <ContactSection />
-      </FullPageSection>
+      </FullPageSection> */}
     </>
-  )
+  );
 }

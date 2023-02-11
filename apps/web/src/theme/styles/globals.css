@@ -3,12 +3,22 @@
 @tailwind utilities;
 @import "react-toastify/dist/ReactToastify.css";
 
-.overlay-visible {
-  overflow-y: scroll;
-  overflow-x: hidden;
+html,
+body,
+div#__next,
+main {
+  height: 100%;
+  width: 100%;
 }
 
-.overlay-visible #__next {
-  height: 100vh;
-  overflow: hidden;
+body {
+  overflow-y: scroll;
+}
+
+.color-scheme-dark {
+  color-scheme: dark;
+}
+
+.color-scheme-light {
+  color-scheme: light;
 }

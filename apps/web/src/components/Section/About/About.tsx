@@ -1,57 +1,57 @@
-import ContinueButton from "../../../components/ContinueButton";
 import Image from "next/image";
-import MeImage from "../../../assets/images/me.jpg"
+import MeImage from "../../../assets/images/me.jpg";
 import clsx from "clsx";
 import { useIsScreenVertical } from "../../../utils/screen";
+import { Container } from "packages/ui";
 
-interface AboutSectionProps {
-}
+interface AboutSectionProps {}
 
 const AboutSection: React.FC<AboutSectionProps> = (props) => {
-  const isScreenVertical = useIsScreenVertical()
+  const isScreenVertical = useIsScreenVertical();
 
   return (
-    <div className="flex flex-1 flex-col justify-center items-center w-full h-full p-4 sm:p-8">
-      <div className="flex flex-1 justify-center items-center">
-        <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
+    <Container>
+      <div className="flex flex-1 items-center justify-center">
+        <div
+          className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}
+        >
           <div
-            className={clsx('flex flex-1', {
+            className={clsx("flex flex-1", {
               "flex-col": isScreenVertical,
               "gap-8": isScreenVertical,
               "gap-16": !isScreenVertical,
             })}
           >
-            <div
-              className="flex flex-1 justify-center items-center"
-            >
+            <div className="flex flex-1 items-center justify-center">
               <Image
                 alt="picture of me"
+                className="aspect-square w-full rounded-xl"
                 src={MeImage}
                 width={512}
                 height={512}
                 style={{
-                  borderRadius: `25%`,
-                  width: `100%`,
-                  aspectRatio: `1/1`,
                   maxWidth: 512,
                 }}
               />
             </div>
             <div className="flex flex-1 flex-col justify-center">
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-tight">About</h1>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-thin leading-tight">Nomad living in Seoul</h2>
-              <p className="mt-2 leading-loose">I'm Henrik, a Frontend Engineer with a Bachelor's in Computer Science and a Master's in UX. I'm experienced in developing mobile apps as well as web apps. This also includes optimized Backend communication with the apps.</p>
+              <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
+                About
+              </h1>
+              <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
+                Nomad living in Seoul
+              </h2>
+              <p className="mt-2 leading-loose">
+                I'm Henrik, a Frontend Engineer with a Bachelor's in Computer
+                Science and a Master's in UX. I'm experienced in developing
+                mobile apps as well as web apps. This also includes optimized
+                Backend communication with the apps.
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex mt-8 justify-center items-center w-full">
-        <ContinueButton
-          targetId="projects"
-          label="Projects"
-        />
-      </div>
-    </div>
+    </Container>
   );
 };
 

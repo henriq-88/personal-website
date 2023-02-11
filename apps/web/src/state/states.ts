@@ -14,7 +14,7 @@ const themeModeSchema = z.enum([`light`, `dark`]).catch(() => getSystemTheme());
 
 export type ThemeMode = z.infer<typeof themeModeSchema>;
 
-export const themeModeState = atomWithStorage<ThemeMode | undefined>(
+export const themeModeState = atomWithStorage<ThemeMode>(
   `themeMode`,
   getSystemTheme(),
   {

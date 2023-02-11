@@ -13,4 +13,4 @@ export const useIsScreenVertical = () => {
   }, []);
 
   return isScreenVertical;
-}
+};
