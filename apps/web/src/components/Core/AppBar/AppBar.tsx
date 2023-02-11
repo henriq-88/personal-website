@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import ThemeToggle from "../../ThemeToggle";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { Overlay } from "@wassdahl/ui";
 
 interface AppBarProps {}
@@ -41,12 +42,11 @@ const AppBar: React.FC<AppBarProps> = (props) => {
 
   return (
     <header>
-      {/* dark:from-[#0C0417] dark:to-[#250E48] */}
       <ThemeToggle className="fixed top-0 left-0 z-10 p-3" />
-      <div className="pointer-events-none fixed top-0 right-0 z-10 flex w-full justify-end p-3">
+      <div className="pointer-events-none fixed top-0 right-0 z-20 flex w-full justify-end p-3">
         <div
           className={clsx(
-            "pointer-events-auto flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 bg-violet-200/70 text-violet-900 backdrop-blur-md transition-all duration-300 dark:border-violet-900/50 dark:bg-[#0C0417]/90 dark:text-violet-500",
+            "pointer-events-auto flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 bg-violet-200/70 text-violet-900 backdrop-blur-md transition-all duration-300 dark:border-violet-900/50 dark:bg-[#0C0417]/70 dark:text-violet-500",
             {
               "w-full": isMenuOpen,
             },
@@ -90,7 +90,13 @@ const AppBar: React.FC<AppBarProps> = (props) => {
           )}
         </div>
       </div>
-      {/* {isMenuOpen && <Overlay onClick={() => setIsMenuOpen(false)} />} */}
+      <div
+        className={clsx("fixed inset-0 z-10 transition-all duration-300", {
+          "bg-black/50 backdrop-blur-sm": isMenuOpen,
+          "pointer-events-none bg-black/0 backdrop-blur-0": !isMenuOpen,
+        })}
+        onClick={() => setIsMenuOpen(false)}
+      />
     </header>
   );
 };

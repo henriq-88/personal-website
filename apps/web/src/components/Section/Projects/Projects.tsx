@@ -33,7 +33,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
                   and more.
                 </p>
               </div>
-              <div className="flex aspect-square flex-1 items-center justify-center rounded-[25%] bg-white text-neutral-900 dark:bg-black dark:text-neutral-100">
+              <div className="flex aspect-square flex-1 items-center justify-center rounded-[25%] bg-violet-100 text-neutral-900 dark:bg-violet-900/50 dark:text-neutral-100">
                 <h1 className="text-9xl">⚠</h1>
               </div>
             </div>
