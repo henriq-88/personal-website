@@ -16,7 +16,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
     <div className="relative mt-4">
       <fieldset
         className={clsx(
-          "visible relative inset-0 z-10 rounded-xl border border-solid bg-transparent outline-none outline-1 outline-offset-0 transition-colors",
+          "visible relative inset-0 rounded-xl border border-solid bg-transparent outline-none outline-1 outline-offset-0 transition-colors",
           {
             "border-red-500": !!error,
             "border-violet-500 hover:border-violet-900 dark:border-violet-900 hover:dark:border-violet-500":

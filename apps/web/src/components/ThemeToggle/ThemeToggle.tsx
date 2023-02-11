@@ -26,7 +26,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = (props) => {
   return (
     <div className={"inline-flex rounded-md shadow-sm"} role="group" {...props}>
       <button
-        className="rounded-full p-3 text-violet-900 transition-colors hover:bg-violet-900/10 dark:text-violet-500 hover:dark:bg-violet-500/10"
+        className="rounded-full border border-transparent p-2 text-violet-900 transition-colors hover:bg-violet-900/10 dark:text-violet-500 hover:dark:bg-violet-500/10"
         aria-label={themes[themeMode].label}
         onClick={() => themes[themeMode].onClick()}
       >

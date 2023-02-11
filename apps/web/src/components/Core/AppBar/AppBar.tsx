@@ -6,8 +6,7 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import ThemeToggle from "../../ThemeToggle";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { Overlay } from "@wassdahl/ui";
+import { Container, Overlay } from "packages/ui";
 
 interface AppBarProps {}
 
@@ -41,14 +40,14 @@ const AppBar: React.FC<AppBarProps> = (props) => {
   ];
 
   return (
-    <header>
-      <ThemeToggle className="fixed top-0 left-0 z-10 p-3" />
-      <div className="pointer-events-none fixed top-0 right-0 z-20 flex w-full justify-end p-3">
+    <header className="fixed top-0 left-0 z-20 w-full">
+      <Container className="relative flex justify-between">
+        <ThemeToggle />
         <div
           className={clsx(
-            "pointer-events-auto flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 bg-violet-200/70 text-violet-900 backdrop-blur-md transition-all duration-300 dark:border-violet-900/50 dark:bg-[#0C0417]/70 dark:text-violet-500",
+            "pointer-events-auto absolute right-3 z-20 flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 bg-violet-200/70 text-violet-900 backdrop-blur-md transition-all duration-300 dark:border-violet-900/50 dark:bg-[#0C0417]/50 dark:text-violet-500",
             {
-              "w-full": isMenuOpen,
+              "w-[calc(100%-1.5rem)]": isMenuOpen,
             },
           )}
           style={{
@@ -58,7 +57,7 @@ const AppBar: React.FC<AppBarProps> = (props) => {
         >
           <button
             className={clsx(
-              "bg-transparent p-2 transition-all hover:bg-violet-900/10",
+              "bg-transparent p-2 transition-all hover:bg-violet-900/10 hover:dark:bg-violet-500/10",
               {
                 "rounded-xl": !isMenuOpen,
                 "rounded-full": isMenuOpen,
@@ -79,24 +78,24 @@ const AppBar: React.FC<AppBarProps> = (props) => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="w-full rounded-md px-2 py-1 text-center text-lg font-semibold text-violet-500 transition-colors hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-900 hover:dark:text-violet-500 aria-[current]:dark:text-violet-500"
+                  className="w-full px-2 py-1 text-center"
                   aria-current={currentPage === link.href ? true : undefined}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.label}
+                  <span
+                    className="rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-900 hover:dark:text-violet-500 aria-[current]:dark:bg-violet-900/25 aria-[current]:dark:text-violet-500"
+                    aria-current={currentPage === link.href ? true : undefined}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </span>
                 </Link>
               ))}
             </div>
           )}
         </div>
-      </div>
-      <div
-        className={clsx("fixed inset-0 z-10 transition-all duration-300", {
-          "bg-black/50 backdrop-blur-sm": isMenuOpen,
-          "pointer-events-none bg-black/0 backdrop-blur-0": !isMenuOpen,
-        })}
-        onClick={() => setIsMenuOpen(false)}
-      />
+        <Overlay isVisible={isMenuOpen} onClick={() => setIsMenuOpen(false)} />
+      </Container>
     </header>
   );
 };
