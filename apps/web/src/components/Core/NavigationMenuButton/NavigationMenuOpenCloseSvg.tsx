@@ -1,13 +1,14 @@
 import React from "react";
-import { motion, SVGMotionProps } from "framer-motion";
+import { motion, SVGMotionProps, Transition } from "framer-motion";
 
-interface NavigationMenuButtonProps extends SVGMotionProps<SVGSVGElement> {
+interface NavigationMenuOpenCloseSvgProps
+  extends SVGMotionProps<SVGSVGElement> {
   isOpen?: boolean;
   color?: string;
   strokeWidth?: string | number;
 }
 
-const NavigationMenuButton: React.FC<NavigationMenuButtonProps> = ({
+const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
   isOpen = false,
   width = 24,
   height = 24,
@@ -52,8 +53,12 @@ const NavigationMenuButton: React.FC<NavigationMenuButtonProps> = ({
     initial: "closed",
     animate: variant,
   };
-  const unitHeight = 24;
+
+  const mx = 4;
+  const my = 7;
+  const unitHeight = height as number;
   const unitWidth = (unitHeight * (width as number)) / (height as number);
+  const transition: Transition = { duration: 0.3, ease: "easeOut" };
 
   return (
     <motion.svg
@@ -65,34 +70,34 @@ const NavigationMenuButton: React.FC<NavigationMenuButtonProps> = ({
       {...props}
     >
       <motion.line
-        x1="4"
-        x2={unitWidth - 4}
-        y1="7"
-        y2="7"
+        x1={mx}
+        x2={unitWidth - mx}
+        y1={my}
+        y2={my}
         variants={top}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={transition}
         {...lineProps}
       />
       <motion.line
-        x1="4"
+        x1={mx}
         x2={unitWidth - 4}
-        y1="12"
-        y2="12"
+        y1={unitHeight / 2}
+        y2={unitHeight / 2}
         variants={center}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={transition}
         {...lineProps}
       />
       <motion.line
-        x1="4"
+        x1={mx}
         x2={unitWidth - 4}
-        y1="17"
-        y2="17"
+        y1={unitHeight - my}
+        y2={unitHeight - my}
         variants={bottom}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={transition}
         {...lineProps}
       />
     </motion.svg>
   );
 };
 
-export default NavigationMenuButton;
+export default NavigationMenuOpenCloseSvg;

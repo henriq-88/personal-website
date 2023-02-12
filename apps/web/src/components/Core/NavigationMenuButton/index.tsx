@@ -1,2 +1,2 @@
-export { default } from "./NavigationMenuButton";
-export * from "./NavigationMenuButton";
+export { default } from "./NavigationMenuOpenCloseSvg";
+export * from "./NavigationMenuOpenCloseSvg";
