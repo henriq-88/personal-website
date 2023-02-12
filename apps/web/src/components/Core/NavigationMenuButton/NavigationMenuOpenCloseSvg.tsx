@@ -50,7 +50,6 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
     strokeWidth: strokeWidth as number,
     strokeLinecap: "round",
     vectorEffect: "non-scaling-stroke",
-    initial: "closed",
     animate: variant,
   };
 
@@ -74,6 +73,7 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
         x2={unitWidth - mx}
         y1={my}
         y2={my}
+        initial={false}
         variants={top}
         transition={transition}
         {...lineProps}
@@ -83,6 +83,7 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
         x2={unitWidth - 4}
         y1={unitHeight / 2}
         y2={unitHeight / 2}
+        initial={false}
         variants={center}
         transition={transition}
         {...lineProps}
@@ -92,6 +93,7 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
         x2={unitWidth - 4}
         y1={unitHeight - my}
         y2={unitHeight - my}
+        initial={false}
         variants={bottom}
         transition={transition}
         {...lineProps}
