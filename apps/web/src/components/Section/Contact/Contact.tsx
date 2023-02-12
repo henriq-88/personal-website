@@ -139,10 +139,9 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             className={clsx(
               "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all hover:scale-105",
               {
-                "cursor-not-allowed ": isSubmitting,
-                "bg-violet-500 hover:bg-violet-600 dark:bg-violet-900 hover:dark:bg-violet-700":
-                  !isSubmitting && !isSendButtonDisabled,
-                "bg-violet-500/50 text-neutral-600 dark:bg-violet-900/50 dark:text-neutral-500":
+                "bg-violet-600  text-white dark:bg-violet-800":
+                  !isSendButtonDisabled,
+                "cursor-not-allowed bg-violet-600/30 text-neutral-300 hover:scale-100 dark:bg-violet-800/30 dark:text-neutral-500":
                   isSendButtonDisabled,
               },
             )}

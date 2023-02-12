@@ -23,7 +23,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
               !error,
           },
         )}
-        aria-hidden
       >
         <input
           ref={ref}

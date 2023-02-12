@@ -24,7 +24,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
                 !error,
             },
           )}
-          aria-hidden
         >
           <textarea
             ref={ref}
