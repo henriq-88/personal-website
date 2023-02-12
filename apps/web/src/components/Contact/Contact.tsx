@@ -142,7 +142,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
               {
                 "cursor-not-allowed": hasErrors,
                 "cursor-progress": isSubmitting,
-                "bg-violet-600  text-white hover:scale-105 dark:bg-violet-800":
+                "bg-violet-600 text-white hover:scale-105 dark:bg-violet-800":
                   !isSendButtonDisabled,
                 "bg-violet-600/30 text-neutral-300 dark:bg-violet-800/30 dark:text-neutral-500":
                   isSendButtonDisabled,
