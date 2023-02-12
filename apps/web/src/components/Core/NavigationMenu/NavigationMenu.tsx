@@ -1,9 +1,9 @@
 import { settingsDrawerOpenState } from "apps/web/src/state/states";
 import clsx from "clsx";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useAtom } from "jotai";
 import { Overlay } from "packages/ui";
 import NavigationMenuList from "../NavigationMenuList";
+import NavigationMenuButton from "../NavigationMenuButton/NavigationMenuButton";
 
 interface NavigationMenuProps {}
 
@@ -34,11 +34,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
           aria-label="menu"
           onClick={() => setIsMenuOpen((open) => !open)}
         >
-          {isMenuOpen ? (
-            <XMarkIcon className="h-6 w-6 text-current" />
-          ) : (
-            <Bars3Icon className="h-6 w-6 text-current" />
-          )}
+          <NavigationMenuButton isOpen={isMenuOpen} />
         </button>
         {isMenuOpen && (
           <NavigationMenuList onLinkClick={() => setIsMenuOpen(false)} />
