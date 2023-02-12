@@ -45,7 +45,11 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
           <NavigationMenuList onLinkClick={() => setIsMenuOpen(false)} />
         )}
       </div>
-      <Overlay isVisible={isMenuOpen} onClick={() => setIsMenuOpen(false)} />
+      <Overlay
+        className="md:hidden"
+        isVisible={isMenuOpen}
+        onClick={() => setIsMenuOpen(false)}
+      />
     </>
   );
 };
