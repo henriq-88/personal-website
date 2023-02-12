@@ -30,7 +30,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
       >
         <button
           className={clsx(
-            "p-2 transition-all hover:scale-110 hover:bg-violet-900/10 hover:dark:bg-violet-500/10",
+            "p-2 transition-all ease-in-out hover:scale-110 hover:bg-violet-900/10 hover:dark:bg-violet-500/10",
             {
               "rounded-xl": !isMenuOpen,
               "rounded-full": isMenuOpen,

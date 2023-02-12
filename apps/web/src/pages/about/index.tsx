@@ -9,7 +9,7 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
       <Head>
         <title>About - Henrik Wassdahl - UX Developer</title>
       </Head>
-      <Page />;
+      <Page />
     </>
   );
 };

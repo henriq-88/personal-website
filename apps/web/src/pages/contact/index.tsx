@@ -8,7 +8,7 @@ const ContactPage: React.FC<ContactPageProps> = (props) => {
       <Head>
         <title>Contact - Henrik Wassdahl - UX Developer</title>
       </Head>
-      <ContactSection />;
+      <ContactSection />
     </>
   );
 };

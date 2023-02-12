@@ -114,6 +114,7 @@ importers:
 
   apps/web:
     specifiers:
+      '@formkit/auto-animate': 1.0.0-beta.6
       '@heroicons/react': 2.0.15
       '@hookform/resolvers': 2.9.11
       '@next/eslint-plugin-next': 13.1.6
@@ -155,6 +156,7 @@ importers:
       usehooks-ts: 2.9.1
       zod: 3.20.6
     dependencies:
+      '@formkit/auto-animate': 1.0.0-beta.6
       '@heroicons/react': 2.0.15_react@18.2.0
       '@hookform/resolvers': 2.9.11_react-hook-form@7.43.1
       '@next/font': 13.1.6
@@ -2349,6 +2351,10 @@ packages:
 
   /@firebase/webchannel-wrapper/0.9.0:
     resolution: {integrity: sha512-BpiZLBWdLFw+qFel9p3Zs1jD6QmH7Ii4aTDu6+vx8ShdidChZUXqDhYJly4ZjSgQh54miXbBgBrk0S+jTIh/Qg==}
+    dev: false
+
+  /@formkit/auto-animate/1.0.0-beta.6:
+    resolution: {integrity: sha512-PVDhLAlr+B4Xb7e+1wozBUWmXa6BFU8xUPR/W/E+TsQhPS1qkAdAsJ25keEnFrcePSnXHrOsh3tiFbEToOzV9w==}
     dev: false
 
   /@gar/promisify/1.1.3:

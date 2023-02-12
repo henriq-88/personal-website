@@ -9,7 +9,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
       <Head>
         <title>Projects - Henrik Wassdahl - UX Developer</title>
       </Head>
-      <ProjectsSection />;
+      <ProjectsSection />
     </>
   );
 };

@@ -29,10 +29,10 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
       href: `/about`,
       label: `About`,
     },
-    {
-      href: `/projects`,
-      label: `Projects`,
-    },
+    // {
+    //   href: `/projects`,
+    //   label: `Projects`,
+    // },
     {
       href: `/contact`,
       label: `Contact`,
@@ -55,7 +55,7 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
           key={link.href}
           href={link.href}
           className={clsx(
-            "group px-2 py-1 text-center transition-transform hover:scale-105",
+            "group px-2 py-1 text-center transition-transform ease-in-out hover:scale-105",
             {
               "w-full": orientation === `vertical`,
             },
@@ -64,7 +64,7 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
           onClick={() => onLinkClick?.()}
         >
           <span
-            className="rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors group-hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-900 dark:group-hover:text-violet-500 aria-[current]:dark:bg-violet-900/25 aria-[current]:dark:text-violet-500"
+            className="rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors group-hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-700 dark:group-hover:text-violet-500 aria-[current]:dark:bg-violet-700/25 aria-[current]:dark:text-violet-500"
             aria-current={currentPage === link.href ? true : undefined}
           >
             {link.label}
