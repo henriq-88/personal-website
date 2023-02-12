@@ -4,7 +4,6 @@ import AppBar from "../components/Core/AppBar";
 import CompositeProvider from "../components/CompositeProvider";
 import { Poppins } from "@next/font/google";
 import clsx from "clsx";
-import { useIsOverlayVisible } from "../utils/modal";
 import Footer from "../components/Core/Footer";
 
 import("../firebase/config");
@@ -19,19 +18,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   // useIsOverlayVisible();
 
   return (
-    <main
-      className={clsx(
-        "bg-gradient-to-b from-violet-200 to-violet-400 text-neutral-900 dark:from-[#0C0417] dark:to-[#250E48] dark:text-white dark:[color-scheme:dark]",
-        poppins.className,
-      )}
-    >
-      <CompositeProvider>
-        <AppBar />
+    <CompositeProvider>
+      <AppBar />
+      <main className={clsx(`flex-1`, poppins.className)}>
         {/* <SettingsDrawer /> */}
         <Component {...pageProps} />
-        <Footer />
-      </CompositeProvider>
-    </main>
+      </main>
+      <Footer />
+    </CompositeProvider>
   );
 }
 

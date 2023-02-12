@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 const Document: React.FC = (props) => {
   return (
-    <Html lang="en">
+    <Html lang="en" className="h-full">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="UTF-8" />
@@ -37,20 +37,13 @@ const Document: React.FC = (props) => {
           }}
         />
       </Head>
-      <body dir="ltr">
+      <body
+        dir="ltr"
+        className="h-full bg-violet-400 bg-gradient-to-b from-violet-200 to-violet-400 bg-no-repeat text-neutral-900 dark:bg-[#250E48]  dark:from-[#0C0417] dark:to-[#250E48] dark:text-white dark:[color-scheme:dark]"
+      >
         <Main />
         <NextScript />
       </body>
-      <script
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html: `
-            const cookieTextDirection = getCookie('textDirection');
-            const textDirection = (cookieTextDirection === 'ltr' || cookieTextDirection === 'rtl') ? cookieTextDirection : 'ltr';
-            document.body.dir = textDirection;
-          `,
-        }}
-      />
     </Html>
   );
 };

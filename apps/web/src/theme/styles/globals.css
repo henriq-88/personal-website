@@ -9,12 +9,10 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  html,
-  body,
-  div#__next,
-  main {
-    height: 100%;
-    width: 100%;
+  div#__next {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
   }
 
   body {

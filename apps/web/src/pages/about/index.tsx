@@ -1,14 +1,9 @@
-import AboutSection from "../../components/Section/About/About";
-import FullPageSection from "../../components/Section/FullPage/FullPage";
+import Page from "../../components/Section/About";
 
 interface AboutPageProps {}
 
 const AboutPage: React.FC<AboutPageProps> = (props) => {
-  return (
-    <FullPageSection>
-      <AboutSection />
-    </FullPageSection>
-  );
+  return <Page />;
 };
 
 export default AboutPage;

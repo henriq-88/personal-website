@@ -1,14 +1,8 @@
 import ContactSection from "../../components/Section/Contact/Contact";
-import FullPageSection from "../../components/Section/FullPage/FullPage";
-
 interface ContactPageProps {}
 
 const ContactPage: React.FC<ContactPageProps> = (props) => {
-  return (
-    <FullPageSection>
-      <ContactSection />
-    </FullPageSection>
-  );
+  return <ContactSection />;
 };
 
 export default ContactPage;

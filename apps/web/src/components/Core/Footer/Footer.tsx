@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = (props) => {
   ];
 
   return (
-    <footer className="fixed bottom-0 left-0 flex w-full justify-center gap-4 p-8">
+    <footer className="z-10 flex w-full flex-shrink-0 justify-center gap-4 p-8">
       {socialLinks.map((socialLink) => (
         <a
           key={socialLink.href}

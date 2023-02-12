@@ -38,12 +38,12 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
         <Link
           key={link.href}
           href={link.href}
-          className="w-full px-2 py-1 text-center"
+          className="group w-full px-2 py-1 text-center"
           aria-current={currentPage === link.href ? true : undefined}
           onClick={() => props.onLinkClick()}
         >
           <span
-            className="pointer-events-none rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-900 hover:dark:text-violet-500 aria-[current]:dark:bg-violet-900/25 aria-[current]:dark:text-violet-500"
+            className="rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors group-hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-900 dark:group-hover:text-violet-500 aria-[current]:dark:bg-violet-900/25 aria-[current]:dark:text-violet-500"
             aria-current={currentPage === link.href ? true : undefined}
           >
             {link.label}

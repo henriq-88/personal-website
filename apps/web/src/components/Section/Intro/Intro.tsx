@@ -1,14 +1,14 @@
 import { Container } from "packages/ui";
 import { useIsScreenVertical } from "../../../utils/screen";
 
-interface IntroSectionProps {}
+interface IntroPageProps {}
 
-const IntroSection: React.FC<IntroSectionProps> = (props) => {
+const IntroPage: React.FC<IntroPageProps> = (props) => {
   const isScreenVertical = useIsScreenVertical();
 
   return (
-    <Container>
-      <div className="mt-8 flex flex-1 items-center justify-center">
+    <Container className="h-full">
+      <div className="flex h-full flex-1 items-center justify-center">
         <div
           className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}
         >
@@ -29,4 +29,4 @@ const IntroSection: React.FC<IntroSectionProps> = (props) => {
   );
 };
 
-export default IntroSection;
+export default IntroPage;

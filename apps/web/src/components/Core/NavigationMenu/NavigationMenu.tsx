@@ -13,9 +13,10 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
     <>
       <div
         className={clsx(
-          "pointer-events-auto absolute right-3 z-20 flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 bg-violet-200/70 text-violet-900 backdrop-blur-md transition-all duration-300 dark:border-violet-900/50 dark:bg-[#0C0417]/70 dark:text-violet-500",
+          "pointer-events-auto absolute z-20 flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 text-violet-900 backdrop-blur-md transition-all duration-300 ltr:right-3 rtl:left-3 dark:border-violet-900/50  dark:text-violet-500",
           {
-            "w-[calc(100%-1.5rem)]": isMenuOpen,
+            "w-[calc(100%-1.5rem)] bg-violet-200/70 dark:bg-[#0C0417]/70":
+              isMenuOpen,
           },
         )}
         style={{
@@ -25,7 +26,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
       >
         <button
           className={clsx(
-            "bg-transparent p-2 transition-all hover:bg-violet-900/10 hover:dark:bg-violet-500/10",
+            "p-2 transition-all hover:bg-violet-900/10 hover:dark:bg-violet-500/10",
             {
               "rounded-xl": !isMenuOpen,
               "rounded-full": isMenuOpen,
