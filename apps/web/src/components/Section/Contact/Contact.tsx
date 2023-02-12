@@ -75,7 +75,8 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
     }
   };
 
-  const isSendButtonDisabled = isSubmitting || Object.values(errors).length > 0;
+  const hasErrors = Object.values(errors).length > 0;
+  const isSendButtonDisabled = isSubmitting || hasErrors;
 
   return (
     <Container className="flex h-full items-center justify-center">
@@ -139,9 +140,11 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
             className={clsx(
               "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all hover:scale-105",
               {
+                "cursor-not-allowed": hasErrors,
+                "cursor-progress": isSubmitting,
                 "bg-violet-600  text-white dark:bg-violet-800":
                   !isSendButtonDisabled,
-                "cursor-not-allowed bg-violet-600/30 text-neutral-300 hover:scale-100 dark:bg-violet-800/30 dark:text-neutral-500":
+                "bg-violet-600/30 text-neutral-300 hover:scale-100 dark:bg-violet-800/30 dark:text-neutral-500":
                   isSendButtonDisabled,
               },
             )}
