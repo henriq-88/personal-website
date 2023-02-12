@@ -38,7 +38,7 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
         <Link
           key={link.href}
           href={link.href}
-          className="group w-full px-2 py-1 text-center"
+          className="group w-full px-2 py-1 text-center transition-transform hover:scale-110"
           aria-current={currentPage === link.href ? true : undefined}
           onClick={() => props.onLinkClick()}
         >

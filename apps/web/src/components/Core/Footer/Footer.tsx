@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = (props) => {
       {socialLinks.map((socialLink) => (
         <a
           key={socialLink.href}
-          className="rounded-full p-2 text-violet-900 transition-colors hover:bg-violet-900/10 dark:text-violet-500 hover:dark:bg-violet-500/10"
+          className="rounded-full p-2 text-violet-900 transition-all hover:scale-110 hover:bg-violet-900/10 dark:text-violet-500 hover:dark:bg-violet-500/10"
           type="anchor"
           href={socialLink.href}
           target="_blank"

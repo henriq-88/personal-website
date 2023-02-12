@@ -137,7 +137,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
           <button
             disabled={isSendButtonDisabled}
             className={clsx(
-              "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-colors",
+              "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all hover:scale-105",
               {
                 "cursor-not-allowed ": isSubmitting,
                 "bg-violet-500 hover:bg-violet-600 dark:bg-violet-900 hover:dark:bg-violet-700":
