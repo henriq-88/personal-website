@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ContactSection from "../../components/Section/Contact/Contact";
+import ContactSection from "../../components/Contact/Contact";
 interface ContactPageProps {}
 
 const ContactPage: React.FC<ContactPageProps> = (props) => {

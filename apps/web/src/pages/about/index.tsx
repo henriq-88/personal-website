@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Page from "../../components/Section/About";
+import Page from "../../components/About";
 
 interface AboutPageProps {}
 

@@ -1,4 +1,4 @@
-import IntroPage from "../components/Section/Intro";
+import IntroPage from "../components/Intro";
 import Head from "next/head";
 
 export default function Home() {

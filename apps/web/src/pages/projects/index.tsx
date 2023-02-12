@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ProjectsSection from "../../components/Section/Projects/Projects";
+import ProjectsSection from "../../components/Projects/Projects";
 
 interface ProjectsPageProps {}
 

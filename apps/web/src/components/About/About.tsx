@@ -1,7 +1,7 @@
 import Image from "next/image";
 import MeImage from "../../../assets/images/me.jpg";
 import clsx from "clsx";
-import { useIsScreenVertical } from "../../../utils/screen";
+import { useIsScreenVertical } from "../../utils/screen";
 import { Container } from "packages/ui";
 
 interface AboutPageProps {}

@@ -1,7 +1,7 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
 import { httpsCallable } from "firebase/functions";
-import { functions } from "../../../firebase/config";
+import { functions } from "../../firebase/config";
 import {
   LiteralUnion,
   RegisterOptions,
@@ -17,7 +17,7 @@ import {
   TextArea,
   TextField,
 } from "@wassdahl/ui";
-import { useIsScreenVertical } from "../../../utils/screen";
+import { useIsScreenVertical } from "../../utils/screen";
 
 interface ContactSectionProps {}
 
@@ -138,13 +138,13 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
           <button
             disabled={isSendButtonDisabled}
             className={clsx(
-              "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all hover:scale-105",
+              "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all ",
               {
                 "cursor-not-allowed": hasErrors,
                 "cursor-progress": isSubmitting,
-                "bg-violet-600  text-white dark:bg-violet-800":
+                "bg-violet-600  text-white hover:scale-105 dark:bg-violet-800":
                   !isSendButtonDisabled,
-                "bg-violet-600/30 text-neutral-300 hover:scale-100 dark:bg-violet-800/30 dark:text-neutral-500":
+                "bg-violet-600/30 text-neutral-300 dark:bg-violet-800/30 dark:text-neutral-500":
                   isSendButtonDisabled,
               },
             )}

@@ -1,5 +1,5 @@
 import { Container } from "packages/ui";
-import { useIsScreenVertical } from "../../../utils/screen";
+import { useIsScreenVertical } from "../../utils/screen";
 
 interface IntroPageProps {}
 

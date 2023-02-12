@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useIsScreenVertical } from "../../../utils/screen";
+import { useIsScreenVertical } from "../../utils/screen";
 import { Container } from "packages/ui";
 
 interface ProjectsSectionProps {}
