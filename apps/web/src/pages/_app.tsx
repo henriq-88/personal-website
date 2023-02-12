@@ -29,5 +29,3 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </CompositeProvider>
   );
 }
-
-// flex h-full w-full flex-1 flex-col items-center justify-center bg-gradient-to-b from-violet-200 to-violet-400 p-4 text-neutral-900 dark:from-[#0C0417] dark:to-[#250E48] dark:text-white sm:p-8
