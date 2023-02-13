@@ -11,11 +11,20 @@ interface NavigationMenuProps {}
 
 const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useAtom(settingsDrawerOpenState);
-  const { width = 0 } = useWindowSize();
+  const { width } = useWindowSize();
 
-  const isMobileView = useMemo(() => width < 640, [width]);
+  const isMobileView = useMemo(() => {
+    if (!width) {
+      return;
+    }
+    return width < 640;
+  }, [width]);
 
-  if (!isMobileView) {
+  if (isMobileView === undefined) {
+    return <></>;
+  }
+
+  if (isMobileView === false) {
     return <NavigationMenuList orientation="horizontal" />;
   }
 

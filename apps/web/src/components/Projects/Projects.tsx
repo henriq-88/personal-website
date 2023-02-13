@@ -79,6 +79,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
     [],
   );
 
+  if (columnCount === undefined) {
+    return <></>;
+  }
+
   return (
     <Container className="h-full flex-1">
       <TextField
