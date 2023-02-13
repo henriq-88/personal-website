@@ -4,20 +4,29 @@ import { useAtom } from "jotai";
 import { Overlay } from "packages/ui";
 import NavigationMenuList from "../NavigationMenuList";
 import NavigationMenuOpenCloseSvg from "../NavigationMenuButton/NavigationMenuOpenCloseSvg";
+import { useWindowSize } from "../../../utils/screen";
+import { useMemo } from "react";
 
 interface NavigationMenuProps {}
 
 const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useAtom(settingsDrawerOpenState);
+  const { width = 0 } = useWindowSize();
+
+  const isMobileView = useMemo(() => width < 640, [width]);
+
+  if (!isMobileView) {
+    return <NavigationMenuList orientation="horizontal" />;
+  }
+
   return (
     <>
-      <NavigationMenuList orientation="horizontal" className="hidden md:flex" />
-      <div className="hidden border border-transparent md:block">
+      <div className="border border-transparent md:block">
         <div className="h-10 w-10" />
       </div>
       <div
         className={clsx(
-          "absolute z-20 flex flex-col items-end overflow-hidden rounded-xl border border-solid border-violet-500/50 text-violet-900 backdrop-blur-md transition-all duration-300 ltr:right-3 rtl:left-3 dark:border-violet-900/50 dark:text-violet-500 md:hidden",
+          "absolute z-20 flex flex-col items-end rounded-xl border border-solid border-violet-500/50 text-violet-900 backdrop-blur-md transition-all duration-300 ltr:right-3 rtl:left-3 dark:border-violet-900/50 dark:text-violet-500",
           {
             "w-[calc(100%-1.5rem)] bg-violet-200/70 dark:bg-[#0C0417]/70":
               isMenuOpen,
@@ -45,11 +54,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
           <NavigationMenuList onLinkClick={() => setIsMenuOpen(false)} />
         )}
       </div>
-      <Overlay
-        className="md:hidden"
-        isVisible={isMenuOpen}
-        onClick={() => setIsMenuOpen(false)}
-      />
+      <Overlay isVisible={isMenuOpen} onClick={() => setIsMenuOpen(false)} />
     </>
   );
 };

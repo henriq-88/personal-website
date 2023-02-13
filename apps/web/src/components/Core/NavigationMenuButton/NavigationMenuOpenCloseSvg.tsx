@@ -69,6 +69,7 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
       {...props}
     >
       <motion.line
+        id="top"
         x1={mx}
         x2={unitWidth - mx}
         y1={my}
@@ -79,6 +80,7 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
         {...lineProps}
       />
       <motion.line
+        id="center"
         x1={mx}
         x2={unitWidth - 4}
         y1={unitHeight / 2}
@@ -89,6 +91,7 @@ const NavigationMenuOpenCloseSvg: React.FC<NavigationMenuOpenCloseSvgProps> = ({
         {...lineProps}
       />
       <motion.line
+        id="bottom"
         x1={mx}
         x2={unitWidth - 4}
         y1={unitHeight - my}
