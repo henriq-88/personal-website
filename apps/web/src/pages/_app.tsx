@@ -9,10 +9,9 @@ import Footer from "../components/Core/Footer";
 import("../firebase/config");
 
 const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "400", "600", "700"],
   subsets: ["latin"],
   display: "swap",
-  preload: false,
 });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
