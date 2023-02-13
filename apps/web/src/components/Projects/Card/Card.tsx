@@ -55,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
           }}
         >
           <div>{` ` ?? props.tags}</div>
-          <div className="rounded-2xl bg-violet-900 px-3 py-1 text-xs capitalize">
+          <div className="rounded-md bg-violet-900 px-2 py-1 text-xs capitalize">
             {categories[props.category]}
           </div>
         </div>
