@@ -15,7 +15,6 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   return (
     <Link
-      // href={`/projects/${props.id}`}
       href={`#/projects/${props.id}`}
       className={clsx(
         "group relative flex h-64 w-full items-center justify-center transition-all duration-300 ease-in-out hover:z-10 hover:scale-105",
@@ -55,7 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
             borderBottomLeftRadius: `inherit`,
           }}
         >
-          <div>{props.tags}</div>
+          <div>{` ` ?? props.tags}</div>
           <div className="rounded-2xl bg-violet-900 px-3 py-1 text-xs capitalize">
             {categories[props.category]}
           </div>

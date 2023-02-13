@@ -1,10 +1,12 @@
 import "../theme/styles/globals.css";
+import MeImage from "../assets/images/me.jpg";
 import type { AppProps } from "next/app";
 import AppBar from "../components/Core/AppBar";
 import CompositeProvider from "../components/CompositeProvider";
 import { Poppins } from "@next/font/google";
 import clsx from "clsx";
 import Footer from "../components/Core/Footer";
+import Head from "next/head";
 
 import("../firebase/config");
 
@@ -15,16 +17,18 @@ const poppins = Poppins({
 });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  // useIsOverlayVisible();
-
   return (
-    <CompositeProvider>
-      <AppBar />
-      <main className={clsx(`flex-1`, poppins.className)}>
-        {/* <SettingsDrawer /> */}
-        <Component {...pageProps} />
-      </main>
-      <Footer />
-    </CompositeProvider>
+    <>
+      <Head>
+        <meta name="og:image" content={`https://wassdahl.dev${MeImage.src}`} />
+      </Head>
+      <CompositeProvider>
+        <AppBar />
+        <main className={clsx(`flex-1`, poppins.className)}>
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </CompositeProvider>
+    </>
   );
 }

@@ -7,6 +7,10 @@ const Document: React.FC = (props) => {
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="UTF-8" />
         <meta name="description" content="Henrik Wassdahl - UX Developer" />
+        {}
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="https://wassdahl.dev" />
+        <meta name="twitter:card" content="summary" />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
