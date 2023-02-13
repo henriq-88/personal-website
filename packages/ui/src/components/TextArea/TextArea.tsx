@@ -23,6 +23,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       value,
       ...rest
     } = props;
+
     return (
       <div className="relative">
         <fieldset
@@ -62,15 +63,13 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           <label
             htmlFor={id}
             className={clsx(
-              `left-0.25 pointer-events-none absolute left-0 mx-2 px-1 text-xs  transition-all peer-focus:-top-2 peer-focus:text-xs`,
+              `left-0.25 pointer-events-none absolute left-0 mx-2 px-1 text-xs transition-all  peer-focus:-top-2 peer-focus:text-xs`,
               {
                 "text-red-700 dark:text-red-500": !!error,
                 "text-violet-900 dark:text-violet-500": !error,
-                "peer-placeholder-shown:-top-2 peer-focus:block": placeholder,
-                "hidden peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:block":
-                  !placeholder && value,
-                "top-3 peer-placeholder-shown:text-base peer-focus:block":
-                  !placeholder && !value,
+                "-top-2 peer-focus:block": placeholder,
+                "-top-2 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:block":
+                  !placeholder,
               },
             )}
           >
@@ -78,7 +77,14 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           </label>
         </fieldset>
         {hideErrors !== true && (
-          <p className="mt-1 whitespace-pre text-xs text-red-700 dark:text-red-500">
+          <p
+            className={clsx(
+              "mt-1 whitespace-pre text-xs text-red-700 dark:text-red-500",
+              {
+                "select-none": !error,
+              },
+            )}
+          >
             {error ?? ` `}
           </p>
         )}
