@@ -22,7 +22,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
     value,
     ...rest
   } = props;
-  console.log({ value });
 
   return (
     <div className="relative">
