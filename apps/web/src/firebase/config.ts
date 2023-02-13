@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getPerformance } from "firebase/performance";
 import { getFunctions } from "firebase/functions";
+import { getFirestore } from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyCRVnGwzpOe8H0Cd1wr_qgeoBrUvslUdqc",
@@ -24,3 +25,4 @@ if (typeof window !== "undefined") {
 }
 
 export const functions = getFunctions(app);
+export const firestore = getFirestore(app);
