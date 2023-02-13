@@ -21,6 +21,7 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
         >
           <div className="flex flex-1 items-center justify-center">
             <Image
+              priority
               alt="picture of me"
               className="aspect-square w-full rounded-xl grayscale"
               src={MeImage}

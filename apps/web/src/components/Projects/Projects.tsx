@@ -2,29 +2,29 @@ import { Container, TextField } from "packages/ui";
 import ProjectCard from "./Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useCallback, useMemo, useState } from "react";
-import { useWindowSize } from "rooks";
+import { useWindowSize } from "../../utils/screen";
 
 interface ProjectsSectionProps {}
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
-  const { innerWidth } = useWindowSize();
+  const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate(/* optional config */);
 
   const [projects, setProjects] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [search, setSearch] = useState("");
 
   const columnCount = useMemo(() => {
-    if (!innerWidth) {
-      return 1;
+    if (!width) {
+      return;
     }
-    if (innerWidth >= 1024) {
+    if (width >= 1024) {
       return 3;
     }
-    if (innerWidth >= 640) {
+    if (width >= 640) {
       return 2;
     }
     return 1;
-  }, [innerWidth]);
+  }, [width]);
 
   const getBorderRadiusClassName = useCallback(
     ({
@@ -73,11 +73,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
         ref={gridRef}
       >
         {projects.map((item, i, projects) => {
-          const borderRadiusClassName = getBorderRadiusClassName({
-            index: i,
-            length: projects.length,
-            columnCount,
-          });
+          const borderRadiusClassName = columnCount
+            ? getBorderRadiusClassName({
+                index: i,
+                length: projects.length,
+                columnCount,
+              })
+            : "";
           return <ProjectCard key={item} className={borderRadiusClassName} />;
         })}
       </div>
