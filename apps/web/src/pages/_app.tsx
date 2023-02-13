@@ -21,6 +21,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="og:image" content={`https://wassdahl.dev${MeImage.src}`} />
+        <meta name="og:image:alt" content="Profile picture" />
       </Head>
       <CompositeProvider>
         <AppBar />
