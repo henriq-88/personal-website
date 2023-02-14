@@ -25,5 +25,4 @@ if (!isServer()) {
   }
 }
 
-export const functions = getFunctions(app);
 export const firestore = getFirestore(app);

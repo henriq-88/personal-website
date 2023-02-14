@@ -14,7 +14,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  transpilePackages: ["@wassdahl/ui"],
+  transpilePackages: ["@wassdahl/ui", "@wassdahl/api", "@wassdahl/auth"],
 };
 
 export default withBundleAnalyzer(nextConfig);

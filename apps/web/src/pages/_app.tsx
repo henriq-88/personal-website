@@ -7,6 +7,7 @@ import { Poppins } from "@next/font/google";
 import clsx from "clsx";
 import Footer from "../components/Core/Footer";
 import Head from "next/head";
+import { api } from "./api";
 
 import("../firebase/config");
 
@@ -16,7 +17,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -33,3 +34,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default api.withTRPC(MyApp);

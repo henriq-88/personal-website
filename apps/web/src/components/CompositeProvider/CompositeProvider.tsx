@@ -15,10 +15,12 @@ const queryClient = new QueryClient({
 });
 
 const CompositeProvider: React.FC<CompositeProviderProps> = (props) => (
-  <QueryClientProvider client={queryClient}>
+  // <QueryClientProvider client={queryClient}>
+  <>
     <ThemeProvider>{props.children}</ThemeProvider>
     <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  </>
+  // </QueryClientProvider>
 );
 
 export default CompositeProvider;

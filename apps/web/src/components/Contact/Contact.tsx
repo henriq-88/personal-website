@@ -1,7 +1,5 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
-import { httpsCallable } from "firebase/functions";
-import { functions } from "../../firebase/config";
 import {
   LiteralUnion,
   RegisterOptions,
@@ -18,6 +16,7 @@ import {
   TextField,
 } from "@wassdahl/ui";
 import { useIsScreenVertical } from "../../utils/screen";
+import { api } from "../../pages/api";
 
 interface ContactSectionProps {}
 
@@ -36,7 +35,7 @@ type FormSchemaType = z.infer<typeof formSchema>;
 
 const ContactSection: React.FC<ContactSectionProps> = (props) => {
   const isScreenVertical = useIsScreenVertical();
-  const sendMessage = httpsCallable(functions, `sendMessage`);
+  const { mutateAsync: sendMessage } = api.contact.sendMessage.useMutation();
   const {
     register,
     formState: { errors, isSubmitting },
@@ -72,6 +71,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
       toast(`Doh! Message couldn't be sent for some reason 😥`, {
         type: `error`,
       });
+      console.log(err);
     }
   };
 

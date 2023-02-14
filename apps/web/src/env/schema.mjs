@@ -6,7 +6,7 @@ import { z } from "zod";
  * This way you can ensure the app isn't built with invalid env vars.
  */
 export const serverSchema = z.object({
-  // DATABASE_URL: z.string().url(),
+  SENDGRID_API_KEY: z.string().min(1),
   NODE_ENV: z.enum(["development", "test", "production"]),
   // NEXTAUTH_SECRET:
   //   process.env.NODE_ENV === "production"
@@ -39,5 +39,6 @@ export const clientSchema = z.object({
  * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
  */
 export const clientEnv = {
-  NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY,
+  NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY:
+    process.env.NEXT_PUBLIC_FIREBASE_RECAPTCHA_SITE_KEY,
 };
