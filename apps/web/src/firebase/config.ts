@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getPerformance } from "firebase/performance";
 import { getFunctions } from "firebase/functions";
 import { getFirestore } from "firebase/firestore";
+import { isServer } from "../utils/screen";
 
 const config = {
   apiKey: "AIzaSyCRVnGwzpOe8H0Cd1wr_qgeoBrUvslUdqc",
@@ -17,7 +18,7 @@ const config = {
 
 const app = initializeApp(config);
 
-if (typeof window !== "undefined") {
+if (!isServer()) {
   if (process.env.NODE_ENV === `production`) {
     const perf = getPerformance(app);
     const analytics = getAnalytics(app);

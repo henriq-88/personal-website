@@ -48,3 +48,13 @@ export const useWindowSize = () => {
   }, []); // Empty array ensures that effect is only run on mount
   return windowSize;
 };
+
+export const isTouchDevice = () => {
+  return (
+    !isServer() && ("ontouchstart" in window || navigator.maxTouchPoints > 0)
+  );
+};
+
+export const isServer = () => {
+  return typeof window === "undefined";
+};

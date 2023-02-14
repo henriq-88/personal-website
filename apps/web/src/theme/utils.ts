@@ -1,7 +1,8 @@
 import { TextDirection, ThemeMode } from "../state/states";
+import { isServer } from "../utils/screen";
 
 export const getSystemTheme = () => {
-  if (typeof window === `undefined`) {
+  if (isServer()) {
     return `dark`;
   }
   const systemThemeMode = window.matchMedia(`(prefers-color-scheme: dark)`)
@@ -12,7 +13,7 @@ export const getSystemTheme = () => {
 };
 
 export const setHTMLThemeMode = (themeMode: ThemeMode) => {
-  if (typeof window === `undefined`) {
+  if (isServer()) {
     return;
   }
   const darkClasses = [`dark`, `color-scheme-dark`];
@@ -40,7 +41,7 @@ export const setHTMLThemeMode = (themeMode: ThemeMode) => {
 };
 
 export const setHTMLTextDirection = (textDirection: TextDirection) => {
-  if (typeof window === `undefined`) {
+  if (isServer()) {
     return;
   }
   document.body.dir = textDirection;

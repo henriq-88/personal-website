@@ -5,6 +5,7 @@ interface ProjectsPageProps {}
 
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const title = `Projects - Henrik Wassdahl - UX Developer`;
+
   return (
     <>
       <Head>

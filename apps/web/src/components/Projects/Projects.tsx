@@ -2,16 +2,14 @@ import { Container, TextField } from "packages/ui";
 import ProjectCard from "./Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useCallback, useMemo, useState } from "react";
-import { useWindowSize } from "../../utils/screen";
 import { useGetProjects } from "../../api/queries/getProjects";
-import { useDebounce } from "usehooks-ts";
+import { useDebounce, useWindowSize } from "usehooks-ts";
 
 interface ProjectsSectionProps {}
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
   const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate(/* optional config */);
-
   const { data: projectsData } = useGetProjects();
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
@@ -101,14 +99,16 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
                   columnCount,
                 })
               : "";
+
             return (
               <ProjectCard
-                key={project.id}
+                key={`${project.id}-${columnCount}-${debouncedSearch}`}
                 id={project.id}
                 name={project.name}
                 tags={project.tags}
                 category={project.category}
                 imageUrl={project.medias[0]!.url}
+                allowForceHover={columnCount === 1}
                 className={borderRadiusClassName}
               />
             );
