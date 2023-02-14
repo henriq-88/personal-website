@@ -19,17 +19,12 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
             "gap-16": !isScreenVertical,
           })}
         >
-          <div className="flex flex-1 items-center justify-center">
+          <div className="relative flex flex-1 items-center justify-center">
             <Image
               priority
               alt="picture of me"
               className="aspect-square w-full rounded-xl grayscale"
               src={MeImage}
-              width={512}
-              height={512}
-              style={{
-                maxWidth: 512,
-              }}
             />
           </div>
           <div className="flex flex-1 flex-col justify-center">
