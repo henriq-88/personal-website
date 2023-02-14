@@ -42,7 +42,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
           value={value}
           {...rest}
           className={clsx(
-            "peer w-full rounded-xl border-0 bg-transparent p-3 text-neutral-900 outline-none outline-0 outline-offset-0 dark:text-white ",
+            "peer w-full rounded-xl border-0 bg-transparent p-3 text-neutral-900 outline-none outline-0 outline-offset-0 placeholder-shown:text-ellipsis dark:text-white",
             {
               "placeholder-transparent": !placeholder,
               "placeholder-neutral-500": placeholder,
