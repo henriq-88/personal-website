@@ -17,13 +17,13 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
     <Link
       href={`#/projects/${props.id}`}
       className={clsx(
-        "group relative flex h-64 w-full items-center justify-center transition-all duration-300 ease-in-out hover:z-10 hover:scale-105",
+        "group relative flex h-64 w-full items-center justify-center transition-transform duration-300 ease-in-out hover:z-10 hover:scale-105",
         props.className,
       )}
     >
       <Image
         alt={props.name}
-        className="h-full w-full select-none rounded-xl opacity-75 grayscale transition-all duration-300 hover:opacity-100 hover:filter-none dark:opacity-50 dark:hover:opacity-100"
+        className="h-full w-full select-none rounded-xl opacity-75 grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:filter-none dark:opacity-50 dark:hover:opacity-100"
         src={props.imageUrl}
         width={400}
         height={400}
