@@ -10,7 +10,7 @@ import { TRPCError, initTRPC } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { getServerSession, type Session } from "@wassdahl/auth";
+import { getServerAuthSession, type Session } from "@wassdahl/auth";
 import { sendGrid } from "@wassdahl/mail";
 
 /**
@@ -52,7 +52,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
 
   // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await getServerSession({ req, res });
+  const session = await getServerAuthSession({ req, res });
 
   return createInnerTRPCContext({
     session,
