@@ -79,10 +79,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
     [],
   );
 
-  if (columnCount === undefined) {
-    return <></>;
-  }
-
   return (
     <Container className="h-full flex-1">
       <TextField
@@ -92,31 +88,33 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
         placeholder="Search project name, category or tag"
         onChange={(e) => setSearch(e.currentTarget.value)}
       />
-      <div
-        className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-        ref={gridRef}
-      >
-        {filteredProjects.map((project, i, projects) => {
-          const borderRadiusClassName = columnCount
-            ? getBorderRadiusClassName({
-                index: i,
-                length: projects.length,
-                columnCount,
-              })
-            : "";
-          return (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              name={project.name}
-              tags={project.tags}
-              category={project.category}
-              imageUrl={project.medias[0]!.url}
-              className={borderRadiusClassName}
-            />
-          );
-        })}
-      </div>
+      {columnCount !== undefined && (
+        <div
+          className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          ref={gridRef}
+        >
+          {filteredProjects.map((project, i, projects) => {
+            const borderRadiusClassName = columnCount
+              ? getBorderRadiusClassName({
+                  index: i,
+                  length: projects.length,
+                  columnCount,
+                })
+              : "";
+            return (
+              <ProjectCard
+                key={project.id}
+                id={project.id}
+                name={project.name}
+                tags={project.tags}
+                category={project.category}
+                imageUrl={project.medias[0]!.url}
+                className={borderRadiusClassName}
+              />
+            );
+          })}
+        </div>
+      )}
     </Container>
   );
 };

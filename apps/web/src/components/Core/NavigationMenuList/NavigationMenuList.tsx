@@ -41,13 +41,9 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
 
   return (
     <div
-      className={clsx(
-        "flex w-full items-center justify-center gap-1",
-        className,
-        {
-          "flex-col": orientation === `vertical`,
-        },
-      )}
+      className={clsx("flex items-center justify-center gap-1", className, {
+        "flex-col": orientation === `vertical`,
+      })}
       {...rest}
     >
       {links.map((link) => (

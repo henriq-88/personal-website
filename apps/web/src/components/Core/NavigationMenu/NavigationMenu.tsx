@@ -30,9 +30,6 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
 
   return (
     <>
-      <div className="border border-transparent md:block">
-        <div className="h-10 w-10" />
-      </div>
       <div
         className={clsx(
           "absolute z-20 flex flex-col items-end rounded-xl border border-solid border-violet-500/50 text-violet-900 backdrop-blur-md transition-all duration-300 ltr:right-3 rtl:left-3 dark:border-violet-900/50 dark:text-violet-500",
@@ -60,7 +57,10 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
           <NavigationMenuOpenCloseSvg isOpen={isMenuOpen} />
         </button>
         {isMenuOpen && (
-          <NavigationMenuList onLinkClick={() => setIsMenuOpen(false)} />
+          <NavigationMenuList
+            className="w-full"
+            onLinkClick={() => setIsMenuOpen(false)}
+          />
         )}
       </div>
       <Overlay isVisible={isMenuOpen} onClick={() => setIsMenuOpen(false)} />
