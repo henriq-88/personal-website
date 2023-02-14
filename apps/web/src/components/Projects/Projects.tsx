@@ -102,7 +102,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
 
             return (
               <ProjectCard
-                key={`${project.id}-${columnCount}-${debouncedSearch}`}
+                key={project.id}
                 id={project.id}
                 name={project.name}
                 tags={project.tags}
