@@ -8,8 +8,7 @@ import clsx from "clsx";
 import Footer from "../components/Core/Footer";
 import Head from "next/head";
 import { api } from "./api";
-
-import("../firebase/config");
+import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
   weight: ["200", "400", "600", "700"],
@@ -31,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </main>
         <Footer />
       </CompositeProvider>
+      <Analytics />
     </>
   );
 }
