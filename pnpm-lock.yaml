@@ -102,6 +102,7 @@ importers:
       '@types/stylis': 4.0.2
       '@typescript-eslint/eslint-plugin': ^5.51.0
       '@typescript-eslint/parser': ^5.51.0
+      '@vercel/analytics': 0.1.8
       '@wassdahl/api': '*'
       '@wassdahl/auth': '*'
       '@wassdahl/tailwind-config': '*'
@@ -146,6 +147,7 @@ importers:
       '@trpc/next': 10.11.1_ck2pp32np6ey6osxngwuwfgwei
       '@trpc/react-query': 10.11.1_2pugaexxlcekgcbbhj75jqmiqi
       '@trpc/server': 10.11.1
+      '@vercel/analytics': 0.1.8_react@18.2.0
       '@wassdahl/api': link:../../packages/api
       '@wassdahl/auth': link:../../packages/auth
       '@wassdahl/tailwind-config': link:../../packages/config/tailwind
@@ -4851,6 +4853,14 @@ packages:
       '@typescript-eslint/types': 5.51.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@vercel/analytics/0.1.8_react@18.2.0:
+    resolution: {integrity: sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==}
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@webassemblyjs/ast/1.11.1:
     resolution: {integrity: sha512-ukBh14qFLjxTQNTXocdyksN5QdM28S1CxHt2rdskFyL+xFV7VremuBLVbmCePj+URalXBENx/9Lm7lnhihtCSw==}
