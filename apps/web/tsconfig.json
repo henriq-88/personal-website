@@ -7,5 +7,5 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "src/public/script/initSite.js"  ]
+  ]
 }

@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs"
-, "apps/web/src/public/script/initSite.js"  ],
+  ],
   "exclude": []
 }

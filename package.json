@@ -1,7 +1,7 @@
 {
   "name": "personal-website",
   "private": true,
-  "packageManager": "pnpm@7.26.2",
+  "packageManager": "pnpm@7.27.0",
   "scripts": {
     "dev": "turbo dev --parallel",
     "build": "turbo build",
