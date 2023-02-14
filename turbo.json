@@ -8,5 +8,6 @@
       "cache": false
     },
     "lint": {}
-  }
+  },
+  "globalEnv": ["SENDGRID_API_KEY", "NEXTAUTH_URL", "NEXTAUTH_SECRET"]
 }
