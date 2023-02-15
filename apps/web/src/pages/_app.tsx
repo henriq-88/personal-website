@@ -24,11 +24,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="og:image:alt" content="Profile picture" />
       </Head>
       <CompositeProvider>
-        <AppBar />
+        <AppBar className={poppins.className} />
         <main className={clsx(`flex-1`, poppins.className)}>
           <Component {...pageProps} />
         </main>
-        <Footer />
+        <Footer className={poppins.className} />
       </CompositeProvider>
       <Analytics />
     </>

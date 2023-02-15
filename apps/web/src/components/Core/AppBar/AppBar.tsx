@@ -5,15 +5,19 @@ import NavigationMenu from "../NavigationMenu";
 import { useWindowScrollPosition } from "rooks";
 import clsx from "clsx";
 
-interface AppBarProps {}
+type AppBarProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLElement>,
+  HTMLElement
+>;
 
 const AppBar: React.FC<AppBarProps> = (props) => {
+  const { className, ...rest } = props;
   const { scrollY } = useWindowScrollPosition();
 
   const isScrollPositionAtTop = scrollY === 0;
 
   return (
-    <header className="h-16 w-full flex-shrink-0">
+    <header className={clsx("h-16 w-full flex-shrink-0", className)} {...rest}>
       <div
         className={clsx("fixed top-0 left-0 z-20 w-full transition-all", {
           "bg-violet-200 dark:bg-[#0C0417]": !isScrollPositionAtTop,

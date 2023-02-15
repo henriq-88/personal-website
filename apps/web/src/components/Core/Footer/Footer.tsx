@@ -1,10 +1,15 @@
+import clsx from "clsx";
 import GitHubIcon from "../../Icons/GitHub/GitHub";
 import LinkedInIcon from "../../Icons/LinkedIn/LinkedIn";
 import StackOverflowIcon from "../../Icons/StackOverflow/StackOverflow";
 
-interface FooterProps {}
+type FooterProps = React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLElement>,
+  HTMLElement
+>;
 
 const Footer: React.FC<FooterProps> = (props) => {
+  const { className, ...rest } = props;
   const socialLinks = [
     {
       href: `https://github.com/henriq-88`,
@@ -24,7 +29,13 @@ const Footer: React.FC<FooterProps> = (props) => {
   ];
 
   return (
-    <footer className="z-10 flex w-full flex-shrink-0 justify-center gap-4 p-8">
+    <footer
+      className={clsx(
+        "z-10 flex w-full flex-shrink-0 justify-center gap-4 p-8",
+        className,
+      )}
+      {...rest}
+    >
       {socialLinks.map((socialLink) => (
         <a
           key={socialLink.href}
