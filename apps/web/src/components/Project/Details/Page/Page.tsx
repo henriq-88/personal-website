@@ -52,10 +52,10 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               <Link
                 href={projectData.website}
                 target="_blank"
-                className="inline-block text-gray-500 transition-transform ease-in-out hover:scale-105 dark:text-gray-400"
+                className="inline-block text-gray-500 transition-transform ease-in-out hover:scale-105 hover:text-neutral-900 dark:text-gray-400 dark:hover:text-white"
               >
                 <span className="break-words">{projectData.website}</span>
-                <ArrowTopRightOnSquareIcon className="ml-2 inline-block h-5 w-5" />
+                <ArrowTopRightOnSquareIcon className="ml-2 mb-1 inline-block h-4 w-4" />
               </Link>
             )}
           </div>
