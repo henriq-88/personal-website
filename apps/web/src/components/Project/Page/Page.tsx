@@ -1,10 +1,9 @@
 import { Container, TextField } from "@wassdahl/ui";
 import ProjectCard from "../Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useGetProjects } from "../../../api/queries/getProjects";
 import { useDebounce, useWindowSize } from "usehooks-ts";
-import { Fade } from "react-awesome-reveal";
 
 interface ProjectsPageProps {}
 
