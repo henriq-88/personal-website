@@ -14,12 +14,12 @@ const IntroPage: React.FC<IntroPageProps> = (props) => {
                 Henrik Wassdahl
               </h1>
             </Fade>
-            <Fade delay={200}>
+            <Fade triggerOnce delay={200}>
               <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
                 UX Developer
               </h2>
             </Fade>
-            <Fade delay={400}>
+            <Fade triggerOnce delay={400}>
               <p className="mt-2 leading-loose">
                 Making the world a better place - one line of code at the time.
               </p>

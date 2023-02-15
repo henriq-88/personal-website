@@ -85,12 +85,12 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
               Contact
             </h1>
           </Fade>
-          <Fade delay={200}>
+          <Fade triggerOnce delay={200}>
             <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
               Do you need help to solve a problem?
             </h2>
           </Fade>
-          <Fade delay={400}>
+          <Fade triggerOnce delay={400}>
             <p className="mt-2 leading-loose">
               Let's talk bizniz and discuss your dream service/app.
             </p>
@@ -101,7 +101,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onSubmit={handleSubmit(handleSendEmail)}
         >
-          <Fade delay={600} className="flex flex-col">
+          <Fade triggerOnce delay={600} className="flex flex-col">
             <TextField
               id="name"
               {...register(`name`)}
