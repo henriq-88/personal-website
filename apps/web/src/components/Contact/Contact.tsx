@@ -80,28 +80,28 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
     <Container className="flex h-full items-center justify-center p-3">
       <div className="flex max-w-screen-xs flex-col gap-8 md:max-w-screen-lg md:flex-row">
         <div className="flex flex-1 shrink-0 flex-col justify-center">
-          <Fade>
+          <Fade direction="up" triggerOnce>
             <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
               Contact
             </h1>
           </Fade>
-          <Fade triggerOnce delay={200}>
+          <Fade direction="up" triggerOnce delay={200}>
             <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
               Do you need help to solve a problem?
             </h2>
           </Fade>
-          <Fade triggerOnce delay={400}>
+          <Fade direction="up" triggerOnce delay={400}>
             <p className="mt-2 leading-loose">
               Let's talk bizniz and discuss your dream service/app.
             </p>
           </Fade>
         </div>
-        <form
-          className="flex flex-1 shrink-0 flex-col justify-center"
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onSubmit={handleSubmit(handleSendEmail)}
-        >
-          <Fade triggerOnce delay={600} className="flex flex-col">
+        <Fade triggerOnce delay={600} className="flex-1">
+          <form
+            className="flex shrink-0 flex-col justify-center"
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            onSubmit={handleSubmit(handleSendEmail)}
+          >
             <TextField
               id="name"
               {...register(`name`)}
@@ -166,8 +166,8 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
               </span>
               {isSubmitting && <CircularProgressIndicator />}
             </button>
-          </Fade>
-        </form>
+          </form>
+        </Fade>
       </div>
     </Container>
   );

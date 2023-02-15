@@ -21,17 +21,17 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
             </Fade>
           </div>
           <div className="flex flex-1 flex-col justify-center">
-            <Fade triggerOnce delay={200}>
+            <Fade direction="up" triggerOnce delay={200}>
               <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
                 About
               </h1>
             </Fade>
-            <Fade triggerOnce delay={400}>
+            <Fade direction="up" triggerOnce delay={400}>
               <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
                 Nomad living in Seoul
               </h2>
             </Fade>
-            <Fade triggerOnce delay={600}>
+            <Fade direction="up" triggerOnce delay={600}>
               <p className="mt-2 leading-loose">
                 I'm Henrik, a Frontend Engineer with a Bachelor's in Computer
                 Science and a Master's in UX. I'm experienced in developing

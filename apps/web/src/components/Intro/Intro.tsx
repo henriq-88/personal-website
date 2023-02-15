@@ -9,17 +9,17 @@ const IntroPage: React.FC<IntroPageProps> = (props) => {
       <div className="flex h-full flex-1 items-center justify-center">
         <div className="max-w-screen-xs md:max-w-screen-lg">
           <div className="flex flex-1 flex-col">
-            <Fade>
+            <Fade direction="up" triggerOnce>
               <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
                 Henrik Wassdahl
               </h1>
             </Fade>
-            <Fade triggerOnce delay={200}>
+            <Fade direction="up" triggerOnce delay={200}>
               <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
                 UX Developer
               </h2>
             </Fade>
-            <Fade triggerOnce delay={400}>
+            <Fade direction="up" triggerOnce delay={400}>
               <p className="mt-2 leading-loose">
                 Making the world a better place - one line of code at the time.
               </p>
