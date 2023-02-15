@@ -73,6 +73,12 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
     isLinkHighlighted(link),
   );
 
+  const transition = {
+    type: "spring",
+    stiffness: 350,
+    damping: 30,
+  };
+
   return (
     <div
       className={clsx("flex items-center justify-center gap-1", className, {
@@ -80,7 +86,7 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
       })}
       {...rest}
     >
-      {links.map((link, i) => (
+      {links.map((link) => (
         <Link
           key={link.href}
           href={link.href}
@@ -91,10 +97,7 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
             },
           )}
           aria-current={isLinkHighlighted(link)}
-          onClick={(e) => {
-            console.log(e.clientX);
-            onLinkClick?.();
-          }}
+          onClick={() => onLinkClick?.()}
         >
           <span
             className="rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors group-hover:text-violet-900 aria-[current]:text-violet-900 dark:text-violet-700 dark:group-hover:text-violet-500 aria-[current]:dark:text-violet-500"
@@ -108,41 +111,29 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
       <motion.div
         className="absolute z-[-1] hidden h-[34px] rounded-md bg-violet-900/20 dark:bg-violet-700/25 sm:block"
         initial={{
-          display: `hidden`,
           opacity: 0,
           x: links[highlightedLinkIndex]?.x,
         }}
         animate={{
-          display: `hidden`,
           opacity: 1,
           x: links[highlightedLinkIndex]?.x,
           width: links[highlightedLinkIndex]?.width,
         }}
-        transition={{
-          type: "spring",
-          stiffness: 350,
-          damping: 30,
-        }}
+        transition={transition}
       />
       {/* mobile */}
       <motion.div
         className="absolute z-[-1] block h-[34px] rounded-md bg-violet-900/20 dark:bg-violet-700/25 sm:!hidden"
         initial={{
-          // display: `none`,
           opacity: 0,
           y: links[highlightedLinkIndex]?.y,
         }}
         animate={{
-          // display: `none`,
           opacity: 1,
           y: links[highlightedLinkIndex]?.y,
           width: links[highlightedLinkIndex]?.width,
         }}
-        transition={{
-          type: "spring",
-          stiffness: 350,
-          damping: 30,
-        }}
+        transition={transition}
       />
     </div>
   );
