@@ -18,14 +18,20 @@ const Gallary: React.FC<GallaryProps> = (props) => {
 
   return (
     <>
-      <div className={clsx("flex flex-row flex-wrap", className)} {...rest}>
+      <div
+        className={clsx(
+          "grid grid-cols-2 gap-3 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6",
+          className,
+        )}
+        {...rest}
+      >
         {medias.map((media, i) => (
           <ImageGalleryItem
             src={media.url}
             type={media.type}
             alt={`gallary image ${i + 1}`}
             key={media.url}
-            className="mb-3 ltr:mr-3 rtl:ml-3"
+            className=""
             onClick={(e) => {
               setGallaryIndex(i);
             }}

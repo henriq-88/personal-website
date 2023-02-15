@@ -28,7 +28,7 @@ const ImageGalleryItem: React.FC<ImageGalleryItemProps> = (props) => {
       <Image
         alt={alt}
         src={getThumbSrc({ type: props.type, url: src })}
-        className="h-28 w-28 rounded-xl object-cover sm:h-36 sm:w-36"
+        className="h-full w-auto rounded-xl object-cover"
         width={144}
         height={144}
       />

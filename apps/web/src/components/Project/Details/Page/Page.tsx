@@ -44,7 +44,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               {projectData.name}
             </h1>
           </div>
-          <div className="mt-6 flex">
+          <div className="my-6 flex">
             <CategoryChip category={projectData.category} size="medium" />
           </div>
           <div className="mt-3">
@@ -59,11 +59,11 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               </Link>
             )}
           </div>
-          <div className="mt-6">
+          <div className="my-6">
             <Gallery medias={projectData.medias} />
           </div>
           <p
-            className="mt-3 whitespace-pre-wrap"
+            className="my-3 whitespace-pre-wrap"
             dangerouslySetInnerHTML={{
               __html: projectData.body,
             }}
