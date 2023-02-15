@@ -41,7 +41,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
           >
             <div className="relative h-full w-full max-w-6xl">
               <Image
-                alt="project logo"
+                alt="current gallery image"
                 src={currentMedia.url}
                 fill
                 className="pointer-events-none rounded-xl object-contain"
