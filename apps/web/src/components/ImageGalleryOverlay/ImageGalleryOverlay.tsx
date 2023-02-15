@@ -7,6 +7,7 @@ import { Overlay } from "@wassdahl/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Media } from "../../api/types/media";
+import { getVideoSrc } from "../../utils/image";
 
 interface ImageGalleryOverlayProps {
   galleryIndex: number | undefined;
@@ -39,32 +40,43 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
             }}
             className="flex h-full w-full items-center justify-center py-16 md:p-3"
           >
-            <div className="relative h-full w-full max-w-6xl">
-              <Image
-                alt="current gallery image"
-                src={currentMedia.url}
-                fill
-                className="pointer-events-none rounded-xl object-contain"
-              />
+            <div className="relative flex h-full w-full max-w-6xl items-center justify-center">
+              {currentMedia.type === `image` && (
+                <Image
+                  alt="current gallery image"
+                  src={currentMedia.url}
+                  fill
+                  className="pointer-events-none rounded-xl object-contain"
+                />
+              )}
+              {currentMedia.type === `video` && (
+                <iframe
+                  itemType="text/html"
+                  width="640"
+                  height="360"
+                  src={getVideoSrc(currentMedia)}
+                  className="aspect-video h-auto w-full"
+                />
+              )}
               {showNavigationControls && (
-                <div className="absolute inset-0 flex items-center justify-between p-3">
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-between p-3">
                   <button
-                    className="rounded-full bg-black/25 p-2 text-white transition-all ease-in-out hover:scale-110 hover:bg-black/50"
+                    className="pointer-events-auto rounded-full bg-black/25 p-2 text-white transition-all ease-in-out hover:scale-110 hover:bg-black/50"
                     onClick={(e) => {
                       e.stopPropagation();
                       props.onPreviousClick(e);
                     }}
                   >
-                    <ChevronLeftIcon className="h-10 w-10" />
+                    <ChevronLeftIcon className="h-6 w-6 sm:h-10 sm:w-10" />
                   </button>
                   <button
-                    className="rounded-full bg-black/25 p-2 text-white transition-all ease-in-out hover:scale-110 hover:bg-black/50"
+                    className="pointer-events-auto rounded-full bg-black/25 p-2 text-white transition-all ease-in-out hover:scale-110 hover:bg-black/50"
                     onClick={(e) => {
                       e.stopPropagation();
                       props.onNextClick(e);
                     }}
                   >
-                    <ChevronRightIcon className="h-10 w-10" />
+                    <ChevronRightIcon className="h-6 w-6 sm:h-10 sm:w-10" />
                   </button>
                 </div>
               )}

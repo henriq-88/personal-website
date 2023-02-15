@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import Image from "next/image";
 import { useState } from "react";
 import { Media } from "../../api/types/media";
+import ImageGalleryItem from "../ImageGalleryItem";
 import ImageGalleryOverlay from "../ImageGalleryOverlay";
 
 interface GallaryProps
@@ -19,20 +19,18 @@ const Gallary: React.FC<GallaryProps> = (props) => {
   return (
     <>
       <div className={clsx("flex flex-row flex-wrap", className)} {...rest}>
-        {medias
-          .filter((media) => media.type === `image`)
-          .map((image, i) => (
-            <Image
-              alt={`gallary image ${i + 1}`}
-              src={image.url}
-              width={144}
-              height={144}
-              className="mb-3 h-28 w-28 cursor-pointer rounded-xl object-cover transition-transform ease-in-out hover:scale-110 ltr:mr-3 rtl:ml-3 sm:h-36 sm:w-36"
-              onClick={(e) => {
-                setGallaryIndex(i);
-              }}
-            />
-          ))}
+        {medias.map((media, i) => (
+          <ImageGalleryItem
+            src={media.url}
+            type={media.type}
+            alt={`gallary image ${i + 1}`}
+            key={media.url}
+            className="mb-3 ltr:mr-3 rtl:ml-3"
+            onClick={(e) => {
+              setGallaryIndex(i);
+            }}
+          />
+        ))}
       </div>
       <ImageGalleryOverlay
         galleryIndex={gallaryIndex}
