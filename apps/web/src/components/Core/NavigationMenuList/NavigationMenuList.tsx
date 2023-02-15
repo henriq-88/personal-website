@@ -111,10 +111,12 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
       <motion.div
         className="absolute z-[-1] hidden h-[34px] rounded-md bg-violet-900/20 dark:bg-violet-700/25 sm:block"
         initial={{
+          display: `hidden`,
           opacity: 0,
           x: links[highlightedLinkIndex]?.x,
         }}
         animate={{
+          display: `hidden`,
           opacity: 1,
           x: links[highlightedLinkIndex]?.x,
           width: links[highlightedLinkIndex]?.width,
