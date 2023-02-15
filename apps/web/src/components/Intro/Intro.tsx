@@ -1,4 +1,4 @@
-import { Container } from "packages/ui";
+import { Container } from "@wassdahl/ui";
 import { useIsScreenVertical } from "../../utils/screen";
 
 interface IntroPageProps {}
@@ -7,7 +7,7 @@ const IntroPage: React.FC<IntroPageProps> = (props) => {
   const isScreenVertical = useIsScreenVertical();
 
   return (
-    <Container className="h-full">
+    <Container className="h-full p-3">
       <div className="flex h-full flex-1 items-center justify-center">
         <div
           className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import ProjectsSection from "../../components/Projects/Projects";
+import Page from "../../components/Project/Page";
 
 interface ProjectsPageProps {}
 
@@ -12,7 +12,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
         <title>{title}</title>
         <meta name="og:title" content={title} />
       </Head>
-      <ProjectsSection />
+      <Page />
     </>
   );
 };

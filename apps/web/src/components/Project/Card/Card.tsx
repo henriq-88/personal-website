@@ -1,10 +1,11 @@
-import { categories, Category } from "../../../api/queries/getProjects";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useWindowScrollPosition } from "rooks";
-import { isTouchDevice } from "apps/web/src/utils/screen";
+import { categories, Category } from "../../../api/types/category";
+import { isTouchDevice } from "../../../utils/screen";
+import CategoryChip from "../../CategoryChip/CategoryChip";
 
 interface ProjectCardProps {
   id: string;
@@ -39,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   return (
     <Link
       ref={ref}
-      href={`#/projects/${props.id}`}
+      href={`/projects/${props.id}`}
       className={clsx(
         "group relative flex h-64 w-full items-center justify-center transition-transform duration-300 ease-in-out hover:z-10 hover:scale-105",
         props.className,
@@ -52,7 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         priority
         alt={props.name}
         className={clsx(
-          "h-full w-full select-none rounded-xl grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:filter-none dark:hover:opacity-100",
+          "h-full w-full select-none rounded-xl object-cover grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:filter-none dark:hover:opacity-100",
           {
             "opacity-100 filter-none": forceHover,
             "opacity-75 dark:opacity-50": !forceHover,
@@ -62,7 +63,6 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         width={400}
         height={400}
         style={{
-          objectFit: `cover`,
           borderRadius: `inherit`,
         }}
       />
@@ -99,9 +99,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
           }}
         >
           <div>{` ` ?? props.tags}</div>
-          <div className="rounded-md bg-violet-900 px-2 py-1 text-xs capitalize">
-            {categories[props.category]}
-          </div>
+          <CategoryChip category={props.category} size="small" />
         </div>
       </div>
     </Link>

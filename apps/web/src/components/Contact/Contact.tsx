@@ -79,7 +79,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
   const isSendButtonDisabled = isSubmitting || hasErrors;
 
   return (
-    <Container className="flex h-full items-center justify-center">
+    <Container className="flex h-full items-center justify-center p-3">
       <div
         className={clsx("flex", {
           "max-w-screen-xs flex-col gap-8": isScreenVertical,

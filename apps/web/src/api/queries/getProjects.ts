@@ -1,35 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { collection, query, getDocs } from "firebase/firestore";
 import { firestore } from "../../firebase/config";
-
-export const categories = {
-  ai: `AI`,
-  app: `App`,
-  web: `Web`,
-  model: `Model`,
-  package: `Package`,
-  concept: `Concept`,
-} as const;
-
-export type Category = keyof typeof categories;
-
-interface Media {
-  type: `video` | `image`;
-  url: string;
-}
-
-interface Project {
-  id: string;
-  banner: string;
-  name: string;
-  body: string;
-  category: Category;
-  date: Date;
-  logo: string;
-  medias: Media[];
-  tags: string[];
-  website: string;
-}
+import { Project } from "../types/project";
 
 export const useGetProjects = () => {
   return useQuery({

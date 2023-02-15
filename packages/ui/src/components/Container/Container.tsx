@@ -12,10 +12,7 @@ const Container: React.FC<ContainerProps> = (props) => {
   const { children, className, ...rest } = props;
   return (
     <div
-      className={clsx(
-        "mx-auto max-w-screen-md p-3 md:max-w-screen-lg",
-        className,
-      )}
+      className={clsx("mx-auto max-w-screen-md md:max-w-screen-lg", className)}
       {...rest}
     >
       {children}

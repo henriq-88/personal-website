@@ -6,6 +6,7 @@ interface OverlayProps
     HTMLDivElement
   > {
   isVisible: boolean;
+  children?: React.ReactNode;
 }
 
 const Overlay: React.FC<OverlayProps> = (props) => {
@@ -21,7 +22,9 @@ const Overlay: React.FC<OverlayProps> = (props) => {
         },
       )}
       {...rest}
-    />
+    >
+      {props.children}
+    </div>
   );
 };
 

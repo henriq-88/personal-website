@@ -2,7 +2,7 @@ import Image from "next/image";
 import MeImage from "../../assets/images/me.jpg";
 import clsx from "clsx";
 import { useIsScreenVertical } from "../../utils/screen";
-import { Container } from "packages/ui";
+import { Container } from "@wassdahl/ui";
 
 interface AboutPageProps {}
 
@@ -10,7 +10,7 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
   const isScreenVertical = useIsScreenVertical();
 
   return (
-    <Container className="flex h-full items-center justify-center">
+    <Container className="flex h-full items-center justify-center p-3">
       <div className={isScreenVertical ? `max-w-screen-xs` : `max-w-screen-lg`}>
         <div
           className={clsx("flex flex-1", {

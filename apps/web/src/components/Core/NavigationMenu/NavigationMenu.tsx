@@ -1,7 +1,7 @@
-import { settingsDrawerOpenState } from "apps/web/src/state/states";
+import { settingsDrawerOpenState } from "../../../state/states";
 import clsx from "clsx";
 import { useAtom } from "jotai";
-import { Overlay } from "packages/ui";
+import { Overlay } from "@wassdahl/ui";
 import NavigationMenuList from "../NavigationMenuList";
 import NavigationMenuOpenCloseSvg from "../NavigationMenuButton/NavigationMenuOpenCloseSvg";
 import { useWindowSize } from "../../../utils/screen";

@@ -1,13 +1,13 @@
-import { Container, TextField } from "packages/ui";
-import ProjectCard from "./Card";
+import { Container, TextField } from "@wassdahl/ui";
+import ProjectCard from "../Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useCallback, useMemo, useState } from "react";
-import { useGetProjects } from "../../api/queries/getProjects";
+import { useGetProjects } from "../../../api/queries/getProjects";
 import { useDebounce, useWindowSize } from "usehooks-ts";
 
-interface ProjectsSectionProps {}
+interface ProjectsPageProps {}
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
+const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate(/* optional config */);
   const { data: projectsData } = useGetProjects();
@@ -78,7 +78,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
   );
 
   return (
-    <Container className="h-full flex-1">
+    <Container className="h-full flex-1 p-3">
       <TextField
         hideErrors
         label="Search"
@@ -119,4 +119,4 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = (props) => {
   );
 };
 
-export default ProjectsSection;
+export default ProjectsPage;

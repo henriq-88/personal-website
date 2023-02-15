@@ -1,6 +1,6 @@
 import React from "react";
 import ThemeToggle from "../../ThemeToggle";
-import { Container } from "packages/ui";
+import { Container } from "@wassdahl/ui";
 import NavigationMenu from "../NavigationMenu";
 import { useWindowScrollPosition } from "rooks";
 import clsx from "clsx";
@@ -19,7 +19,7 @@ const AppBar: React.FC<AppBarProps> = (props) => {
           "bg-violet-200 dark:bg-[#0C0417]": !isScrollPositionAtTop,
         })}
       >
-        <Container className="relative flex justify-between">
+        <Container className="relative flex justify-between p-3">
           <ThemeToggle />
           <NavigationMenu />
         </Container>
