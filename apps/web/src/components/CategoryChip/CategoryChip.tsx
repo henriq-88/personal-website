@@ -13,8 +13,8 @@ const CategoryChip: React.FC<CategoryChipProps> = (props) => {
       className={clsx(
         "rounded-md bg-violet-900 px-2 py-1 capitalize text-white",
         {
-          "": size === `medium`,
-          "text-xs": size === `medium`,
+          "text-base": size === `medium`,
+          "text-xs": size === `small`,
         },
       )}
     >
