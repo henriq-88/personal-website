@@ -15,7 +15,6 @@ import {
   TextArea,
   TextField,
 } from "@wassdahl/ui";
-import { useIsScreenVertical } from "../../utils/screen";
 import { api } from "../../pages/api";
 import { Fade } from "react-awesome-reveal";
 
@@ -35,7 +34,6 @@ const formSchema = z.object({
 type FormSchemaType = z.infer<typeof formSchema>;
 
 const ContactSection: React.FC<ContactSectionProps> = (props) => {
-  const isScreenVertical = useIsScreenVertical();
   const { mutateAsync: sendMessage } = api.contact.sendMessage.useMutation();
   const {
     register,
@@ -80,24 +78,19 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
 
   return (
     <Container className="flex h-full items-center justify-center p-3">
-      <div
-        className={clsx("flex", {
-          "max-w-screen-xs flex-col gap-8": isScreenVertical,
-          "max-w-screen-lg gap-16": !isScreenVertical,
-        })}
-      >
+      <div className="flex max-w-screen-xs flex-col gap-8 md:max-w-screen-lg md:flex-row">
         <div className="flex flex-1 shrink-0 flex-col justify-center">
-          <Fade direction="up">
+          <Fade>
             <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
               Contact
             </h1>
           </Fade>
-          <Fade direction="up" delay={200}>
+          <Fade delay={200}>
             <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
               Do you need help to solve a problem?
             </h2>
           </Fade>
-          <Fade direction="up" delay={400}>
+          <Fade delay={400}>
             <p className="mt-2 leading-loose">
               Let's talk bizniz and discuss your dream service/app.
             </p>

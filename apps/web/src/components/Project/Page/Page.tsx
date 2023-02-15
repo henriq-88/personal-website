@@ -91,7 +91,6 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
           className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           ref={gridRef}
         >
-          {/* <Fade damping={0.1} cascade> */}
           {filteredProjects.map((project, i, projects) => {
             const borderRadiusClassName = columnCount
               ? getBorderRadiusClassName({
@@ -114,7 +113,6 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
               />
             );
           })}
-          {/* </Fade> */}
         </div>
       )}
     </Container>
