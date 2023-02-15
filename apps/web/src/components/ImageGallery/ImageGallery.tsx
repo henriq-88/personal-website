@@ -27,7 +27,7 @@ const Gallary: React.FC<GallaryProps> = (props) => {
               src={image.url}
               width={144}
               height={144}
-              className="mr-3 mb-3 h-28 w-28 cursor-pointer rounded-xl object-cover transition-transform ease-in-out hover:scale-110 sm:h-36 sm:w-36"
+              className="mb-3 h-28 w-28 cursor-pointer rounded-xl object-cover transition-transform ease-in-out hover:scale-110 ltr:mr-3 rtl:ml-3 sm:h-36 sm:w-36"
               onClick={(e) => {
                 setGallaryIndex(i);
               }}

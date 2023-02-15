@@ -37,7 +37,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
                 src={projectData.logo}
                 width={96}
                 height={96}
-                className="mr-6 h-16 w-16 rounded-xl object-cover sm:h-24 sm:w-24"
+                className="h-16 w-16 rounded-xl object-cover ltr:mr-6 rtl:ml-6 sm:h-24 sm:w-24"
               />
             )}
             <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-6xl">
@@ -52,7 +52,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               <Link
                 href={projectData.website}
                 target="_blank"
-                className="group text-gray-500 transition-transform ease-in-out hover:scale-105 dark:text-gray-400"
+                className="inline-block text-gray-500 transition-transform ease-in-out hover:scale-105 dark:text-gray-400"
               >
                 <span className="break-words">{projectData.website}</span>
                 <ArrowTopRightOnSquareIcon className="ml-2 inline-block h-5 w-5" />
@@ -63,7 +63,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
             <Gallery medias={projectData.medias} />
           </div>
           <p
-            className="mt-3"
+            className="mt-3 whitespace-pre-wrap"
             dangerouslySetInnerHTML={{
               __html: projectData.body,
             }}

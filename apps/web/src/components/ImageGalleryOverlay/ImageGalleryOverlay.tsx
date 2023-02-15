@@ -37,7 +37,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
             transition={{
               duration: 0.15,
             }}
-            className="flex h-full w-full items-center justify-center py-16 sm:p-16"
+            className="flex h-full w-full items-center justify-center py-16 md:p-3"
           >
             <div className="relative h-full w-full max-w-6xl">
               <Image

@@ -14,6 +14,7 @@ interface NavigationMenuListProps
 interface Link {
   href: string;
   label: string;
+  exact: boolean;
 }
 
 const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
@@ -24,20 +25,32 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
     {
       href: `/`,
       label: `Home`,
+      exact: true,
     },
     {
       href: `/about`,
       label: `About`,
+      exact: true,
     },
     {
       href: `/projects`,
       label: `Projects`,
+      exact: false,
     },
     {
       href: `/contact`,
       label: `Contact`,
+      exact: true,
     },
   ];
+
+  const isLinkHighlighted = (link: Link) => {
+    if (!link.exact) {
+      const startsWithLink = currentPage.startsWith(link.href);
+      return startsWithLink ? startsWithLink : undefined;
+    }
+    return currentPage === link.href ? true : undefined;
+  };
 
   return (
     <div
@@ -56,12 +69,12 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
               "w-full": orientation === `vertical`,
             },
           )}
-          aria-current={currentPage === link.href ? true : undefined}
+          aria-current={isLinkHighlighted(link)}
           onClick={() => onLinkClick?.()}
         >
           <span
             className="rounded-md px-2 py-1 text-lg font-semibold text-violet-500 transition-colors group-hover:text-violet-900 aria-[current]:bg-violet-900/20 aria-[current]:text-violet-900 dark:text-violet-700 dark:group-hover:text-violet-500 aria-[current]:dark:bg-violet-700/25 aria-[current]:dark:text-violet-500"
-            aria-current={currentPage === link.href ? true : undefined}
+            aria-current={isLinkHighlighted(link)}
           >
             {link.label}
           </span>
