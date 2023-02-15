@@ -87,17 +87,17 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
         })}
       >
         <div className="flex flex-1 shrink-0 flex-col justify-center">
-          <Fade direction="down">
+          <Fade direction="up">
             <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
               Contact
             </h1>
           </Fade>
-          <Fade direction="down" delay={200}>
+          <Fade direction="up" delay={200}>
             <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
               Do you need help to solve a problem?
             </h2>
           </Fade>
-          <Fade direction="down" delay={400}>
+          <Fade direction="up" delay={400}>
             <p className="mt-2 leading-loose">
               Let's talk bizniz and discuss your dream service/app.
             </p>

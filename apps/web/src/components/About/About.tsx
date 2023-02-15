@@ -21,7 +21,7 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
           })}
         >
           <div className="relative flex flex-1 items-center justify-center">
-            <Fade delay={600} className="h-full w-full">
+            <Fade duration={2000} className="h-full w-full">
               <Image
                 priority
                 alt="picture of me"
@@ -31,17 +31,17 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
             </Fade>
           </div>
           <div className="flex flex-1 flex-col justify-center">
-            <Fade direction="down">
+            <Fade direction="up" delay={200}>
               <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
                 About
               </h1>
             </Fade>
-            <Fade direction="down" delay={200}>
+            <Fade direction="up" delay={400}>
               <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
                 Nomad living in Seoul
               </h2>
             </Fade>
-            <Fade direction="down" delay={400}>
+            <Fade direction="up" delay={600}>
               <p className="mt-2 leading-loose">
                 I'm Henrik, a Frontend Engineer with a Bachelor's in Computer
                 Science and a Master's in UX. I'm experienced in developing
