@@ -11,6 +11,7 @@
     "start": "pnpm with-env next start -p 3000"
   },
   "dependencies": {
+    "@emotion/react": "11.10.5",
     "@formkit/auto-animate": "1.0.0-beta.6",
     "@heroicons/react": "2.0.15",
     "@hookform/resolvers": "2.9.11",
@@ -38,6 +39,7 @@
     "next-auth": "4.19.2",
     "node-ts": "5.1.2",
     "react": "18.2.0",
+    "react-awesome-reveal": "4.2.3",
     "react-dom": "18.2.0",
     "react-hook-form": "7.43.1",
     "react-intersection-observer": "9.4.2",

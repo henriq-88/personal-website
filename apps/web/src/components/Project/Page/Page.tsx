@@ -1,15 +1,16 @@
 import { Container, TextField } from "@wassdahl/ui";
 import ProjectCard from "../Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useGetProjects } from "../../../api/queries/getProjects";
 import { useDebounce, useWindowSize } from "usehooks-ts";
+import { Fade } from "react-awesome-reveal";
 
 interface ProjectsPageProps {}
 
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const { width } = useWindowSize();
-  const [gridRef] = useAutoAnimate(/* optional config */);
+  const [gridRef] = useAutoAnimate();
   const { data: projectsData } = useGetProjects();
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
@@ -91,6 +92,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
           className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           ref={gridRef}
         >
+          {/* <Fade damping={0.1} cascade> */}
           {filteredProjects.map((project, i, projects) => {
             const borderRadiusClassName = columnCount
               ? getBorderRadiusClassName({
@@ -113,6 +115,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
               />
             );
           })}
+          {/* </Fade> */}
         </div>
       )}
     </Container>

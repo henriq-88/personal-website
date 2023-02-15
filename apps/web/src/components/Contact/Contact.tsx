@@ -17,6 +17,7 @@ import {
 } from "@wassdahl/ui";
 import { useIsScreenVertical } from "../../utils/screen";
 import { api } from "../../pages/api";
+import { Fade } from "react-awesome-reveal";
 
 interface ContactSectionProps {}
 
@@ -71,7 +72,6 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
       toast(`Doh! Message couldn't be sent for some reason 😥`, {
         type: `error`,
       });
-      console.log(err);
     }
   };
 
@@ -86,86 +86,94 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
           "max-w-screen-lg gap-16": !isScreenVertical,
         })}
       >
-        <div className="flex flex-1 flex-col justify-center">
-          <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
-            Contact
-          </h1>
-          <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
-            Do you need help to solve a problem?
-          </h2>
-          <p className="mt-2 leading-loose">
-            Let's talk bizniz and discuss your dream service/app.
-          </p>
+        <div className="flex flex-1 shrink-0 flex-col justify-center">
+          <Fade direction="right">
+            <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
+              Contact
+            </h1>
+          </Fade>
+          <Fade direction="left" delay={200}>
+            <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
+              Do you need help to solve a problem?
+            </h2>
+          </Fade>
+          <Fade direction="up" delay={400}>
+            <p className="mt-2 leading-loose">
+              Let's talk bizniz and discuss your dream service/app.
+            </p>
+          </Fade>
         </div>
         <form
-          className="flex flex-1 flex-col justify-center"
+          className="flex flex-1 shrink-0 flex-col justify-center"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
           onSubmit={handleSubmit(handleSendEmail)}
         >
-          <TextField
-            id="name"
-            {...register(`name`)}
-            type="text"
-            label="Name"
-            error={
-              errors.name?.type
-                ? errorMessages.name[errors.name.type]
-                : undefined
-            }
-          />
-          <TextField
-            id="email"
-            {...register(`email`)}
-            type="text"
-            label="Email"
-            className="mt-4"
-            error={
-              errors.email?.type
-                ? errorMessages.email[errors.email.type]
-                : undefined
-            }
-          />
-          <TextArea
-            id="message"
-            {...register(`message`)}
-            label="Message"
-            className="mt-4"
-            rows={3}
-            error={
-              errors.message?.type
-                ? errorMessages.message[errors.message.type]
-                : undefined
-            }
-          />
-          <button
-            disabled={isSendButtonDisabled}
-            className={clsx(
-              "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all ",
-              {
-                "cursor-not-allowed": hasErrors,
-                "cursor-progress": isSubmitting,
-                "bg-violet-600 text-white ease-in-out hover:scale-105 dark:bg-violet-800":
-                  !isSendButtonDisabled,
-                "bg-violet-600/30 text-neutral-300 dark:bg-violet-800/30 dark:text-neutral-500":
-                  isSendButtonDisabled,
-              },
-            )}
-          >
-            <PaperAirplaneIcon
-              className="h-6 w-6 text-current ltr:mr-2 rtl:ml-2"
-              style={{
-                visibility: isSubmitting ? `hidden` : `visible`,
-              }}
+          <Fade delay={600} className="flex flex-col">
+            <TextField
+              id="name"
+              {...register(`name`)}
+              type="text"
+              label="Name"
+              error={
+                errors.name?.type
+                  ? errorMessages.name[errors.name.type]
+                  : undefined
+              }
             />
-            <span
-              style={{
-                visibility: isSubmitting ? `hidden` : `visible`,
-              }}
+            <TextField
+              id="email"
+              {...register(`email`)}
+              type="text"
+              label="Email"
+              className="mt-4"
+              error={
+                errors.email?.type
+                  ? errorMessages.email[errors.email.type]
+                  : undefined
+              }
+            />
+            <TextArea
+              id="message"
+              {...register(`message`)}
+              label="Message"
+              className="mt-4"
+              rows={3}
+              error={
+                errors.message?.type
+                  ? errorMessages.message[errors.message.type]
+                  : undefined
+              }
+            />
+            <button
+              disabled={isSendButtonDisabled}
+              className={clsx(
+                "mt-4 flex h-12 items-center justify-center rounded-xl p-2 font-medium uppercase transition-all ",
+                {
+                  "cursor-not-allowed": hasErrors,
+                  "cursor-progress": isSubmitting,
+                  "bg-violet-600 text-white ease-in-out hover:scale-105 dark:bg-violet-800":
+                    !isSendButtonDisabled,
+                  "bg-violet-600/30 text-neutral-300 dark:bg-violet-800/30 dark:text-neutral-500":
+                    isSendButtonDisabled,
+                },
+              )}
             >
-              Hit me up
-            </span>
-            {isSubmitting && <CircularProgressIndicator />}
-          </button>
+              <PaperAirplaneIcon
+                className="h-6 w-6 text-current ltr:mr-2 rtl:ml-2"
+                style={{
+                  visibility: isSubmitting ? `hidden` : `visible`,
+                }}
+              />
+              <span
+                style={{
+                  visibility: isSubmitting ? `hidden` : `visible`,
+                }}
+              >
+                Hit me up
+              </span>
+              {isSubmitting && <CircularProgressIndicator />}
+            </button>
+          </Fade>
         </form>
       </div>
     </Container>
