@@ -40,8 +40,6 @@ const nextConfig = {
       .toString()
       .substring(0, 7);
 
-    console.log({ GIT_HASH: gitHash });
-
     if (isServer) {
       config.plugins = [...config.plugins, new PrismaPlugin()];
     }
