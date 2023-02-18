@@ -11,6 +11,7 @@ import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 import { getServerAuthSession, type Session } from "@wassdahl/auth";
+import { prisma } from "@wassdahl/db";
 import { sendGrid } from "@wassdahl/mail";
 
 /**
@@ -39,7 +40,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     session: opts.session,
     sendGrid,
-    // prisma,
+    prisma,
   };
 };
 

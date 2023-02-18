@@ -2,15 +2,15 @@ import { Container, TextField } from "@wassdahl/ui";
 import ProjectCard from "../Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useCallback, useMemo, useState } from "react";
-import { useGetProjects } from "../../../api/queries/getProjects";
 import { useDebounce, useWindowSize } from "usehooks-ts";
+import { api } from "../../../pages/api";
 
 interface ProjectsPageProps {}
 
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate();
-  const { data: projectsData } = useGetProjects();
+  const { data: projectsData } = api.project.all.useQuery();
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
 
@@ -20,8 +20,8 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
     projectsData?.filter((project) => {
       return (
         searchRegExp.test(project.name) ||
-        searchRegExp.test(project.category) ||
-        project.tags.some((tag) => searchRegExp.test(tag))
+        searchRegExp.test(project.category.name) ||
+        project.tags.some((tag) => searchRegExp.test(tag.name))
       );
     }) ?? [];
 
@@ -107,7 +107,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
                 name={project.name}
                 tags={project.tags}
                 category={project.category}
-                imageUrl={project.medias[0]!.url}
+                imageUrl={project.banner}
                 allowForceHover={columnCount === 1}
                 className={borderRadiusClassName}
               />

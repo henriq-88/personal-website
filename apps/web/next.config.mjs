@@ -1,4 +1,5 @@
 import bundleAnalyzer from "@next/bundle-analyzer";
+import { PrismaPlugin } from "experimental-prisma-webpack-plugin";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -23,7 +24,20 @@ const nextConfig = {
       },
     ],
   },
-  transpilePackages: ["@wassdahl/ui", "@wassdahl/api", "@wassdahl/auth"],
+  transpilePackages: [
+    "@wassdahl/api",
+    "@wassdahl/auth",
+    "@wassdahl/db",
+    "@wassdahl/mail",
+    "@wassdahl/ui",
+  ],
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()];
+    }
+
+    return config;
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);

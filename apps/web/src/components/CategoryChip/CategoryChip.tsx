@@ -1,5 +1,6 @@
+import { Category } from "@wassdahl/db";
 import clsx from "clsx";
-import { categories, Category } from "../../api/types/category";
+import { categories } from "../../utils/category";
 
 interface CategoryChipProps {
   size?: `small` | `medium`;
@@ -18,7 +19,7 @@ const CategoryChip: React.FC<CategoryChipProps> = (props) => {
         },
       )}
     >
-      {categories[props.category]}
+      {categories[props.category.name]}
     </div>
   );
 };

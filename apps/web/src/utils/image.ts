@@ -1,4 +1,4 @@
-import { Media } from "../api/types/media";
+import { MediaType } from "@wassdahl/db";
 
 export const getYouTubeThumbnailFromUrl = (url: string) => {
   const regex = /https:\/\/www\.youtube\.com\/watch\?v=(\w+)/;
@@ -20,28 +20,40 @@ export const getYouTubeEmbedFromUrl = (url: string) => {
   return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&origin=${window.location.href}`;
 };
 
-export const getThumbSrc = (media: Media) => {
-  switch (media.type) {
-    case `image`:
-      return media.url;
-    case `video`: {
-      if (media.url.startsWith(`https://www.youtube.com/watch?v=`)) {
-        return getYouTubeThumbnailFromUrl(media.url);
+export const getThumbSrc = ({
+  type,
+  url,
+}: {
+  type: MediaType;
+  url: string;
+}) => {
+  switch (type) {
+    case `IMAGE`:
+      return url;
+    case `VIDEO`: {
+      if (url.startsWith(`https://www.youtube.com/watch?v=`)) {
+        return getYouTubeThumbnailFromUrl(url);
       }
-      return media.url;
+      return url;
     }
   }
 };
 
-export const getVideoSrc = (media: Media) => {
-  switch (media.type) {
-    case `image`:
-      return media.url;
-    case `video`: {
-      if (media.url.startsWith(`https://www.youtube.com/watch?v=`)) {
-        return getYouTubeEmbedFromUrl(media.url);
+export const getVideoSrc = ({
+  type,
+  url,
+}: {
+  type: MediaType;
+  url: string;
+}) => {
+  switch (type) {
+    case `IMAGE`:
+      return url;
+    case `VIDEO`: {
+      if (url.startsWith(`https://www.youtube.com/watch?v=`)) {
+        return getYouTubeEmbedFromUrl(url);
       }
-      return media.url;
+      return url;
     }
   }
 };

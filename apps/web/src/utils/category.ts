@@ -1,10 +1,8 @@
-export const categories = {
+export const categories: Record<string, string> = {
   ai: `AI`,
   app: `App`,
   web: `Web`,
   model: `Model`,
   package: `Package`,
   concept: `Concept`,
-} as const;
-
-export type Category = keyof typeof categories;
+};

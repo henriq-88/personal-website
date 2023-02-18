@@ -3,10 +3,10 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { Media } from "@wassdahl/db";
 import { Overlay } from "@wassdahl/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { Media } from "../../api/types/media";
 import { getVideoSrc } from "../../utils/image";
 
 interface ImageGalleryOverlayProps {
@@ -41,7 +41,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
             className="flex h-full w-full items-center justify-center py-16 md:p-3"
           >
             <div className="relative flex h-full w-full max-w-6xl items-center justify-center">
-              {currentMedia.type === `image` && (
+              {currentMedia.type === `IMAGE` && (
                 <Image
                   alt="current gallery image"
                   src={currentMedia.url}
@@ -49,7 +49,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
                   className="pointer-events-none rounded-xl object-contain"
                 />
               )}
-              {currentMedia.type === `video` && (
+              {currentMedia.type === `VIDEO` && (
                 <iframe
                   itemType="text/html"
                   width="640"

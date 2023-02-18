@@ -1,6 +1,6 @@
+import { Media } from "@wassdahl/db";
 import clsx from "clsx";
 import { useState } from "react";
-import { Media } from "../../api/types/media";
 import ImageGalleryItem from "../ImageGalleryItem";
 import ImageGalleryOverlay from "../ImageGalleryOverlay";
 

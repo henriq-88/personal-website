@@ -1,7 +1,7 @@
 import { PlayIcon } from "@heroicons/react/24/solid";
+import { Media, MediaType } from "@wassdahl/db";
 import clsx from "clsx";
 import Image from "next/image";
-import { Media } from "../../api/types/media";
 import { getThumbSrc } from "../../utils/image";
 
 interface ImageGalleryItemProps
@@ -10,8 +10,8 @@ interface ImageGalleryItemProps
     HTMLDivElement
   > {
   alt: string;
-  type: Media[`type`];
-  src: string;
+  type: MediaType;
+  src: Media[`url`];
 }
 
 const ImageGalleryItem: React.FC<ImageGalleryItemProps> = (props) => {
@@ -32,7 +32,7 @@ const ImageGalleryItem: React.FC<ImageGalleryItemProps> = (props) => {
         width={144}
         height={144}
       />
-      {props.type === `video` && (
+      {props.type === `VIDEO` && (
         <div className="group pointer-events-none absolute inset-0 flex h-full w-full items-center justify-center">
           <div className="absolute rounded-full bg-black/50 p-3 group-hover:scale-105">
             <PlayIcon className="h-6 w-6 text-white" />

@@ -3,18 +3,26 @@ import { Container } from "@wassdahl/ui";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Fade } from "react-awesome-reveal";
-import { useGetProject } from "../../../../api/queries/getProject";
+import { api } from "../../../../pages/api";
 import CategoryChip from "../../../CategoryChip/CategoryChip";
 import Gallery from "../../../ImageGallery";
+import { projectSlugToTitleSearch, useProjectSlug } from "./utils";
+import ProjectDetailsBody from "./Body";
 
 interface ProjectDetailsPageProps {}
 
 const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
-  const router = useRouter();
-  const projectId = router.query.projectId as string;
-  const { data: projectData } = useGetProject(projectId);
+  const projectSlug = useProjectSlug();
+
+  const { data: projectData } = api.project.byTitleSlug.useQuery(
+    {
+      projectSlug: projectSlugToTitleSearch(projectSlug ?? ``),
+    },
+    {
+      enabled: !!projectSlug,
+    },
+  );
 
   if (!projectData) {
     return <></>;
@@ -25,7 +33,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
       <Head>
         <title>{projectData.name}</title>
         <meta name="og:title" content={projectData.name} />
-        <meta name="og:image" content={projectData.medias[0]?.url} />
+        <meta name="og:image" content={projectData.banner} />
         <meta name="og:image:alt" content="Project image" />
       </Head>
       <div className="flex w-full flex-col">
@@ -73,12 +81,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
             <div className="my-6">
               <Gallery medias={projectData.medias} />
             </div>
-            <p
-              className="my-3 whitespace-pre-wrap"
-              dangerouslySetInnerHTML={{
-                __html: projectData.body,
-              }}
-            />
+            <ProjectDetailsBody body={projectData.body} />
           </div>
         </Container>
       </div>
