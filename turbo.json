@@ -9,5 +9,5 @@
     },
     "lint": {}
   },
-  "globalEnv": ["SENDGRID_API_KEY", "NEXTAUTH_URL", "NEXTAUTH_SECRET"]
+  "globalEnv": ["DATABASE_URL", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "SENDGRID_API_KEY"]
 }
