@@ -17,6 +17,7 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: !!process.env.CI },
   typescript: { ignoreBuildErrors: !!process.env.CI },
   images: {
+    minimumCacheTTL: 1 * 60 * 60, // 1 hour
     remotePatterns: [
       {
         protocol: "https",
