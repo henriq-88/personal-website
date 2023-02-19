@@ -68,7 +68,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
             : []),
           // bottom right, second last row
           ...(index % columnCount === columnCount - 1 &&
-          length - columnCount < index
+          length - columnCount <= index
             ? [`rounded-br-xl`]
             : []),
           // bottom right, last row
