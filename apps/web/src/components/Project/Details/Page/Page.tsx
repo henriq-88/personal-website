@@ -82,6 +82,9 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               )}
             </div>
             <div className="mt-3">
+              {isProjectLoading && (
+                <CardSkeleton className="h-6 w-56 rounded-md" />
+              )}
               {projectData?.website && (
                 <Link
                   href={projectData.website}

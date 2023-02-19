@@ -15,5 +15,6 @@ export const useProjectSlug = () => {
 };
 
 export const projectSlugToTitleSearch = (slug: string) => {
-  return slug.replaceAll(`-`, ` `);
+  const noDashSlug = slug.replaceAll(`-`, ` `);
+  return noDashSlug.split(/[^\w\s]+/g).at(-1) ?? noDashSlug;
 };

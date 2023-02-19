@@ -17,8 +17,10 @@ export const projectRouter = createTRPCRouter({
       }),
     )
     .query(({ ctx, input }) => {
+      console.log({ input });
+
       return ctx.prisma.project.findFirst({
-        where: { name: { contains: decodeURIComponent(input.projectSlug) } },
+        where: { name: { contains: input.projectSlug } },
         include: {
           category: true,
           tags: true,
