@@ -15,7 +15,7 @@ interface ProjectDetailsPageProps {}
 const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
   const projectSlug = useProjectSlug();
 
-  const { data: projectData, isFetching: isProjectLoading } =
+  const { data: projectData, isLoading: isProjectLoading } =
     api.project.byTitleSlug.useQuery(
       {
         projectSlug: projectSlugToTitleSearch(projectSlug ?? ``),
