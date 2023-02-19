@@ -35,7 +35,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
     increasePageViewById({
       id: projectData.id,
     });
-  }, []);
+  }, [projectData?.id]);
 
   return (
     <>
