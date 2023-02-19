@@ -74,7 +74,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
                 />
               )}
               {isProjectLoading && (
-                <CardSkeleton className="h-10 w-64 rounded-md" />
+                <CardSkeleton className="mr-12 h-9 w-full rounded-md sm:h-10 md:h-16" />
               )}
               {projectData?.name && (
                 <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-6xl">
