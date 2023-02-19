@@ -47,7 +47,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
       </Head>
       <div className="flex w-full flex-col">
         <div className="relative h-60 flex-shrink">
-          <Fade>
+          <Fade triggerOnce>
             {isProjectLoading && (
               <CardSkeleton className="absolute h-full w-full" />
             )}
