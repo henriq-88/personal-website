@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import { useWindowScrollPosition } from "rooks";
 import { isTouchDevice } from "../../../utils/screen";
 import CategoryChip from "../../CategoryChip/CategoryChip";
-import slugify from "slugify";
 
 interface ProjectCardProps {
   id: string;
   name: string;
+  slug: string;
   tags: Tag[];
   category: Category;
   imageUrl: string;
@@ -41,7 +41,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   return (
     <Link
       ref={ref}
-      href={`/projects/${slugify(props.name, { lower: true })}`}
+      href={`/projects/${props.slug}`}
       className={clsx(
         "group relative flex h-64 w-full items-center justify-center transition-transform duration-300 ease-in-out hover:z-10 hover:scale-105",
         props.className,

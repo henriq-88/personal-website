@@ -10,22 +10,34 @@ export const projectRouter = createTRPCRouter({
       },
     });
   }),
-  byTitleSlug: publicProcedure
+  bySlug: publicProcedure
     .input(
       z.object({
-        projectSlug: z.string(),
+        slug: z.string(),
       }),
     )
     .query(({ ctx, input }) => {
-      console.log({ input });
-
       return ctx.prisma.project.findFirst({
-        where: { name: { contains: input.projectSlug } },
+        where: { slug: { equals: input.slug } },
         include: {
           category: true,
           tags: true,
           medias: true,
         },
+      });
+    }),
+  increasePageViewById: publicProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      }),
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.project.update({
+        where: {
+          id: input.id,
+        },
+        data: { pageViews: { increment: 1 } },
       });
     }),
 });

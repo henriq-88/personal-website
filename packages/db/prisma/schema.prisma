@@ -13,8 +13,10 @@ datasource db {
 
 model Project {
     id         String   @id @default(cuid())
+    slug       String   @db.Text
     banner     String   @db.Text
     body       String   @db.Text
+    pageViews  Int      @default(0)
     category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
     categoryId String
     date       DateTime

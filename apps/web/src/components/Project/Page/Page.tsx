@@ -123,6 +123,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
                 key={project.id}
                 id={project.id}
                 name={project.name}
+                slug={project.slug}
                 tags={project.tags}
                 category={project.category}
                 imageUrl={project.banner}

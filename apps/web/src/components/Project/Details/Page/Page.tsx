@@ -1,5 +1,5 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
-import { CardSkeleton, Container } from "@wassdahl/ui";
+import { CardSkeleton, Container, Divider } from "@wassdahl/ui";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,8 +7,9 @@ import { Fade } from "react-awesome-reveal";
 import { api } from "../../../../pages/api";
 import CategoryChip from "../../../CategoryChip/CategoryChip";
 import Gallery from "../../../ImageGallery";
-import { projectSlugToTitleSearch, useProjectSlug } from "./utils";
+import { useProjectSlug } from "./utils";
 import ProjectDetailsBody from "./Body";
+import { useEffect } from "react";
 
 interface ProjectDetailsPageProps {}
 
@@ -16,14 +17,25 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
   const projectSlug = useProjectSlug();
 
   const { data: projectData, isLoading: isProjectLoading } =
-    api.project.byTitleSlug.useQuery(
+    api.project.bySlug.useQuery(
       {
-        projectSlug: projectSlugToTitleSearch(projectSlug ?? ``),
+        slug: projectSlug ?? ``,
       },
       {
         enabled: !!projectSlug,
       },
     );
+  const { mutate: increasePageViewById } =
+    api.project.increasePageViewById.useMutation();
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === `development` || !projectData?.id) {
+      return;
+    }
+    increasePageViewById({
+      id: projectData.id,
+    });
+  }, []);
 
   return (
     <>
@@ -107,6 +119,12 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               isLoading={isProjectLoading}
               body={projectData?.body}
             />
+            <Divider className="my-3" />
+            <div className="mt-3 text-xs text-neutral-500">
+              {`${Intl.NumberFormat(`en-US`, {}).format(
+                projectData?.pageViews ?? 0,
+              )} views`}
+            </div>
           </div>
         </Container>
       </div>

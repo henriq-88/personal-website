@@ -13,8 +13,3 @@ export const useProjectSlug = () => {
     .parse(projectSlugQueryParam);
   return projectSlug;
 };
-
-export const projectSlugToTitleSearch = (slug: string) => {
-  const noDashSlug = slug.replaceAll(`-`, ` `);
-  return noDashSlug.split(/[^\w\s]+/g).at(-1) ?? noDashSlug;
-};
