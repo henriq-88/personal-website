@@ -1,4 +1,5 @@
 import { Media } from "@wassdahl/db";
+import { CardSkeleton } from "@wassdahl/ui";
 import clsx from "clsx";
 import { useState } from "react";
 import ImageGalleryItem from "../ImageGalleryItem";
@@ -9,11 +10,12 @@ interface GallaryProps
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  medias: Media[];
+  medias?: Media[];
+  isLoading: boolean;
 }
 
 const Gallary: React.FC<GallaryProps> = (props) => {
-  const { medias, className, ...rest } = props;
+  const { medias = [], className, isLoading, ...rest } = props;
   const [gallaryIndex, setGallaryIndex] = useState<number>();
 
   return (
@@ -25,13 +27,19 @@ const Gallary: React.FC<GallaryProps> = (props) => {
         )}
         {...rest}
       >
+        {isLoading &&
+          [...Array(3).keys()].map((i) => (
+            <CardSkeleton
+              key={`loading-${i}`}
+              className="aspect-square h-full w-full rounded-xl"
+            />
+          ))}
         {medias.map((media, i) => (
           <ImageGalleryItem
             src={media.url}
             type={media.type}
             alt={`gallary image ${i + 1}`}
             key={media.url}
-            className=""
             onClick={(e) => {
               setGallaryIndex(i);
             }}

@@ -1,17 +1,27 @@
-import { useEffect, useState } from "react";
+import { CardSkeleton } from "@wassdahl/ui";
 
 interface ProjectDetailsBodyProps {
-  body: string;
+  isLoading: boolean;
+  body?: string;
 }
 
 const ProjectDetailsBody: React.FC<ProjectDetailsBodyProps> = (props) => {
-  const [isMounted, setIsMounted] = useState(false);
+  if (props.isLoading) {
+    return (
+      <div className="my-3">
+        <CardSkeleton className="h-5 w-32" />
+        <div className="pb-1" />
+        <CardSkeleton className="h-5 w-full" />
+        <div className="pb-1" />
+        <CardSkeleton className="h-5 w-full" />
+        <div className="pb-1" />
+        <CardSkeleton className="h-5 w-4/5" />
+        <div className="pb-1" />
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
+  if (!props.body) {
     return <></>;
   }
 

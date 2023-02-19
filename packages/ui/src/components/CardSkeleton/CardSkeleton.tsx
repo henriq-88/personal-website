@@ -6,14 +6,15 @@ type CardSkeletonProps = React.DetailedHTMLProps<
 >;
 
 const CardSkeleton: React.FC<CardSkeletonProps> = (props) => {
-  const { className, ...rest } = props;
+  const { className, role = `progressbar`, ...rest } = props;
   return (
     <div
-      {...rest}
+      role={role}
       className={clsx(
-        "animate-pulse bg-neutral-500/50 dark:bg-neutral-500/50",
+        "animate-pulse cursor-progress bg-neutral-500/50 dark:bg-neutral-500/50",
         className,
       )}
+      {...rest}
     />
   );
 };
