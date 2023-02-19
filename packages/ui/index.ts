@@ -4,3 +4,4 @@ export { default as Overlay } from "./src/components/Overlay";
 export { default as Container } from "./src/components/Container";
 export { default as TextArea } from "./src/components/TextArea";
 export { default as TextField } from "./src/components/TextField";
+export { default as CardSkeleton } from "./src/components/CardSkeleton";

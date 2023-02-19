@@ -1,16 +1,18 @@
-import { Container, TextField } from "@wassdahl/ui";
+import { CardSkeleton, Container, TextField } from "@wassdahl/ui";
 import ProjectCard from "../Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useCallback, useMemo, useState } from "react";
 import { useDebounce, useWindowSize } from "usehooks-ts";
 import { api } from "../../../pages/api";
+import clsx from "clsx";
 
 interface ProjectsPageProps {}
 
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate();
-  const { data: projectsData } = api.project.all.useQuery();
+  const { data: projectsData, isLoading: isProjectsLoading } =
+    api.project.all.useQuery();
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
 
@@ -91,6 +93,22 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
           className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           ref={gridRef}
         >
+          {isProjectsLoading &&
+            [...Array(3 * columnCount).keys()].map((key, index, arr) => {
+              const borderRadiusClassName = columnCount
+                ? getBorderRadiusClassName({
+                    index,
+                    length: arr.length,
+                    columnCount,
+                  })
+                : "";
+              return (
+                <CardSkeleton
+                  key={`loading-${key}`}
+                  className={clsx("h-64 w-full", borderRadiusClassName)}
+                />
+              );
+            })}
           {filteredProjects.map((project, i, projects) => {
             const borderRadiusClassName = columnCount
               ? getBorderRadiusClassName({
