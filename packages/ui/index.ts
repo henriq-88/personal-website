@@ -6,3 +6,4 @@ export { default as TextArea } from "./src/components/TextArea";
 export { default as TextField } from "./src/components/TextField";
 export { default as CardSkeleton } from "./src/components/CardSkeleton";
 export { default as Divider } from "./src/components/Divider";
+export { default as ToggleChip } from "./src/components/ToggleChip";

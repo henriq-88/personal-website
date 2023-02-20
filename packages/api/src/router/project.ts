@@ -12,10 +12,15 @@ export const projectRouter = createTRPCRouter({
               order: z.enum([`asc`, `desc`]),
             })
             .optional(),
+          categoryId: z.string().optional(),
+          tagIds: z.array(z.string()).optional(),
+          search: z.string().optional(),
         })
         .optional(),
     )
     .query(({ ctx, input }) => {
+      console.log({ input });
+
       return ctx.prisma.project.findMany({
         ...(input?.sortBy?.value
           ? {
@@ -24,6 +29,43 @@ export const projectRouter = createTRPCRouter({
               },
             }
           : {}),
+        where: {
+          AND: {
+            category: {
+              id: input?.categoryId,
+            },
+            tags: {
+              some: {
+                id: {
+                  in: input?.tagIds,
+                },
+              },
+            },
+            OR: [
+              {
+                name: {
+                  contains: input?.search,
+                },
+              },
+              {
+                category: {
+                  name: {
+                    contains: input?.search,
+                  },
+                },
+              },
+              {
+                tags: {
+                  some: {
+                    name: {
+                      contains: input?.search,
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        },
         include: {
           category: true,
           tags: true,

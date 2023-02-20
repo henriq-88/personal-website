@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { useAtom } from "jotai";
 import { Overlay } from "@wassdahl/ui";
 import NavigationMenuList from "../NavigationMenuList";
-import NavigationMenuOpenCloseSvg from "../NavigationMenuButton/NavigationMenuOpenCloseSvg";
+import NavigationMenuOpenCloseSvg from "../NavigationMenuOpenCloseSvg/NavigationMenuOpenCloseSvg";
 import { useWindowSize } from "../../../utils/screen";
 import { useMemo } from "react";
 
@@ -32,7 +32,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
     <>
       <div
         className={clsx(
-          "absolute z-20 flex flex-col items-end rounded-xl border border-solid border-violet-500/50 text-violet-900 backdrop-blur-md transition-all duration-300 ltr:right-3 rtl:left-3 dark:border-violet-900/50 dark:text-violet-500",
+          "absolute z-20 flex flex-col items-end rounded-xl border border-solid border-violet-500 text-violet-900 backdrop-blur-md transition-all duration-300 ltr:right-3 rtl:left-3 dark:border-violet-900 dark:text-violet-500",
           {
             "w-[calc(100%-1.5rem)] bg-violet-200/70 dark:bg-[#0C0417]/70":
               isMenuOpen,
