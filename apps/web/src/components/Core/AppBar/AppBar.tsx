@@ -19,9 +19,13 @@ const AppBar: React.FC<AppBarProps> = (props) => {
   return (
     <header className={clsx("h-16 w-full flex-shrink-0", className)} {...rest}>
       <div
-        className={clsx("fixed top-0 left-0 z-20 w-full transition-all", {
-          "bg-violet-200 dark:bg-[#0C0417]": !isScrollPositionAtTop,
-        })}
+        className={clsx(
+          "fixed top-0 left-0 z-20 w-full border-b border-transparent transition-all",
+          {
+            "border-b border-violet-500/50 bg-violet-200 dark:border-violet-900/50 dark:bg-[#0C0417]":
+              !isScrollPositionAtTop,
+          },
+        )}
       >
         <Container className="relative flex justify-between p-3">
           <ThemeToggle />
