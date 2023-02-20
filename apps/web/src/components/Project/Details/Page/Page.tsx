@@ -117,10 +117,17 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               body={projectData?.body}
             />
             <Divider className="my-3" />
-            <div className="mt-3 text-xs text-neutral-500">
-              {`${Intl.NumberFormat(`en-US`, {}).format(
-                projectData?.pageViews ?? 0,
-              )} views`}
+            <div className="mt-3">
+              {isProjectLoading && (
+                <CardSkeleton className="h-4 w-56 rounded-md" />
+              )}
+              {projectData?.pageViews && (
+                <span className="text-xs text-neutral-500">
+                  {`${Intl.NumberFormat(`en-US`, {}).format(
+                    projectData?.pageViews,
+                  )} views`}
+                </span>
+              )}
             </div>
           </div>
         </Container>
