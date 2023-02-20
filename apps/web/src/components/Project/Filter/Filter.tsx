@@ -89,7 +89,7 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             {tagsIsLoading &&
               [...Array(10).keys()].map((i) => (
                 <CardSkeleton
-                  key={`category-loading-${i}`}
+                  key={`tag-loading-${i}`}
                   className="h-[34px] w-20 rounded-full"
                 />
               ))}
