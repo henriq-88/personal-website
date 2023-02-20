@@ -288,8 +288,8 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
           categoryId={selectedCategoryId}
           tagIds={selectedTagsIds}
           onSortOrderChange={handleSortOrderChange}
-          onCategoryIdChange={setSelectedCategoryId}
-          onTagIdsChange={setSelectedTagIds}
+          onCategoryIdChange={handleCategoryIdChange}
+          onTagIdsChange={handleTagIdsChange}
         />
       </aside>
     </Container>

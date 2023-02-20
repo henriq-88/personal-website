@@ -1,7 +1,7 @@
 import { api } from "../../../pages/api";
 import { SortOrder } from "../Page";
 import { forwardRef } from "react";
-import { ToggleChip } from "@wassdahl/ui";
+import { CardSkeleton, ToggleChip } from "@wassdahl/ui";
 
 interface ProjectFilterProps
   extends React.DetailedHTMLProps<
@@ -34,8 +34,9 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
       ...rest
     } = props;
 
-    const { data: categoriesData } = api.category.all.useQuery();
-    const { data: tagsData } = api.tag.all.useQuery();
+    const { data: categoriesData, isLoading: categoriesIsLoading } =
+      api.category.all.useQuery();
+    const { data: tagsData, isLoading: tagsIsLoading } = api.tag.all.useQuery();
 
     return (
       <div ref={ref} {...rest}>
@@ -60,6 +61,13 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             Category
           </h3>
           <div className="flex flex-row flex-wrap gap-2">
+            {categoriesIsLoading &&
+              [...Array(6).keys()].map((i) => (
+                <CardSkeleton
+                  key={`category-loading-${i}`}
+                  className="h-[34px] w-20 rounded-full"
+                />
+              ))}
             {categoriesData?.map((c) => (
               <ToggleChip
                 key={c.id}
@@ -78,6 +86,13 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             Tags
           </h3>
           <div className="flex flex-row flex-wrap gap-2">
+            {tagsIsLoading &&
+              [...Array(10).keys()].map((i) => (
+                <CardSkeleton
+                  key={`category-loading-${i}`}
+                  className="h-[34px] w-20 rounded-full"
+                />
+              ))}
             {tagsData?.map((tag) => (
               <ToggleChip
                 key={tag.id}
@@ -85,8 +100,6 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
                 onClick={() => {
                   const foundTagId = tagIds?.find((tId) => tag.id === tId);
                   if (!foundTagId) {
-                    console.log([...(tagIds ?? []), tag.id]);
-
                     return onTagIdsChange([...(tagIds ?? []), tag.id]);
                   }
                   const filteredTagIds =
