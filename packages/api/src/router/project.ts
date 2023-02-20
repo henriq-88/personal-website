@@ -2,14 +2,34 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const projectRouter = createTRPCRouter({
-  all: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.project.findMany({
-      include: {
-        category: true,
-        tags: true,
-      },
-    });
-  }),
+  all: publicProcedure
+    .input(
+      z
+        .object({
+          sortBy: z
+            .object({
+              value: z.enum([`date`, `pageViews`, `name`]),
+              order: z.enum([`asc`, `desc`]),
+            })
+            .optional(),
+        })
+        .optional(),
+    )
+    .query(({ ctx, input }) => {
+      return ctx.prisma.project.findMany({
+        ...(input?.sortBy?.value
+          ? {
+              orderBy: {
+                [input.sortBy?.value]: input.sortBy?.order,
+              },
+            }
+          : {}),
+        include: {
+          category: true,
+          tags: true,
+        },
+      });
+    }),
   bySlug: publicProcedure
     .input(
       z.object({

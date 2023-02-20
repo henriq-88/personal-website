@@ -12,7 +12,12 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate();
   const { data: projectsData, isLoading: isProjectsLoading } =
-    api.project.all.useQuery();
+    api.project.all.useQuery({
+      sortBy: {
+        value: `date`,
+        order: `desc`,
+      },
+    });
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
 

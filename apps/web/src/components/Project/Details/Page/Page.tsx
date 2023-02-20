@@ -45,8 +45,8 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
         <meta name="og:image" content={projectData?.banner} />
         <meta name="og:image:alt" content="Project image" />
       </Head>
-      <div className="flex w-full flex-col">
-        <div className="relative h-60 flex-shrink">
+      <div className="flex h-full w-full flex-col">
+        <div className="relative h-1/3 flex-shrink">
           <Fade triggerOnce className="h-full">
             {projectData?.banner && (
               <Image
