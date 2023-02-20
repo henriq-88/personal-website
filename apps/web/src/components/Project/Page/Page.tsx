@@ -1,13 +1,15 @@
 import { CardSkeleton, Container, TextField } from "@wassdahl/ui";
 import ProjectCard from "../Card";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDebounce, useWindowSize } from "usehooks-ts";
 import { api } from "../../../pages/api";
 import clsx from "clsx";
-import { Category, Tag } from "@wassdahl/db";
 import ProjectFilter, { sortOrders } from "../Filter";
 import ToggleShowSectionButton from "../Filter/ToggleShowSectionButton";
+import { useRouter } from "next/router";
+import { z } from "zod";
+import { isNil, omitBy } from "lodash-es";
 
 interface ProjectsPageProps {}
 
@@ -17,31 +19,142 @@ export interface SortOrder {
   order: `asc` | `desc`;
 }
 
+const DEFAULT_SORT_ORDER = sortOrders[0];
+const DEFAULT_IS_FILTER_MENU_OPEN = false;
+
+const queryParamSchema = z
+  .object({
+    sortByValue: z.enum([`date`, `pageViews`, `name`]).optional(),
+    sortByOrder: z.enum([`asc`, `desc`]).optional(),
+    categoryId: z.string().optional(),
+    tagIds: z.union([z.array(z.string()), z.string()]).optional(),
+    search: z.string().optional(),
+    isFilterMenuOpen: z
+      .enum([`true`, `false`])
+      .catch(`false`)
+      .transform((value) => value === `true`),
+  })
+  .optional();
+
+type ProjectQueryParam = z.infer<typeof queryParamSchema>;
+
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const { width } = useWindowSize();
   const [gridRef] = useAutoAnimate();
   const [filterRef] = useAutoAnimate();
-  const [search, setSearch] = useState("");
+  const router = useRouter();
+  const [search, setSearch] = useState(``);
 
   const debouncedSearch = useDebounce(search, 300);
-  const [selectedSortOrder, setSelectedSortOrder] = useState<SortOrder>(
-    sortOrders[0],
+  const [selectedSortOrder, setSelectedSortOrder] =
+    useState<SortOrder>(DEFAULT_SORT_ORDER);
+
+  const [selectedTagsIds, setSelectedTagIds] = useState<string[]>();
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>();
+  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(
+    DEFAULT_IS_FILTER_MENU_OPEN,
   );
-  const [selectedTags, setSelectedTags] = useState<Tag[]>();
-  const [selectedCategory, setSelectedCategory] = useState<Category>();
-  const [isFilterMenuOpen, setIsFilterMenuOpen] = useState(false);
   const { data: projectsData = [], isLoading: isProjectsLoading } =
     api.project.all.useQuery(
       {
-        sortBy: selectedSortOrder,
-        categoryId: selectedCategory?.id,
-        tagIds: selectedTags?.map((tags) => tags.id),
+        sortBy: {
+          order: selectedSortOrder.order,
+          value: selectedSortOrder.value,
+        },
+        categoryId: selectedCategoryId,
+        tagIds: selectedTagsIds,
         search: debouncedSearch,
       },
       {
         keepPreviousData: true,
       },
     );
+
+  const updateQueryParams = (
+    params: Partial<ProjectQueryParam & { isFilterMenuOpen: boolean }>,
+  ) => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    router.replace({
+      query: omitBy(
+        {
+          ...router.query,
+          ...params,
+        },
+        isNil,
+      ),
+    });
+  };
+
+  const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    const search = e.currentTarget.value;
+    setSearch(search);
+    updateQueryParams({
+      search,
+    });
+  };
+
+  const handleSortOrderChange = (sortOrder: SortOrder) => {
+    setSelectedSortOrder(sortOrder);
+    updateQueryParams({
+      sortByValue: sortOrder.value,
+      sortByOrder: sortOrder.order,
+    });
+  };
+
+  const handleCategoryIdChange = (categoryId: string | undefined) => {
+    setSelectedCategoryId(categoryId);
+    updateQueryParams({
+      categoryId,
+    });
+  };
+
+  const handleTagIdsChange = (tagIds: string[] | undefined) => {
+    setSelectedTagIds(tagIds);
+    updateQueryParams({
+      tagIds,
+    });
+  };
+
+  const handleIsFilterMenuOpenChange: React.MouseEventHandler<
+    HTMLButtonElement
+  > = (e) => {
+    const updatedIsFilterMenuOpen = !isFilterMenuOpen;
+    setIsFilterMenuOpen(updatedIsFilterMenuOpen);
+    updateQueryParams({
+      isFilterMenuOpen: updatedIsFilterMenuOpen,
+    });
+  };
+
+  useEffect(() => {
+    if (!router.isReady) {
+      return;
+    }
+    const unsafeQueryParams = queryParamSchema.safeParse(router.query);
+    if (!unsafeQueryParams.success) {
+      return;
+    }
+    const safeQueryParams = unsafeQueryParams.data;
+    setSearch(safeQueryParams?.search ?? ``);
+    const parsedSortOrder = sortOrders.find(
+      ({ value, order }) =>
+        value === safeQueryParams?.sortByValue &&
+        order === safeQueryParams?.sortByOrder,
+    );
+    setSelectedSortOrder(parsedSortOrder ?? DEFAULT_SORT_ORDER);
+    setSelectedCategoryId(safeQueryParams?.categoryId);
+    const parsedTagIds =
+      safeQueryParams?.tagIds === undefined
+        ? undefined
+        : Array.isArray(safeQueryParams?.tagIds)
+        ? safeQueryParams?.tagIds
+        : [safeQueryParams?.tagIds];
+    setSelectedTagIds(parsedTagIds);
+    setIsFilterMenuOpen(
+      safeQueryParams?.isFilterMenuOpen ?? DEFAULT_IS_FILTER_MENU_OPEN,
+    );
+  }, [router.query]);
 
   const columnCount = useMemo(() => {
     if (!width) {
@@ -104,12 +217,12 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
           value={search}
           placeholder="Search project name, category or tag"
           className="flex-1"
-          onChange={(e) => setSearch(e.currentTarget.value)}
+          onChange={handleSearchChange}
         />
         <ToggleShowSectionButton
           className="ml-3 block xl2:hidden"
           isOpen={isFilterMenuOpen}
-          onClick={() => setIsFilterMenuOpen((isOpen) => !isOpen)}
+          onClick={handleIsFilterMenuOpenChange}
         />
       </div>
       <div className="block xl2:hidden" ref={filterRef}>
@@ -117,11 +230,11 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
           <ProjectFilter
             className="pt-6 pb-3"
             sortOrder={selectedSortOrder}
-            category={selectedCategory}
-            tags={selectedTags}
-            onSortOrderChange={setSelectedSortOrder}
-            onCategoryChange={setSelectedCategory}
-            onTagsChange={setSelectedTags}
+            categoryId={selectedCategoryId}
+            tagIds={selectedTagsIds}
+            onSortOrderChange={handleSortOrderChange}
+            onCategoryIdChange={handleCategoryIdChange}
+            onTagIdsChange={handleTagIdsChange}
           />
         )}
       </div>
@@ -172,11 +285,11 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
       <aside className="absolute -right-80 top-0 mt-[4.5rem] hidden w-80 px-3 xl2:block">
         <ProjectFilter
           sortOrder={selectedSortOrder}
-          category={selectedCategory}
-          tags={selectedTags}
-          onSortOrderChange={setSelectedSortOrder}
-          onCategoryChange={setSelectedCategory}
-          onTagsChange={setSelectedTags}
+          categoryId={selectedCategoryId}
+          tagIds={selectedTagsIds}
+          onSortOrderChange={handleSortOrderChange}
+          onCategoryIdChange={setSelectedCategoryId}
+          onTagIdsChange={setSelectedTagIds}
         />
       </aside>
     </Container>

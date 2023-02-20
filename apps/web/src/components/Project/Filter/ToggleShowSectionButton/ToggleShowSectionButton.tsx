@@ -12,7 +12,7 @@ interface ToggleShowSectionButtonProps
 const ToggleShowSectionButton: React.FC<ToggleShowSectionButtonProps> = (
   props,
 ) => {
-  const { className, ...rest } = props;
+  const { className, isOpen, ...rest } = props;
   return (
     <button
       className={clsx(
@@ -26,7 +26,7 @@ const ToggleShowSectionButton: React.FC<ToggleShowSectionButtonProps> = (
         className={clsx(
           "h-4 w-4 text-violet-900 transition-transform dark:text-violet-500",
           {
-            "rotate-180": props.isOpen,
+            "rotate-180": isOpen,
           },
         )}
       />

@@ -1,6 +1,5 @@
 import { api } from "../../../pages/api";
 import { SortOrder } from "../Page";
-import { Category, Tag } from "@wassdahl/db";
 import { forwardRef } from "react";
 import { ToggleChip } from "@wassdahl/ui";
 
@@ -10,11 +9,11 @@ interface ProjectFilterProps
     HTMLDivElement
   > {
   sortOrder: SortOrder;
-  category: Category | undefined;
-  tags: Tag[] | undefined;
-  onSortOrderChange: React.Dispatch<React.SetStateAction<SortOrder>>;
-  onCategoryChange: React.Dispatch<React.SetStateAction<Category | undefined>>;
-  onTagsChange: React.Dispatch<React.SetStateAction<Tag[] | undefined>>;
+  categoryId: string | undefined;
+  tagIds: string[] | undefined;
+  onSortOrderChange: (newSortOrder: SortOrder) => void;
+  onCategoryIdChange: (newCategoryId: string | undefined) => void;
+  onTagIdsChange: (newTagIds: string[] | undefined) => void;
 }
 
 export const sortOrders = [
@@ -27,11 +26,11 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
   (props, ref) => {
     const {
       sortOrder,
-      category,
-      tags,
-      onCategoryChange,
+      categoryId,
+      tagIds,
+      onCategoryIdChange,
       onSortOrderChange,
-      onTagsChange,
+      onTagIdsChange,
       ...rest
     } = props;
 
@@ -64,11 +63,9 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             {categoriesData?.map((c) => (
               <ToggleChip
                 key={c.id}
-                isSelected={c.id === category?.id}
+                isSelected={c.id === categoryId}
                 onClick={() =>
-                  onCategoryChange((oldCategory) =>
-                    oldCategory?.id !== c.id ? c : undefined,
-                  )
+                  onCategoryIdChange(categoryId !== c.id ? c.id : undefined)
                 }
               >
                 {c.name}
@@ -84,16 +81,20 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             {tagsData?.map((tag) => (
               <ToggleChip
                 key={tag.id}
-                isSelected={!!tags?.find((t) => t.id === tag.id)}
-                onClick={() =>
-                  onTagsChange((tags) =>
-                    tags?.find((t) => tag.id === t.id)
-                      ? tags.filter((t) => t.id !== tag.id).length > 0
-                        ? tags.filter((t) => t.id !== tag.id)
-                        : undefined
-                      : [...(tags ?? []), tag],
-                  )
-                }
+                isSelected={!!tagIds?.find((tId) => tId === tag.id)}
+                onClick={() => {
+                  const foundTagId = tagIds?.find((tId) => tag.id === tId);
+                  if (!foundTagId) {
+                    console.log([...(tagIds ?? []), tag.id]);
+
+                    return onTagIdsChange([...(tagIds ?? []), tag.id]);
+                  }
+                  const filteredTagIds =
+                    tagIds?.filter((tId) => tId !== tag.id) ?? [];
+                  const updatedTagIds =
+                    filteredTagIds.length > 0 ? filteredTagIds : undefined;
+                  return onTagIdsChange(updatedTagIds);
+                }}
               >
                 {tag.name}
               </ToggleChip>
