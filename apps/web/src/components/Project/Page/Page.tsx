@@ -67,6 +67,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
       },
       {
         keepPreviousData: true,
+        enabled: router.isReady,
       },
     );
 
