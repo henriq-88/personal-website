@@ -20,7 +20,7 @@ const ToggleChip: React.FC<ToggleChipProps> = (props) => {
         "flex items-center rounded-full border px-3 py-1 transition-all",
         className,
         {
-          "border-transparent bg-violet-600 text-white dark:bg-violet-800":
+          "border-transparent bg-violet-900 text-white dark:bg-violet-600":
             isSelected,
           "border-violet-500 text-neutral-500 hover:border-violet-900 dark:border-violet-900 hover:dark:border-violet-500":
             !isSelected,
