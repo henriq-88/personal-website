@@ -45,9 +45,6 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
       className={clsx(
         "group relative flex h-64 w-full items-center justify-center overflow-hidden transition-transform duration-300 ease-in-out hover:z-10",
         props.className,
-        {
-          "z-10 scale-105": forceHover,
-        },
       )}
     >
       <Image
@@ -56,7 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         className={clsx(
           "relative h-full w-full select-none rounded-xl object-cover grayscale transition-all duration-300 hover:opacity-100 hover:filter-none group-hover:scale-105 dark:hover:opacity-100",
           {
-            "opacity-100 filter-none": forceHover,
+            "scale-105 opacity-100 filter-none": forceHover,
             "opacity-75 dark:opacity-50": !forceHover,
           },
         )}
