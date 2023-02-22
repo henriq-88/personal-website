@@ -2,6 +2,7 @@ import Image from "next/image";
 import MeImage from "../../assets/images/me.jpg";
 import { Container } from "@wassdahl/ui";
 import { Fade } from "react-awesome-reveal";
+import Signature from "../Signature";
 
 interface AboutPageProps {}
 
@@ -39,6 +40,7 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
                 Backend communication with the apps.
               </p>
             </Fade>
+            <Signature className="mt-6 w-48" />
           </div>
         </div>
       </div>
