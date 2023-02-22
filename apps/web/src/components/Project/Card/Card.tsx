@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
       ref={ref}
       href={`/projects/${props.slug}`}
       className={clsx(
-        "group relative flex h-64 w-full items-center justify-center transition-transform duration-300 ease-in-out hover:z-10 hover:scale-105",
+        "group relative flex h-64 w-full items-center justify-center overflow-hidden transition-transform duration-300 ease-in-out hover:z-10",
         props.className,
         {
           "z-10 scale-105": forceHover,
@@ -54,7 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         priority
         alt={props.name}
         className={clsx(
-          "h-full w-full select-none rounded-xl object-cover grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:filter-none dark:hover:opacity-100",
+          "relative h-full w-full select-none rounded-xl object-cover grayscale transition-all duration-300 hover:opacity-100 hover:filter-none group-hover:scale-105 dark:hover:opacity-100",
           {
             "opacity-100 filter-none": forceHover,
             "opacity-75 dark:opacity-50": !forceHover,
@@ -75,7 +75,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
       >
         <div
           className={clsx(
-            "rounded-xl bg-gradient-to-b from-black/80 to-black/0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+            "bg-gradient-to-b from-black/80 to-black/0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100",
             {
               "opacity-100": forceHover,
             },
@@ -89,7 +89,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         </div>
         <div
           className={clsx(
-            "flex items-end justify-between rounded-xl bg-gradient-to-t from-black/80 to-black/0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+            "flex items-end justify-between bg-gradient-to-t from-black/80 to-black/0 p-3 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100",
             {
               "opacity-100": forceHover,
             },

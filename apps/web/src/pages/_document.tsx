@@ -43,7 +43,7 @@ const Document: React.FC = (props) => {
       </Head>
       <body
         dir="ltr"
-        className="h-full bg-violet-400 bg-gradient-to-b from-violet-200 to-violet-400 bg-no-repeat text-neutral-900 dark:bg-[#250E48]  dark:from-[#0C0417] dark:to-[#250E48] dark:text-white dark:[color-scheme:dark]"
+        className="h-full bg-violet-400 bg-gradient-to-b from-violet-200 to-violet-400 bg-no-repeat text-neutral-900 selection:bg-violet-400 dark:bg-[#250E48] dark:from-[#0C0417] dark:to-[#250E48] dark:text-white dark:[color-scheme:dark] selection:dark:bg-violet-900"
       >
         <Main />
         <NextScript />
