@@ -2,7 +2,6 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 import { CardSkeleton } from "@wassdahl/ui";
 import clsx from "clsx";
-import { useRouter } from "next/router";
 import { useCallback, useMemo } from "react";
 import { useDebounce, useWindowSize } from "usehooks-ts";
 import { api } from "../../../pages/api";
@@ -15,12 +14,12 @@ interface ProjectItemsProps {
   sortOrder: SortOrder[`order`];
   categoryId: string | undefined;
   tagIds: string[] | undefined;
+  enabled: boolean;
 }
 
 const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
   const { width: windowWidth } = useWindowSize();
   const debouncedSearch = useDebounce(props.search, 300);
-  const router = useRouter();
   const { data: projectsData = [], isLoading: isProjectsLoading } =
     api.project.all.useQuery(
       {
@@ -34,9 +33,10 @@ const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
       },
       {
         keepPreviousData: true,
-        enabled: router.isReady,
+        enabled: props.enabled,
       },
     );
+
   const [gridRef] = useAutoAnimate();
   const columnCount = useMemo(() => {
     if (!windowWidth) {

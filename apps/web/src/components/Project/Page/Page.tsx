@@ -38,6 +38,7 @@ type ProjectQueryParam = z.infer<typeof queryParamSchema>;
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const [filterRef] = useAutoAnimate();
   const router = useRouter();
+  const [isQueryParamsLoaded, setIsQueryParamsLoaded] = useState(false);
   const [search, setSearch] = useState(``);
   const [selectedSortOrder, setSelectedSortOrder] =
     useState<SortOrder>(DEFAULT_SORT_ORDER);
@@ -132,6 +133,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
     setIsFilterMenuOpen(
       safeQueryParams?.isFilterMenuOpen ?? DEFAULT_IS_FILTER_MENU_OPEN,
     );
+    setIsQueryParamsLoaded(true);
   }, [router.query]);
 
   return (
@@ -170,6 +172,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
         sortOrder={selectedSortOrder.order}
         categoryId={selectedCategoryId}
         tagIds={selectedTagsIds}
+        enabled={isQueryParamsLoaded}
       />
       <aside className="absolute -right-80 top-0 mt-[4.5rem] hidden w-80 px-3 xl2:block">
         <ProjectFilter
