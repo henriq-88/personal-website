@@ -19,8 +19,6 @@ export const projectRouter = createTRPCRouter({
         .optional(),
     )
     .query(({ ctx, input }) => {
-      console.log({ input });
-
       return ctx.prisma.project.findMany({
         ...(input?.sortBy?.value
           ? {
