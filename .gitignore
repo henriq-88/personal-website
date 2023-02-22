@@ -28,6 +28,3 @@ yarn-error.log*
 
 # env files
 .env
-
-# Firebase
-.firebase

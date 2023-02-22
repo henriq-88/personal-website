@@ -31,7 +31,6 @@
     "@wassdahl/ui": "*",
     "class-variance-authority": "0.4.0",
     "clsx": "1.2.1",
-    "firebase": "9.17.1",
     "framer-motion": "9.0.4",
     "jotai": "2.0.2",
     "js-cookie": "3.0.1",
