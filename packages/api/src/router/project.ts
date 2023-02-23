@@ -100,7 +100,4 @@ export const projectRouter = createTRPCRouter({
         data: { pageViews: { increment: 1 } },
       });
     }),
-  forCron: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.project.findFirst();
-  }),
 });
