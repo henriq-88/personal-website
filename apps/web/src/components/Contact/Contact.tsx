@@ -78,7 +78,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
 
   return (
     <Container className="flex h-full items-center justify-center p-3">
-      <div className="flex max-w-screen-xs flex-col gap-8 md:max-w-screen-lg md:flex-row">
+      <div className="flex max-w-screen-lg gap-8 portrait:max-w-screen-xs portrait:flex-col landscape:flex-row">
         <div className="flex flex-1 shrink-0 flex-col justify-center">
           <Fade direction="up" triggerOnce>
             <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">

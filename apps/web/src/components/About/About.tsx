@@ -9,8 +9,8 @@ interface AboutPageProps {}
 const AboutPage: React.FC<AboutPageProps> = (props) => {
   return (
     <Container className="flex h-full items-center justify-center p-3">
-      <div className="max-w-screen-xs md:max-w-screen-lg">
-        <div className="flex flex-1 flex-col gap-8 md:flex-row">
+      <div className="md:max-w-screen-lg portrait:max-w-screen-xs">
+        <div className="flex flex-1 gap-8 portrait:flex-col landscape:flex-row">
           <div className="relative flex flex-1 items-center justify-center">
             <Fade triggerOnce duration={2000} className="h-full w-full">
               <Image

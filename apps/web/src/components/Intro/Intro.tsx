@@ -7,7 +7,7 @@ const IntroPage: React.FC<IntroPageProps> = (props) => {
   return (
     <Container className="h-full p-3">
       <div className="flex h-full flex-1 items-center justify-center">
-        <div className="max-w-screen-xs md:max-w-screen-lg">
+        <div className="md:max-w-screen-lg portrait:max-w-screen-xs">
           <div className="flex flex-1 flex-col">
             <Fade direction="up" triggerOnce>
               <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
