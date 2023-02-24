@@ -3,7 +3,7 @@ import MeImage from "../assets/images/me.jpg";
 import type { AppProps } from "next/app";
 import AppBar from "../components/Core/AppBar";
 import CompositeProvider from "../components/CompositeProvider";
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";
 import clsx from "clsx";
 import Footer from "../components/Core/Footer";
 import Head from "next/head";
