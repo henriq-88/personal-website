@@ -36,6 +36,14 @@ const nextConfig = {
     "@wassdahl/mail",
     "@wassdahl/ui",
   ],
+  pageExtensions: [
+    "page.mdx",
+    "page.md",
+    "page.jsx",
+    "page.js",
+    "page.tsx",
+    "page.ts",
+  ],
   webpack: (config, { isServer }) => {
     const gitHash = execSync(`git rev-parse --verify HEAD`)
       .toString()

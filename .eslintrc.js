@@ -5,6 +5,7 @@ const config = {
     browser: true,
   },
   globals: {
+    jest: true,
     window: true,
   },
   extends: ["prettier", "eslint:recommended"],
