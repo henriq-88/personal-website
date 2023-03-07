@@ -8,7 +8,6 @@ import clsx from "clsx";
 import Footer from "../components/Core/Footer";
 import Head from "next/head";
 import { api } from "./api";
-import { Analytics } from "@vercel/analytics/react";
 export { reportWebVitals } from "next-axiom";
 
 const poppins = Poppins({
@@ -31,7 +30,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         </main>
         <Footer className={poppins.className} />
       </CompositeProvider>
-      <Analytics />
     </>
   );
 }
