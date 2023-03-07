@@ -2,6 +2,7 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 import { execSync } from "child_process";
 import { PrismaPlugin } from "experimental-prisma-webpack-plugin";
 import webpack from "webpack";
+import { withAxiom } from "next-axiom";
 
 const { EnvironmentPlugin } = webpack;
 
@@ -56,4 +57,4 @@ const nextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default withAxiom(withBundleAnalyzer(nextConfig));

@@ -9,6 +9,7 @@ import Footer from "../components/Core/Footer";
 import Head from "next/head";
 import { api } from "./api";
 import { Analytics } from "@vercel/analytics/react";
+export { reportWebVitals } from "next-axiom";
 
 const poppins = Poppins({
   weight: ["200", "400", "600", "700"],
