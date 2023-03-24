@@ -1,4 +1,4 @@
-import { Category } from "@wassdahl/db";
+import { type Category } from "@wassdahl/db";
 import clsx from "clsx";
 import { categories } from "../../utils/category";
 

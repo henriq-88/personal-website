@@ -12,7 +12,8 @@
     "type-check": "turbo type-check"
   },
   "dependencies": {
-    "turbo": "1.8.5"
+    "turbo": "1.8.5",
+    "eslint-config-wassdahl": "0.0.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "13.2.4",

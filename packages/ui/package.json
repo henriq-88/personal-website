@@ -11,7 +11,7 @@
   "dependencies": {
     "@formkit/auto-animate": "1.0.0-beta.6",
     "@heroicons/react": "2.0.16",
-    "@wassdahl/tailwind-config": "^0.1.0",
+    "@wassdahl/tailwind-config": "workspace:^0.1.0",
     "class-variance-authority": "0.4.0",
     "clsx": "1.2.1",
     "react": "18.2.0",
