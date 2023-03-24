@@ -40,6 +40,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
     formState: { errors, isSubmitting },
     handleSubmit,
     reset,
+    clearErrors,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
   });
