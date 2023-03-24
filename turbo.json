@@ -17,7 +17,11 @@
       "dependsOn": ["^db:generate"],
       "cache": false
     },
-    "lint": {}
+    "lint": {},
+    "type-check": {
+      "dependsOn": ["^db:generate"],
+      "cache": false
+    }
   },
   "globalEnv": ["DATABASE_URL", "NEXTAUTH_SECRET", "NEXTAUTH_URL", "SENDGRID_API_KEY"]
 }
