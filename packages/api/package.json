@@ -14,7 +14,7 @@
     "@trpc/server": "^10.18.0",
     "@wassdahl/auth": "workspace:^0.1.0",
     "@wassdahl/db": "workspace:^0.1.0",
-    "@wassdahl/mail": "*",
+    "@wassdahl/mail": "workspace:^0.1.0",
     "superjson": "1.12.2",
     "zod": "^3.21.4"
   },
