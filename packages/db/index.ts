@@ -6,7 +6,6 @@ declare global {
   var prisma: PrismaClient | undefined;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 export const prisma =
   global.prisma ||
   new PrismaClient({

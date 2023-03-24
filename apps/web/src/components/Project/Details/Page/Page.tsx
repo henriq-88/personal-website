@@ -10,6 +10,7 @@ import Gallery from "../../../ImageGallery";
 import { useProjectSlug } from "./utils";
 import ProjectDetailsBody from "./Body";
 import { useEffect } from "react";
+import { env } from "../../../../env.mjs";
 
 interface ProjectDetailsPageProps {}
 

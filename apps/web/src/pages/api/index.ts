@@ -3,6 +3,7 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import type { AppRouter } from "@wassdahl/api";
 import { transformer } from "@wassdahl/api/transformer";
+import { env } from "../../env.mjs";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
