@@ -1,4 +1,4 @@
-import { Category, Tag } from "@wassdahl/db";
+import { type Category, type Tag } from "@wassdahl/db";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";

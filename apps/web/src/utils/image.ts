@@ -1,4 +1,4 @@
-import { MediaType } from "@wassdahl/db";
+import { type MediaType } from "@wassdahl/db";
 
 export const getYouTubeThumbnailFromUrl = (url: string) => {
   const regex = /https:\/\/www\.youtube\.com\/watch\?v=(\w+)/;

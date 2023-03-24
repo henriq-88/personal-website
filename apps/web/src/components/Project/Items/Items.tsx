@@ -6,7 +6,7 @@ import { useCallback, useMemo } from "react";
 import { useDebounce, useWindowSize } from "usehooks-ts";
 import { api } from "../../../pages/api";
 import ProjectCard from "../Card";
-import { SortOrder } from "../Page";
+import { type SortOrder } from "../Page";
 
 interface ProjectItemsProps {
   search: string;

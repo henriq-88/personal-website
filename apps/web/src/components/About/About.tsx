@@ -34,10 +34,10 @@ const AboutPage: React.FC<AboutPageProps> = (props) => {
             </Fade>
             <Fade direction="up" triggerOnce delay={600}>
               <p className="mt-2 leading-loose">
-                I'm Henrik, a Frontend Engineer with a Bachelor's in Computer
+                {`I'm Henrik, a Frontend Engineer with a Bachelor's in Computer
                 Science and a Master's in UX. I'm experienced in developing
                 mobile apps as well as web apps. This also includes optimized
-                Backend communication with the apps.
+                Backend communication with the apps.`}
               </p>
             </Fade>
             <Signature className="mt-6 w-48" />

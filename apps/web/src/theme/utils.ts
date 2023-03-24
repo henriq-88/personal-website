@@ -1,4 +1,4 @@
-import { TextDirection, ThemeMode } from "../state/states";
+import { type TextDirection, type ThemeMode } from "../state/states";
 import { isServer } from "../utils/screen";
 
 export const getSystemTheme = () => {

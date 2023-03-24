@@ -1,5 +1,5 @@
 import { api } from "../../../pages/api";
-import { SortOrder } from "../Page";
+import { type SortOrder } from "../Page";
 import { forwardRef } from "react";
 import { CardSkeleton, ToggleChip } from "@wassdahl/ui";
 
@@ -22,6 +22,7 @@ export const sortOrders = [
   { label: `Name`, value: `name`, order: `asc` },
 ] as const;
 
+// eslint-disable-next-line react/display-name
 const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
   (props, ref) => {
     const {

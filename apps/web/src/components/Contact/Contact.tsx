@@ -1,9 +1,9 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
 import {
-  LiteralUnion,
-  RegisterOptions,
-  SubmitHandler,
+  type LiteralUnion,
+  type RegisterOptions,
+  type SubmitHandler,
   useForm,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -93,7 +93,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
           </Fade>
           <Fade direction="up" triggerOnce delay={400}>
             <p className="mt-2 leading-loose">
-              Let's talk bizniz and discuss your dream service/app.
+              {`Let's talk bizniz and discuss your dream service/app.`}
             </p>
           </Fade>
         </div>

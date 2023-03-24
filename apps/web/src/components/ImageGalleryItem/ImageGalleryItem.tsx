@@ -1,5 +1,5 @@
 import { PlayIcon } from "@heroicons/react/24/solid";
-import { Media, MediaType } from "@wassdahl/db";
+import { type Media, type MediaType } from "@wassdahl/db";
 import clsx from "clsx";
 import Image from "next/image";
 import { getThumbSrc } from "../../utils/image";

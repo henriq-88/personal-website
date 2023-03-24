@@ -1,4 +1,4 @@
-import { Media } from "@wassdahl/db";
+import { type Media } from "@wassdahl/db";
 import { CardSkeleton } from "@wassdahl/ui";
 import clsx from "clsx";
 import { useState } from "react";

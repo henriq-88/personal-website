@@ -3,7 +3,7 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { Media } from "@wassdahl/db";
+import { type Media } from "@wassdahl/db";
 import { Overlay } from "@wassdahl/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";

@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, SVGMotionProps, Transition } from "framer-motion";
+import { motion, type SVGMotionProps, type Transition } from "framer-motion";
 
 interface NavigationMenuOpenCloseSvgProps
   extends SVGMotionProps<SVGSVGElement> {
