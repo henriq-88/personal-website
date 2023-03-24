@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# typescript cache
+**/tsconfig.tsbuildinfo
+
 # testing
 /coverage
 
