@@ -10,16 +10,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@wassdahl/auth": "*",
-    "@wassdahl/db": "*",
+    "@trpc/client": "^10.18.0",
+    "@trpc/server": "^10.18.0",
+    "@wassdahl/auth": "^0.1.0",
+    "@wassdahl/db": "^0.1.0",
     "@wassdahl/mail": "*",
-    "@trpc/client": "^10.12.0",
-    "@trpc/server": "^10.12.0",
     "superjson": "1.12.2",
-    "zod": "^3.20.6"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
-    "eslint": "^8.34.0",
-    "typescript": "^4.9.5"
+    "eslint": "^8.36.0",
+    "typescript": "^5.0.2"
   }
 }
