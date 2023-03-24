@@ -3,8 +3,7 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
+      "matchPackagePatterns": ["^@wassdahl/"],
       "automerge": true,
       "rebaseWhen": "auto"
     }
