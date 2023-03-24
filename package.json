@@ -8,7 +8,8 @@
     "dev": "turbo dev --parallel",
     "build": "turbo build",
     "start": "turbo start",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "type-check": "turbo type-check"
   },
   "dependencies": {
     "turbo": "1.8.5"
