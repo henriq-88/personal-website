@@ -61,7 +61,7 @@ importers:
       eslint: ^8.36.0
       eslint-config-prettier: ^8.8.0
       experimental-prisma-webpack-plugin: 0.0.5
-      framer-motion: 10.8.5
+      framer-motion: 10.9.1
       jotai: 2.0.3
       js-cookie: 3.0.1
       lodash-es: 4.17.21
@@ -105,7 +105,7 @@ importers:
       '@wassdahl/ui': link:../../packages/ui
       class-variance-authority: 0.4.0_typescript@5.0.2
       clsx: 1.2.1
-      framer-motion: 10.8.5_biqbaboplfbrettd7655fr4n2y
+      framer-motion: 10.9.1_biqbaboplfbrettd7655fr4n2y
       jotai: 2.0.3_react@18.2.0
       js-cookie: 3.0.1
       lodash-es: 4.17.21
@@ -7703,8 +7703,8 @@ packages:
       map-cache: 0.2.2
     dev: true
 
-  /framer-motion/10.8.5_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-qwvUAIwCc6fEZhg7ST+/z+f7Vt882jJvLiWZUHNdq2oZ/Y7gM6mLlpKi9xQg+pLu6DQVypikcKQ+MKnoFoXAJg==}
+  /framer-motion/10.9.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-fuCDRGKOu5n9gN2/R7O22mE+BHMGK5D57S3Oq8n2ITd4aYR7D22QM5I4VPD3CWahNt/lyDUs20u9Aw+6ah9oAQ==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
