@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import { type Config } from "tailwindcss";
+
+export default {
   content: ["./src/**/*.{ts,tsx}", "./node_modules/@wassdahl/ui/**/*.{ts,tsx}"],
   theme: {
     extend: {
@@ -32,4 +33,6 @@ module.exports = {
     },
   },
   plugins: [],
-};
+} satisfies Config;
+
+export { type Config };
