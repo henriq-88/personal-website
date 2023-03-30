@@ -4,6 +4,9 @@
   "packageRules": [
     {
       "matchPackagePatterns": ["^@wassdahl/"],
+      "enabled": false
+    },
+    {
       "matchUpdateTypes": ["major", "minor", "patch"],
       "automerge": true,
       "rebaseWhen": "auto"
