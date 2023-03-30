@@ -9,7 +9,9 @@
     {
       "matchUpdateTypes": ["major", "minor", "patch"],
       "automerge": true,
-      "rebaseWhen": "auto"
+      "rebaseWhen": "auto",
+      "automergeType": "branch",
+      "automergeStrategy": "squash"
     }
   ],
   "updateInternalDeps": true
