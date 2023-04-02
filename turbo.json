@@ -1,6 +1,12 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "clean": {
+      "cache": false
+    },
+    "clean:all": {
+      "cache": false
+    },
     "db:generate": {
       "inputs": ["prisma/schema.prisma"],
       "cache": false

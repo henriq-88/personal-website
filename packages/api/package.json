@@ -5,7 +5,7 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "clean": "rd /s /q .turbo node_modules",
+    "clean": "git clean -xdf node_modules .turbo",
     "lint": "eslint",
     "type-check": "tsc --noEmit"
   },
@@ -19,7 +19,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "eslint": "^8.36.0",
-    "typescript": "^5.0.2"
+    "eslint": "^8.37.0",
+    "typescript": "^5.0.3"
   }
 }

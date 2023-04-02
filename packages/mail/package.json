@@ -1,11 +1,14 @@
 {
   "name": "@wassdahl/mail",
   "version": "0.1.0",
+  "scripts": {
+    "clean": "git clean -xdf node_modules .turbo"
+  },
   "dependencies": {
     "@sendgrid/mail": "7.7.0"
   },
   "devDependencies": {
-    "eslint": "^8.36.0",
-    "typescript": "^5.0.2"
+    "eslint": "^8.37.0",
+    "typescript": "^5.0.3"
   }
 }
