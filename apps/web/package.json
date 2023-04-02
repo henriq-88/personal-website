@@ -27,7 +27,7 @@
     "@wassdahl/db": "workspace:^0.1.0",
     "@wassdahl/tailwind-config": "workspace:^0.1.0",
     "@wassdahl/ui": "workspace:^0.1.0",
-    "class-variance-authority": "0.4.0",
+    "class-variance-authority": "0.5.1",
     "clsx": "1.2.1",
     "framer-motion": "10.10.0",
     "jotai": "2.0.3",
@@ -68,6 +68,6 @@
     "experimental-prisma-webpack-plugin": "0.0.5",
     "postcss": "8.4.21",
     "tailwindcss": "3.3.0",
-    "typescript": "5.0.3"
+    "typescript": "5.0.2"
   }
 }
