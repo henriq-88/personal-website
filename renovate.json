@@ -10,7 +10,7 @@
       "matchUpdateTypes": ["major", "minor", "patch"],
       "automerge": true,
       "rebaseWhen": "auto",
-      "automergeType": "branch",
+      "automergeType": "pr",
       "automergeStrategy": "squash"
     }
   ],
