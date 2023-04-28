@@ -146,11 +146,11 @@ importers:
         specifier: 1.6.6
         version: 1.6.6
       stylis:
-        specifier: 4.1.3
-        version: 4.1.3
+        specifier: 4.1.4
+        version: 4.1.4
       stylis-plugin-rtl:
         specifier: 2.1.1
-        version: 2.1.1(stylis@4.1.3)
+        version: 2.1.1(stylis@4.1.4)
       usehooks-ts:
         specifier: 2.9.1
         version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
@@ -10733,17 +10733,21 @@ packages:
       react: 18.2.0
     dev: false
 
-  /stylis-plugin-rtl@2.1.1(stylis@4.1.3):
+  /stylis-plugin-rtl@2.1.1(stylis@4.1.4):
     resolution: {integrity: sha512-q6xIkri6fBufIO/sV55md2CbgS5c6gg9EhSVATtHHCdOnbN/jcI0u3lYhNVeuI65c4lQPo67g8xmq5jrREvzlg==}
     peerDependencies:
       stylis: 4.x
     dependencies:
       cssjanus: 2.1.0
-      stylis: 4.1.3
+      stylis: 4.1.4
     dev: false
 
   /stylis@4.1.3:
     resolution: {integrity: sha512-GP6WDNWf+o403jrEp9c5jibKavrtLW+/qYGhFxFrG8maXhwTBI7gLLhiBb0o7uFccWN+EOS9aMO6cGHWAO07OA==}
+    dev: false
+
+  /stylis@4.1.4:
+    resolution: {integrity: sha512-USf5pszRYwuE6hg9by0OkKChkQYEXfkeTtm0xKw+jqQhwyjCVLdYyMBK7R+n7dhzsblAWJnGxju4vxq5eH20GQ==}
     dev: false
 
   /sucrase@3.32.0:
