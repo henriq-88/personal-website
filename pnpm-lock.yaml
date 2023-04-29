@@ -140,8 +140,8 @@ importers:
         specifier: 9.1.2
         version: 9.1.2(react-dom@18.2.0)(react@18.2.0)
       rooks:
-        specifier: 7.12.0
-        version: 7.12.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 7.13.0
+        version: 7.13.0(react-dom@18.2.0)(react@18.2.0)
       slugify:
         specifier: 1.6.6
         version: 1.6.6
@@ -10142,8 +10142,8 @@ packages:
       inherits: 2.0.4
     dev: true
 
-  /rooks@7.12.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-wpM7Hn67c66brt+io66KBBOEYk73O4NnYhpfZpYVA5Y3qWAiMIPBXJeobD7wxn4LpAcDlUD5VGtx59Lv3dDmcw==}
+  /rooks@7.13.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Q71L5i42xSTTsFlFgMYHal6Tq0dMYlszNyRt/Af+MKtLIu5zZP+Z6p5tWGlAuDOIQeOtIP7j6FedybohiuP7UQ==}
     engines: {node: '>=v10.24.1'}
     peerDependencies:
       react: ^16.8.0  || ^17.0.0 || ^18.0.0
