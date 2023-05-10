@@ -11,7 +11,7 @@
   "types": "./index.ts",
   "dependencies": {
     "@formkit/auto-animate": "1.0.0-beta.6",
-    "@heroicons/react": "2.0.17",
+    "@heroicons/react": "2.0.18",
     "@wassdahl/tailwind-config": "workspace:^0.1.0",
     "class-variance-authority": "0.6.0",
     "clsx": "1.2.1",
