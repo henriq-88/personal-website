@@ -177,8 +177,8 @@ importers:
         specifier: 18.2.2
         version: 18.2.2
       '@types/stylis':
-        specifier: 4.0.2
-        version: 4.0.2
+        specifier: 4.2.0
+        version: 4.2.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.59.1
         version: 5.59.1(@typescript-eslint/parser@5.59.1)(eslint@8.39.0)(typescript@5.0.4)
@@ -4314,8 +4314,8 @@ packages:
       '@types/node': 18.16.12
     dev: true
 
-  /@types/stylis@4.0.2:
-    resolution: {integrity: sha512-wtckGuk1eXUlUz0Qb1eXHG37Z7HWT2GfMdqRf8F/ifddTwadSS9Jwsqi4qtXk7cP7MtoyGVIHPElFCLc6HItbg==}
+  /@types/stylis@4.2.0:
+    resolution: {integrity: sha512-n4sx2bqL0mW1tvDf/loQ+aMX7GQD3lc3fkCMC55VFNDu/vBOabO+LTIeXKM14xK0ppk5TUGcWRjiSpIlUpghKw==}
     dev: true
 
   /@types/unist@2.0.6:
