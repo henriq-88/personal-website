@@ -116,8 +116,8 @@ importers:
         specifier: 0.17.0
         version: 0.17.0(next@13.4.4)
       node-ts:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.0.1
+        version: 6.0.1
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -4232,6 +4232,10 @@ packages:
 
   /@types/node@18.16.15:
     resolution: {integrity: sha512-fv9H0101Lom0m76x5UekmudO0Vu611ElbTCLOeSbyX5WM6sme3gJ10PHP83pA1/eXbZpnDoTkeY40jykH38ptQ==}
+
+  /@types/node@20.2.4:
+    resolution: {integrity: sha512-ni5f8Xlf4PwnT/Z3f0HURc3ZSw8UyrqMqmM3L5ysa7VjHu8c3FOmIo1nKCcLrV/OAmtf3N4kFna/aJqxsfEtnA==}
+    dev: false
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -9042,12 +9046,12 @@ packages:
   /node-releases@2.0.10:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
 
-  /node-ts@6.0.0:
-    resolution: {integrity: sha512-O388zUv5Ru0l5NrqGz8FwXNwZ+qcJtcwnn1WcZZMy0Y+PqYTYJJO+zqGO0SVM7iYiARaOlDrSoxYTVjqBpN7AQ==}
+  /node-ts@6.0.1:
+    resolution: {integrity: sha512-nxFz4tJYv9Yu6u4e3B1rmfh45Zmge7rD/MlTA5V98+Q5eFsqzCWTWDYvbrNEPGtnzhkqNLk4E2r3C6VSfNoZNQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@rauschma/stringio': 1.4.0
-      '@types/node': 18.16.15
+      '@types/node': 20.2.4
     dev: false
 
   /normalize-package-data@2.5.0:
