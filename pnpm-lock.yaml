@@ -45,8 +45,8 @@ importers:
   apps/web:
     dependencies:
       '@emotion/react':
-        specifier: 11.11.0
-        version: 11.11.0(@types/react@18.2.2)(react@18.2.0)
+        specifier: 11.11.1
+        version: 11.11.1(@types/react@18.2.2)(react@18.2.0)
       '@formkit/auto-animate':
         specifier: 1.0.0-beta.6
         version: 1.0.0-beta.6
@@ -127,7 +127,7 @@ importers:
         version: 18.2.0
       react-awesome-reveal:
         specifier: 4.2.3
-        version: 4.2.3(@emotion/react@11.11.0)(react@18.2.0)
+        version: 4.2.3(@emotion/react@11.11.1)(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -621,7 +621,7 @@ packages:
     resolution: {integrity: sha512-orajc5T2PsRYUN3ZryCEFeMDYwyw09c/pZeaQEZPH0MpKzSvn3e0uXsDBu3k03VI+9DBiRo+l22BfKTpKwa/Wg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.5
+      '@babel/types': 7.22.0
 
   /@babel/helper-module-transforms@7.22.1:
     resolution: {integrity: sha512-dxAe9E7ySDGbQdCVOY/4+UcD8M9ZFqZcZhSPsPacvCG4M+9lwtDDQfI2EoaSvmf7W/8yCBkGU0m7Pvt1ru3UZw==}
@@ -1792,6 +1792,7 @@ packages:
       '@babel/helper-string-parser': 7.21.5
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+    dev: true
 
   /@babel/types@7.22.0:
     resolution: {integrity: sha512-NtXlm3f6cNWIv003cETdlz9sss0VMNtplyatFohxWPz90AbwuhCbHbQopkGis6bG1vOunDLN0FF/4Uv5i8LFZQ==}
@@ -1852,8 +1853,8 @@ packages:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
     dev: false
 
-  /@emotion/react@11.11.0(@types/react@18.2.2)(react@18.2.0):
-    resolution: {integrity: sha512-ZSK3ZJsNkwfjT3JpDAWJZlrGD81Z3ytNDsxw1LKq1o+xkmO5pnWfr6gmCC8gHEFf3nSSX/09YrG67jybNPxSUw==}
+  /@emotion/react@11.11.1(@types/react@18.2.2)(react@18.2.0):
+    resolution: {integrity: sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==}
     peerDependencies:
       '@types/react': '*'
       react: '>=16.8.0'
@@ -10017,13 +10018,13 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-awesome-reveal@4.2.3(@emotion/react@11.11.0)(react@18.2.0):
+  /react-awesome-reveal@4.2.3(@emotion/react@11.11.1)(react@18.2.0):
     resolution: {integrity: sha512-wln5oVUw8qBTF0flLyHxbcDsM+fpYvcQZ0aih9YL1aK1CiVewEp7D/ltCsQ8lKQEsZ50udvmje4HPKxyiUDp8Q==}
     peerDependencies:
       '@emotion/react': ^11.0.0
       react: '>=16.14.0'
     dependencies:
-      '@emotion/react': 11.11.0(@types/react@18.2.2)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.2.2)(react@18.2.0)
       react: 18.2.0
       react-intersection-observer: 9.4.4(react@18.2.0)
       react-is: 18.2.0
