@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -102,8 +102,8 @@ importers:
         specifier: 10.12.16
         version: 10.12.16(react-dom@18.2.0)(react@18.2.0)
       jotai:
-        specifier: 2.1.1
-        version: 2.1.1(react@18.2.0)
+        specifier: 2.2.0
+        version: 2.2.0(react@18.2.0)
       js-cookie:
         specifier: 3.0.5
         version: 3.0.5
@@ -8357,8 +8357,8 @@ packages:
     resolution: {integrity: sha512-Fcbi5lskAiSvs8qhdQBusANZWwyATdp7IxgHJTXiaU74sbVjX9uAw+myDPvI8pNo2wXKHECXCR63hqhRkN/SSQ==}
     dev: false
 
-  /jotai@2.1.1(react@18.2.0):
-    resolution: {integrity: sha512-LaaiuSaq+6XkwkrCtCkczyFVZOXe0dfjAFN4DVMsSZSRv/A/4xuLHnlpHMEDqvngjWYBotTIrnQ7OogMkUE6wA==}
+  /jotai@2.2.0(react@18.2.0):
+    resolution: {integrity: sha512-2gsMVpoaBa6aPHLArNhphck4+n8unZ8xF4Ciqhb+Z+tjsvabn5QFisNFHBMWooMAAmmTNU5TcvBIP8/XAsZy8Q==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       react: '>=17.0.0'
