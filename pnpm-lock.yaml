@@ -55,7 +55,7 @@ importers:
         version: 2.0.18(react@18.2.0)
       '@hookform/resolvers':
         specifier: 3.1.1
-        version: 3.1.1(react-hook-form@7.44.3)
+        version: 3.1.1(react-hook-form@7.45.0)
       '@next/bundle-analyzer':
         specifier: 13.4.6
         version: 13.4.6
@@ -132,8 +132,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: 7.44.3
-        version: 7.44.3(react@18.2.0)
+        specifier: 7.45.0
+        version: 7.45.0(react@18.2.0)
       react-intersection-observer:
         specifier: 9.5.0
         version: 9.5.0(react@18.2.0)
@@ -2246,12 +2246,12 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@hookform/resolvers@3.1.1(react-hook-form@7.44.3):
+  /@hookform/resolvers@3.1.1(react-hook-form@7.45.0):
     resolution: {integrity: sha512-tS16bAUkqjITNSvbJuO1x7MXbn7Oe8ZziDTJdA9mMvsoYthnOOiznOTGBYwbdlYBgU+tgpI/BtTU3paRbCuSlg==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
-      react-hook-form: 7.44.3(react@18.2.0)
+      react-hook-form: 7.45.0(react@18.2.0)
     dev: false
 
   /@humanwhocodes/config-array@0.11.8:
@@ -10212,8 +10212,8 @@ packages:
       react-is: 18.1.0
     dev: true
 
-  /react-hook-form@7.44.3(react@18.2.0):
-    resolution: {integrity: sha512-/tHId6p2ViAka1wECMw8FEPn/oz/w226zehHrJyQ1oIzCBNMIJCaj6ZkQcv+MjDxYh9MWR7RQic7Qqwe4a5nkw==}
+  /react-hook-form@7.45.0(react@18.2.0):
+    resolution: {integrity: sha512-AbHeZ4ad+0dEIknSW9dBgIwcvRDfZ1O97sgj75WaMdOX0eg8TBiUf9wxzVkIjZbk76BBIE9lmFOzyD4PN80ZQg==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
