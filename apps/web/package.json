@@ -67,7 +67,7 @@
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "experimental-prisma-webpack-plugin": "0.0.5",
-    "postcss": "8.4.24",
+    "postcss": "8.4.25",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   }
