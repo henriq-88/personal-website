@@ -13,7 +13,7 @@
     "@formkit/auto-animate": "1.0.0-beta.6",
     "@heroicons/react": "2.0.18",
     "@wassdahl/tailwind-config": "workspace:^0.1.0",
-    "class-variance-authority": "0.6.1",
+    "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
