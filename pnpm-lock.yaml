@@ -232,8 +232,8 @@ importers:
         specifier: workspace:^0.1.0
         version: link:../mail
       superjson:
-        specifier: 1.13.0
-        version: 1.13.0
+        specifier: 1.13.1
+        version: 1.13.1
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -11269,8 +11269,8 @@ packages:
       copy-anything: 3.0.3
     dev: false
 
-  /superjson@1.13.0:
-    resolution: {integrity: sha512-10xS+ouOKSkYXw6aiybMsrG1xu80jU1AMD2ozmQk+Wa3RGLzZZ1PfylUKnQb/LP5ZCkXYnMKU4Ug+xp4HjGpXA==}
+  /superjson@1.13.1:
+    resolution: {integrity: sha512-AVH2eknm9DEd3qvxM4Sq+LTCkSXE2ssfh1t11MHMXyYXFQyQ1HLgVvV+guLTsaQnJU3gnaVo34TohHPulY/wLg==}
     engines: {node: '>=10'}
     dependencies:
       copy-anything: 3.0.3
