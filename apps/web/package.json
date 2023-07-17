@@ -28,7 +28,7 @@
     "@wassdahl/db": "workspace:^0.1.0",
     "@wassdahl/tailwind-config": "workspace:^0.1.0",
     "@wassdahl/ui": "workspace:^0.1.0",
-    "class-variance-authority": "0.6.1",
+    "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",
     "framer-motion": "10.12.22",
     "jotai": "2.2.2",
