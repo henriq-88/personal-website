@@ -15,7 +15,7 @@
     "@wassdahl/auth": "workspace:^0.1.0",
     "@wassdahl/db": "workspace:^0.1.0",
     "@wassdahl/mail": "workspace:^0.1.0",
-    "superjson": "1.12.4",
+    "superjson": "1.13.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
