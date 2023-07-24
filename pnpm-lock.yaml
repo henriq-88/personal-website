@@ -99,8 +99,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       framer-motion:
-        specifier: 10.13.0
-        version: 10.13.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 10.13.1
+        version: 10.13.1(react-dom@18.2.0)(react@18.2.0)
       jotai:
         specifier: 2.2.2
         version: 2.2.2(react@18.2.0)
@@ -1949,6 +1949,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -4948,6 +4949,7 @@ packages:
 
   /anymatch@2.0.0:
     resolution: {integrity: sha512-5teOsQWABXHHBFP9y3skS5P3d/WfWXpv3FUpy+LorMrNYaT9pI4oLMQX7jzQ2KklNpGpWHzdCXTDT2Y3XGlZBw==}
+    requiresBuild: true
     dependencies:
       micromatch: 3.1.10
       normalize-path: 2.1.1
@@ -5136,6 +5138,7 @@ packages:
 
   /async-each@1.0.6:
     resolution: {integrity: sha512-c646jH1avxr+aVpndVMeAfYw7wAa6idufrlN3LPA4PmKS0QEGp6PIC9nwz0WQkkvBGAMEki3pFdtxaF39J9vvg==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -5352,6 +5355,7 @@ packages:
   /binary-extensions@1.13.1:
     resolution: {integrity: sha512-Un7MIEDdUC5gNpcGDV97op1Ywk748MpHcFTHoYs6qnj1Z3j7I53VG3nwZhKzoBZmbdRNnb6WRdFlwl7tSDuZGw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -5667,6 +5671,7 @@ packages:
   /chokidar@2.1.8:
     resolution: {integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==}
     deprecated: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
+    requiresBuild: true
     dependencies:
       anymatch: 2.0.0
       async-each: 1.0.6
@@ -7340,8 +7345,8 @@ packages:
       map-cache: 0.2.2
     dev: true
 
-  /framer-motion@10.13.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-xKhw9VCizmwEHbopOfluaoVunGHSZyMztGbTvsgOYqCjaKu6qtlwWY1J+6GhL41NY1P157JgEikjDm67XCFnvQ==}
+  /framer-motion@10.13.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-uiKsaLEoySeln3eOPy8wUB3FkNtRRiVga5xJOkgs7C0sHVyvpJajXJFSoabt+emBojgnMQY0epnjl0ppoYPxkQ==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -7524,6 +7529,7 @@ packages:
 
   /glob-parent@3.1.0:
     resolution: {integrity: sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA==}
+    requiresBuild: true
     dependencies:
       is-glob: 3.1.0
       path-dirname: 1.0.2
@@ -8011,6 +8017,7 @@ packages:
   /is-binary-path@1.0.1:
     resolution: {integrity: sha512-9fRVlXc0uCxEDj1nQzaWONSpbTfx0FmJfzHF7pwlI8DkWGoHBBea4Pg5Ky0ojwwxQmnSifgbKkI06Qv0Ljgj+Q==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       binary-extensions: 1.13.1
     dev: true
@@ -8121,6 +8128,7 @@ packages:
   /is-glob@3.1.0:
     resolution: {integrity: sha512-UFpDDrPgM6qpnFNI+rh/p3bUaq9hKLZN8bMUWzxmcnZVS3omf4IPK+BrewlnWjO1WmUsMYuSjKh4UJuV4+Lqmw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       is-extglob: 2.1.1
     dev: true
@@ -9238,6 +9246,7 @@ packages:
   /normalize-path@2.1.1:
     resolution: {integrity: sha512-3pKJwH184Xo/lnH6oyP1q2pMd7HcypqqmRs91/6/i2CGtWwIKGCkOOMTm/zXbgTEWHw1uNpNi/igc3ePOYHb6w==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       remove-trailing-separator: 1.1.0
     dev: true
@@ -9590,6 +9599,7 @@ packages:
 
   /path-dirname@1.0.2:
     resolution: {integrity: sha512-ALzNPpyNq9AqXMBjeymIjFDAkAFH06mHJH/cSBHAgU0s4vfpBn6b2nf8tiRLvagKD8RbTpq2FKTBg7cl9l3c7Q==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -10369,6 +10379,7 @@ packages:
   /readdirp@2.2.1:
     resolution: {integrity: sha512-1JU/8q+VgFZyxwrJ+SVIOsh+KywWGpds3NTqikiKpDMZWScmAYyKIgqkO+ARvNWJfXeXR1zxz7aHF4u4CyH6vQ==}
     engines: {node: '>=0.10'}
+    requiresBuild: true
     dependencies:
       graceful-fs: 4.2.11
       micromatch: 3.1.10
@@ -10493,6 +10504,7 @@ packages:
 
   /remove-trailing-separator@1.1.0:
     resolution: {integrity: sha512-/hS+Y0u3aOfIETiaiirUFwDBDzmXPvO+jAfKTitUngIPzdKc6Z0LoFjM/CK5PL4C+eKwHohlHAb6H0VFfmmUsw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -11872,6 +11884,7 @@ packages:
   /upath@1.2.0:
     resolution: {integrity: sha512-aZwGpamFO61g3OlfT7OQCHqhGnW43ieH9WZeP7QxN/G/jS4jfqUkZxoryvJgVPEcrl5NL/ggHsSmLMHuH64Lhg==}
     engines: {node: '>=4'}
+    requiresBuild: true
     dev: true
     optional: true
 
