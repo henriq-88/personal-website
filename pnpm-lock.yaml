@@ -102,8 +102,8 @@ importers:
         specifier: 10.16.1
         version: 10.16.1(react-dom@18.2.0)(react@18.2.0)
       jotai:
-        specifier: 2.3.1
-        version: 2.3.1(@types/react@18.2.2)(react@18.2.0)
+        specifier: 2.4.0
+        version: 2.4.0(@types/react@18.2.2)(react@18.2.0)
       js-cookie:
         specifier: 3.0.5
         version: 3.0.5
@@ -9218,8 +9218,8 @@ packages:
     resolution: {integrity: sha512-Fcbi5lskAiSvs8qhdQBusANZWwyATdp7IxgHJTXiaU74sbVjX9uAw+myDPvI8pNo2wXKHECXCR63hqhRkN/SSQ==}
     dev: false
 
-  /jotai@2.3.1(@types/react@18.2.2)(react@18.2.0):
-    resolution: {integrity: sha512-pXhx8/MeRUAHbzayerEUf9NHvP+Ba3q9WAvIMjaSwwuSCKEFhb8UW4XuZPC+Bv4u2ufvlyrxIZ+vy5UJ3f8JsQ==}
+  /jotai@2.4.0(@types/react@18.2.2)(react@18.2.0):
+    resolution: {integrity: sha512-NUHJdAJe3C8Prf0DD6EzezCATjkNvfCNI7pgkaX7bCPPsqE0oK8L9RzZsEhz/UxFoGRayXwacTvAli0VEYKkqQ==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=17.0.0'
