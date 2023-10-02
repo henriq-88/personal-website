@@ -394,8 +394,8 @@ importers:
         specifier: 7.4.5
         version: 7.4.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)
       '@storybook/testing-library':
-        specifier: 0.2.1
-        version: 0.2.1
+        specifier: 0.2.2
+        version: 0.2.2
       '@types/node':
         specifier: ^18.16.1
         version: 18.16.1
@@ -4517,8 +4517,8 @@ packages:
       '@storybook/preview-api': 7.4.5
     dev: true
 
-  /@storybook/testing-library@0.2.1:
-    resolution: {integrity: sha512-AdbfLCm1C2nEFrhA3ScdicfW6Fjcorehr6RlGwECMiWwaXisnP971Wd4psqtWxlAqQo4tYBZ0f6rJ3J78JLtsg==}
+  /@storybook/testing-library@0.2.2:
+    resolution: {integrity: sha512-L8sXFJUHmrlyU2BsWWZGuAjv39Jl1uAqUHdxmN42JY15M4+XCMjGlArdCCjDe1wpTSW6USYISA9axjZojgtvnw==}
     dependencies:
       '@testing-library/dom': 9.3.1
       '@testing-library/user-event': 14.4.3(@testing-library/dom@9.3.1)
