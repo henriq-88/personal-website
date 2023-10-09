@@ -1,7 +1,7 @@
 {
   "name": "personal-website",
   "private": true,
-  "packageManager": "pnpm@8.8.0",
+  "packageManager": "pnpm@8.9.0",
   "scripts": {
     "clean": "git clean -xdf node_modules .turbo",
     "clean:all": "turbo clean --filter=!// && pnpm clean",
