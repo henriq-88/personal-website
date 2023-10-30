@@ -126,8 +126,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0
       react-awesome-reveal:
-        specifier: 4.2.5
-        version: 4.2.5(@emotion/react@11.11.1)(react@18.2.0)
+        specifier: 4.2.6
+        version: 4.2.6(@emotion/react@11.11.1)(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -11095,8 +11095,8 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-awesome-reveal@4.2.5(@emotion/react@11.11.1)(react@18.2.0):
-    resolution: {integrity: sha512-oHYoYvgNgfMVQ13UfgO650AkDS58aFGXhoIZDsHMAVjyHfmpG46T1ZXL8t07gO+yPnQ9dQREo7v2p40shxS3GA==}
+  /react-awesome-reveal@4.2.6(@emotion/react@11.11.1)(react@18.2.0):
+    resolution: {integrity: sha512-evLf+g65W8UvSccTtWwY8WfrHJdePN9GWXUByGzEgWNpXgIY+6HU/lw+w7D5wGQXLiHTPg+v+8RD4hbp9Gi/bQ==}
     peerDependencies:
       '@emotion/react': ^11.0.0
       react: '>=16.14.0'
