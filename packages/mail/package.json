@@ -5,7 +5,7 @@
     "clean": "git clean -xdf node_modules .turbo"
   },
   "dependencies": {
-    "@sendgrid/mail": "8.0.0"
+    "@sendgrid/mail": "8.1.0"
   },
   "devDependencies": {
     "eslint": "^8.39.0",
