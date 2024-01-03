@@ -99,8 +99,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       framer-motion:
-        specifier: 10.17.0
-        version: 10.17.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: 10.17.2
+        version: 10.17.2(react-dom@18.2.0)(react@18.2.0)
       jotai:
         specifier: 2.6.1
         version: 2.6.1(@types/react@18.2.2)(react@18.2.0)
@@ -7927,8 +7927,8 @@ packages:
       map-cache: 0.2.2
     dev: true
 
-  /framer-motion@10.17.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-92brXaYasyEwaPV7tnHnc6MKxdN84CxWE1aZ80q/mlS+wQo0rxp/pmjGt5hdAEK5RCKJsWToI+MyIcGoA91Msg==}
+  /framer-motion@10.17.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZfWwAFWgc3xCnJIyzV0y+DI3W/Hfxn/2ySLF6qu9Pa3chNcHzqaWt+G8iExhXuLK0A1gunooiOC0qddlX5BY1A==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
