@@ -30,7 +30,7 @@
     "@wassdahl/ui": "workspace:^0.1.0",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.0",
-    "framer-motion": "10.17.9",
+    "framer-motion": "10.17.11",
     "jotai": "2.6.1",
     "js-cookie": "3.0.5",
     "lodash-es": "4.17.21",
