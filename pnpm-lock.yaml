@@ -127,7 +127,7 @@ importers:
         version: 18.2.0
       react-awesome-reveal:
         specifier: 4.2.7
-        version: 4.2.7(@emotion/react@11.11.3)(react@18.2.0)
+        version: 4.2.7(@emotion/react@11.11.3)(react-dom@18.2.0)(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -135,8 +135,8 @@ importers:
         specifier: 7.49.3
         version: 7.49.3(react@18.2.0)
       react-intersection-observer:
-        specifier: 9.5.4
-        version: 9.5.4(react@18.2.0)
+        specifier: 9.6.0
+        version: 9.6.0(react-dom@18.2.0)(react@18.2.0)
       react-resize-detector:
         specifier: 10.0.1
         version: 10.0.1(react-dom@18.2.0)(react@18.2.0)
@@ -10924,7 +10924,7 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /react-awesome-reveal@4.2.7(@emotion/react@11.11.3)(react@18.2.0):
+  /react-awesome-reveal@4.2.7(@emotion/react@11.11.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-5vETORNz6df0+N+RdPlInw73WBeccfFh73JamnhfbQWwcqCmdeL0Ap5pX9RyRlTMdag5yXAH+FWN8qrnIsyWVA==}
     peerDependencies:
       '@emotion/react': ^11.0.0
@@ -10932,8 +10932,10 @@ packages:
     dependencies:
       '@emotion/react': 11.11.3(@types/react@18.2.2)(react@18.2.0)
       react: 18.2.0
-      react-intersection-observer: 9.5.4(react@18.2.0)
+      react-intersection-observer: 9.6.0(react-dom@18.2.0)(react@18.2.0)
       react-is: 18.2.0
+    transitivePeerDependencies:
+      - react-dom
     dev: false
 
   /react-colorful@5.6.1(react-dom@18.2.0)(react@18.2.0):
@@ -10977,12 +10979,17 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-intersection-observer@9.5.4(react@18.2.0):
-    resolution: {integrity: sha512-UhZgFMPFf36vFGi6HhM5Q+lm+JxeYbbt+G1iuXGmlbUehxPtL7s29SeGabaTBR8ucG6UizfT3cyYUhveJeM9rQ==}
+  /react-intersection-observer@9.6.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZJCi6aOY4kIulpUhWRNIFTyMUKOmSA25iw8sKH07fhlqWTaWD5CWvWarqH4N31EyjCFKsgetvr/amRpnuEWzRg==}
     peerDependencies:
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
     dependencies:
       react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-is@16.13.1:
