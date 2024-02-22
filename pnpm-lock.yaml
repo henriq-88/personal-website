@@ -421,8 +421,8 @@ importers:
         specifier: ^8.4.23
         version: 8.4.23
       storybook-addon-sass-postcss:
-        specifier: 0.1.4
-        version: 0.1.4(typescript@5.0.4)(webpack@5.90.3)
+        specifier: 0.2.0
+        version: 0.2.0(postcss@8.4.23)(sass@1.70.0)(typescript@5.0.4)(webpack@5.90.3)
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
@@ -10455,7 +10455,7 @@ packages:
       webpack: 5.90.3(@swc/core@1.3.93)(esbuild@0.18.19)
     dev: true
 
-  /postcss-loader@7.3.4(postcss@8.4.35)(typescript@5.0.4)(webpack@5.90.3):
+  /postcss-loader@7.3.4(postcss@8.4.23)(typescript@5.0.4)(webpack@5.90.3):
     resolution: {integrity: sha512-iW5WTTBSC5BfsBJ9daFMPVrLT36MrNiC6fqOZTTaHjBNX6Pfd5p+hSBqe/fEeNd7pc13QiAyGt7VdGMw4eRC4A==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -10464,7 +10464,7 @@ packages:
     dependencies:
       cosmiconfig: 8.3.6(typescript@5.0.4)
       jiti: 1.20.0
-      postcss: 8.4.35
+      postcss: 8.4.23
       semver: 7.5.4
       webpack: 5.90.3(@swc/core@1.3.93)(esbuild@0.18.19)
     transitivePeerDependencies:
@@ -11860,14 +11860,17 @@ packages:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
     dev: true
 
-  /storybook-addon-sass-postcss@0.1.4(typescript@5.0.4)(webpack@5.90.3):
-    resolution: {integrity: sha512-PYjkxFAVAvDVDJ79KqbfTfwbgEJggv23obTMsoOP0Wl0YGNfiK7ZO2Q5nSxIN4roGdQq3hNYE1NwfZH9Nl/Pyg==}
-    engines: {node: '>=10'}
+  /storybook-addon-sass-postcss@0.2.0(postcss@8.4.23)(sass@1.70.0)(typescript@5.0.4)(webpack@5.90.3):
+    resolution: {integrity: sha512-j1j/ZxcEK6SZ7EZoJUio5M5i7zHy8FBHuccNxMC/1aoFJImA0RMvtx3iJLW8jjSfFVXLAOk6Gw+SOHAoa+1GpQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      postcss: ^8.4.33
+      sass: ^1.70.0
     dependencies:
-      '@storybook/node-logger': 6.5.16
+      '@storybook/node-logger': 7.6.17
       css-loader: 6.9.1(webpack@5.90.3)
-      postcss: 8.4.35
-      postcss-loader: 7.3.4(postcss@8.4.35)(typescript@5.0.4)(webpack@5.90.3)
+      postcss: 8.4.23
+      postcss-loader: 7.3.4(postcss@8.4.23)(typescript@5.0.4)(webpack@5.90.3)
       sass: 1.70.0
       sass-loader: 13.3.3(sass@1.70.0)(webpack@5.90.3)
       style-loader: 3.3.4(webpack@5.90.3)
