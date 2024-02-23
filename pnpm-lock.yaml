@@ -156,8 +156,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1(stylis@4.3.1)
       usehooks-ts:
-        specifier: 2.15.0
-        version: 2.15.0(react@18.2.0)
+        specifier: 2.15.1
+        version: 2.15.1(react@18.2.0)
       webpack:
         specifier: 5.90.3
         version: 5.90.3
@@ -12892,8 +12892,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /usehooks-ts@2.15.0(react@18.2.0):
-    resolution: {integrity: sha512-2bLQ632044hD1Hp879yAFOPabXfx7SbzEZYnpIiaCw6lTHiuvsNS1sc2UBVycasjvQImD6QsNERQXjKg7OuTaA==}
+  /usehooks-ts@2.15.1(react@18.2.0):
+    resolution: {integrity: sha512-AK29ODCt4FT9XleILNbkbjjmkRCNaQrgxQEkvqHjlnT76iPXzTFGvK2Y/s83JEdSxRp43YEnSa3bYBEV6HZ26Q==}
     engines: {node: '>=16.15.0'}
     peerDependencies:
       react: ^16.8.0  || ^17 || ^18
