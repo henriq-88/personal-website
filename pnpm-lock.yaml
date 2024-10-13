@@ -115,7 +115,7 @@ importers:
         version: 14.1.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
         specifier: 4.22.1
-        version: 4.24.6(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 4.22.1(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
       next-axiom:
         specifier: 0.18.1
         version: 0.18.1(next@14.1.0)
@@ -141,8 +141,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(react-dom@18.2.0)(react@18.2.0)
       react-toastify:
-        specifier: 9.1.3
-        version: 9.1.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: 10.0.6
+        version: 10.0.6(react-dom@18.2.0)(react@18.2.0)
       rooks:
         specifier: 7.14.1
         version: 7.14.1(react-dom@18.2.0)(react@18.2.0)
@@ -5838,7 +5838,7 @@ packages:
     resolution: {integrity: sha512-Cg7TFGpIr01vOQNODXOOaGz2NpCU5gl8x1qJFbb6hbZxR7XrcE2vtbAsTAbJ7/xwJtUuJEw8K8Zr/AE0LHlesg==}
     engines: {node: '>=10', npm: '>=6'}
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.9
       cosmiconfig: 7.1.0
       resolve: 1.22.8
 
@@ -6349,11 +6349,6 @@ packages:
       kind-of: 6.0.3
       shallow-clone: 3.0.1
     dev: true
-
-  /clsx@1.2.1:
-    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
-    engines: {node: '>=6'}
-    dev: false
 
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
@@ -7459,7 +7454,7 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': 7.23.9
       aria-query: 5.1.3
       array-includes: 3.1.6
       array.prototype.flatmap: 1.3.1
@@ -8118,7 +8113,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+    deprecated: Upgrade to fsevents v2 to mitigate potential security issues
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -9764,6 +9759,31 @@ packages:
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
+  /next-auth@4.22.1(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
+    peerDependencies:
+      next: ^12.2.5 || ^13
+      nodemailer: ^6.6.5
+      react: ^17.0.2 || ^18
+      react-dom: ^17.0.2 || ^18
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.9
+      '@panva/hkdf': 1.1.1
+      cookie: 0.5.0
+      jose: 4.15.4
+      next: 14.1.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
+      oauth: 0.9.15
+      openid-client: 5.6.4
+      preact: 10.19.6
+      preact-render-to-string: 5.2.6(preact@10.19.6)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      uuid: 8.3.2
+    dev: false
+
   /next-auth@4.24.6(next@14.0.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-djQt3ZEaWEIxcsuh3HTW2uuzLfXMRjHH+ugAsichlQSbH4iA5MRcgMA2HvTNvsDTDLh44tyU72+/gWsxgTbAKg==}
     peerDependencies:
@@ -9780,31 +9800,6 @@ packages:
       cookie: 0.5.0
       jose: 4.15.4
       next: 14.0.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
-      oauth: 0.9.15
-      openid-client: 5.6.4
-      preact: 10.19.6
-      preact-render-to-string: 5.2.6(preact@10.19.6)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      uuid: 8.3.2
-    dev: false
-
-  /next-auth@4.24.6(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-djQt3ZEaWEIxcsuh3HTW2uuzLfXMRjHH+ugAsichlQSbH4iA5MRcgMA2HvTNvsDTDLh44tyU72+/gWsxgTbAKg==}
-    peerDependencies:
-      next: ^12.2.5 || ^13 || ^14
-      nodemailer: ^6.6.5
-      react: ^17.0.2 || ^18
-      react-dom: ^17.0.2 || ^18
-    peerDependenciesMeta:
-      nodemailer:
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@panva/hkdf': 1.1.1
-      cookie: 0.5.0
-      jose: 4.15.4
-      next: 14.1.0(@babel/core@7.23.9)(react-dom@18.2.0)(react@18.2.0)
       oauth: 0.9.15
       openid-client: 5.6.4
       preact: 10.19.6
@@ -11146,13 +11141,13 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /react-toastify@9.1.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-fPfb8ghtn/XMxw3LkxQBk3IyagNpF/LIKjOBflbexr2AWxAH1MJgvnESwEwBn9liLFXgTKWgBSdZpw9m4OTHTg==}
+  /react-toastify@10.0.6(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yYjp+omCDf9lhZcrZHKbSq7YMuK0zcYkDFTzfRFgTXkTFHZ1ToxwAonzA4JI5CxA91JpjFLmwEsZEgfYfOqI1A==}
     peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
+      react: '>=18'
+      react-dom: '>=18'
     dependencies:
-      clsx: 1.2.1
+      clsx: 2.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
