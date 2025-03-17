@@ -117,8 +117,8 @@ importers:
         specifier: 4.22.1
         version: 4.22.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-axiom:
-        specifier: 0.18.1
-        version: 0.18.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1))
+        specifier: 1.9.1
+        version: 1.9.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1))(react@18.2.0)
       node-ts:
         specifier: 6.0.1
         version: 6.0.1
@@ -5580,11 +5580,12 @@ packages:
       nodemailer:
         optional: true
 
-  next-axiom@0.18.1:
-    resolution: {integrity: sha512-yWhAwcruCAedktE9DGR9nATF5RhFgiUhzj4ghv3JdblEYRtyR4IuRgo/pDzHI6IAvcB5I7xWB+vfvWsSgXIHtw==}
-    engines: {node: '>=15'}
+  next-axiom@1.9.1:
+    resolution: {integrity: sha512-aSvfZHtGlcaSAGf+5IFTEgDIvqFaHkCUoFu9sNCy5bc8NxEl1v6cYhPZ54X0W9OQ9FyPRiHeD4DjxM/3p3yVRw==}
+    engines: {node: '>=18'}
     peerDependencies:
-      next: '>=12.1.4'
+      next: '>=14.0'
+      react: '>=18.0.0'
 
   next@14.1.0:
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}
@@ -7283,6 +7284,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-deep-compare@1.3.0:
+    resolution: {integrity: sha512-94iG+dEdEP/Sl3WWde+w9StIunlV8Dgj+vkt5wTwMoFQLaijiEZSXXy8KtcStpmEDtIptRJiNeD4ACTtVvnIKA==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   use-resize-observer@9.1.0:
     resolution: {integrity: sha512-R25VqO9Wb3asSD4eqtcxk8sJalvIOYBqS8MNZlpDSQ4l4xMQxC/J7Id9HoTqPq8FwULIn0PVW+OAqF2dyYbjow==}
@@ -12426,7 +12432,7 @@ snapshots:
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.9.1(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint@8.57.1))(eslint@8.57.1)
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint-import-resolver-typescript@3.9.1(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint-import-resolver-typescript@3.9.1)(eslint@8.57.1)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@8.57.1)
       eslint-plugin-react: 7.33.2(eslint@8.57.1)
       eslint-plugin-react-hooks: 5.0.0-canary-7118f5dd7-20230705(eslint@8.57.1)
@@ -12465,7 +12471,7 @@ snapshots:
       stable-hash: 0.0.5
       tinyglobby: 0.2.12
     optionalDependencies:
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint-import-resolver-typescript@3.9.1(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint-import-resolver-typescript@3.9.1)(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -12480,7 +12486,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint-import-resolver-typescript@3.9.1(eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.0.4))(eslint-import-resolver-typescript@3.9.1)(eslint@8.57.1):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
@@ -14050,9 +14056,11 @@ snapshots:
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
 
-  next-axiom@0.18.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1)):
+  next-axiom@1.9.1(next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1))(react@18.2.0):
     dependencies:
       next: 14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1)
+      react: 18.2.0
+      use-deep-compare: 1.3.0(react@18.2.0)
       whatwg-fetch: 3.6.20
 
   next@14.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.85.1):
@@ -15928,6 +15936,11 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 18.2.59
+
+  use-deep-compare@1.3.0(react@18.2.0):
+    dependencies:
+      dequal: 2.0.3
+      react: 18.2.0
 
   use-resize-observer@9.1.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
