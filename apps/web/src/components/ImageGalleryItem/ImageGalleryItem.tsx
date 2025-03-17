@@ -1,8 +1,8 @@
 import { PlayIcon } from "@heroicons/react/24/solid";
-import { type Media, type MediaType } from "@wassdahl/db";
 import clsx from "clsx";
 import Image from "next/image";
 import { getThumbSrc } from "../../utils/image";
+import { type MediaType } from "../../firebase/api/query/all-projects";
 
 interface ImageGalleryItemProps
   extends React.DetailedHTMLProps<
@@ -11,7 +11,7 @@ interface ImageGalleryItemProps
   > {
   alt: string;
   type: MediaType;
-  src: Media[`url`];
+  src: string;
 }
 
 const ImageGalleryItem: React.FC<ImageGalleryItemProps> = (props) => {
@@ -32,7 +32,7 @@ const ImageGalleryItem: React.FC<ImageGalleryItemProps> = (props) => {
         width={144}
         height={144}
       />
-      {props.type === `VIDEO` && (
+      {props.type === `video` && (
         <div className="group pointer-events-none absolute inset-0 flex h-full w-full items-center justify-center">
           <div className="absolute rounded-full bg-black/50 p-3 group-hover:scale-105">
             <PlayIcon className="h-6 w-6 text-white" />

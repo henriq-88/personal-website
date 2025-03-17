@@ -4,38 +4,42 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
-import { api } from "../../../../pages/api";
 import CategoryChip from "../../../CategoryChip/CategoryChip";
 import Gallery from "../../../ImageGallery";
 import { useProjectSlug } from "./utils";
 import ProjectDetailsBody from "./Body";
-import { useEffect } from "react";
-import { env } from "../../../../env.mjs";
+import { use, useEffect, useMemo } from "react";
+import { useGetProjectBtId } from "../../../../firebase/api/query/project";
+import { useGetAllCategories } from "../../../../firebase/api/query/all-categories";
 
 interface ProjectDetailsPageProps {}
 
 const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
   const projectSlug = useProjectSlug();
 
-  const { data: projectData, isLoading: isProjectLoading } =
-    api.project.bySlug.useQuery(
-      {
-        slug: projectSlug ?? ``,
-      },
-      {
-        enabled: !!projectSlug,
-      },
-    );
-  const { mutate: increasePageViewById } =
-    api.project.increasePageViewById.useMutation();
+  const { data: projectData, isLoading: isProjectLoading } = useGetProjectBtId(
+    {
+      projectId: projectSlug ?? ``,
+    },
+    {
+      enabled: !!projectSlug,
+    },
+  );
+  const { data: categories } = useGetAllCategories();
+
+  const category = useMemo(() => {
+    return categories?.find((c) => c.id === projectData?.category);
+  }, [categories, projectData?.category]);
+  // const { mutate: increasePageViewById } =
+  //   api.project.increasePageViewById.useMutation();
 
   useEffect(() => {
     if (process.env.NODE_ENV === `development` || !projectData?.id) {
       return;
     }
-    increasePageViewById({
-      id: projectData.id,
-    });
+    // increasePageViewById({
+    //   id: projectData.id,
+    // });
   }, [projectData?.id]);
 
   return (
@@ -87,9 +91,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               {isProjectLoading && (
                 <CardSkeleton className="h-8 w-16 rounded-md" />
               )}
-              {projectData?.category && (
-                <CategoryChip category={projectData.category} size="medium" />
-              )}
+              {category && <CategoryChip category={category} size="medium" />}
             </div>
             <div className="mt-3">
               {isProjectLoading && (
@@ -117,7 +119,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
               isLoading={isProjectLoading}
               body={projectData?.body}
             />
-            <Divider className="my-3" />
+            {/* <Divider className="my-3" />
             <div className="mt-3">
               {isProjectLoading && (
                 <CardSkeleton className="h-4 w-56 rounded-md" />
@@ -129,7 +131,7 @@ const ProjectDetailsPage: React.FC<ProjectDetailsPageProps> = (props) => {
                   )} views`}
                 </span>
               )}
-            </div>
+            </div> */}
           </div>
         </Container>
       </div>

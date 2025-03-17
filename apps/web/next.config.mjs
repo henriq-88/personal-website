@@ -33,7 +33,6 @@ const nextConfig = {
   transpilePackages: [
     "@wassdahl/api",
     "@wassdahl/auth",
-    "@wassdahl/db",
     "@wassdahl/mail",
     "@wassdahl/ui",
   ],

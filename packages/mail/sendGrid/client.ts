@@ -29,7 +29,8 @@ const sendMessage = async ({
       <p>${message}</p>
       `,
   };
-  await sendGridMailClient.send(sendGridBody);
+  const resp = await sendGridMailClient.send(sendGridBody);
+  return resp[0].body;
 };
 
 export const sendGrid = {

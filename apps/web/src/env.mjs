@@ -5,19 +5,7 @@ import { z } from "zod";
  * built with invalid env vars.
  */
 const server = z.object({
-  DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "test", "production"]),
-  NEXTAUTH_SECRET:
-    process.env.NODE_ENV === "production"
-      ? z.string().min(1)
-      : z.string().min(1).optional(),
-  NEXTAUTH_URL: z.preprocess(
-    // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
-    // Since NextAuth.js automatically uses the VERCEL_URL if present.
-    (str) => process.env.VERCEL_URL ?? str,
-    // VERCEL_URL doesn't include `https` so it cant be validated as a URL
-    process.env.VERCEL ? z.string() : z.string().url(),
-  ),
   SENDGRID_API_KEY: z.string().min(1),
 });
 
@@ -28,6 +16,14 @@ const server = z.object({
 const client = z.object({
   NEXT_PUBLIC_GIT_HASH: z.string().length(7).optional(),
   NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT: z.string(),
+  NEXT_PUBLIC_FIREBASE_API_KEY: z.string(),
+  NEXT_PUBLIC_FIREBASE_APP_ID: z.string(),
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: z.string(),
+  NEXT_PUBLIC_FIREBASE_DATABASE_URL: z.string(),
+  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: z.string(),
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: z.string(),
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: z.string(),
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: z.string(),
 });
 
 /**
@@ -37,13 +33,31 @@ const client = z.object({
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
-  DATABASE_URL: process.env.DATABASE_URL,
+  // DATABASE_URL: process.env.DATABASE_URL,
+  // NODE_ENV: process.env.NODE_ENV,
+  // NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  // NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  // NEXT_PUBLIC_GIT_HASH: process.env.NEXT_PUBLIC_GIT_HASH,
+  // NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT:
+  //   process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT,
+  // SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
   NODE_ENV: process.env.NODE_ENV,
-  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-  NEXT_PUBLIC_GIT_HASH: process.env.NEXT_PUBLIC_GIT_HASH,
   NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT:
     process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT,
+  NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  NEXT_PUBLIC_FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:
+    process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  NEXT_PUBLIC_FIREBASE_DATABASE_URL:
+    process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID:
+    process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:
+    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:
+    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  NEXT_PUBLIC_GIT_HASH: process.env.NEXT_PUBLIC_GIT_HASH,
   SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
 };
 

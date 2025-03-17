@@ -1,12 +1,14 @@
 import { Container, TextField } from "@wassdahl/ui";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProjectFilter, { sortOrders } from "../Filter";
 import ToggleShowSectionButton from "../Filter/ToggleShowSectionButton";
 import { useRouter } from "next/router";
 import { z } from "zod";
 import { isNil, omitBy } from "lodash-es";
-import ProjectItems from "../Items";
+import dynamic from "next/dynamic";
+
+const ProjectItems = dynamic(() => import(`../Items`), { ssr: false });
 
 interface ProjectsPageProps {}
 
@@ -127,8 +129,8 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
       safeQueryParams?.tagIds === undefined
         ? undefined
         : Array.isArray(safeQueryParams?.tagIds)
-        ? safeQueryParams?.tagIds
-        : [safeQueryParams?.tagIds];
+          ? safeQueryParams?.tagIds
+          : [safeQueryParams?.tagIds];
     setSelectedTagIds(parsedTagIds);
     setIsFilterMenuOpen(
       safeQueryParams?.isFilterMenuOpen ?? DEFAULT_IS_FILTER_MENU_OPEN,

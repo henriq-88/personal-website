@@ -1,6 +1,5 @@
-import { type Category } from "@wassdahl/db";
 import clsx from "clsx";
-import { categories } from "../../utils/category";
+import { type Category } from "../../firebase/api/query/all-categories";
 
 interface CategoryChipProps {
   size?: `small` | `medium`;
@@ -19,7 +18,7 @@ const CategoryChip: React.FC<CategoryChipProps> = (props) => {
         },
       )}
     >
-      {categories[props.category.name]}
+      {props.category.name}
     </div>
   );
 };

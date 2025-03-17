@@ -3,10 +3,15 @@ import { FaceFrownIcon } from "@heroicons/react/24/outline";
 import { CardSkeleton } from "@wassdahl/ui";
 import clsx from "clsx";
 import { useCallback, useMemo } from "react";
-import { useDebounce, useWindowSize } from "usehooks-ts";
-import { api } from "../../../pages/api";
+import { useDebounceValue, useWindowSize } from "usehooks-ts";
 import ProjectCard from "../Card";
 import { type SortOrder } from "../Page";
+import {
+  selectAllProjects,
+  useGetAllProjects,
+} from "../../../firebase/api/query/all-projects";
+import { useGetAllCategories } from "../../../firebase/api/query/all-categories";
+import { useGetAllTags } from "../../../firebase/api/query/all-tags";
 
 interface ProjectItemsProps {
   search: string;
@@ -19,28 +24,30 @@ interface ProjectItemsProps {
 
 const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
   const { width: windowWidth } = useWindowSize();
-  const debouncedSearch = useDebounce(props.search, 300);
+  const [debouncedSearch] = useDebounceValue(props.search, 300);
   const { data: projectsData = [], isLoading: isProjectsLoading } =
-    api.project.all.useQuery(
-      {
-        sortBy: {
-          order: props.sortOrder,
-          value: props.sortValue,
-        },
+    useGetAllProjects({
+      keepPreviousData: true,
+      enabled: props.enabled,
+      select: selectAllProjects({
+        search: debouncedSearch,
+        sortBy: props.sortValue,
+        order: props.sortOrder,
         categoryId: props.categoryId,
         tagIds: props.tagIds,
-        search: debouncedSearch,
-      },
-      {
-        keepPreviousData: true,
-        enabled: props.enabled,
-      },
-    );
+      }),
+    });
+
+  const { data: categories } = useGetAllCategories();
+  const { data: tags } = useGetAllTags();
 
   const [gridRef] = useAutoAnimate();
   const columnCount = useMemo(() => {
+    if (typeof window === undefined) {
+      return 1;
+    }
     if (!windowWidth) {
-      return;
+      return 1;
     }
     if (windowWidth >= 1024) {
       return 3;
@@ -105,7 +112,8 @@ const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
       className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       ref={gridRef}
     >
-      {isProjectsLoading &&
+      {typeof window !== undefined &&
+        isProjectsLoading &&
         [...Array(3 * (columnCount ?? 0)).keys()].map((key, index, arr) => {
           const borderRadiusClassName = columnCount
             ? getBorderRadiusClassName({
@@ -130,15 +138,26 @@ const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
             })
           : "";
 
+        const projectCategory = categories?.find(
+          (c) => c.id === project.category,
+        );
+        const projectTags = project.tags
+          .map(
+            (tagId) =>
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
+              tags?.find((t) => t.id === tagId)!,
+          )
+          .filter(Boolean);
+
         return (
           <ProjectCard
             key={project.id}
             id={project.id}
             name={project.name}
-            slug={project.slug}
-            tags={project.tags}
-            category={project.category}
-            imageUrl={project.banner}
+            tags={projectTags}
+            category={projectCategory}
+            backgroundUrl={project.banner}
+            logoUrl={project.logo}
             allowForceHover={columnCount === 1}
             className={borderRadiusClassName}
           />

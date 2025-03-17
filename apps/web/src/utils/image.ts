@@ -1,4 +1,4 @@
-import { type MediaType } from "@wassdahl/db";
+import { type MediaType } from "../firebase/api/query/all-projects";
 
 export const getYouTubeThumbnailFromUrl = (url: string) => {
   const regex = /https:\/\/www\.youtube\.com\/watch\?v=(\w+)/;
@@ -28,9 +28,9 @@ export const getThumbSrc = ({
   url: string;
 }) => {
   switch (type) {
-    case `IMAGE`:
+    case `image`:
       return url;
-    case `VIDEO`: {
+    case `video`: {
       if (url.startsWith(`https://www.youtube.com/watch?v=`)) {
         return getYouTubeThumbnailFromUrl(url);
       }
@@ -47,9 +47,9 @@ export const getVideoSrc = ({
   url: string;
 }) => {
   switch (type) {
-    case `IMAGE`:
+    case `image`:
       return url;
-    case `VIDEO`: {
+    case `video`: {
       if (url.startsWith(`https://www.youtube.com/watch?v=`)) {
         return getYouTubeEmbedFromUrl(url);
       }

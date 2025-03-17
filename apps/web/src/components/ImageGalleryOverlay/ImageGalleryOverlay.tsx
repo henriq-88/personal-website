@@ -3,21 +3,40 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { type Media } from "@wassdahl/db";
 import { Overlay } from "@wassdahl/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { getVideoSrc } from "../../utils/image";
+import { type Media } from "../../firebase/api/query/all-projects";
+import { useEffect } from "react";
 
 interface ImageGalleryOverlayProps {
   galleryIndex: number | undefined;
   medias: Media[];
-  onNextClick: React.MouseEventHandler<HTMLButtonElement>;
-  onPreviousClick: React.MouseEventHandler<HTMLButtonElement>;
-  onClose: React.MouseEventHandler<HTMLElement>;
+  onNextClick: () => void;
+  onPreviousClick: () => void;
+  onClose: () => void;
 }
 
 const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === `Escape`) {
+        props.onClose();
+      }
+      if (e.key === `ArrowRight`) {
+        props.onNextClick();
+      }
+      if (e.key === `ArrowLeft`) {
+        props.onPreviousClick();
+      }
+    };
+    window.addEventListener(`keydown`, handleKeyDown);
+    return () => {
+      window.removeEventListener(`keydown`, handleKeyDown);
+    };
+  }, [props]);
+
   const showNavigationControls = props.medias.length > 1;
   const currentMedia =
     props.galleryIndex !== undefined
@@ -27,7 +46,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
     <Overlay
       isVisible={!!currentMedia}
       className="z-20"
-      onClick={(e) => props.onClose(e)}
+      onClick={() => props.onClose()}
     >
       <AnimatePresence>
         {currentMedia && (
@@ -41,21 +60,25 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
             className="flex h-full w-full items-center justify-center py-16 md:p-3"
           >
             <div className="relative flex h-full w-full max-w-6xl items-center justify-center">
-              {currentMedia.type === `IMAGE` && (
+              {currentMedia.type === `image` && (
                 <Image
                   alt="current gallery image"
                   src={currentMedia.url}
-                  fill
-                  className="pointer-events-none rounded-xl object-contain"
+                  className="rounded-xl object-contain max-h-full max-w-full bg-black/50"
+                  width="640"
+                  height="360"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
                 />
               )}
-              {currentMedia.type === `VIDEO` && (
+              {currentMedia.type === `video` && (
                 <iframe
                   itemType="text/html"
                   width="640"
                   height="360"
                   src={getVideoSrc(currentMedia)}
-                  className="aspect-video h-auto w-full"
+                  className="aspect-video w-full h-full max-w-[640px] max-h-[360px] rounded-xl"
                 />
               )}
               {showNavigationControls && (
@@ -64,7 +87,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
                     className="pointer-events-auto rounded-full bg-black/25 p-2 text-white transition-all ease-in-out hover:scale-110 hover:bg-black/50"
                     onClick={(e) => {
                       e.stopPropagation();
-                      props.onPreviousClick(e);
+                      props.onPreviousClick();
                     }}
                   >
                     <ChevronLeftIcon className="h-6 w-6 sm:h-10 sm:w-10" />
@@ -73,7 +96,7 @@ const ImageGalleryOverlay: React.FC<ImageGalleryOverlayProps> = (props) => {
                     className="pointer-events-auto rounded-full bg-black/25 p-2 text-white transition-all ease-in-out hover:scale-110 hover:bg-black/50"
                     onClick={(e) => {
                       e.stopPropagation();
-                      props.onNextClick(e);
+                      props.onNextClick();
                     }}
                   >
                     <ChevronRightIcon className="h-6 w-6 sm:h-10 sm:w-10" />

@@ -13,7 +13,6 @@
     "@trpc/client": "^10.21.1",
     "@trpc/server": "^10.21.1",
     "@wassdahl/auth": "workspace:^0.1.0",
-    "@wassdahl/db": "workspace:^0.1.0",
     "@wassdahl/mail": "workspace:^0.1.0",
     "superjson": "2.2.1",
     "zod": "^3.21.4"

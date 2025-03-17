@@ -1,16 +1,16 @@
-import { type Media } from "@wassdahl/db";
 import { CardSkeleton } from "@wassdahl/ui";
 import clsx from "clsx";
 import { useState } from "react";
 import ImageGalleryItem from "../ImageGalleryItem";
 import ImageGalleryOverlay from "../ImageGalleryOverlay";
+import { type Project } from "../../firebase/api/query/all-projects";
 
 interface GallaryProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  medias?: Media[];
+  medias?: Project[`medias`];
   isLoading: boolean;
 }
 

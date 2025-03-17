@@ -15,8 +15,8 @@ import {
   TextArea,
   TextField,
 } from "@wassdahl/ui";
-import { api } from "../../pages/api";
 import { Fade } from "react-awesome-reveal";
+import { api } from "../../pages/api";
 
 interface ContactSectionProps {}
 
@@ -40,7 +40,6 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
     formState: { errors, isSubmitting },
     handleSubmit,
     reset,
-    clearErrors,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
   });
@@ -68,7 +67,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
       });
       reset();
     } catch (err) {
-      toast(`Doh! Message couldn't be sent for some reason 😥`, {
+      toast(`Doh! The message couldn't be sent for some reason 😥`, {
         type: `error`,
       });
     }

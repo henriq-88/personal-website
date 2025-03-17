@@ -1,7 +1,8 @@
-import { api } from "../../../pages/api";
 import { type SortOrder } from "../Page";
 import { forwardRef } from "react";
 import { CardSkeleton, ToggleChip } from "@wassdahl/ui";
+import { useGetAllCategories } from "../../../firebase/api/query/all-categories";
+import { useGetAllTags } from "../../../firebase/api/query/all-tags";
 
 interface ProjectFilterProps
   extends React.DetailedHTMLProps<
@@ -18,7 +19,7 @@ interface ProjectFilterProps
 
 export const sortOrders = [
   { label: `Recent`, value: `date`, order: `desc` },
-  { label: `Popularity`, value: `pageViews`, order: `desc` },
+  // { label: `Popularity`, value: `pageViews`, order: `desc` },
   { label: `Name`, value: `name`, order: `asc` },
 ] as const;
 
@@ -36,8 +37,8 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
     } = props;
 
     const { data: categoriesData, isLoading: categoriesIsLoading } =
-      api.category.all.useQuery();
-    const { data: tagsData, isLoading: tagsIsLoading } = api.tag.all.useQuery();
+      useGetAllCategories();
+    const { data: tagsData, isLoading: tagsIsLoading } = useGetAllTags();
 
     return (
       <div ref={ref} {...rest}>
