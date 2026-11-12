@@ -16,13 +16,9 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  div#__next {
-    height: inherit;
+  body {
     display: flex;
     flex-direction: column;
-  }
-
-  body {
     overflow-y: scroll;
   }
 
