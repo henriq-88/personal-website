@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "exclude": [],
+  "exclude": ["eslint.config.mjs"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

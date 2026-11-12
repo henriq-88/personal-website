@@ -1,8 +1,15 @@
 @import "react-toastify/dist/ReactToastify.css";
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@source "../../..";
+@source "../../../../../packages/ui/src";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-xs: 512px;
+  --breakpoint-xl2: 1720px;
+}
 
 @layer base {
   html {

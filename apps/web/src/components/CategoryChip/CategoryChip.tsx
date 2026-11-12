@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { type Category } from "../../firebase/api/query/all-categories";
+import { type Category } from "../../utils/projects";
 
 interface CategoryChipProps {
   size?: `small` | `medium`;

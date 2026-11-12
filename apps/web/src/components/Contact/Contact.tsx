@@ -1,3 +1,5 @@
+"use client";
+
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-toastify";
 import {
@@ -15,10 +17,8 @@ import {
   TextArea,
   TextField,
 } from "@wassdahl/ui";
-import { Fade } from "react-awesome-reveal";
-import { api } from "../../pages/api";
-
-interface ContactSectionProps {}
+import { Reveal } from "react-awesome-reveal";
+import { api } from "../../utils/api";
 
 type ErrorMessages = Record<
   keyof FormSchemaType,
@@ -27,13 +27,13 @@ type ErrorMessages = Record<
 
 const formSchema = z.object({
   name: z.string().min(2).max(100),
-  email: z.string().email().max(100),
+  email: z.email().max(100),
   message: z.string().min(10).max(1000),
 });
 
 type FormSchemaType = z.infer<typeof formSchema>;
 
-const ContactSection: React.FC<ContactSectionProps> = (props) => {
+const ContactSection: React.FC = () => {
   const { mutateAsync: sendMessage } = api.contact.sendMessage.useMutation();
   const {
     register,
@@ -50,7 +50,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
       max: `Name must contain at most 100 characters`,
     },
     email: {
-      invalid_string: `Invalid email address`,
+      invalid_format: `Invalid email address`,
       max: `Email must be a valid email address and contain at most 100 characters`,
     },
     message: {
@@ -66,7 +66,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
         type: `success`,
       });
       reset();
-    } catch (err) {
+    } catch {
       toast(`Doh! The message couldn't be sent for some reason 😥`, {
         type: `error`,
       });
@@ -80,23 +80,23 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
     <Container className="flex h-full items-center justify-center p-3">
       <div className="flex max-w-screen-lg gap-8 portrait:max-w-screen-xs portrait:flex-col landscape:flex-row">
         <div className="flex flex-1 shrink-0 flex-col justify-center">
-          <Fade direction="up" triggerOnce>
+          <Reveal from="bottom">
             <h1 className="text-5xl font-bold leading-tight sm:text-6xl md:text-8xl">
               Contact
             </h1>
-          </Fade>
-          <Fade direction="up" triggerOnce delay={200}>
+          </Reveal>
+          <Reveal from="bottom" delay={200}>
             <h2 className="text-4xl font-extralight leading-tight sm:text-5xl md:text-6xl">
               Do you need help to solve a problem?
             </h2>
-          </Fade>
-          <Fade direction="up" triggerOnce delay={400}>
+          </Reveal>
+          <Reveal from="bottom" delay={400}>
             <p className="mt-2 leading-loose">
               {`Let's talk bizniz and discuss your dream service/app.`}
             </p>
-          </Fade>
+          </Reveal>
         </div>
-        <Fade triggerOnce delay={600} className="flex-1">
+        <Reveal from={{ opacity: 0 }} delay={600} className="flex-1">
           <form
             className="flex shrink-0 flex-col justify-center"
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
@@ -167,7 +167,7 @@ const ContactSection: React.FC<ContactSectionProps> = (props) => {
               {isSubmitting && <CircularProgressIndicator />}
             </button>
           </form>
-        </Fade>
+        </Reveal>
       </div>
     </Container>
   );

@@ -1,4 +1,4 @@
-import { type MediaType } from "../firebase/api/query/all-projects";
+import { type MediaType } from "./projects";
 
 export const getYouTubeThumbnailFromUrl = (url: string) => {
   const regex = /https:\/\/www\.youtube\.com\/watch\?v=(\w+)/;
@@ -17,7 +17,9 @@ export const getYouTubeEmbedFromUrl = (url: string) => {
   if (!youtubeId) {
     return url;
   }
-  return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&origin=${window.location.href}`;
+  const origin =
+    typeof window === `undefined` ? `` : window.location.href;
+  return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&origin=${origin}`;
 };
 
 export const getThumbSrc = ({

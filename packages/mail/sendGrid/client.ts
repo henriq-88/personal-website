@@ -1,8 +1,7 @@
-import sendGridMailClient, { MailService } from "@sendgrid/mail";
+import sendGridMailClient, { type MailService } from "@sendgrid/mail";
 
 declare global {
   // allow global `var` declarations
-  // eslint-disable-next-line no-var
   var sendGridMail: MailService | undefined;
 }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -7,7 +9,7 @@ import { Overlay } from "@wassdahl/ui";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { getVideoSrc } from "../../utils/image";
-import { type Media } from "../../firebase/api/query/all-projects";
+import { type Media } from "../../utils/projects";
 import { useEffect } from "react";
 
 interface ImageGalleryOverlayProps {

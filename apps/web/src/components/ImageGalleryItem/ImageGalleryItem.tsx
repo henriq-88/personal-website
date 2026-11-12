@@ -2,7 +2,7 @@ import { PlayIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import Image from "next/image";
 import { getThumbSrc } from "../../utils/image";
-import { type MediaType } from "../../firebase/api/query/all-projects";
+import { type MediaType } from "../../utils/projects";
 
 interface ImageGalleryItemProps
   extends React.DetailedHTMLProps<

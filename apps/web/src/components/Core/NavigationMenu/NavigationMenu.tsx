@@ -1,3 +1,5 @@
+"use client";
+
 import { settingsDrawerOpenState } from "../../../state/states";
 import clsx from "clsx";
 import { useAtom } from "jotai";
@@ -7,9 +9,7 @@ import NavigationMenuOpenCloseSvg from "../NavigationMenuOpenCloseSvg/Navigation
 import { useWindowSize } from "../../../utils/screen";
 import { useMemo } from "react";
 
-interface NavigationMenuProps {}
-
-const NavigationMenu: React.FC<NavigationMenuProps> = (props) => {
+const NavigationMenu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useAtom(settingsDrawerOpenState);
   const { width } = useWindowSize();
 

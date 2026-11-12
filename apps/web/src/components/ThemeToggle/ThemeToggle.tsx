@@ -1,3 +1,5 @@
+"use client";
+
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import { themeModeState } from "../../state/states";
 import { useAtom } from "jotai";

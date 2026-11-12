@@ -1,21 +1,21 @@
-import { CardSkeleton } from "@wassdahl/ui";
+"use client";
+
 import clsx from "clsx";
 import { useState } from "react";
 import ImageGalleryItem from "../ImageGalleryItem";
 import ImageGalleryOverlay from "../ImageGalleryOverlay";
-import { type Project } from "../../firebase/api/query/all-projects";
+import { type Media } from "../../utils/projects";
 
 interface GallaryProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  medias?: Project[`medias`];
-  isLoading: boolean;
+  medias?: Media[];
 }
 
 const Gallary: React.FC<GallaryProps> = (props) => {
-  const { medias = [], className, isLoading, ...rest } = props;
+  const { medias = [], className, ...rest } = props;
   const [gallaryIndex, setGallaryIndex] = useState<number>();
 
   return (
@@ -27,20 +27,13 @@ const Gallary: React.FC<GallaryProps> = (props) => {
         )}
         {...rest}
       >
-        {isLoading &&
-          [...Array(3).keys()].map((i) => (
-            <CardSkeleton
-              key={`loading-${i}`}
-              className="aspect-square h-full w-full rounded-xl"
-            />
-          ))}
         {medias.map((media, i) => (
           <ImageGalleryItem
             src={media.url}
             type={media.type}
             alt={`gallary image ${i + 1}`}
             key={media.url}
-            onClick={(e) => {
+            onClick={() => {
               setGallaryIndex(i);
             }}
           />

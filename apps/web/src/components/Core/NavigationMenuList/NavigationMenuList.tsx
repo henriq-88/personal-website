@@ -1,8 +1,9 @@
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
 interface NavigationMenuListProps
   extends React.DetailedHTMLProps<
@@ -24,7 +25,7 @@ interface Link {
 
 const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
   const { orientation = `vertical`, onLinkClick, className, ...rest } = props;
-  const currentPage = useRouter().pathname;
+  const currentPage = usePathname();
 
   const links: Link[] = [
     {
@@ -77,7 +78,7 @@ const NavigationMenu: React.FC<NavigationMenuListProps> = (props) => {
     type: "spring",
     stiffness: 350,
     damping: 30,
-  };
+  } as const;
 
   return (
     <div

@@ -1,6 +1,6 @@
 type CircularProgressIndicatorProps = React.SVGProps<SVGSVGElement>
 
-const CircularProgressIndicator: React.FC<CircularProgressIndicatorProps> = (props) => {
+const CircularProgressIndicator: React.FC<CircularProgressIndicatorProps> = () => {
   return (
     <svg className="animate-spin h-5 w-5 absolute text-white" viewBox="0 0 24 24">
       <circle className="opacity-10" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

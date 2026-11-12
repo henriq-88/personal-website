@@ -1,3 +1,5 @@
+"use client";
+
 import { themeModeState } from "../../state/states";
 import { useAtomValue } from "jotai";
 import { ToastContainer } from "react-toastify";
@@ -12,7 +14,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
   return (
     <>
       {props.children}
-      <ToastContainer position="top-center" theme={themeMode} icon />
+      <ToastContainer position="top-center" theme={themeMode} />
     </>
   );
 };

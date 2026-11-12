@@ -1,8 +1,7 @@
 import { type SortOrder } from "../Page";
 import { forwardRef } from "react";
-import { CardSkeleton, ToggleChip } from "@wassdahl/ui";
-import { useGetAllCategories } from "../../../firebase/api/query/all-categories";
-import { useGetAllTags } from "../../../firebase/api/query/all-tags";
+import { ToggleChip } from "@wassdahl/ui";
+import { categories, tags } from "../../../utils/projects";
 
 interface ProjectFilterProps
   extends React.DetailedHTMLProps<
@@ -19,7 +18,6 @@ interface ProjectFilterProps
 
 export const sortOrders = [
   { label: `Recent`, value: `date`, order: `desc` },
-  // { label: `Popularity`, value: `pageViews`, order: `desc` },
   { label: `Name`, value: `name`, order: `asc` },
 ] as const;
 
@@ -35,10 +33,6 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
       onTagIdsChange,
       ...rest
     } = props;
-
-    const { data: categoriesData, isLoading: categoriesIsLoading } =
-      useGetAllCategories();
-    const { data: tagsData, isLoading: tagsIsLoading } = useGetAllTags();
 
     return (
       <div ref={ref} {...rest}>
@@ -63,14 +57,7 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             Category
           </h3>
           <div className="flex flex-row flex-wrap gap-2">
-            {categoriesIsLoading &&
-              [...Array(6).keys()].map((i) => (
-                <CardSkeleton
-                  key={`category-loading-${i}`}
-                  className="h-[34px] w-20 rounded-full"
-                />
-              ))}
-            {categoriesData?.map((c) => (
+            {categories.map((c) => (
               <ToggleChip
                 key={c.id}
                 isSelected={c.id === categoryId}
@@ -88,14 +75,7 @@ const ProjectFilter = forwardRef<HTMLDivElement, ProjectFilterProps>(
             Tags
           </h3>
           <div className="flex flex-row flex-wrap gap-2">
-            {tagsIsLoading &&
-              [...Array(10).keys()].map((i) => (
-                <CardSkeleton
-                  key={`tag-loading-${i}`}
-                  className="h-[34px] w-20 rounded-full"
-                />
-              ))}
-            {tagsData?.map((tag) => (
+            {tags.map((tag) => (
               <ToggleChip
                 key={tag.id}
                 isSelected={!!tagIds?.find((tId) => tId === tag.id)}

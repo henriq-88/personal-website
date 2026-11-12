@@ -15,15 +15,6 @@ const server = z.object({
  */
 const client = z.object({
   NEXT_PUBLIC_GIT_HASH: z.string().length(7).optional(),
-  NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT: z.string(),
-  NEXT_PUBLIC_FIREBASE_API_KEY: z.string(),
-  NEXT_PUBLIC_FIREBASE_APP_ID: z.string(),
-  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: z.string(),
-  NEXT_PUBLIC_FIREBASE_DATABASE_URL: z.string(),
-  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: z.string(),
-  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: z.string(),
-  NEXT_PUBLIC_FIREBASE_PROJECT_ID: z.string(),
-  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: z.string(),
 });
 
 /**
@@ -33,30 +24,7 @@ const client = z.object({
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
-  // DATABASE_URL: process.env.DATABASE_URL,
-  // NODE_ENV: process.env.NODE_ENV,
-  // NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-  // NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-  // NEXT_PUBLIC_GIT_HASH: process.env.NEXT_PUBLIC_GIT_HASH,
-  // NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT:
-  //   process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT,
-  // SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
   NODE_ENV: process.env.NODE_ENV,
-  NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT:
-    process.env.NEXT_PUBLIC_AXIOM_INGEST_ENDPOINT,
-  NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  NEXT_PUBLIC_FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:
-    process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  NEXT_PUBLIC_FIREBASE_DATABASE_URL:
-    process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-  NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID:
-    process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:
-    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  NEXT_PUBLIC_FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET:
-    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   NEXT_PUBLIC_GIT_HASH: process.env.NEXT_PUBLIC_GIT_HASH,
   SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
 };
@@ -68,7 +36,7 @@ const merged = server.merge(client);
 
 /** @typedef {z.input<typeof merged>} MergedInput */
 /** @typedef {z.infer<typeof merged>} MergedOutput */
-/** @typedef {z.SafeParseReturnType<MergedInput, MergedOutput>} MergedSafeParseReturn */
+/** @typedef {{ success: true, data: MergedOutput } | { success: false, error: z.ZodError }} MergedSafeParseReturn */
 
 let env = /** @type {MergedOutput} */ (process.env);
 
@@ -84,7 +52,7 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
   if (parsed.success === false) {
     console.error(
       "❌ Invalid environment variables:",
-      parsed.error.flatten().fieldErrors,
+      z.flattenError(parsed.error).fieldErrors,
     );
     throw new Error("Invalid environment variables");
   }

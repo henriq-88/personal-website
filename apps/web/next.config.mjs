@@ -1,22 +1,31 @@
 import bundleAnalyzer from "@next/bundle-analyzer";
 import { execSync } from "child_process";
-import { PrismaPlugin } from "experimental-prisma-webpack-plugin";
-import webpack from "webpack";
-import { withAxiom } from "next-axiom";
-
-const { EnvironmentPlugin } = webpack;
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
+
+const getGitHash = () => {
+  try {
+    return execSync(`git rev-parse --verify HEAD`)
+      .toString()
+      .substring(0, 7);
+  } catch {
+    return process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 7) ?? `unknown`;
+  }
+};
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: { ignoreDuringBuilds: !!process.env.CI },
+  cacheComponents: true,
+  partialPrefetching: true,
   typescript: { ignoreBuildErrors: !!process.env.CI },
+  env: {
+    NEXT_PUBLIC_GIT_HASH: getGitHash(),
+  },
   images: {
     minimumCacheTTL: 1 * 60 * 60, // 1 hour
     remotePatterns: [
@@ -35,25 +44,8 @@ const nextConfig = {
     "@wassdahl/auth",
     "@wassdahl/mail",
     "@wassdahl/ui",
+    "@awesome-reveal/react",
   ],
-  webpack: (config, { isServer }) => {
-    const gitHash = execSync(`git rev-parse --verify HEAD`)
-      .toString()
-      .substring(0, 7);
-
-    if (isServer) {
-      config.plugins = [...config.plugins, new PrismaPlugin()];
-    }
-
-    config.plugins = [
-      ...config.plugins,
-      new EnvironmentPlugin({
-        NEXT_PUBLIC_GIT_HASH: gitHash,
-      }),
-    ];
-
-    return config;
-  },
 };
 
 /**
@@ -64,4 +56,4 @@ if (!process.env.SKIP_ENV_VALIDATION) {
   await import("./src/env.mjs");
 }
 
-export default withAxiom(withBundleAnalyzer(nextConfig));
+export default withBundleAnalyzer(nextConfig);

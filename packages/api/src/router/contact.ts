@@ -6,7 +6,7 @@ export const contactRouter = createTRPCRouter({
     .input(
       z.object({
         name: z.string().min(2).max(100),
-        email: z.string().email().max(100),
+        email: z.email().max(100),
         message: z.string().min(10).max(1000),
       }),
     )

@@ -1,20 +1,22 @@
+"use client";
+
 import { Container, TextField } from "@wassdahl/ui";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import React, { useEffect, useState } from "react";
 import ProjectFilter, { sortOrders } from "../Filter";
 import ToggleShowSectionButton from "../Filter/ToggleShowSectionButton";
-import { useRouter } from "next/router";
+import ProjectItems from "../Items";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
-import { isNil, omitBy } from "lodash-es";
-import dynamic from "next/dynamic";
+import { type Project } from "../../../utils/projects";
 
-const ProjectItems = dynamic(() => import(`../Items`), { ssr: false });
-
-interface ProjectsPageProps {}
+interface ProjectsPageProps {
+  projects: Project[];
+}
 
 export interface SortOrder {
   label: string;
-  value: `date` | `pageViews` | `name`;
+  value: `date` | `name`;
   order: `asc` | `desc`;
 }
 
@@ -23,7 +25,7 @@ const DEFAULT_IS_FILTER_MENU_OPEN = false;
 
 const queryParamSchema = z
   .object({
-    sortByValue: z.enum([`date`, `pageViews`, `name`]).optional(),
+    sortByValue: z.enum([`date`, `name`]).optional(),
     sortByOrder: z.enum([`asc`, `desc`]).optional(),
     categoryId: z.string().optional(),
     tagIds: z.union([z.array(z.string()), z.string()]).optional(),
@@ -37,10 +39,14 @@ const queryParamSchema = z
 
 type ProjectQueryParam = z.infer<typeof queryParamSchema>;
 
+const omitNil = <T extends object>(obj: T) =>
+  Object.fromEntries(Object.entries(obj).filter(([, v]) => v != null));
+
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const [filterRef] = useAutoAnimate();
   const router = useRouter();
-  const [isQueryParamsLoaded, setIsQueryParamsLoaded] = useState(false);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState(``);
   const [selectedSortOrder, setSelectedSortOrder] =
     useState<SortOrder>(DEFAULT_SORT_ORDER);
@@ -54,16 +60,17 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   const updateQueryParams = (
     params: Partial<ProjectQueryParam & { isFilterMenuOpen: boolean }>,
   ) => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    router.replace({
-      query: omitBy(
-        {
-          ...router.query,
-          ...params,
-        },
-        isNil,
-      ),
+    const query = omitNil({
+      ...Object.fromEntries(searchParams),
+      ...params,
     });
+    const entries = Object.entries(query).flatMap(([key, value]) =>
+      Array.isArray(value)
+        ? value.map((v) => [key, String(v)])
+        : [[key, String(value)]],
+    );
+    const queryString = new URLSearchParams(entries).toString();
+    router.replace(queryString ? `${pathname}?${queryString}` : pathname);
   };
 
   const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (
@@ -100,7 +107,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
 
   const handleIsFilterMenuOpenChange: React.MouseEventHandler<
     HTMLButtonElement
-  > = (e) => {
+  > = () => {
     const updatedIsFilterMenuOpen = !isFilterMenuOpen;
     setIsFilterMenuOpen(updatedIsFilterMenuOpen);
     updateQueryParams({
@@ -109,14 +116,16 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
   };
 
   useEffect(() => {
-    if (!router.isReady) {
-      return;
-    }
-    const unsafeQueryParams = queryParamSchema.safeParse(router.query);
+    const rawQueryParams: Record<string, unknown> =
+      Object.fromEntries(searchParams);
+    const tagIds = searchParams.getAll(`tagIds`);
+    rawQueryParams.tagIds = tagIds.length > 0 ? tagIds : undefined;
+    const unsafeQueryParams = queryParamSchema.safeParse(rawQueryParams);
     if (!unsafeQueryParams.success) {
       return;
     }
     const safeQueryParams = unsafeQueryParams.data;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing external searchParams state
     setSearch(safeQueryParams?.search ?? ``);
     const parsedSortOrder = sortOrders.find(
       ({ value, order }) =>
@@ -128,15 +137,14 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
     const parsedTagIds =
       safeQueryParams?.tagIds === undefined
         ? undefined
-        : Array.isArray(safeQueryParams?.tagIds)
-          ? safeQueryParams?.tagIds
-          : [safeQueryParams?.tagIds];
+        : Array.isArray(safeQueryParams.tagIds)
+          ? safeQueryParams.tagIds
+          : [safeQueryParams.tagIds];
     setSelectedTagIds(parsedTagIds);
     setIsFilterMenuOpen(
       safeQueryParams?.isFilterMenuOpen ?? DEFAULT_IS_FILTER_MENU_OPEN,
     );
-    setIsQueryParamsLoaded(true);
-  }, [router.query]);
+  }, [searchParams]);
 
   return (
     <Container className="relative flex h-full flex-1 flex-col p-3">
@@ -169,12 +177,12 @@ const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
         )}
       </div>
       <ProjectItems
+        projects={props.projects}
         search={search}
         sortValue={selectedSortOrder.value}
         sortOrder={selectedSortOrder.order}
         categoryId={selectedCategoryId}
         tagIds={selectedTagsIds}
-        enabled={isQueryParamsLoaded}
       />
       <aside className="absolute -right-80 top-0 mt-[4.5rem] hidden w-80 px-3 xl2:block">
         <ProjectFilter

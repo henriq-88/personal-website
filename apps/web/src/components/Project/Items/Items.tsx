@@ -1,51 +1,50 @@
+"use client";
+
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
-import { CardSkeleton } from "@wassdahl/ui";
-import clsx from "clsx";
 import { useCallback, useMemo } from "react";
 import { useDebounceValue, useWindowSize } from "usehooks-ts";
 import ProjectCard from "../Card";
 import { type SortOrder } from "../Page";
 import {
-  selectAllProjects,
-  useGetAllProjects,
-} from "../../../firebase/api/query/all-projects";
-import { useGetAllCategories } from "../../../firebase/api/query/all-categories";
-import { useGetAllTags } from "../../../firebase/api/query/all-tags";
+  selectProjects,
+  type Project,
+} from "../../../utils/projects";
 
 interface ProjectItemsProps {
+  projects: Project[];
   search: string;
   sortValue: SortOrder[`value`];
   sortOrder: SortOrder[`order`];
   categoryId: string | undefined;
   tagIds: string[] | undefined;
-  enabled: boolean;
 }
 
 const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
   const { width: windowWidth } = useWindowSize();
   const [debouncedSearch] = useDebounceValue(props.search, 300);
-  const { data: projectsData = [], isLoading: isProjectsLoading } =
-    useGetAllProjects({
-      keepPreviousData: true,
-      enabled: props.enabled,
-      select: selectAllProjects({
+
+  const filteredProjects = useMemo(
+    () =>
+      selectProjects(props.projects, {
         search: debouncedSearch,
         sortBy: props.sortValue,
         order: props.sortOrder,
         categoryId: props.categoryId,
         tagIds: props.tagIds,
       }),
-    });
-
-  const { data: categories } = useGetAllCategories();
-  const { data: tags } = useGetAllTags();
+    [
+      props.projects,
+      debouncedSearch,
+      props.sortValue,
+      props.sortOrder,
+      props.categoryId,
+      props.tagIds,
+    ],
+  );
 
   const [gridRef] = useAutoAnimate();
   const columnCount = useMemo(() => {
-    if (typeof window === undefined) {
-      return 1;
-    }
     if (!windowWidth) {
       return 1;
     }
@@ -96,7 +95,7 @@ const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
     [],
   );
 
-  if (!isProjectsLoading && projectsData.length === 0) {
+  if (filteredProjects.length === 0) {
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-3 p-3">
         <FaceFrownIcon className="h-24 w-24 text-black/30 dark:text-white/50" />
@@ -112,24 +111,7 @@ const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
       className="mt-3 grid grid-cols-1 gap-0.5 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       ref={gridRef}
     >
-      {typeof window !== undefined &&
-        isProjectsLoading &&
-        [...Array(3 * (columnCount ?? 0)).keys()].map((key, index, arr) => {
-          const borderRadiusClassName = columnCount
-            ? getBorderRadiusClassName({
-                index,
-                length: arr.length,
-                columnCount,
-              })
-            : "";
-          return (
-            <CardSkeleton
-              key={`loading-${key}`}
-              className={clsx("h-64 w-full", borderRadiusClassName)}
-            />
-          );
-        })}
-      {projectsData.map((project, i, projects) => {
+      {filteredProjects.map((project, i, projects) => {
         const borderRadiusClassName = columnCount
           ? getBorderRadiusClassName({
               index: i,
@@ -138,24 +120,13 @@ const ProjectItems: React.FC<ProjectItemsProps> = (props) => {
             })
           : "";
 
-        const projectCategory = categories?.find(
-          (c) => c.id === project.category,
-        );
-        const projectTags = project.tags
-          .map(
-            (tagId) =>
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
-              tags?.find((t) => t.id === tagId)!,
-          )
-          .filter(Boolean);
-
         return (
           <ProjectCard
-            key={project.id}
-            id={project.id}
+            key={project.slug}
+            slug={project.slug}
             name={project.name}
-            tags={projectTags}
-            category={projectCategory}
+            tags={project.tags}
+            category={project.category}
             backgroundUrl={project.banner}
             logoUrl={project.logo}
             allowForceHover={columnCount === 1}

@@ -7,9 +7,8 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { TRPCError, initTRPC } from "@trpc/server";
-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
-import { ZodError } from "zod";
+import { ZodError, z } from "zod";
 import { getServerAuthSession, type Session } from "@wassdahl/auth";
 import { sendGrid } from "@wassdahl/mail";
 
@@ -47,11 +46,9 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
-
-  // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await getServerAuthSession({ req, res });
+export const createTRPCContext = async () => {
+  // Get the session from the server using the getServerSession wrapper function
+  const session = await getServerAuthSession();
 
   return createInnerTRPCContext({
     session,
@@ -72,7 +69,9 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       data: {
         ...shape.data,
         zodError:
-          error.cause instanceof ZodError ? error.cause.flatten() : null,
+          error.cause instanceof ZodError
+            ? z.flattenError(error.cause)
+            : null,
       },
     };
   },

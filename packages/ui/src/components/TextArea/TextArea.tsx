@@ -20,7 +20,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       hideErrors,
       className,
       placeholder,
-      value,
       ...rest
     } = props;
 
@@ -92,5 +91,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     );
   },
 );
+TextArea.displayName = "TextArea";
 
 export default TextArea;

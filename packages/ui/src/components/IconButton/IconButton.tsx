@@ -1,4 +1,4 @@
-import { cva, VariantProps } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 
 const iconButtonClasses = cva(
   'p-2 bg-transparent transition-colors', {
@@ -27,7 +27,11 @@ type IconButtonProps = (AnchorButtonProps | ButtonProps) & VariantProps<typeof i
 
 
 const IconButton: React.FC<IconButtonProps> = (props) => {
-  const classes = "rounded-xl border border-solid border-[#ffffff1f] p-2 bg-transparent hover:bg-[#ffffff14] transition-colors"
+  const classes = iconButtonClasses({
+    rounding: props.rounding ?? "rounded",
+    border: props.border ?? "solid",
+    color: props.color ?? "light",
+  });
   
   if (props.type === `anchor`) {
     return (

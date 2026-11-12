@@ -4,7 +4,7 @@ const Signature: React.FC<SignatureProps> = (props) => {
   const strokeLength = 1117.250732421875;
   return (
     <>
-      <style jsx>{`
+      <style>{`
         @keyframes sign {
           to {
             stroke-dashoffset: 0;
