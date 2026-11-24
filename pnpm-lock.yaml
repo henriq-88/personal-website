@@ -355,8 +355,8 @@ importers:
         specifier: workspace:^0.1.0
         version: link:../mail
       superjson:
-        specifier: 2.2.6
-        version: 2.2.6
+        specifier: 2.2.7
+        version: 2.2.7
       zod:
         specifier: 4.6.7
         version: 4.6.7
@@ -3686,8 +3686,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  superjson@2.2.6:
-    resolution: {integrity: sha512-H+ue8Zo4vJmV2nRjpx86P35lzwDT3nItnIsocgumgr0hHMQ+ZGq5vrERg9kJBo5AWGmxZDhzDo+WVIJqkB0cGA==}
+  superjson@2.2.7:
+    resolution: {integrity: sha512-QK/H+tosbovdRvIuGqcWn8g3IxPZY7B8ZPowCAmWsV8bPvCk+bGMlZt90C4AxZjnzMO2WBRDacr1+0i1AOy/5g==}
     engines: {node: '>=16'}
 
   supports-color@8.1.1:
@@ -4790,7 +4790,7 @@ snapshots:
       goober: 2.1.19(csstype@3.2.3)
       solid-js: 1.9.19
       solid-transition-group: 0.2.3(solid-js@1.9.19)
-      superjson: 2.2.6
+      superjson: 2.2.7
     transitivePeerDependencies:
       - csstype
 
@@ -7561,7 +7561,7 @@ snapshots:
       '@babel/core': 7.29.13(supports-color@8.1.1)
       babel-plugin-macros: 3.1.0
 
-  superjson@2.2.6:
+  superjson@2.2.7:
     dependencies:
       copy-anything: 4.1.5
 
