@@ -216,8 +216,8 @@ importers:
   apps/web:
     dependencies:
       '@formkit/auto-animate':
-        specifier: 0.10.2
-        version: 0.10.2
+        specifier: 0.11.0
+        version: 0.11.0
       '@heroicons/react':
         specifier: 2.2.0
         version: 2.2.0(react@19.3.1)
@@ -431,8 +431,8 @@ importers:
   packages/ui:
     dependencies:
       '@formkit/auto-animate':
-        specifier: 0.10.2
-        version: 0.10.2
+        specifier: 0.11.0
+        version: 0.11.0
       '@heroicons/react':
         specifier: 2.2.0
         version: 2.2.0(react@19.3.1)
@@ -660,8 +660,8 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@formkit/auto-animate@0.10.2':
-    resolution: {integrity: sha512-t2Z3y8b/zB3wPWwgpc6JDVm4q0ezb5vfe2mqfUrQJ7XziZY8iYuhocQ7eJdTzowRePihrNbZ/DNJoFa6Yi5blg==}
+  '@formkit/auto-animate@0.11.0':
+    resolution: {integrity: sha512-UgxBCHi9eh+PvDbuh+E8tLuqIjhewypZ6ueDFSu8cf3BjdGmTUcrt0AGQzKzoZ/TADlX0vS1xQftZpKx084Wpw==}
 
   '@heroicons/react@2.2.0':
     resolution: {integrity: sha512-LMcepvRaS9LYHJGsF0zzmgKCUim/X3N/DQKc4jepAXJ7l8QxJ1PmxJzqplF2Z3FE4PqBAIGyJAQ/w4B5dsqbtQ==}
@@ -4175,7 +4175,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@formkit/auto-animate@0.10.2': {}
+  '@formkit/auto-animate@0.11.0': {}
 
   '@heroicons/react@2.2.0(react@19.3.1)':
     dependencies:
