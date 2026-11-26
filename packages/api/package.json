@@ -10,8 +10,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@trpc/client": "11.28.2",
-    "@trpc/server": "11.28.2",
+    "@trpc/client": "11.31.3",
+    "@trpc/server": "11.31.3",
     "@wassdahl/auth": "workspace:^0.1.0",
     "@wassdahl/mail": "workspace:^0.1.0",
     "superjson": "2.2.7",
