@@ -328,8 +328,8 @@ importers:
         specifier: 10.15.0
         version: 10.15.0(jiti@2.7.0)(supports-color@8.1.1)
       eslint-config-prettier:
-        specifier: 10.1.8
-        version: 10.1.8(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))
+        specifier: 10.1.9
+        version: 10.1.9(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))
       eslint-config-wassdahl:
         specifier: workspace:^0.1.0
         version: link:../../packages/config/eslint
@@ -396,8 +396,8 @@ importers:
         specifier: 16.4.6
         version: 16.4.6(@typescript-eslint/parser@8.74.0(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3))(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@5.9.3)
       eslint-config-prettier:
-        specifier: 10.1.8
-        version: 10.1.8(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))
+        specifier: 10.1.9
+        version: 10.1.9(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))
       eslint-plugin-turbo:
         specifier: 2.11.13
         version: 2.11.13(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1))(turbo@2.11.13)
@@ -2148,8 +2148,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-config-prettier@10.1.8:
-    resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
+  eslint-config-prettier@10.1.9:
+    resolution: {integrity: sha512-JnOR0K4u67CWOiSS3vaduGlLUWS32lGiyglMIV6AyvK9DBRpS+QhR2ESKaUe2eWGRsdVmrxy77yaOk2hzDa4Bg==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -5679,7 +5679,7 @@ snapshots:
       - eslint-plugin-import-x
       - supports-color
 
-  eslint-config-prettier@10.1.8(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1)):
+  eslint-config-prettier@10.1.9(eslint@10.15.0(jiti@2.7.0)(supports-color@8.1.1)):
     dependencies:
       eslint: 10.15.0(jiti@2.7.0)(supports-color@8.1.1)
 
